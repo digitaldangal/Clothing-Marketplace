@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import firebase from './config/firebase';
+import{BrowserRouter as Router, Redirect, Switch, Route, Link} from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
-import{BrowserRouter as Router, Redirect, Switch, Route, Link} from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -10,6 +11,9 @@ class App extends Component {
     this.state = {
       authState: false
     }
+  }
+  componentDidMount(){
+    console.log('Appjs Ready')
   }
   render() {
     return (

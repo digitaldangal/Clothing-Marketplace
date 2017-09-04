@@ -6,7 +6,8 @@ class Login extends Component{
         super(props);
         this.state = {
             email: undefined,
-            pass: undefined
+            pass: undefined,
+            userInfo: undefined
         }
     }
     handleSubmit=(e)=>{
@@ -16,6 +17,13 @@ class Login extends Component{
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(res=>{
             console.log(res)
+            firebase.auth().onAuthStateChanged((user)=>{
+                if (user) {
+                    this.setState({userInfo: user.toJSON()})
+                } else {
+                    console.log('User is not logged in')
+                }
+            })
         })
         .catch(err=>{
             // Handle Errors here.
@@ -32,7 +40,7 @@ class Login extends Component{
     }
     render(){
         return(
-            <div className="login-form">
+            <div className="auth-form">
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                     <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
