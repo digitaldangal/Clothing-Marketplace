@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar/>
+          <Navbar authState={this.state.authState} userInfo={this.state.userInfo}/>
           <div className="app-body">
             <Switch>
               <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />

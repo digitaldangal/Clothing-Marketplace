@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../config/firebase';
+import ui, {uiConfig} from '../config/firebaseui';
 
 class Login extends Component{
     constructor(props){
@@ -9,6 +10,10 @@ class Login extends Component{
             pass: undefined,
             userInfo: undefined
         }
+    }
+    componentDidMount(){
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
     }
     handleSubmit=(e)=>{
         e.preventDefault();
@@ -42,6 +47,7 @@ class Login extends Component{
     render(){
         return(
             <div className="auth-form">
+                <div id="firebaseui-auth-container"></div>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                     <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
