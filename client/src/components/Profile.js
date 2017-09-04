@@ -16,6 +16,7 @@ class Profile extends Component{
     handleSubmit=(e)=>{
         e.preventDefault(); 
         this.userProfileRef.child(this.props.userInfo.uid).child('brand').child('name').set("Rick Owens")
+        this.userProfileRef.child(this.props.userInfo.uid).child('about').child('content').set(firebase.auth().currentUser.toJSON())
         .then(res=>console.log(res))
         .catch(err=>console.log(err))
     }
