@@ -9,12 +9,22 @@ class Navbar extends Component {
         }
     }
     renderAuthNav(){
-        return(<div className='wrapper'>
-            <h1>Copped App</h1>
-            <h2>Welcome {this.props.userInfo.email}</h2>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-        </div>)
+        return(
+            <div className='wrapper'>
+                <h1>Copped App</h1>
+                <h2>Welcome {this.props.userInfo.email}</h2>
+            </div>
+        )
+    }
+
+    renderNav(){
+        return(
+            <div className='wrapper'>
+                <h1>Copped App</h1>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+            </div>
+        )
     }
 
     render(){
