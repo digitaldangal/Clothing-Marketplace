@@ -5,8 +5,11 @@ import{BrowserRouter as Router, Redirect, Switch, Route, Link} from 'react-route
 import './App.css';
 
 class App extends Component {
-  handleSubmit=(e)=>{
-    e.preventDefault();
+  constructor(){
+    super();
+    this.state = {
+      authState: false
+    }
   }
   render() {
     return (
@@ -21,7 +24,7 @@ class App extends Component {
           </header>
           <div className="app-body">
             <Switch>
-              <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} />} />
+              <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.state.authState}/>} />
               <Route exact path="/register" render={() => <Register submit={this.handleRegisterSubmit} />}/>
             </Switch>
           </div>
