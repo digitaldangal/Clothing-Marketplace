@@ -7,8 +7,15 @@ export const uiConfig = {
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+    {provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,requireDisplayName: true},
+    { provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      recaptchaParameters: {
+        type: 'image', // 'audio'
+        size: 'normal', // 'invisible' or 'compact'
+        badge: 'bottomleft' //' bottomright' or 'inline' applies to invisible.
+      },
+      defaultCountry: 'US' // Set default country to the United Kingdom (+44).
+    }
     ],
 }
 
