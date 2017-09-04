@@ -4,7 +4,6 @@ import firebaseui from 'firebaseui';
 export const uiConfig = {
     signInSuccessUrl: '/profile',
     signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     {provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,requireDisplayName: true},
@@ -14,7 +13,7 @@ export const uiConfig = {
         size: 'normal', // 'invisible' or 'compact'
         badge: 'bottomleft' //' bottomright' or 'inline' applies to invisible.
       },
-      defaultCountry: 'US' // Set default country to the United Kingdom (+44).
+      defaultCountry: 'US'
     }
     ],
 }
