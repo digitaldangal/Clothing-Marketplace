@@ -3,6 +3,7 @@ import firebase from './config/firebase';
 import{BrowserRouter as Router, Redirect, Switch, Route, Link} from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
+import Profile from './components/Profile';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,9 @@ class App extends Component {
     super();
     this.state = {
       authState: false,
-      userInfo: undefined
+      userInfo: undefined,
+      redirect: false,
+      currentPage: ''
     }
   }
 
@@ -20,7 +23,9 @@ class App extends Component {
         console.log(`${user.email} is logged in`)
           this.setState({
             userInfo: user.toJSON(),
-            authState: true
+            authState: true,
+            redirect: true,
+            currentPage: 'profile'
           })
       } else {
           console.log('User is not logged in')
@@ -35,6 +40,7 @@ class App extends Component {
   }
 
   render() {
+    const {redirect, currentPage} = this.state
     return (
       <Router>
         <div className="App">
@@ -47,8 +53,10 @@ class App extends Component {
           </header>
           <div className="app-body">
             <Switch>
-              <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess}/>} />
-              <Route exact path="/register" render={() => <Register submit={this.handleRegisterSubmit} />}/>
+              <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />
+              <Route exact path="/register" render={() => <Register submit={this.handleRegisterSubmit} /> } />
+              <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo}/> } />
+              {redirect ? <Redirect to={currentPage} /> : null}
             </Switch>
           </div>
           <section className='display-item'>
