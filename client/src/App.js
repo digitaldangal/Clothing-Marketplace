@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './config/firebase';
-import{BrowserRouter as Router, Redirect, Switch, Route, Link} from 'react-router-dom';
+import{BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
@@ -44,13 +45,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header>
-              <div className='wrapper'>
-                <h1>Copped App</h1>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
-              </div>
-          </header>
+          <Navbar/>
           <div className="app-body">
             <Switch>
               <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />
