@@ -34,6 +34,17 @@ class App extends Component {
     })
   }
 
+  handleAuthState(userStatus){
+    if(userStatus === "signed out"){
+      this.setState({
+        authState: false,
+        userInfo: undefined
+      })
+    }else{
+      return null
+    }
+  }
+
   loginSuccess=(e)=>{
     this.setState({
       authState: true
@@ -45,7 +56,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar authState={this.state.authState} userInfo={this.state.userInfo}/>
+          <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
           <div className="app-body">
             <Switch>
               <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />
