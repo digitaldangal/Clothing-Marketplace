@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import firebase from './config/firebase';
 import{BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
+
 import './App.css';
 
 class App extends Component {
