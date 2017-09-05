@@ -58,23 +58,25 @@ class App extends Component {
     const {redirect, currentPage} = this.state
     return (
       <Router>
-        <div className="App">
-          <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
-          <div className="app-body">
-            <Switch>
-              <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />
-              <Route exact path="/register" render={() => <Register submit={this.handleRegisterSubmit} /> } />
-              <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo}/> } />
-              {redirect ? <Redirect to={currentPage} /> : null}
-            </Switch>
-          </div>
-          <section className='display-item'>
-            <div className='wrapper'>
-              <ul>
-              </ul>
+        <MuiThemeProvider>
+          <div className="App">
+            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
+            <div className="app-body">
+              <Switch>
+                <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />
+                <Route exact path="/register" render={() => <Register submit={this.handleRegisterSubmit} /> } />
+                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo}/> } />
+                {redirect ? <Redirect to={currentPage} /> : null}
+              </Switch>
             </div>
-          </section>
-        </div>
+            <section className='display-item'>
+              <div className='wrapper'>
+                <ul>
+                </ul>
+              </div>
+            </section>
+          </div>
+          </MuiThemeProvider>
       </Router>
     );
   }

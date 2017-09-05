@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
+import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router-dom'
 
 class Navbar extends Component {
@@ -34,8 +35,8 @@ class Navbar extends Component {
         return(
             <div className='wrapper'>
                 <h1>Copped App</h1>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
+                <Link to="/login"><RaisedButton label="Login"/></Link>
+                <Link to="/register"><RaisedButton label="Register"/></Link>
             </div>
         )
     }
