@@ -48,6 +48,7 @@ class Login extends Component{
         return(
             <div className="auth-form">
                 <div id="firebaseui-auth-container"></div>
+                <h1>Login to your account</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                     <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
