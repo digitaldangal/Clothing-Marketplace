@@ -3,12 +3,24 @@ import firebase from './config/firebase';
 import{BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 
 import './App.css';
+
+// document.querySelector('body').addEventListener('click', function(e) {
+//   console.log('click')
+//   if(document.querySelector('.side-menu show-menu').className === "side-menu show-menu"){
+//     console.log(true)
+//     document.querySelector('.side-menu show-menu').className = "side-menu hide-menu"
+//   }else{
+//     console.log(false)
+//     document.querySelector('.side-menu hide-menu').className = "side-menu show-menu"
+//   }
+// })
 
 class App extends Component {
   constructor(){
@@ -63,6 +75,7 @@ class App extends Component {
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
             <div className="app-body">
               <Switch>
+                <Route exact path="" render={() => <Home authState={this.state.authState} /> } />
                 <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />
                 <Route exact path="/register" render={() => <Register submit={this.handleRegisterSubmit} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo}/> } />
