@@ -6,8 +6,6 @@ Web App that could be utilize as an online wardrobe / closet to help create a vi
 
 ## Installation 
 
-## What is AppName
-
 ## The Making of AppName
 
 ### Wireframes
