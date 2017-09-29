@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './config/firebase';
 import{BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Home from './components/Home';
 import Navbar from './components/Navbar';
