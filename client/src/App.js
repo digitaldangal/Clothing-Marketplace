@@ -10,17 +10,6 @@ import Profile from './components/Profile';
 
 import './App.css';
 
-// document.querySelector('body').addEventListener('click', function(e) {
-//   console.log('click')
-//   if(document.querySelector('.side-menu show-menu').className === "side-menu show-menu"){
-//     console.log(true)
-//     document.querySelector('.side-menu show-menu').className = "side-menu hide-menu"
-//   }else{
-//     console.log(false)
-//     document.querySelector('.side-menu hide-menu').className = "side-menu show-menu"
-//   }
-// })
-
 class App extends Component {
   constructor(){
     super();

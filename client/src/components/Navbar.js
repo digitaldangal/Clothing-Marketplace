@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import {DropDownMenu, AppBar, Tab, Tabs, Drawer, MenuItem} from 'material-ui';
 import {Link} from 'react-router-dom'
 
 class Navbar extends Component {
@@ -45,28 +44,9 @@ class Navbar extends Component {
     render(){
     return (
         <header>
-            <AppBar 
-            title="Copped"
-            zDepth={2}
-            onLeftIconButtonTouchTap={()=>this.menuToggle()}
-            >
-            <Drawer className="side-menu" style={{display: 'none'}}/>
-            <Tabs children={true}>
-                <Tab label="Item 1" />
-                <Tab label="Item 2" />
-                <Tab label="Item 3" />
-                <Tab label="Item 4" />
-            </Tabs>
-            <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-                    <MenuItem value={1} primaryText="All Broadcasts" />
-                    <MenuItem value={2} primaryText="All Voice" />
-                    <MenuItem value={3} primaryText="All Text" />
-                    <MenuItem value={4} primaryText="Complete Voice" />
-                    <MenuItem value={5} primaryText="Complete Text" />
-                    <MenuItem value={6} primaryText="Active Voice" />
-                    <MenuItem value={7} primaryText="Active Text" />
-                </DropDownMenu>
-            </AppBar>
+            <nav>
+                
+            </nav>
         </header>
         )
     }

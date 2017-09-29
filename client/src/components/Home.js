@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import{Link} from 'react-router-dom';
-import Card from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class Home extends Component {
     constructor(props){
@@ -14,8 +12,8 @@ class Home extends Component {
     render(){
         return(
             <Card>
-                <Link to="/login"><RaisedButton label="Login"/></Link>
-                <Link to="/register"><RaisedButton label="Register"/></Link>
+                <Link to="/login"> </Link>
+                <Link to="/register"> </Link>
             </Card>
         )
     }
