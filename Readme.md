@@ -18,7 +18,9 @@ These are some of the features that I plan on tackling as I build this project
 - [ ]
 
 ## Installation 
-
+1. Run npm install in the client folder.
+2. in the same client folder run npm start
+3. Inside client/semantic run gulp build to install the Semantic UI files
 ## The Making of Copped.com
 
 ### Wireframes
