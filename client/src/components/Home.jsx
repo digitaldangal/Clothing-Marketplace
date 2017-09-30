@@ -20,9 +20,7 @@ class Home extends Component {
                     <Article />
                     <div>
                         <h1>Featured Brands</h1>
-                        <div className="featured-brands">
-                            <FeaturedBrands />
-                        </div>
+                        <FeaturedBrands />
                     </div>
                 </main>
             </section>
