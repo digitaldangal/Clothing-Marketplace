@@ -34,12 +34,15 @@ class Navbar extends Component {
             <div className='wrapper'>
                 {/* Left Side */}
                 <Link to="#"><button>Designers</button></Link>
+                <Link to="#"><button>Articles</button></Link>
                 <Link to="#"><button>Search</button></Link>
                 {/* Mid */}
                 {/* Brand Logo */}
+                <Link to="/"><button>Copped</button></Link>
                 {/* Right Side */}
+                <Link to="#"><button>Wishlist</button></Link>
+                <Link to="#"><button>Cart</button></Link>
                 <Link to="#"><button>About</button></Link>
-                <Link to="#"><button>Search</button></Link>
                 <Link to="/account/login">Login</Link>
             </div>
         )

@@ -41,6 +41,7 @@ Tech Stack
 * JavaScript
 * React / Redux
 * Node.js /Express.js
+* Redis
 * Google Firebase(Authentication, Storage, Hosting, & Database Services)
 * MongoDB
 * Heroku
