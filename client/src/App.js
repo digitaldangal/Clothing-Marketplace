@@ -5,8 +5,8 @@ import{BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom'
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
-import Register from './components/Register';
 import Profile from './components/Profile';
+import NoMatch from './components/NoMatch';
 
 import './App.css';
 
@@ -62,19 +62,13 @@ class App extends Component {
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
             <div className="app-body">
               <Switch>
-                <Route exact path="" render={() => <Home authState={this.state.authState} /> } />
-                <Route exact path="/login" render={() => <Login submit={this.handleLoginSubmit} authState={this.loginSuccess} /> } />
-                <Route exact path="/register" render={() => <Register submit={this.handleRegisterSubmit} /> } />
+                <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
+                <Route exact path="/login" render={() => <Login authState={this.loginSuccess}  registersSubmit={this.handleRegisterSubmit} loginSubmit={this.handleLoginSubmit} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo}/> } />
+                <Route component={NoMatch} />
                 {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
             </div>
-            <section className='display-item'>
-              <div className='wrapper'>
-                <ul>
-                </ul>
-              </div>
-            </section>
           </div>
       </Router>
     );

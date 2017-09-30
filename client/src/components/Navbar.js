@@ -9,9 +9,6 @@ class Navbar extends Component {
 
         }
     }
-    menuToggle=(e)=>{
-        document.querySelector('.side-menu hide-menu').className = "side-menu show-menu"
-    }
     handleLogOut(){
         if(window.confirm("Do you want to log out?")){
             firebase.auth().signOut()
@@ -35,8 +32,15 @@ class Navbar extends Component {
     renderNav(){
         return(
             <div className='wrapper'>
+                {/* Left Side */}
+                <Link to="#"><button>Designers</button></Link>
+                <Link to="#"><button>Search</button></Link>
+                {/* Mid */}
+                {/* Brand Logo */}
+                {/* Right Side */}
+                <Link to="#"><button>About</button></Link>
+                <Link to="#"><button>Search</button></Link>
                 <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
             </div>
         )
     }
@@ -45,12 +49,11 @@ class Navbar extends Component {
     return (
         <header>
             <nav>
-                
+                { this.props.authState ? this.renderAuthNav() : this.renderNav()}
             </nav>
         </header>
         )
     }
 }
 
-export default Navbar
-// {this.props.authState ? this.renderAuthNav() : this.renderNav()}
+export default Navbar;
