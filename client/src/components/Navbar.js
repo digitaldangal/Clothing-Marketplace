@@ -40,7 +40,7 @@ class Navbar extends Component {
                 {/* Right Side */}
                 <Link to="#"><button>About</button></Link>
                 <Link to="#"><button>Search</button></Link>
-                <Link to="/login">Login</Link>
+                <Link to="/account/login">Login</Link>
             </div>
         )
     }

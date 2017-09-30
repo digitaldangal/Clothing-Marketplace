@@ -15,10 +15,17 @@ class Login extends Component{
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
     }
-    handleSubmit=(e)=>{
+
+    handleChange=(e)=>{
         e.preventDefault();
-        console.log('Logging In')
-        console.log(this.state.email, this.state.pass)
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleLoginSubmit=(e)=>{
+        e.preventDefault();
+        console.log('Login Submit')
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(res=>{
             console.log(res)
@@ -38,23 +45,44 @@ class Login extends Component{
             console.log(errorCode, errorMessage)
         });
     }
-    handleChange=(e)=>{
+
+    handleRegisterSubmit=(e)=>{
         e.preventDefault();
-        this.setState({
-            [e.target.name]: e.target.value
+        console.log('Register Submit')
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(res=>{
+            console.log(res)
         })
+        .catch(err=>{
+            // Handle Errors here.
+            var errorCode = err.code;
+            var errorMessage = err.message;
+            console.log(errorCode, errorMessage)
+        });
     }
+
+    
     render(){
         return(
             <div className="auth-form">
-                <h1>Login to your account</h1>
-                <div id="firebaseui-auth-container"></div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
-                    <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
-                    <input type="submit" value="Login"/>
-                </form>
-                Don't have an account yet? <a href="/register">Sign Up</a>
+                <div className="login-form">
+                    <h1>Login</h1>
+                    <div id="firebaseui-auth-container"></div>
+                    <form onSubmit={this.handleLoginSubmit}>
+                        <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
+                        <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
+                        <input type="submit" value="Login"/>
+                    </form>
+                </div>
+                <div className="login-form">
+                    <h1>Create An Account</h1>
+                    <div id="firebaseui-auth-container"></div>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
+                        <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
+                        <input type="submit" value="submit"/>
+                    </form>
+                </div>
             </div>
         )
     }
