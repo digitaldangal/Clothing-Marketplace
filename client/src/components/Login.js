@@ -68,7 +68,6 @@ class Login extends Component{
             <div className="auth-form">
                 <div className="login-form">
                     <h1>Login</h1>
-                    <div id="firebaseui-auth-container"></div>
                     <form onSubmit={this.handleLoginSubmit}>
                         <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                         <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
@@ -77,12 +76,15 @@ class Login extends Component{
                 </div>
                 <div className="login-form">
                     <h1>Create An Account</h1>
-                    <div id="firebaseui-auth-container"></div>
                     <form onSubmit={this.handleRegisterSubmit}>
                         <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                         <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
                         <input type="submit" value="submit"/>
                     </form>
+                </div>
+                <div className="login-form">
+                    <h1>Or</h1>
+                    <div id="firebaseui-auth-container"></div>
                 </div>
             </div>
         )
