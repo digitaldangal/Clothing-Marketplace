@@ -21,7 +21,16 @@ These are some of the features that I plan on tackling as I build this project
 
 ## The Making of Copped.com
 
-### Wire-Frames
+### Wireframes
+
+The following are initial mockups created in Adobe XD
+
+<!-- ![Codejournal Wirefreame Screenshots](readme-imgs/homepage-wireframes.png?raw=true "Code Journal Wirefreames")
+
+![Codejournal Wirefreame Screenshots](readme-imgs/dashboard-wireframes.png?raw=true "Code Journal Wirefreames")
+
+![Codejournal Wirefreame Screenshots](readme-imgs/login-wireframes.png?raw=true "Code Journal Wirefreames") -->
+
 
 ### Technical Discussion
 Tech Stack
