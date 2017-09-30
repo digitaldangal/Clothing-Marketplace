@@ -1,4 +1,4 @@
-# Clothing Marketplace
+# Copped.com
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 Web App that could be utilize as an online wardrobe / closet to help create a visual representation of a person's clothing collection
@@ -10,6 +10,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Create a REST API using Node
 - [ ] Authentication with Auth0
 - [ ] Integrating Redux
+- [ ] Integrating MongoDB
 - [ ] Searching
 - [ ] List of Designers/Brands 
 - [ ] Brands
@@ -18,11 +19,20 @@ These are some of the features that I plan on tackling as I build this project
 
 ## Installation 
 
-## The Making of AppName
+## The Making of Copped.com
 
-### Wireframes
+### Wire-Frames
 
 ### Technical Discussion
+Tech Stack
+* HTML / CSS (SASS)
+* JavaScript
+* React / Redux
+* Node.js /Express.js
+* Google Firebase(Authentication, Storage, Hosting, & Database Services)
+* MongoDB
+* Heroku
+* AdobeXD
 
 ## Code Snippet
 
