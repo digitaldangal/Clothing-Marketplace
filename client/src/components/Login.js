@@ -35,6 +35,7 @@ class Login extends Component{
                     this.props.authState(true)
                 } else {
                     console.log('User is not logged in')
+                    this.props.authState(false)
                 }
             })
         })
@@ -77,7 +78,7 @@ class Login extends Component{
                 <div className="login-form">
                     <h1>Create An Account</h1>
                     <div id="firebaseui-auth-container"></div>
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleRegisterSubmit}>
                         <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                         <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
                         <input type="submit" value="submit"/>
