@@ -1,0 +1,22 @@
+Ideas For Features
+Articles Section could focus
+    - current trends
+    - fashion shows
+    - latest drops
+    - weekly best outfits
+    - outfit of the day
+    - brand of the week
+    - interviews
+    - music possibly
+    - lifestyle
+
+Clothing types breakdown
+    OUTERWEAR
+    TOPS
+    BOTTOMS
+    FOOTWEAR
+        Boots
+        Formal Shoes
+        Sandals
+        sneakers
+    ACCESSORIES
