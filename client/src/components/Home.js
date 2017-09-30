@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import{Link} from 'react-router-dom';
 
+import Article from './Article';
+
+
 class Home extends Component {
     constructor(props){
         super(props);
@@ -11,10 +14,9 @@ class Home extends Component {
 
     render(){
         return(
-            <div>
-                <Link to="/login"> </Link>
-                <Link to="/register"> </Link>
-            </div>
+            <section>
+               <Article />
+            </section>
         )
     }
 }
