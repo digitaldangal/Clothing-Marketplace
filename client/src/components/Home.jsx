@@ -15,7 +15,12 @@ class Home extends Component {
     render(){
         return(
             <section>
-               <Article />
+                <main role="main">
+                    <Article />
+                    <div>
+                        
+                    </div>
+                </main>
             </section>
         )
     }
