@@ -58,7 +58,6 @@ class App extends Component {
     const {redirect, currentPage} = this.state
     return (
       <Router>
-        <MuiThemeProvider>
           <div className="App">
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
             <div className="app-body">
@@ -77,7 +76,6 @@ class App extends Component {
               </div>
             </section>
           </div>
-          </MuiThemeProvider>
       </Router>
     );
   }

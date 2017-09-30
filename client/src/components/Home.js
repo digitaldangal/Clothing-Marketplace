@@ -11,10 +11,10 @@ class Home extends Component {
 
     render(){
         return(
-            <Card>
+            <div>
                 <Link to="/login"> </Link>
                 <Link to="/register"> </Link>
-            </Card>
+            </div>
         )
     }
 }
