@@ -64,7 +64,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
                 <Route exact path="/account/login" render={() => <Login authState={this.loginSuccess}  registersSubmit={this.handleRegisterSubmit} loginSubmit={this.handleLoginSubmit} /> } />
-                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo}/> } />
+                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/> } />
                 <Route component={NoMatch} />
                 {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>

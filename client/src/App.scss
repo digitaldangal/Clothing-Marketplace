@@ -1,0 +1,21 @@
+.App {
+    text-align: center;
+  }
+  
+  body{
+    font-family: 'Raleway', 'Roboto', sans-serif;
+  }
+
+//   NavBar
+
+.ui.stackable.menu{
+    .item{
+        justify-content: center;
+        a.brand{
+            width: 10em;
+            img.logo{
+                width: 100%
+            }
+        }
+    }
+}

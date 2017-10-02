@@ -20,6 +20,17 @@ class Profile extends Component{
         .then(res=>console.log(res))
         .catch(err=>console.log(err))
     }
+    handleLogOut=()=>{
+        if(window.confirm("Do you want to log out?")){
+            firebase.auth().signOut()
+            .then(res=>console.log(res))
+            .catch(err=>console.log(err))
+            this.props.authStateChange("signed out")
+        }else{
+            console.log("logged out cancel")
+            return null
+        }
+    }
     render(){
         return(
             <div className="profile-page">
@@ -28,6 +39,7 @@ class Profile extends Component{
                     <form onSubmit={this.handleSubmit}>
                         <input type="submit" value="submit"/>
                     </form>
+                    <button onClick={this.handleLogOut}>Log OUT></button>
                 </div>
             </div>
         )

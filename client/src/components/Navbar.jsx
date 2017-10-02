@@ -9,23 +9,12 @@ class Navbar extends Component {
 
         }
     }
-    handleLogOut(){
-        if(window.confirm("Do you want to log out?")){
-            firebase.auth().signOut()
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
-            this.props.authStateChange("signed out")
-        }else{
-            console.log("logged out cancel")
-            return null
-        }
-    }
 
     renderNav(){
         return(
-            <div className='ui stackable menu'>
+            <div className='ui secondary stackable menu'>
                 <div className="item">
-                    <Link to="/"><img src="/images/copped_logo.png" alt="Copped Logo"/></Link>
+                    <Link className="brand" to="/"><img className="logo" src="/main/images/copped_logo.png" alt="Copped Logo"/></Link>
                 </div>
                 <div className="link item">
                     <Link to="/designers">Designers</Link>
@@ -34,14 +23,9 @@ class Navbar extends Component {
                     <Link to="/editorial">Articles</Link>
                 </div>
                 <div className="link item">
-                    <Link to="/account/wishlist">Wishlist</Link>
-                </div>
-                <div className="link item">
-                    <Link to="/cart">Cart</Link>
-                </div>
-                <div className="link item">
                     <Link to="/about">About</Link>
                 </div>
+                
                 <div className="right menu">
                     <div className="item">
                         <div className="ui icon input">
@@ -51,6 +35,12 @@ class Navbar extends Component {
                     </div>
                     <div className="link item">
                         {this.props.authState? <Link to="/profile">{this.props.userInfo.email}</Link>: <Link to="/account/login">Login</Link>}
+                    </div>
+                    <div className="link item">
+                        <Link to="/account/wishlist">Wishlist</Link>
+                    </div>
+                    <div className="link item">
+                        <Link to="/cart">Cart</Link>
                     </div>
                 </div>
             </div>
