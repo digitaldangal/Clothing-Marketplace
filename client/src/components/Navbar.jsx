@@ -31,7 +31,16 @@ class Navbar extends Component {
 
     renderNav(){
         return(
-            <div className='wrapper'>
+            <div className='ui stackable menu'>
+                <div className="item">
+                    <img src="/images/brand.png" alt="Copped Logo"/>
+                </div>
+                <div className="item">
+                    <div className="ui icon input">
+                        <input type="text" placeholder="Search..."/>
+                        <i className="search icon"></i>
+                    </div>
+                </div>
                 {/* Left Side */}
                 <Link to="#"><button>Designers</button></Link>
                 <Link to="#"><button>Articles</button></Link>
