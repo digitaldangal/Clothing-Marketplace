@@ -20,3 +20,8 @@ Clothing types breakdown
         Sandals
         sneakers
     ACCESSORIES
+
+Routes:
+
+/designers/:brand
+/editorial/:category/:article 

@@ -32,21 +32,21 @@ class Navbar extends Component {
     renderNav(){
         return(
             <div className='ui stackable menu'>
-            <div className="item">
-                <Link to="#">Designers</Link>
-            </div>
-            <div className="item">
-                <Link to="#">Articles</Link>
-            </div>
-            <div className="item">
-                <Link to="#">Wishlist</Link>
-            </div>
-            <div className="item">
-                <Link to="#">Cart</Link>
-            </div>
-            <div className="item">
-                <Link to="#">About</Link>
-            </div>
+                <div className="item">
+                    <Link to="/designers">Designers</Link>
+                </div>
+                <div className="item">
+                    <Link to="/editorial">Articles</Link>
+                </div>
+                <div className="item">
+                    <Link to="/account/wishlist">Wishlist</Link>
+                </div>
+                <div className="item">
+                    <Link to="/cart">Cart</Link>
+                </div>
+                <div className="item">
+                    <Link to="/about">About</Link>
+                </div>
                 <div className="item">
                     <img src="/images/brand.png" alt="Copped Logo"/>
                 </div>
