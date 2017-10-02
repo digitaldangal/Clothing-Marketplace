@@ -39,10 +39,13 @@ class Navbar extends Component {
                 <Link to="#">Articles</Link>
             </div>
             <div className="item">
-
+                <Link to="#">Wishlist</Link>
             </div>
             <div className="item">
-
+                <Link to="#">Cart</Link>
+            </div>
+            <div className="item">
+                <Link to="#">About</Link>
             </div>
                 <div className="item">
                     <img src="/images/brand.png" alt="Copped Logo"/>
@@ -58,10 +61,6 @@ class Navbar extends Component {
                         <Link to="/account/login">Login</Link>
                     </div>
                 </div>
-                {/* Right Side */}
-                <Link to="#">Wishlist</Link>
-                <Link to="#">Cart</Link>
-                <Link to="#">About</Link>
             </div>
         )
     }
