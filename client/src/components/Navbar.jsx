@@ -20,35 +20,27 @@ class Navbar extends Component {
             return null
         }
     }
-    renderAuthNav(){
-        return(
-            <div className='wrapper'>
-                <h2>Welcome {this.props.userInfo.email}</h2>
-                <button onClick={()=>this.handleLogOut()}>Sign Out</button>
-            </div>
-        )
-    }
 
     renderNav(){
         return(
             <div className='ui stackable menu'>
                 <div className="item">
+                    <Link to="/"><img src="/images/copped_logo.png" alt="Copped Logo"/></Link>
+                </div>
+                <div className="link item">
                     <Link to="/designers">Designers</Link>
                 </div>
-                <div className="item">
+                <div className="link item">
                     <Link to="/editorial">Articles</Link>
                 </div>
-                <div className="item">
+                <div className="link item">
                     <Link to="/account/wishlist">Wishlist</Link>
                 </div>
-                <div className="item">
+                <div className="link item">
                     <Link to="/cart">Cart</Link>
                 </div>
-                <div className="item">
+                <div className="link item">
                     <Link to="/about">About</Link>
-                </div>
-                <div className="item">
-                    <Link to="/"><img src="/images/brand.png" alt="Copped Logo"/></Link>
                 </div>
                 <div className="right menu">
                     <div className="item">
@@ -57,8 +49,8 @@ class Navbar extends Component {
                             <i className="search icon"></i>
                         </div>
                     </div>
-                    <div className="item">
-                        <Link to="/account/login">Login</Link>
+                    <div className="link item">
+                        {this.props.authState? <Link to="/profile">{this.props.userInfo.email}</Link>: <Link to="/account/login">Login</Link>}
                     </div>
                 </div>
             </div>
@@ -69,7 +61,7 @@ class Navbar extends Component {
     return (
         <header>
             <nav>
-                { this.props.authState ? this.renderAuthNav() : this.renderNav()}
+                {this.renderNav()}
             </nav>
         </header>
         )
