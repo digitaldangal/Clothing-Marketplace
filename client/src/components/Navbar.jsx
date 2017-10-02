@@ -32,27 +32,36 @@ class Navbar extends Component {
     renderNav(){
         return(
             <div className='ui stackable menu'>
+            <div className="item">
+                <Link to="#">Designers</Link>
+            </div>
+            <div className="item">
+                <Link to="#">Articles</Link>
+            </div>
+            <div className="item">
+
+            </div>
+            <div className="item">
+
+            </div>
                 <div className="item">
                     <img src="/images/brand.png" alt="Copped Logo"/>
                 </div>
-                <div className="item">
-                    <div className="ui icon input">
-                        <input type="text" placeholder="Search..."/>
-                        <i className="search icon"></i>
+                <div className="right menu">
+                    <div className="item">
+                        <div className="ui icon input">
+                            <input type="text" placeholder="Search..."/>
+                            <i className="search icon"></i>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <Link to="/account/login">Login</Link>
                     </div>
                 </div>
-                {/* Left Side */}
-                <Link to="#"><button>Designers</button></Link>
-                <Link to="#"><button>Articles</button></Link>
-                <Link to="#"><button>Search</button></Link>
-                {/* Mid */}
-                {/* Brand Logo */}
-                <Link to="/"><button>Copped</button></Link>
                 {/* Right Side */}
-                <Link to="#"><button>Wishlist</button></Link>
-                <Link to="#"><button>Cart</button></Link>
-                <Link to="#"><button>About</button></Link>
-                <Link to="/account/login">Login</Link>
+                <Link to="#">Wishlist</Link>
+                <Link to="#">Cart</Link>
+                <Link to="#">About</Link>
             </div>
         )
     }
