@@ -48,7 +48,7 @@ class Navbar extends Component {
                     <Link to="/about">About</Link>
                 </div>
                 <div className="item">
-                    <img src="/images/brand.png" alt="Copped Logo"/>
+                    <Link to="/"><img src="/images/brand.png" alt="Copped Logo"/></Link>
                 </div>
                 <div className="right menu">
                     <div className="item">
