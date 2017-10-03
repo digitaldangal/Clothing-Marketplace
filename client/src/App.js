@@ -6,6 +6,8 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import Designers from './components/Designers';
+import Designer from './components/Designer';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
@@ -65,6 +67,8 @@ class App extends Component {
                 <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
                 <Route exact path="/account/login" render={() => <Login authState={this.loginSuccess}  registersSubmit={this.handleRegisterSubmit} loginSubmit={this.handleLoginSubmit} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/> } />
+                <Route exact path="/designers" render={() => <Designers authState={this.state.authState} /> } />
+                <Route exact path="/designers/:brand" render={() => <Designer authState={this.state.authState} /> } />
                 <Route component={NoMatch} />
                 {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
