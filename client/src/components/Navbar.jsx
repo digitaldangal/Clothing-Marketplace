@@ -49,9 +49,7 @@ class Navbar extends Component {
                     <div className="link item">
                         {this.props.authState? <Link to="/profile">{this.props.userInfo.email}</Link>: <Link to="/account/login">Login</Link>}
                     </div>
-                    <div className="link item">
-                        {this.props.authState ? <Link to="#" onClick={this.handleLogOut}>Log out</Link> : null}
-                    </div>
+                    {this.props.authState ? <div className="link item"> <Link to="#" onClick={this.handleLogOut}>Log out</Link> </div>: null}
                     <div className="link item">
                         <Link to="/account/wishlist">Wishlist</Link>
                     </div>
