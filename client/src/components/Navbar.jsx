@@ -6,7 +6,20 @@ class Navbar extends Component {
     constructor(props){
         super(props);
         this.state = {
+            signedIn: false,
+            user: undefined
+        }
+    }
 
+    handleLogOut=()=>{
+        if(window.confirm("Do you want to log out?")){
+            firebase.auth().signOut()
+            .then(res=>console.log(res))
+            .catch(err=>console.log(err))
+            this.props.authStateChange("signed out")
+        }else{
+            console.log("logged out cancel")
+            return null
         }
     }
 
@@ -35,6 +48,9 @@ class Navbar extends Component {
                     </div>
                     <div className="link item">
                         {this.props.authState? <Link to="/profile">{this.props.userInfo.email}</Link>: <Link to="/account/login">Login</Link>}
+                    </div>
+                    <div className="link item">
+                        {this.props.authState ? <Link to="#" onClick={this.handleLogOut}>Log out</Link> : null}
                     </div>
                     <div className="link item">
                         <Link to="/account/wishlist">Wishlist</Link>
