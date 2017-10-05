@@ -13,10 +13,10 @@ class Profile extends Component{
     
     handleSubmit=(e)=>{
         e.preventDefault(); 
-        this.userProfileRef.child(this.props.userInfo.uid).child('brand').child('name').set("Rick Owens")
-        this.userProfileRef.child(this.props.userInfo.uid).child('about').child('content').set(firebase.auth().currentUser.toJSON())
-        .then(res=>console.log(res))
-        .catch(err=>console.log(err))
+        // this.userProfileRef.child(this.props.userInfo.uid).child('brand').child('name').set("Rick Owens")
+        // this.userProfileRef.child(this.props.userInfo.uid).child('about').child('content').set(firebase.auth().currentUser.toJSON())
+        // .then(res=>console.log(res))
+        // .catch(err=>console.log(err))
     }
 
     handleChange=(e)=>{
@@ -42,6 +42,7 @@ class Profile extends Component{
                 <h1 className="page-title">Profile Page</h1>
                 <div className="edit-form">
                     <form onSubmit={this.handleSubmit}>
+                        <input type="text" placeholder="brand name" onChange={(e)=>this.handleChange(e)}/>
                         <input type="submit" value="submit"/>
                     </form>
                     <button onClick={this.handleLogOut}>Logout></button>
