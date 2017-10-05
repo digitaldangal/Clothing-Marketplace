@@ -5,14 +5,12 @@ class Profile extends Component{
     constructor(props){
         super(props);
         this.state = {
-
+            brand: undefined
         }
         this.rootRef = firebase.database().ref();
         this.userProfileRef = this.rootRef.child('Users')
     }
-    componentDidMount() {
-       
-    }
+    
     handleSubmit=(e)=>{
         e.preventDefault(); 
         this.userProfileRef.child(this.props.userInfo.uid).child('brand').child('name').set("Rick Owens")
@@ -20,6 +18,13 @@ class Profile extends Component{
         .then(res=>console.log(res))
         .catch(err=>console.log(err))
     }
+
+    handleChange=(e)=>{
+        this.setState({
+             brand: e.target.value
+        })
+    }
+
     handleLogOut=()=>{
         if(window.confirm("Do you want to log out?")){
             firebase.auth().signOut()
@@ -39,7 +44,7 @@ class Profile extends Component{
                     <form onSubmit={this.handleSubmit}>
                         <input type="submit" value="submit"/>
                     </form>
-                    <button onClick={this.handleLogOut}>Log OUT></button>
+                    <button onClick={this.handleLogOut}>Logout></button>
                 </div>
             </div>
         )
