@@ -23,8 +23,10 @@ class Profile extends Component{
     }
 
     handleChange=(e)=>{
+        const name = e.target.name;
+        const value = e.target.value;
         this.setState({
-             brand: e.target.value
+            [name]: value
         })
     }
 
