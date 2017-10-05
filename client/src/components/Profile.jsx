@@ -48,7 +48,7 @@ class Profile extends Component{
                         <input type="text" placeholder="brand name" onChange={(e)=>this.handleChange(e)}/>
                         <input type="submit" value="submit"/>
                     </form>
-                    <button onClick={this.handleLogOut}>Logout></button>
+                    <button onClick={this.handleLogOut}>Logout</button>
                 </div>
             </div>
         )
