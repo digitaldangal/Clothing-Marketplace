@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(port, ()=>{
-    console.log(`On port ${port}`);
-    console.log(process.env.mongodb_uri);
+    console.log(`Server on port: ${port}`);
 }) 
+
+const brandRoutes = require('./routes/brand-routes');
+app.use('/brand', brandRoutes);

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class BrandService {
     sendData(data){
-        axios.post('/create/brand', {
+        axios.post('/brand/create', {
             item: data
         })
         .then((res)=>{
