@@ -61,12 +61,16 @@ class Profile extends Component{
                     </div>
                     <div className="ui labeled input">
                         <div className="ui label">
-                            Brand Name
+                            Social Media Links
                         </div>
-                        <input required="true" name="name" type="text" onChange={(e)=>this.handleChange(e)}/>
+                        <input required="true" name="links" type="text" placeholder="Separate All Social Media links with a comma" onChange={(e)=>this.handleChange(e)}/>
                     </div>
-                        <textarea required="true" name="links" id="" cols="30" rows="10"></textarea>
-                        <input type="submit" value="submit"/>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            Website Url
+                        </div>
+                        <input name="description" type="text" placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
                     </form>
                     <button onClick={this.handleLogOut}>Logout</button>
                 </div>
