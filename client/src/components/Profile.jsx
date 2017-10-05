@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../config/firebase';
+import BrandService from '../services/BrandService'
 
 class Profile extends Component{
     constructor(props){
@@ -9,6 +10,7 @@ class Profile extends Component{
         }
         this.rootRef = firebase.database().ref();
         this.userProfileRef = this.rootRef.child('Users')
+        this.addBrandService = new BrandService();
     }
     
     handleSubmit=(e)=>{
@@ -17,6 +19,8 @@ class Profile extends Component{
         // this.userProfileRef.child(this.props.userInfo.uid).child('about').child('content').set(firebase.auth().currentUser.toJSON())
         // .then(res=>console.log(res))
         // .catch(err=>console.log(err))
+        this.addBrandService.sendData(this.state.brand)
+        this.props.history.push('/');
     }
 
     handleChange=(e)=>{
