@@ -47,8 +47,24 @@ class Profile extends Component{
                 <h1 className="page-title">Create a Brand</h1>
                 <h3>Brands must first be approved before you are allowed to post</h3>
                     <form onSubmit={this.handleSubmit}>
-                        <input required="true" name="name" type="text" placeholder="brand name" onChange={(e)=>this.handleChange(e)}/>
-                        <textarea required="true" name="description" id="" cols="30" rows="10"></textarea>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            Brand Name
+                        </div>
+                        <input required="true" name="name" type="text" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            Description
+                        </div>
+                        <input required="true" name="description" type="text" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            Brand Name
+                        </div>
+                        <input required="true" name="name" type="text" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
                         <textarea required="true" name="links" id="" cols="30" rows="10"></textarea>
                         <input type="submit" value="submit"/>
                     </form>
