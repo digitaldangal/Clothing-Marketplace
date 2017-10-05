@@ -20,7 +20,6 @@ class Profile extends Component{
         // .then(res=>console.log(res))
         // .catch(err=>console.log(err))
         this.addBrandService.sendData(this.state.brand)
-        this.props.history.push('/');
     }
 
     handleChange=(e)=>{
