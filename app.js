@@ -1,9 +1,11 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
 const bodyParser = require('body-parser');
-const port = 8080;
 const cors = require('cors')
+
+const app = express();
+const port = 8080;
 
 require('dotenv').config();
 
