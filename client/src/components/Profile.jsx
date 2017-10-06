@@ -74,7 +74,6 @@ class Profile extends Component{
                         <input name="description" type="text" placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
                     </div>
                     </form>
-                    <button onClick={this.handleLogOut}>Logout</button>
                 </div>
             </div>
         )
