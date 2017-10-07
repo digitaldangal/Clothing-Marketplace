@@ -71,7 +71,7 @@ class Profile extends Component{
                         <div className="ui label">
                             Website Url
                         </div>
-                        <input name="description" type="text" placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
+                        <input name="website" type="text" placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
                     </div>
                     </form>
                 </div>

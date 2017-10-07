@@ -12,5 +12,9 @@ const BrandSchema = mongoose.Schema({
     links: {
         type: String,
         required: true
+    },
+    website: {
+        type: String,
+        required: false
     }
 })
