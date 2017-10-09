@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import Designers from './components/Designers';
 import Designer from './components/Designer';
 import Article from './components/Article';
+import About from './components/About';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
