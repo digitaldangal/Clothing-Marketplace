@@ -15,7 +15,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] List of Designers/Brands 
 - [ ] Brands
 - [ ] Purchasing
-- [ ]
+- [ ] Delivery Logistics
 
 ## Installation 
 1. Run npm install in the client folder.
