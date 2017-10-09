@@ -72,6 +72,7 @@ class App extends Component {
                 <Route exact path="/designers/:brand" render={() => <Designer authState={this.state.authState} /> } />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
+                <Route exact path="/about" component={About} />
                 <Route component={NoMatch} />
                 {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
