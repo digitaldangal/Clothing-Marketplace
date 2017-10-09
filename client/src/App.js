@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import Designers from './components/Designers';
 import Designer from './components/Designer';
+import Article from './components/Article';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
@@ -69,6 +70,8 @@ class App extends Component {
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/> } />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} /> } />
                 <Route exact path="/designers/:brand" render={() => <Designer authState={this.state.authState} /> } />
+                <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
+                <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
                 <Route component={NoMatch} />
                 {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
