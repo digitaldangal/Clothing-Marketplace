@@ -20,7 +20,15 @@ class ProductUpload extends Component {
 
     onFileUpload = (e) =>{
         let fileList = e.target.files;
-
+        let picPreview = document.querySelector('#pic-preview ul');
+        for(var i = 0; i <fileList.length; i++){
+            var file = fileList[i];
+            var fileURL = URL.createObjectURL(file);
+            var tempListTag = document.createElement('li');
+            var tempPic = document.createElement('img');
+            tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i;
+            picPreview.appendChild(tempListTag).appendChild(tempPic)
+        }
     }
 
     render(){
@@ -30,7 +38,9 @@ class ProductUpload extends Component {
                 <form action="">
                     <input type="file" name="pictures" id="products_upload" multiple onChange={(e)=>this.onFileUpload(e)} />
                     <div id="pic-preview">
+                        <ul>
 
+                        </ul>
                     </div>
                 </form>
                 {/* <DragDropContext
