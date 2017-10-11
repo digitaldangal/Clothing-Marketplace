@@ -11,6 +11,10 @@ body {
     .ui.stackable.menu .item a.brand img.logo {
       width: 100%; }
 
+form.ui.form {
+  width: 70vw;
+  margin: 0 auto; }
+
 div#pic-preview {
   margin-top: 1em; }
   div#pic-preview ul {

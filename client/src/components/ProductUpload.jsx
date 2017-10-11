@@ -51,25 +51,52 @@ class ProductUpload extends Component {
         return(
             <div>
                 <h1>Product Upload Page</h1>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="ui form">
                     <div className="ui labeled input">
                         <div className="ui label">
                             Product Title
                         </div>
                         <input required="true" name="title" type="text" placeholder="Product Title" onChange={(e)=>this.handleChange(e)}/>
                     </div>
+                    <div className="field">
+                        <label>Description</label>
+                        <textarea name="description" rows="2"></textarea>
+                    </div>
+
+                    <div className="two fields">
+                        <div className="field">
+
+                            <div className="ui labeled input">
+                                <div className="ui label">
+                                    USD Price
+                                </div>
+                                <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                    <div className="field">
+
+                        <div className="ui labeled input">
+                            <div className="ui label">
+                                Size
+                            </div>
+                            <select required="true" name="size" type="text" onChange={(e)=>this.handleChange(e)}>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+
                     <div className="ui labeled input">
                         <div className="ui label">
-                            USD Price
+                            Description
                         </div>
-                        <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                        <input required="true" name="description" type="text" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
                     </div>
-                    <div className="ui labeled input">
-                        <div className="ui label">
-                            USD Price
-                        </div>
-                        <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                    </div>
+
                     <h3>Upload At Least One Image for this Product </h3>
                     <input type="file" name="pictures" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
                     <div id="pic-preview">
