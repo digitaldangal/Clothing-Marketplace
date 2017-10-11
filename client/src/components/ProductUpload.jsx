@@ -26,7 +26,7 @@ class ProductUpload extends Component {
             var fileURL = URL.createObjectURL(file);
             var tempListTag = document.createElement('li');
             var tempPic = document.createElement('img');
-            tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i;
+            tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i, tempPic.className = 'temp-pic';
             picPreview.appendChild(tempListTag).appendChild(tempPic)
         }
     }

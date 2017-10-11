@@ -6,8 +6,8 @@
     font-family: 'Raleway', 'Roboto', sans-serif;
   }
 
-//   NavBar
 
+//   NavBar
 .ui.stackable.menu{
     .item{
         justify-content: center;
@@ -15,6 +15,28 @@
             width: 10em;
             img.logo{
                 width: 100%
+            }
+        }
+    }
+}
+
+// Product Upload Section
+div#pic-preview{
+    ul{
+        list-style: none;
+        background: #f3f3f3;
+        width: 70vw;
+        height: 350px;
+        overflow: scroll;
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
+        margin: 0 auto;
+        li{
+            width: 150px;
+            height: 150px;
+            img.temp-pic{
+                width: 100%;
             }
         }
     }
