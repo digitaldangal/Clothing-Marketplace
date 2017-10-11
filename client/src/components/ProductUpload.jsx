@@ -11,18 +11,29 @@ class ProductUpload extends Component {
     
     onDragStart = () => {
         console.log('draggin')
-        console.log(inital.source)
+        // console.log(inital.source)
     }
 
     onDragEnd = () => {
         console.log('drag finish')
     }
 
+    onFileUpload = (e) =>{
+        let fileList = e.target.files;
+
+    }
+
     render(){
         return(
             <div>
                 <h1>Product Upload Page</h1>
-                <DragDropContext
+                <form action="">
+                    <input type="file" name="pictures" id="products_upload" multiple onChange={(e)=>this.onFileUpload(e)} />
+                    <div id="pic-preview">
+
+                    </div>
+                </form>
+                {/* <DragDropContext
                     onDragStart={this.onDragStart}
                     onDragEnd={this.onDragEnd}
                 >
@@ -33,7 +44,7 @@ class ProductUpload extends Component {
                         quotes={this.state.quotes}
                     />
                     </Root>
-                </DragDropContext>
+                </DragDropContext> */}
             </div>
         )
     }
