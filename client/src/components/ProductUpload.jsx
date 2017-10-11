@@ -100,6 +100,7 @@ class ProductUpload extends Component {
                                     Category
                                 </div>
                                 <select required="true" name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                                    <option disabled selected value> -- select an option -- </option>
                                     <option value="OUTERWEAR">OUTERWEAR</option>
                                     <option value="TOPS">TOPS</option>
                                     <option value="BOTTOMS">BOTTOMS</option>
@@ -112,7 +113,7 @@ class ProductUpload extends Component {
 
                     <div className="field">
                         <label>Product Description</label>
-                        <textarea name="description" rows="2"></textarea>
+                        <textarea required="true" name="description" rows="2" onChange={(e)=>this.handleChange(e)}></textarea>
                     </div>
 
                     <div className="field">
