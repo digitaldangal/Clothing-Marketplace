@@ -111,16 +111,18 @@ class ProductUpload extends Component {
                     </div>
 
                     <div className="field">
-                        <label>Description</label>
+                        <label>Product Description</label>
                         <textarea name="description" rows="2"></textarea>
                     </div>
 
-                    <h3>Upload At Least One Image for this Product </h3>
-                    <input type="file" name="pictures" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
-                    <div id="pic-preview">
-                        <ul>
-                            
-                        </ul>
+                    <div className="field">
+                        <label>Upload At Least One Image for this Product </label>
+                        <input type="file" name="photos" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
+                        <div id="pic-preview">
+                            <ul>
+                                
+                            </ul>
+                        </div>
                     </div>
                     <button className="ui primary button" type="submit">Create Product</button>
                 </form>

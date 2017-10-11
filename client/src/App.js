@@ -11,6 +11,7 @@ import Designer from './components/Designer';
 import Article from './components/Article';
 import About from './components/About';
 import ProductUpload from './components/ProductUpload';
+import Footer from './components/Footer';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
@@ -80,6 +81,7 @@ class App extends Component {
                 {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
             </div>
+            <Footer />
           </div>
       </Router>
     );
