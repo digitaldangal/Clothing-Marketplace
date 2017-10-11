@@ -85,6 +85,7 @@ class Profile extends Component{
                         </div>
                         <input name="website" type="text" placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
                     </div>
+                    <button className="ui primary button" type="submit">Save</button>
                     </form>
                 </div>
             </div>
