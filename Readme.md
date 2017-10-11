@@ -15,6 +15,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] List of Designers/Brands 
 - [ ] Brands
 - [ ] Purchasing
+- [ ] Uploading Products
 - [ ] Delivery Logistics
 
 ## Installation 
