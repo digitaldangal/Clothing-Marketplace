@@ -37,11 +37,11 @@ const ProductSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    value:{
+    designer:{
         type: String,
         required: true
     },
-    value:{
+    seller:{
         type: String,
         required: true
     },
