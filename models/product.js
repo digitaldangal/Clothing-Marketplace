@@ -44,9 +44,5 @@ const ProductSchema = mongoose.Schema({
     seller:{
         type: String,
         required: true
-    },
-    value:{
-        type: String,
-        required: true
-    },
+    }
 })
