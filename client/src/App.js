@@ -10,6 +10,7 @@ import Designers from './components/Designers';
 import Designer from './components/Designer';
 import Article from './components/Article';
 import About from './components/About';
+import ProductUpload from './components/ProductUpload';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
@@ -74,6 +75,7 @@ class App extends Component {
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/about" component={About} />
+                <Route exact path="/product" component={ProductUpload} />
                 <Route component={NoMatch} />
                 {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
