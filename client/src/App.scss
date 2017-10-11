@@ -22,19 +22,24 @@
 
 // Product Upload Section
 div#pic-preview{
+    margin-top: 1em;
     ul{
         list-style: none;
         background: #f3f3f3;
         width: 70vw;
         height: 350px;
-        overflow: scroll;
+        overflow-y: scroll;
         display: flex;
         justify-content: space-around;
         flex-flow: row wrap;
         margin: 0 auto;
+        border: 1px solid #bbb;
+        padding: 1em;
         li{
             width: 150px;
             height: 150px;
+            margin-bottom: 1em;
+            margin-right: 1em;
             img.temp-pic{
                 width: 100%;
             }

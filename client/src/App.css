@@ -11,20 +11,26 @@ body {
     .ui.stackable.menu .item a.brand img.logo {
       width: 100%; }
 
-div#pic-preview ul {
-  list-style: none;
-  background: #f3f3f3;
-  width: 70vw;
-  height: 350px;
-  overflow: scroll;
-  display: flex;
-  justify-content: space-around;
-  flex-flow: row wrap;
-  margin: 0 auto; }
-  div#pic-preview ul li {
-    width: 150px;
-    height: 150px; }
-    div#pic-preview ul li img.temp-pic {
-      width: 100%; }
+div#pic-preview {
+  margin-top: 1em; }
+  div#pic-preview ul {
+    list-style: none;
+    background: #f3f3f3;
+    width: 70vw;
+    height: 350px;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    border: 1px solid #bbb;
+    padding: 1em; }
+    div#pic-preview ul li {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 1em;
+      margin-right: 1em; }
+      div#pic-preview ul li img.temp-pic {
+        width: 100%; }
 
 /*# sourceMappingURL=App.css.map */
