@@ -4,7 +4,7 @@ class ProductUpload extends Component {
     constructor(props){
         super(props);
         this.state = {
-            fileList: null,
+
         }
     }
 
@@ -17,15 +17,26 @@ class ProductUpload extends Component {
             var tempListTag = document.createElement('li');
             var tempPic = document.createElement('img');
             var removeIcon = document.createElement('i');
-
+            
             tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i, tempPic.className = 'temp-pic';
             // removeIcon.className = "remove icon", removeIcon.id = i, removeIcon.addEventListener('click', this.deleteImage);
-
+            
             tempListTag.appendChild(removeIcon)
             picPreview.appendChild(tempListTag).appendChild(tempPic)
         }
     }
 
+    handleSubmit = (e) =>{
+        e.preventDefault();
+    }
+
+    handleChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        this.setState({
+            [name]: value
+        })
+    }
     /* deleteImage = (e) => {
         var imgToRemove = document.querySelector(`img[id="${e.target.id}"]`)
         let fileList = document.querySelector('input[type="file"]').files;
@@ -40,13 +51,33 @@ class ProductUpload extends Component {
         return(
             <div>
                 <h1>Product Upload Page</h1>
-                <form action="">
-                    <input type="file" name="pictures" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
+                <form onSubmit={this.handleSubmit}>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            Product Title
+                        </div>
+                        <input required="true" name="title" type="text" placeholder="Product Title" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            USD Price
+                        </div>
+                        <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            USD Price
+                        </div>
+                        <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
+                    <h3>Upload At Least One Image for this Product </h3>
+                    <input type="file" name="pictures" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
                     <div id="pic-preview">
                         <ul>
                             
                         </ul>
                     </div>
+                    <button className="ui primary button" type="submit">Create Product</button>
                 </form>
             </div>
         )
