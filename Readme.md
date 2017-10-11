@@ -16,6 +16,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Brands
 - [ ] Purchasing
 - [ ] Uploading Products
+    - [ ] Improve with drag and drop to reorder images
 - [ ] Delivery Logistics
 
 ## Installation 

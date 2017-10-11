@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SortablePane, Pane } from 'react-sortable-pane';
 
 class ProductUpload extends Component {
     constructor(props){
@@ -8,17 +7,8 @@ class ProductUpload extends Component {
             fileList: null,
         }
     }
-    
-    onDragStart = () => {
-        console.log('draggin')
-        // console.log(inital.source)
-    }
 
-    onDragEnd = () => {
-        console.log('drag finish')
-    }
-
-    onFileUpload = (e) =>{
+    renderPicPreviews = (e) =>{
         let fileList = e.target.files;
         let picPreview = document.querySelector('#pic-preview ul');
         for(var i = 0; i <fileList.length; i++){
@@ -26,27 +16,32 @@ class ProductUpload extends Component {
             var fileURL = URL.createObjectURL(file);
             var tempListTag = document.createElement('li');
             var tempPic = document.createElement('img');
+            var removeIcon = document.createElement('i');
+
             tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i, tempPic.className = 'temp-pic';
+            // removeIcon.className = "remove icon", removeIcon.id = i, removeIcon.addEventListener('click', this.deleteImage);
+
+            tempListTag.appendChild(removeIcon)
             picPreview.appendChild(tempListTag).appendChild(tempPic)
-            picPreview.innerHTML+=(
-                <SortablePane
-                    direction="horizontal"
-                    margin={20}
-                >
-                    <Pane id={i} key={i} width={150} height="150px">
-                        <img src={fileURL}/>
-                    </Pane>
-                </SortablePane>
-            )
         }
     }
+
+    /* deleteImage = (e) => {
+        var imgToRemove = document.querySelector(`img[id="${e.target.id}"]`)
+        let fileList = document.querySelector('input[type="file"]').files;
+        console.log(fileList)
+        e.target.remove();
+        imgToRemove.remove();
+        fileList.item
+        console.log('Image Deleted');
+    } */
 
     render(){
         return(
             <div>
                 <h1>Product Upload Page</h1>
                 <form action="">
-                    <input type="file" name="pictures" id="products_upload" multiple onChange={(e)=>this.onFileUpload(e)} />
+                    <input type="file" name="pictures" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
                     <div id="pic-preview">
                         <ul>
                             
