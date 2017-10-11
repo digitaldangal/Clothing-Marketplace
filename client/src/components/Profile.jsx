@@ -53,13 +53,25 @@ class Profile extends Component{
                         <div className="ui label">
                             Brand Name
                         </div>
-                        <input required="true" name="name" type="text" onChange={(e)=>this.handleChange(e)}/>
+                        <input required="true" name="name" type="text" placeholder="Brand Name" onChange={(e)=>this.handleChange(e)}/>
                     </div>
                     <div className="ui labeled input">
                         <div className="ui label">
                             Description
                         </div>
-                        <input required="true" name="description" type="text" onChange={(e)=>this.handleChange(e)}/>
+                        <input required="true" name="description" type="text" placeholder="Brand Description" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            Shipping Address
+                        </div>
+                        <input required="true" name="shipping_address" type="text" placeholder="Where you will ship from" onChange={(e)=>this.handleChange(e)}/>
+                    </div>
+                    <div className="ui labeled input">
+                        <div className="ui label">
+                            Inventory
+                        </div>
+                        <input required="true" name="inventory_size" type="number" placeholder="Number of different products you will sell" onChange={(e)=>this.handleChange(e)}/>
                     </div>
                     <div className="ui labeled input">
                         <div className="ui label">
