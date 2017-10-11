@@ -39,6 +39,7 @@ The following are initial mockups created in Adobe XD
 Tech Stack
 * HTML / CSS (SASS)
 * JavaScript
+* Commerce Js and Stripe
 * React / Redux
 * Node.js /Express.js
 * Redis
