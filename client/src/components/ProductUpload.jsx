@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { SortablePane, Pane } from 'react-sortable-pane';
 
 class ProductUpload extends Component {
     constructor(props){
         super(props);
         this.state = {
-            
+            fileList: null,
         }
     }
     
@@ -27,6 +28,16 @@ class ProductUpload extends Component {
             var tempPic = document.createElement('img');
             tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i, tempPic.className = 'temp-pic';
             picPreview.appendChild(tempListTag).appendChild(tempPic)
+            picPreview.innerHTML+=(
+                <SortablePane
+                    direction="horizontal"
+                    margin={20}
+                >
+                    <Pane id={i} key={i} width={150} height="150px">
+                        <img src={fileURL}/>
+                    </Pane>
+                </SortablePane>
+            )
         }
     }
 
@@ -38,7 +49,7 @@ class ProductUpload extends Component {
                     <input type="file" name="pictures" id="products_upload" multiple onChange={(e)=>this.onFileUpload(e)} />
                     <div id="pic-preview">
                         <ul>
-
+                            
                         </ul>
                     </div>
                 </form>
