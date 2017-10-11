@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 class ProductUpload extends Component {
     constructor(props){
@@ -43,18 +42,6 @@ class ProductUpload extends Component {
                         </ul>
                     </div>
                 </form>
-                {/* <DragDropContext
-                    onDragStart={this.onDragStart}
-                    onDragEnd={this.onDragEnd}
-                >
-                    <Root>
-                    <AuthorList
-                        listId="AUTHOR"
-                        internalScroll={this.props.internalScroll}
-                        quotes={this.state.quotes}
-                    />
-                    </Root>
-                </DragDropContext> */}
             </div>
         )
     }
