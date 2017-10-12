@@ -4,7 +4,7 @@ This application will serve as way to connect emerging streetwear brands directl
 Web App that could be utilize as an online wardrobe / closet to help create a visual representation of a person's clothing collection
 <!-- ![armoire image](./public/splashimage.png) -->
 
-### Planned Features
+### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
 - [ ] Breaking Down Wire-frames into React components (using styled components)
 - [ ] Create a REST API using Node
