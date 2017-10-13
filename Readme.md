@@ -30,33 +30,61 @@ These are some of the features that I plan on tackling as I build this project
 
 ## The Making of Copped.com
 
-### Wireframes & Screenshots
+### Wireframes
+
+#### HomePage Wireframe
+![Codejournal Wirefreame Screenshots](readme-imgs/homepage-wireframes.png?raw=true "Code Journal Wirefreames")
+
+### Screenshots
 
 #### Register as a brand
 ![Register As a Brand](./assests/brandCreate.png?raw=true "Brand Create")
 
-<!-- The following are initial mockups created in Adobe XD -->
-
-<!-- ![Codejournal Wirefreame Screenshots](readme-imgs/homepage-wireframes.png?raw=true "Code Journal Wirefreames")
-
-![Codejournal Wirefreame Screenshots](readme-imgs/dashboard-wireframes.png?raw=true "Code Journal Wirefreames")
-
-![Codejournal Wirefreame Screenshots](readme-imgs/login-wireframes.png?raw=true "Code Journal Wirefreames") -->
-
+#### Upload A Clothing Item
+![Upload A Clothing Item](./assests/brandCreate.png?raw=true "Product Create")
 
 ### Technical Discussion
 Tech Stack
 * HTML / CSS (SASS)
 * JavaScript
-* Commerce Js and Stripe
-* React / Redux
+* Semantic UI
+* Payment(Shopify, Stripe, or Paypal)
+* React with Redux possibly
 * Node.js /Express.js
 * Redis
 * Google Firebase(Authentication, Storage, Hosting, & Database Services)
 * MongoDB
-* Heroku
-* AdobeXD
 
 ## Code Snippet
+
+The code snippet is what renders a preview gallery of images a user has chosen to upload when posting a new article of clohting. 
+
+```javascript
+renderPicPreviews = (e) =>{
+    let fileList = e.target.files;
+    let picPreview = document.querySelector('#pic-preview ul');
+    for(var i = 0; i <fileList.length; i++){
+        var file = fileList[i];
+        var fileURL = URL.createObjectURL(file);
+        var tempListTag = document.createElement('li');
+        var tempPic = document.createElement('img');
+        var removeIcon = document.createElement('i');
+        
+        tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i, tempPic.className = 'temp-pic'; 
+        tempListTag.appendChild(removeIcon)
+        picPreview.appendChild(tempListTag).appendChild(tempPic)
+    }
+}
+
+<div className="field">
+    <label>Upload At Least One Image for this Product </label>
+    <input type="file" name="photos" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
+    <div id="pic-preview">
+        <ul>
+            <!-- Gallery Gets Render Here  -->
+        </ul>
+    </div>
+</div>
+```
 
 ## Opportunities for Future Growth 
