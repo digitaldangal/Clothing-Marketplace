@@ -63,10 +63,10 @@ These are some of the features that I plan on tackling as I build this project
 ### Screenshots
 
 #### Register as a brand
-![Register As a Brand](./assests/brandCreate.png?raw=true "Brand Create")
+![Register As a Brand](./assets/brandCreate.png?raw=true "Brand Create")
 
 #### Upload A Clothing Item
-![Upload A Clothing Item](./assests/brandCreate.png?raw=true "Product Create")
+![Upload A Clothing Item](./assets/brandCreate.png?raw=true "Product Create")
 
 ### Technical Discussion
 Tech Stack
