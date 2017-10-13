@@ -27,6 +27,25 @@ These are some of the features that I plan on tackling as I build this project
 1. Run npm install in the client folder.
 2. in the same client folder run npm start
 3. Inside client/semantic run gulp build to install the Semantic UI files
+4. Navigate to client/src/config/
+5. In this folder you should see firebaseui.js, you will also need a firebase.js file.
+6. Register an application with anyname on firebase and copy the code necessary to connect your web app to firebase and paste it in firebase.js
+    ```javascript
+        import * as firebase from 'firebase';
+        // Initialize Firebase
+        var config = {
+            apiKey: "insert-here",
+            authDomain: "insert-here",
+            databaseURL: "insert-here",
+            projectId: "insert-here",
+            storageBucket: "insert-here",
+            messagingSenderId: "insert-here"
+            };
+            
+        firebase.initializeApp(config);
+        export default firebase;
+    ```
+7. In the root folder of the project run npm install to install back end dependencies
 
 ## The Making of Copped.com
 
