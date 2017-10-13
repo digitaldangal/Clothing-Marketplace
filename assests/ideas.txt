@@ -25,3 +25,10 @@ Routes:
 
 /designers/:brand
 /editorial/:category/:article 
+
+
+Names:
+streetwearboutiques
+armoirecollective
+couture
+StreetBoutique
