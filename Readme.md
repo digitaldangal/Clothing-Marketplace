@@ -30,9 +30,12 @@ These are some of the features that I plan on tackling as I build this project
 
 ## The Making of Copped.com
 
-### Wireframes
+### Wireframes & Screenshots
 
-The following are initial mockups created in Adobe XD
+#### Register as a brand
+![Register As a Brand](./assests/brandCreate.png?raw=true "Brand Create")
+
+<!-- The following are initial mockups created in Adobe XD -->
 
 <!-- ![Codejournal Wirefreame Screenshots](readme-imgs/homepage-wireframes.png?raw=true "Code Journal Wirefreames")
 
