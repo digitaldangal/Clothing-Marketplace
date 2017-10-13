@@ -51,8 +51,14 @@ These are some of the features that I plan on tackling as I build this project
 
 ### Wireframes
 
-#### HomePage Wireframe
-![Codejournal Wirefreame Screenshots](readme-imgs/homepage-wireframes.png?raw=true "Code Journal Wirefreames")
+#### Inital HomePage Wireframe
+![Copped Wirefreame Screenshots](./assets/wireframe1.png?raw=true "Copped Wirefreames")
+
+#### Brands Listing
+![Copped Wirefreame Screenshots](./assets/wireframe2.png?raw=true "Copped Wirefreames")
+
+#### Individual Brand
+![Copped Wirefreame Screenshots](./assets/wireframe3.png?raw=true "Copped Wirefreames")
 
 ### Screenshots
 
