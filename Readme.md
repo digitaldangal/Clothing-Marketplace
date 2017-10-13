@@ -12,12 +12,16 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Integrating Redux
 - [ ] Integrating MongoDB
 - [ ] Searching
-- [ ] List of Designers/Brands 
 - [ ] Brands
-- [ ] Purchasing
-- [ ] Uploading Products
+    - [ ] List of Designers/Brands 
+    - [x] Register a Brand 
+    - [ ] Store Brands on Firebase
+- [ ] Products
+    - [x] Create a new product
+    - [ ] Store Products on Firebase
     - [ ] Improve with drag and drop to reorder images
-- [ ] Delivery Logistics
+- [ ] Purchasing
+    - [ ] Delivery Logistics
 
 ## Installation 
 1. Run npm install in the client folder.
