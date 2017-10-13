@@ -1,4 +1,4 @@
-# Copped.com
+# Copped.com(in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 Web App that could be utilize as an online wardrobe / closet to help create a visual representation of a person's clothing collection
