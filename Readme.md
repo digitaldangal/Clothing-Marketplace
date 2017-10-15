@@ -10,7 +10,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Create a REST API using Node
 - [X] Authentication
 - [ ] Integrating Redux
-- [ ] Integrating MongoDB
+- [ ] Integrating MongoDB with Firebase
 - [ ] Searching
 - [ ] Brands
     - [ ] List of Designers/Brands 
