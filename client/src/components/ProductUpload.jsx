@@ -86,6 +86,7 @@ class ProductUpload extends Component {
                                     Size
                                 </div>
                                 <select required="true" name="size" type="text" onChange={(e)=>this.handleChange(e)}>
+                                    <option disabled selected value> -- select -- </option>
                                     <option value="XS">XS</option>
                                     <option value="S">S</option>
                                     <option value="M">M</option>
