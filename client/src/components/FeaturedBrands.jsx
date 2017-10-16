@@ -9,6 +9,10 @@ class FeaturedBrands extends Component {
         }
     }
 
+    componentDidMount() {
+        // Get Request from database of featured brands
+    }
+
     renderBrands(){
         console.log("rendering brands")
         return(
