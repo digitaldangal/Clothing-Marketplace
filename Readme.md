@@ -8,7 +8,10 @@ Web App that could be utilize as an online wardrobe / closet to help create a vi
 These are some of the features that I plan on tackling as I build this project
 - [ ] Breaking Down Wire-frames into React components (using styled components)
 - [ ] Create a REST API using Node
-- [X] Authentication
+- [ ] Registration
+    - [X] Oauth
+    - [ ] Email Confirmation
+    - [ ] Brand Signup or Consumer Signup
 - [ ] Integrating Redux
 - [ ] Integrating MongoDB with Firebase
 - [ ] Searching
