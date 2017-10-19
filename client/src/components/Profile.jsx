@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
 import firebase from '../config/firebase';
-import {Link, Route} from 'react-router-dom';
+import {Link, Route, Redirect} from 'react-router-dom';
 import BrandService from '../services/BrandService';
 
 class Profile extends Component{
     constructor(props){
         super(props);
         this.state = {
+            redirect: false,
+            currentPage: null,
             brand: undefined
         }
         // this.rootRef = firebase.database().ref();
         // this.userProfileRef = this.rootRef.child('Users')
         // this.addBrandService = new BrandService();
+    }
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user)=>{
+           if(user){
+               this.setState({
+                   redirect: false
+               })
+           }else{
+               this.setState({
+                   redirect: true,
+                   currentPage: '/'
+               })
+           }
+        })
     }
     
     handleSubmit=(e)=>{
@@ -35,13 +52,15 @@ class Profile extends Component{
         }
     }
     render(){
+        const {redirect, currentPage} = this.state;
         return(
             <div className="profile-page">
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="page-title">Profile Page</h1>
                 <div className="profile-links">
                     <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                     <Link to="/profile/product-create"><button className="ui button">Sell A Product</button></Link>
-                    <button className="ui button" onClick={this.handleLogOut()} >Logout</button>
+                    <button className="ui button" onClick={this.handleLogOut} >Logout</button>
                 </div>
             </div>
         )

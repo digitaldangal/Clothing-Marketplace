@@ -48,7 +48,9 @@ class App extends Component {
     if(userStatus === "signed out"){
       this.setState({
         authState: false,
-        userInfo: undefined
+        userInfo: undefined,
+        redirect: true,
+        currentPage: '/'
       })
     }else{
       return null
