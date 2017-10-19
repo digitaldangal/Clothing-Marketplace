@@ -41,6 +41,7 @@ class Profile extends Component{
                 <div className="profile-links">
                     <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                     <Link to="/profile/product-create"><button className="ui button">Sell A Product</button></Link>
+                    <button className="ui button" onClick={this.handleLogOut()} >Logout</button>
                 </div>
             </div>
         )
