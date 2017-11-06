@@ -27,7 +27,8 @@ class Navbar extends Component {
         return(
             <div className='ui secondary stackable menu'>
                 <div className="item">
-                    <Link className="brand" to="/"><img className="logo" src="/main/images/copped_logo.png" alt="Copped Logo"/></Link>
+                    {/* <Link className="brand" to="/"><img className="logo" src="/main/images/streetwearboutiques_logo.png" alt="StreetwearBoutiques Logo"/></Link> */}
+                    <Link className="brand" to="/">StreetwearBoutiques</Link>
                 </div>
                 <div className="link item">
                     <Link to="/designers">Designers</Link>
