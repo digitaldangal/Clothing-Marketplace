@@ -1,4 +1,4 @@
-# Copped.com(in progress)
+#  StreetwearBoutiques.com(in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 Web App that could be utilize as an online wardrobe / closet to help create a visual representation of a person's clothing collection
@@ -6,6 +6,7 @@ Web App that could be utilize as an online wardrobe / closet to help create a vi
 
 ### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
+- [ ] Registered Domain Name --> streetwearboutiques.com
 - [ ] Breaking Down Wire-frames into React components (using styled components)
 - [ ] Create a REST API using Node
 - [ ] Registration
