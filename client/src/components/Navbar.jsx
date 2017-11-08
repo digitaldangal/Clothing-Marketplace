@@ -18,6 +18,8 @@ class Navbar extends Component {
                     <i className="dropdown icon"></i>
                     <div className="menu">
                         <div className="item"><Link to="/profile">Account Details</Link></div>
+                        <div className="item"><Link to="/profile/history">Transactions</Link></div>
+                        <div className="item"><Link to="/profile/wishlist">Wishlist</Link></div>
                         <div className="item"><Link to="#" onClick={this.handleLogOut}>Log out</Link></div>
                     </div>
                 </div>
@@ -61,9 +63,6 @@ class Navbar extends Component {
                     </div>
                     <div className="link item">
                         {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
-                    </div>
-                    <div className="link item">
-                        <Link to="/account/wishlist">Wishlist</Link>
                     </div>
                     <div className="link item">
                         <Link to="/cart">Cart</Link>
