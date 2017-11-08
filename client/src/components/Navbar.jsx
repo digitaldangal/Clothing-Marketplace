@@ -20,7 +20,7 @@ class Navbar extends Component {
                         <div className="item"><Link to="/profile">Account Details</Link></div>
                         <div className="item"><Link to="/profile/history">Transactions</Link></div>
                         <div className="item"><Link to="/profile/wishlist">Wishlist</Link></div>
-                        <div className="item"><Link to="#" onClick={this.handleLogOut}>Log out</Link></div>
+                        {/* <div className="item"><Link to="#" onClick={this.handleLogOut}>Log out</Link></div> */}
                     </div>
                 </div>
         )
@@ -40,7 +40,7 @@ class Navbar extends Component {
 
     renderNav(){
         return(
-            <div className='ui stackable menu'> {/*Add class secondary in production*/}
+            <div className='ui secondary stackable menu'>
                 <div className="item">
                     <Link className="brand" to="/"><img className="logo" src="/main/images/streetwearboutiques_logo.svg" alt="StreetwearBoutiques Logo"/></Link>
                 </div>

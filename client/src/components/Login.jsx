@@ -102,12 +102,29 @@ class Login extends Component{
                 <div className="login-form">
                     <h1>Login</h1>
                     <form onSubmit={this.handleLoginSubmit} className="ui form">
-                        <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
-                        <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
-                        <input type="submit" value="Login"/>
+                        <div id="form-error"></div>
+                        <div className="field">
+                            <div className="ui labeled input">
+                                <div className="ui label">
+                                   Email
+                                </div>
+                                <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+
+                        <div className="field">
+                            <div className="ui labeled input">
+                                <div className="ui label">
+                                    Password
+                                </div>
+                                <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <button className="ui primary button" type="submit">Login</button>
                     </form>
                 </div>
-                <div className="login-form">
+
+                <div className="register-form">
                     <h1>Create An Account</h1>
                     <form onSubmit={this.handleRegisterSubmit} className="ui form">
                         <div id="form-error"></div>

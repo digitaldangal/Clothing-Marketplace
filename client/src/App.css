@@ -11,6 +11,12 @@ body {
     .ui.stackable.menu .item a.brand img.logo {
       width: 100%; }
 
+.auth-form .login-form {
+  border-bottom: 1px solid #bbb;
+  margin-bottom: 3em;
+  padding-bottom: 3em;
+  margin-top: 3em; }
+
 form.ui.form {
   width: 65vw;
   margin: 0 auto; }
