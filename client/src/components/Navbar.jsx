@@ -14,7 +14,7 @@ class Navbar extends Component {
     authUser=()=>{
         return(
                 <div className="ui simple dropdown">
-                    <div className="text"><Link to="#">Account</Link></div>
+                    <div className="text"><Link to="#">{this.props.userInfo.email}</Link></div>
                     <i className="dropdown icon"></i>
                     <div className="menu">
                         <div className="item"><Link to="/profile">Account Details</Link></div>
@@ -40,7 +40,7 @@ class Navbar extends Component {
 
     renderNav(){
         return(
-            <div className='ui secondary stackable menu'>
+            <div className='ui stackable menu'> {/*Add class secondary in production*/}
                 <div className="item">
                     <Link className="brand" to="/"><img className="logo" src="/main/images/streetwearboutiques_logo.svg" alt="StreetwearBoutiques Logo"/></Link>
                 </div>
@@ -53,6 +53,7 @@ class Navbar extends Component {
                 <div className="link item">
                     <Link to="/about">About</Link>
                 </div>
+                
                 
                 <div className="right menu">
                     <div className="item">

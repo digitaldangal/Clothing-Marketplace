@@ -6,8 +6,7 @@ Web App that could be utilize as an online wardrobe / closet to help create a vi
 
 ### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
-- [ ] Registered Domain Name --> streetwearboutiques.com
-- [ ] Breaking Down Wire-frames into React components (using styled components)
+- [X] Registered Domain Name --> streetwearboutiques.com
 - [ ] Create a REST API using Node
 - [ ] Registration
     - [X] Oauth

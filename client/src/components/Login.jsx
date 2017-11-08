@@ -13,7 +13,7 @@ class Login extends Component{
     }
     componentDidMount(){
         // The start method will wait until the DOM is loaded.
-        ui.start('#firebaseui-auth-container', uiConfig);
+        // ui.start('#firebaseui-auth-container', uiConfig);
     }
 
     handleChange=(e)=>{
@@ -82,10 +82,10 @@ class Login extends Component{
                         <input type="submit" value="submit"/>
                     </form>
                 </div>
-                <div className="login-form">
+                {/* <div className="login-form">
                     <h1>Or</h1>
                     <div id="firebaseui-auth-container"></div>
-                </div>
+                </div> */}
             </div>
         )
     }
