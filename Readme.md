@@ -6,10 +6,9 @@ This application will serve as way to connect emerging streetwear brands directl
 ### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
 - [X] Registered Domain Name --> streetwearboutiques.com
-- [ ] Create a REST API using Node
 - [ ] Registration
     - [X] Oauth
-    - [ ] Email Confirmation
+    - [X] Email Confirmation
     - [ ] Brand Signup or Consumer Signup
 - [ ] Integrating Redux
 - [ ] Integrating Firebase
@@ -85,7 +84,6 @@ Tech Stack
 * Node.js /Express.js
 * Redis
 * Google Firebase(Authentication, Storage, Hosting, & Database Services)
-* MongoDB
 
 ## Code Snippet
 
