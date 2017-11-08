@@ -101,7 +101,7 @@ class Login extends Component{
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <div className="login-form">
                     <h1>Login</h1>
-                    <form onSubmit={this.handleLoginSubmit} className="ui form">
+                    <form onSubmit={this.handleLoginSubmit} className="ui equal width form">
                         <div id="form-error"></div>
                         <div className="field">
                             <div className="ui labeled input">
