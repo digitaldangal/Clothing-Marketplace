@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
 import firebase from '../config/firebase';
 import ui, {uiConfig} from '../config/firebaseui';
+import {Redirect} from 'react-router-dom';
 
 class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            email: undefined,
-            pass: undefined,
+            redirect: false,
+            currentPage: null,
             userInfo: undefined
         }
     }
     componentDidMount(){
         // The start method will wait until the DOM is loaded.
         // ui.start('#firebaseui-auth-container', uiConfig);
+        firebase.auth().onAuthStateChanged((user)=>{
+        if (user) {
+            console.log(`${user.email} is logged in`)
+            this.setState({
+                userInfo: user.toJSON(),
+                authState: true,
+                redirect: true,
+                currentPage: '/profile'
+            })
+        } else {
+            console.log('User is not logged in')
+            this.setState({
+                userInfo: undefined,
+                authState: false,
+                redirect: false,
+                currentPage: null
+            })
+        }
+        })
     }
 
     handleChange=(e)=>{
@@ -54,7 +74,10 @@ class Login extends Component{
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(res=>{
                 console.log(res)
-                
+                this.setState({
+                    redirect: true,
+                    currentPage: '/profile'
+                })
             })
             .catch(err=>{
                 // Handle Errors here.
@@ -72,8 +95,10 @@ class Login extends Component{
 
     
     render(){
+        const {redirect, currentPage} = this.state;
         return(
             <div className="auth-form">
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <div className="login-form">
                     <h1>Login</h1>
                     <form onSubmit={this.handleLoginSubmit} className="ui form">
