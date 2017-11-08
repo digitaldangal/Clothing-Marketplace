@@ -123,10 +123,7 @@ class Login extends Component{
                                 </div>
                             </div>
                         </div>
-
-                        <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
-                        <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
-                        <input type="submit" value="submit"/>
+                        <button className="ui primary button" type="submit">Create</button>
                     </form>
                 </div>
                 {/* <div className="login-form">
