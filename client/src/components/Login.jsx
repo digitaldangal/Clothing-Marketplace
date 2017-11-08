@@ -50,16 +50,24 @@ class Login extends Component{
     handleRegisterSubmit=(e)=>{
         e.preventDefault();
         console.log('Register Submit')
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(err=>{
-            // Handle Errors here.
-            var errorCode = err.code;
-            var errorMessage = err.message;
-            console.log(errorCode, errorMessage)
-        });
+        if(this.state.password === this.state.password_confirm){
+            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then(res=>{
+                console.log(res)
+                
+            })
+            .catch(err=>{
+                // Handle Errors here.
+                var errorCode = err.code;
+                var errorMessage = err.message;
+                console.log(errorCode, errorMessage)
+                var formError = document.getElementById("form-error");
+                formError.innerHTML = (`<div class="ui message"> <div class="header">We had some issues</div><ul class="list"><li>${errorMessage}</li></ul></div>`)
+            });
+        }else{
+            var formError = document.getElementById("form-error");
+            formError.innerHTML = ('<div class="ui message"> <div class="header">We had some issues</div><ul class="list"><li>Passwords must match</li></ul></div>')
+        }
     }
 
     
@@ -77,6 +85,7 @@ class Login extends Component{
                 <div className="login-form">
                     <h1>Create An Account</h1>
                     <form onSubmit={this.handleRegisterSubmit} className="ui form">
+                        <div id="form-error"></div>
                         <div className="two fields">
                             <div className="field">
                                 <div className="ui labeled input">
