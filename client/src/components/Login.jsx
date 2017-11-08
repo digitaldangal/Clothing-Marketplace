@@ -68,7 +68,7 @@ class Login extends Component{
             <div className="auth-form">
                 <div className="login-form">
                     <h1>Login</h1>
-                    <form onSubmit={this.handleLoginSubmit}>
+                    <form onSubmit={this.handleLoginSubmit} className="ui form">
                         <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                         <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
                         <input type="submit" value="Login"/>
@@ -76,7 +76,54 @@ class Login extends Component{
                 </div>
                 <div className="login-form">
                     <h1>Create An Account</h1>
-                    <form onSubmit={this.handleRegisterSubmit}>
+                    <form onSubmit={this.handleRegisterSubmit} className="ui form">
+                        <div className="two fields">
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                        First Name
+                                    </div>
+                                    <input required="true" name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                        Last Name
+                                    </div>
+                                    <input required="true" name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="field">
+                            <div className="ui labeled input">
+                                <div className="ui label">
+                                   Email
+                                </div>
+                                <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+
+                        <div className="two fields">
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                        Password
+                                    </div>
+                                    <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                        Confirm Password
+                                    </div>
+                                    <input required="true" name="password_confirm" type="password" placeholder="Confirm Password" onChange={(e)=>this.handleChange(e)}/>
+                                </div>
+                            </div>
+                        </div>
+
                         <input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
                         <input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
                         <input type="submit" value="submit"/>
