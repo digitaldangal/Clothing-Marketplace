@@ -13,17 +13,14 @@ class Navbar extends Component {
 
     authUser=()=>{
         return(
-            <div class="ui compact menu">
-                <div class="ui simple dropdown item">
-                    Dropdown
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                    <div class="item">Choice 1</div>
-                    <div class="item">Choice 2</div>
-                    <div class="item">Choice 3</div>
+                <div className="ui simple dropdown">
+                    <div className="text"><Link to="#">Account</Link></div>
+                    <i className="dropdown icon"></i>
+                    <div className="menu">
+                        <div className="item"><Link to="/profile">Account Details</Link></div>
+                        <div className="item"><Link to="#" onClick={this.handleLogOut}>Log out</Link></div>
                     </div>
                 </div>
-            </div>
         )
     }
 
@@ -63,9 +60,8 @@ class Navbar extends Component {
                         </div>
                     </div>
                     <div className="link item">
-                        {this.props.authState? <Link to="/profile">{this.props.userInfo.email}</Link>: <Link to="/account/login">Login</Link>}
+                        {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
                     </div>
-                    {this.props.authState ? <div className="link item"> <Link to="#" onClick={this.handleLogOut}>Log out</Link> </div>: null}
                     <div className="link item">
                         <Link to="/account/wishlist">Wishlist</Link>
                     </div>
