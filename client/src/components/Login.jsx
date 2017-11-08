@@ -11,6 +11,8 @@ class Login extends Component{
             currentPage: null,
             userInfo: undefined
         }
+        this.rootRef = firebase.database().ref();
+        this.usersRef = this.rootRef.child('users')
     }
     componentDidMount(){
         // The start method will wait until the DOM is loaded.
@@ -73,6 +75,10 @@ class Login extends Component{
         if(this.state.password === this.state.password_confirm){
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(res=>{
+                let user = firebase.auth().currentUser
+                user.sendEmailVerification().then((res=>{
+                    console.log(res)
+                }))
                 console.log(res)
                 this.setState({
                     redirect: true,
