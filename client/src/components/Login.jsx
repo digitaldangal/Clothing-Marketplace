@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../config/firebase';
-import ui, {uiConfig} from '../config/firebaseui';
+// import ui, {uiConfig} from '../config/firebaseui';
 import {Redirect} from 'react-router-dom';
 
 // Initialize Cloud Firestore through firebase
@@ -54,10 +54,10 @@ class Login extends Component{
             firebase.auth().onAuthStateChanged((user)=>{
                 if (user) {
                     this.setState({userInfo: user.toJSON()})
-                    this.props.authState(true)
+                    this.props.authState()
                 } else {
                     console.log('User is not logged in')
-                    this.props.authState(false)
+                    this.props.authState()
                 }
             })
         })

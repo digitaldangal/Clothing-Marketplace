@@ -28,6 +28,10 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] Improve with drag and drop to reorder images
 - [ ] Purchasing
     - [ ] Delivery Logistics
+- [ ] Create Admin Dashboard
+    - [ ] View All Users
+    - [ ] View All Brands
+    - [ ] Approve Brands
 
 ## Installation 
 1. Run npm install in the client folder.

@@ -10,6 +10,26 @@ class Navbar extends Component {
             user: undefined
         }
     }
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged(user=>{
+            if(user){
+                this.setState({signedIn: true})
+            }else{
+                this.setState({signedIn: false}) 
+            }
+        })
+    }
+
+    componentWillUpdate(prevState, nextState) {
+        if(prevState.authState === true && nextState.signedIn === true){
+            return false;
+        }
+    }
+
+    logout=(authChange)=>{
+        console.log("logging out")
+        this.props.authStateChange(authChange)
+    }
 
     authUser=()=>{
         return(
@@ -20,22 +40,10 @@ class Navbar extends Component {
                         <div className="item"><Link to="/profile">Account Details</Link></div>
                         <div className="item"><Link to="/profile/history">Transactions</Link></div>
                         <div className="item"><Link to="/profile/wishlist">Wishlist</Link></div>
-                        {/* <div className="item"><Link to="#" onClick={this.handleLogOut}>Log out</Link></div> */}
+                        {<div className="item"><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></div>}
                     </div>
                 </div>
         )
-    }
-
-    handleLogOut=()=>{
-        if(window.confirm("Do you want to log out?")){
-            firebase.auth().signOut()
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
-            this.props.authStateChange("signed out")
-        }else{
-            console.log("logged out cancel")
-            return null
-        }
     }
 
     renderNav(){

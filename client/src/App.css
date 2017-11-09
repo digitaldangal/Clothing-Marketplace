@@ -17,6 +17,10 @@ body {
   padding-bottom: 3em;
   margin-top: 3em; }
 
+div#brand-error {
+  width: 65vw;
+  margin: 0 auto; }
+
 form.ui.form {
   width: 65vw;
   margin: 0 auto; }

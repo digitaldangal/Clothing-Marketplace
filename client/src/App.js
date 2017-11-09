@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import ApprovedBrand from './components/ApprovedBrand';
 import ProductUpload from './components/ProductUpload';
 import BrandForm from './components/BrandForm';
 import Designers from './components/Designers';
@@ -22,7 +23,7 @@ class App extends Component {
     super();
     this.state = {
       authState: false,
-      userInfo: undefined,
+      userInfo: false,
       redirect: false,
       currentPage: ''
     }
@@ -35,32 +36,42 @@ class App extends Component {
           this.setState({
             userInfo: user.toJSON(),
             authState: true,
-            redirect: true,
-            currentPage: 'profile'
+            redirect: false,
+            currentPage: ''
           })
       } else {
           console.log('User is not logged in')
+          this.setState({
+            authState: false
+          })
       }
     })
   }
 
-  handleAuthState(userStatus){
-    if(userStatus === "signed out"){
-      this.setState({
-        authState: false,
-        userInfo: undefined,
-        redirect: true,
-        currentPage: '/'
+  handleAuthState=(authChange)=>{
+    if(authChange === false){
+      firebase.auth().signOut()
+      .then(res=>{
+        console.log(res)
+        this.setState({
+          authState: false
+        })
+      }).catch(err=>console.log(err))
+    }else if(authChange === true){
+      firebase.auth().onAuthStateChanged((user)=>{
+        if(user){
+          this.setState({
+            authState: true,
+          })
+        }else{
+          this.setState({
+            authState: false
+          })
+        }
       })
     }else{
-      return null
+      return null;
     }
-  }
-
-  loginSuccess=(e)=>{
-    this.setState({
-      authState: true
-    })
   }
 
   render() {
@@ -68,21 +79,22 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
+            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/>
             <div className="app-body">
               <Switch>
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
-                <Route exact path="/account/login" render={() => <Login authState={this.loginSuccess}  registersSubmit={this.handleRegisterSubmit} loginSubmit={this.handleLoginSubmit} /> } />
-                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/> } />
+                <Route exact path="/account/login" render={() => <Login authState={(authChange)=>this.handleAuthState(authChange)} /> } />
+                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
                 <Route exact path="/profile/product-create" component={ProductUpload} />
+                <Route exact path="/profile/brand" component={ApprovedBrand} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} /> } />
                 <Route exact path="/designers/:brand" render={() => <Designer authState={this.state.authState} /> } />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/about" component={About} />
                 <Route component={NoMatch} />
-                {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
             </div>
             <Footer />
