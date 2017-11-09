@@ -50,7 +50,8 @@ class BrandForm extends Component{
                 links: this.state.links,
                 website: this.state.website,
                 creation_time: new Date(),
-                id: Date.now()
+                id: Date.now(),
+                approved: false
             },{ merge: true })
             .then(()=>{
                 db.collection("users").doc(firebase.auth().currentUser.uid).collection("brand").doc(this.state.name).set({
@@ -62,6 +63,7 @@ class BrandForm extends Component{
                     website: this.state.website,
                     creation_time: new Date(),
                     id: firebase.auth().currentUser.uid,
+                    approved: false
                 }).catch(err=>(console.log(err)))
                 this.setState({
 
@@ -84,12 +86,26 @@ class BrandForm extends Component{
             [name]: value
         })
     }
-
+    renderPage = () => {
+        if(this.state.uid){
+            let brandRef = db.collection("brands").doc(this.state.uid);
+            if(brandRef.id === this.state.uid){
+                brandRef.get().then((res)=>{
+                    console.log(res.data().approved)
+                })
+            }else{
+                // Render brand form
+            }
+        }else{
+            console.log("not logged in yet")
+        }
+    }
     render(){
         const {redirect, currentPage} = this.state;
         return(
             <div>
                 {redirect ? <Redirect to={currentPage} /> : null}
+                {this.renderPage()}
                 <h1 className="page-title">Create a Brand</h1>
                 <h3>Brands must first be approved before you are allowed to post</h3>
                 <form onSubmit={this.handleSubmit} className="ui equal width form">
