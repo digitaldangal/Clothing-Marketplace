@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {Link, Route, Redirect} from 'react-router-dom';
 import BrandService from '../services/BrandService';
 import firebase from '../config/firebase';
-// Required for side-effects
-require("firebase/firestore");
 
 class Profile extends Component{
     constructor(props){
@@ -13,9 +11,6 @@ class Profile extends Component{
             currentPage: null,
             brand: undefined
         }
-        // this.rootRef = firebase.database().ref();
-        // this.userProfileRef = this.rootRef.child('Users')
-        // this.addBrandService = new BrandService();
     }
 
     componentDidMount() {
