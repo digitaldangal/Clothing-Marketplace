@@ -20,7 +20,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Brands
     - [ ] List of Designers/Brands 
     - [x] Register a Brand 
-    - [ ] Store Brands on Firebase 
+    - [X] Store Brands on Firebase 
     - [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Products
     - [x] Create a new product
