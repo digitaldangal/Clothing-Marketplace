@@ -17,7 +17,8 @@ class Profile extends Component{
         firebase.auth().onAuthStateChanged((user)=>{
            if(user){
                this.setState({
-                   redirect: false
+                   redirect: false,
+                   currentUser: user.toJSON();
                })
            }else{
                this.setState({
@@ -53,7 +54,7 @@ class Profile extends Component{
         return(
             <div className="profile-page">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <h1 className="page-title">Profile Page</h1>
+                <h1 className="page-title">Hi, </h1>
                 <div className="profile-links">
                     <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                     <Link to="/profile/product-create"><button className="ui button">Sell A Product</button></Link>

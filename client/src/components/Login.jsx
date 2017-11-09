@@ -17,8 +17,6 @@ class Login extends Component{
           
     }
     componentDidMount(){
-        // The start method will wait until the DOM is loaded.
-        // ui.start('#firebaseui-auth-container', uiConfig);
         firebase.auth().onAuthStateChanged((user)=>{
         if (user) {
             console.log(`${user.email} is logged in`)
@@ -68,6 +66,8 @@ class Login extends Component{
             var errorCode = err.code;
             var errorMessage = err.message;
             console.log(errorCode, errorMessage)
+            var loginError = document.getElementById("login-error");
+            loginError.innerHTML = (`<div class="ui message"> <div class="header">We had some issues</div><ul class="list"><li>${errorMessage}</li></ul></div>`)
         });
     }
 
@@ -89,7 +89,7 @@ class Login extends Component{
                     last_name: this.state.last_name,
                     email: this.state.email,
                     creation_time: new Date()
-                })
+                },{ merge: true })
                 .then(function(docRef) {
                     console.log("Document written with ID: ", docRef.id);
                 })
@@ -124,7 +124,7 @@ class Login extends Component{
                 <div className="login-form">
                     <h1>Login</h1>
                     <form onSubmit={this.handleLoginSubmit} className="ui equal width form">
-                        <div id="form-error"></div>
+                        <div id="login-error"></div>
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
