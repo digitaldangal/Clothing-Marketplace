@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
+import ApprovedBrand from './ApprovedBrand';
 
 // Initialize Cloud Firestore through firebase
 var db = firebase.firestore();
@@ -93,6 +94,11 @@ class BrandForm extends Component{
                 brandRef.get().then((res)=>{
                     if(res.data().approved){
                         // Brand is approved
+                        console.log("brand is approved")
+                        this.setState({
+                            redirect: true,
+                            currentPage: '/profile/brand'
+                        })
                     }else{
                         var errorMessage = `Your brand has not been approved yet! \n Contact us if this problem persists : `;
                         var formError = document.getElementById("brand-error");

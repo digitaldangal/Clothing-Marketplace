@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import ApprovedBrand from './components/ApprovedBrand';
 import ProductUpload from './components/ProductUpload';
 import BrandForm from './components/BrandForm';
 import Designers from './components/Designers';
@@ -87,6 +88,7 @@ class App extends Component {
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
                 <Route exact path="/profile/product-create" component={ProductUpload} />
+                <Route exact path="/profile/brand" component={ApprovedBrand} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} /> } />
                 <Route exact path="/designers/:brand" render={() => <Designer authState={this.state.authState} /> } />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
