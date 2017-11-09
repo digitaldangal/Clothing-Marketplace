@@ -17,7 +17,8 @@ class Profile extends Component{
         firebase.auth().onAuthStateChanged((user)=>{
            if(user){
                this.setState({
-                   redirect: false
+                   redirect: false,
+                   currentUser: user
                })
            }else{
                this.setState({

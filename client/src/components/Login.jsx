@@ -89,7 +89,7 @@ class Login extends Component{
                     last_name: this.state.last_name,
                     email: this.state.email,
                     creation_time: new Date()
-                })
+                },{ merge: true })
                 .then(function(docRef) {
                     console.log("Document written with ID: ", docRef.id);
                 })
