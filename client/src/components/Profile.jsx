@@ -10,20 +10,37 @@ class Profile extends Component{
         this.state = {
             uid: false,
             redirect: false,
-            currentPage: false,
+            currentPage: null,
             currentUser: false
         }
     }
 
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user=>{
-            console.log(user.uid)
-            this.setState({uid: user.uid})
+            if(user){
+                console.log(`Welcome ${user.email}`);
+                db.collection('users').doc(user.uid).get()
+                .then(res=>{
+                    console.log(res.data())
+                    this.setState({currentUser: res.data()})
+                }).catch(err=>console.log(err))
+
+                this.setState({
+                    uid: user.uid,
+                    redirect: false,
+                    currentPage: ''
+                })
+            }else{
+                this.setState({
+                    redirect: true,
+                    currentPage: '/'
+                }) 
+            }
         })
     }
 
     componentWillUpdate(nextProps, nextState) {
-        console.log(nextProps, nextState)
+        // console.log(nextProps, nextState)
         if(nextProps.authState == true && nextState.uid != false){
             console.log("user logged in")
             return true;
@@ -31,40 +48,9 @@ class Profile extends Component{
             return false;
         }
     }
-
-    componentDidMount() {
-        if(this.state.uid != false){
-            console.log(this.state.uid)
-            console.log("User is signed in")
-            firebase.auth().onAuthStateChanged((user)=>{
-               if(user){
-                   this.setState({
-                       redirect: false,
-                       currentUser: user.toJSON()
-                   })
-                   db.collection('users').get()
-               }else{
-                   this.setState({
-                       redirect: true,
-                       currentPage: '/'
-                   })
-               }
-            })
-        }else{
-            this.setState({
-                redirect: false,
-                currentPage: '/'
-            })
-        }
-    }
     
     handleSubmit=(e)=>{
         e.preventDefault(); 
-        // this.userProfileRef.child(this.props.userInfo.uid).child('brand').child('name').set("Rick Owens")
-        // this.userProfileRef.child(this.props.userInfo.uid).child('about').child('content').set(firebase.auth().currentUser.toJSON())
-        // .then(res=>console.log(res))
-        // .catch(err=>console.log(err))
-        // this.addBrandService.sendData(this.state.brand)
     }
 
     handleLogOut=()=>{
@@ -80,10 +66,10 @@ class Profile extends Component{
     }
 
     renderPage = () => {
-        if(this.props.userInfo != undefined){
+        if(this.state.uid != false){
             return(
                 <div className="profile-page">
-                    <h1 className="page-title">Hi, {this.state.uid}</h1>
+                    <h1 className="page-title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                     <div className="profile-links">
                         <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                         <Link to="/profile/product-create"><button className="ui button">Sell A Product</button></Link>
