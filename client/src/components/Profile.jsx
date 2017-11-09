@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import firebase from '../config/firebase';
 import {Link, Route, Redirect} from 'react-router-dom';
 import BrandService from '../services/BrandService';
+import firebase from '../config/firebase';
+// Required for side-effects
+require("firebase/firestore");
 
 class Profile extends Component{
     constructor(props){

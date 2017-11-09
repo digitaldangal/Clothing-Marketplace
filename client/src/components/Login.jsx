@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import firebase from '../config/firebase';
 import ui, {uiConfig} from '../config/firebaseui';
 import {Redirect} from 'react-router-dom';
+// Required for side-effects
+require("firebase/firestore");
 
 class Login extends Component{
     constructor(props){
@@ -11,8 +13,8 @@ class Login extends Component{
             currentPage: null,
             userInfo: undefined
         }
-        this.rootRef = firebase.database().ref();
-        this.usersRef = this.rootRef.child('users')
+        var db =firebase.firestore()
+        console.log(db)
     }
     componentDidMount(){
         // The start method will wait until the DOM is loaded.
