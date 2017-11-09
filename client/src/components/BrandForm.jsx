@@ -49,7 +49,8 @@ class BrandForm extends Component{
                 shipping_address: this.state.shipping_address,
                 links: this.state.links,
                 website: this.state.website,
-                creation_time: new Date()
+                creation_time: new Date(),
+                id: Date.now()
             },{ merge: true })
             .then(()=>{
                 db.collection("users").doc(firebase.auth().currentUser.uid).collection("brand").doc(this.state.name).set({
@@ -59,8 +60,12 @@ class BrandForm extends Component{
                     shipping_address: this.state.shipping_address,
                     links: this.state.links,
                     website: this.state.website,
-                    creation_time: new Date()
+                    creation_time: new Date(),
+                    id: firebase.auth().currentUser.uid,
                 }).catch(err=>(console.log(err)))
+                this.setState({
+
+                })
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
