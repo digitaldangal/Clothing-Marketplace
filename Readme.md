@@ -58,13 +58,13 @@ These are some of the features that I plan on tackling as I build this project
 ### Wireframes
 
 #### Inital HomePage Wireframe
-![Copped Wirefreame Screenshots](./assets/wireframe1.png?raw=true "Copped Wirefreames")
+![Copped WireFrame Screenshots](./assets/wireframe1.png?raw=true "Copped WireFrames")
 
 #### Brands Listing
-![Copped Wirefreame Screenshots](./assets/wireframe2.png?raw=true "Copped Wirefreames")
+![Copped WireFrame Screenshots](./assets/wireframe2.png?raw=true "Copped WireFrames")
 
 #### Individual Brand
-![Copped Wirefreame Screenshots](./assets/wireframe3.png?raw=true "Copped Wirefreames")
+![Copped WireFrame Screenshots](./assets/wireframe3.png?raw=true "Copped WireFrames")
 
 ### Screenshots
 
