@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../config/firebase';
-import ui, {uiConfig} from '../config/firebaseui';
+// import ui, {uiConfig} from '../config/firebaseui';
 import {Redirect} from 'react-router-dom';
 
 // Initialize Cloud Firestore through firebase

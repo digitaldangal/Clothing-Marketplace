@@ -21,9 +21,7 @@ class Navbar extends Component {
     }
 
     componentWillUpdate(prevState, nextState) {
-        console.log(prevState, nextState)
         if(prevState.authState === true && nextState.signedIn === true){
-            console.log("user is signed in")
             return false;
         }
     }

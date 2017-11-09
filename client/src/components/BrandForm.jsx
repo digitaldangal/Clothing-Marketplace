@@ -1,16 +1,52 @@
 import React, { Component } from 'react';
-import BrandService from '../services/BrandService'
+import {Redirect} from 'react-router-dom';
+import firebase from '../config/firebase';
+
+// Initialize Cloud Firestore through firebase
+var db = firebase.firestore();
 
 class BrandForm extends Component{
     constructor(props){
         super(props);
         this.state = {
-            
+            uid: false,
+            currentUser: undefined,
+            redirect: false,
+            currentPage: null
         }
+    }
+
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged(user=>{
+            if(user){
+                db.collection('users').doc(user.uid).get()
+                .then(res=>{
+                    this.setState({currentUser: res.data()})
+                }).catch(err=>console.log(err))
+
+                this.setState({
+                    uid: user.uid,
+                    redirect: false,
+                    currentPage: ''
+                })
+            }else{
+                this.setState({
+                    redirect: true,
+                    currentPage: '/account/login'
+                }) 
+            }
+        })
     }
     
     handleSubmit=(e)=>{
         e.preventDefault();
+        if(firebase.auth().currentUser.emailVerified.valueOf()){
+
+        }else{
+            var errorMessage = `You must first verify your email before registering a brand`;
+            var formError = document.getElementById("form-error");
+            formError.innerHTML = (`<div class="ui message"> <div class="header">We had some issues</div><ul class="list"><li>${errorMessage}</li></ul></div>`)
+        }
     }
 
     handleChange=(e)=>{
@@ -22,11 +58,14 @@ class BrandForm extends Component{
     }
 
     render(){
+        const {redirect, currentPage} = this.state;
         return(
             <div>
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="page-title">Create a Brand</h1>
                 <h3>Brands must first be approved before you are allowed to post</h3>
-                <form onSubmit={this.handleSubmit} className="ui form">
+                <form onSubmit={this.handleSubmit} className="ui equal width form">
+                    <div id="form-error"></div>
                     <div className="two fields">
                         <div className="field">
                             <div className="ui labeled input">
