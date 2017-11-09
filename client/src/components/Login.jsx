@@ -17,8 +17,6 @@ class Login extends Component{
           
     }
     componentDidMount(){
-        // The start method will wait until the DOM is loaded.
-        // ui.start('#firebaseui-auth-container', uiConfig);
         firebase.auth().onAuthStateChanged((user)=>{
         if (user) {
             console.log(`${user.email} is logged in`)
