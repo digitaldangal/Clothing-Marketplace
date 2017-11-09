@@ -22,7 +22,7 @@ class App extends Component {
     super();
     this.state = {
       authState: false,
-      userInfo: undefined,
+      userInfo: false,
       redirect: false,
       currentPage: ''
     }
@@ -35,8 +35,8 @@ class App extends Component {
           this.setState({
             userInfo: user.toJSON(),
             authState: true,
-            redirect: true,
-            currentPage: 'profile'
+            redirect: false,
+            currentPage: ''
           })
       } else {
           console.log('User is not logged in')
@@ -48,7 +48,7 @@ class App extends Component {
     if(userStatus === "signed out"){
       this.setState({
         authState: false,
-        userInfo: undefined,
+        userInfo: false,
         redirect: true,
         currentPage: '/'
       })
@@ -71,6 +71,7 @@ class App extends Component {
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
             <div className="app-body">
               <Switch>
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
                 <Route exact path="/account/login" render={() => <Login authState={this.loginSuccess}  registersSubmit={this.handleRegisterSubmit} loginSubmit={this.handleLoginSubmit} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/> } />
@@ -82,7 +83,6 @@ class App extends Component {
                 <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/about" component={About} />
                 <Route component={NoMatch} />
-                {redirect ? <Redirect to={currentPage} /> : null}
               </Switch>
             </div>
             <Footer />
