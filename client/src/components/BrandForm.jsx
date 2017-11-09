@@ -35,7 +35,10 @@ class BrandForm extends Component{
                 let brandRef = db.collection("brands").doc(this.state.uid);
                 brandRef.get().then((res)=>{
                     if(res.exists && res.data().approved){
-                        this.setState({brandStatus: true})
+                        this.setState({
+                            brandStatus: true,
+                            brandCreated: true
+                        })
                     }else if(res.exists){
                         this.setState({
                             brandCreated: true
