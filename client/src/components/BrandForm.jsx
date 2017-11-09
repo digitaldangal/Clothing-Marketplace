@@ -91,7 +91,9 @@ class BrandForm extends Component{
             let brandRef = db.collection("brands").doc(this.state.uid);
             if(brandRef.id === this.state.uid){
                 brandRef.get().then((res)=>{
-                    console.log(res.data().approved)
+                    if(res.data().approved){
+                        // Brand is approved
+                    }
                 })
             }else{
                 // Render brand form
