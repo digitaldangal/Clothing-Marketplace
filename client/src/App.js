@@ -47,22 +47,30 @@ class App extends Component {
     })
   }
 
-  handleAuthState(){
+  handleAuthState=(authChange)=>{
+    if(authChange === false){
       firebase.auth().signOut()
-      .then((res)=>{
+      .then(res=>{
         console.log(res)
         this.setState({
-          authState: false,
-          userInfo: false
+          authState: false
         })
+      }).catch(err=>console.log(err))
+    }else if(authChange === true){
+      firebase.auth().onAuthStateChanged((user)=>{
+        if(user){
+          this.setState({
+            authState: true,
+          })
+        }else{
+          this.setState({
+            authState: false
+          })
+        }
       })
-      .catch(err=>console.log(err))
-  }
-
-  loginSuccess=(e)=>{
-    this.setState({
-      authState: true
-    })
+    }else{
+      return null;
+    }
   }
 
   render() {
@@ -70,13 +78,13 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/>
+            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={()=>this.handleAuthState()}/>
             <div className="app-body">
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
-                <Route exact path="/account/login" render={() => <Login authState={this.loginSuccess}  registersSubmit={this.handleRegisterSubmit} loginSubmit={this.handleLoginSubmit} /> } />
-                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={()=>this.handleAuthState()}/> } />
+                <Route exact path="/account/login" render={() => <Login authState={(authChange)=>this.handleAuthState(authChange)} /> } />
+                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
                 <Route exact path="/profile/product-create" component={ProductUpload} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} /> } />

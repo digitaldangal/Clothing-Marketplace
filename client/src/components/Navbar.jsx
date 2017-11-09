@@ -22,6 +22,10 @@ class Navbar extends Component {
 
     componentWillUpdate(prevState, nextState) {
         console.log(prevState, nextState)
+        if(prevState.authState === true && nextState.signedIn === true){
+            console.log("user is signed in")
+            return false;
+        }
     }
 
     authUser=()=>{
@@ -37,18 +41,6 @@ class Navbar extends Component {
                     </div>
                 </div>
         )
-    }
-
-    handleLogOut=()=>{
-        if(window.confirm("Do you want to log out?")){
-            firebase.auth().signOut()
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
-            this.props.authStateChange("signed out")
-        }else{
-            console.log("logged out cancel")
-            return null
-        }
     }
 
     renderNav(){

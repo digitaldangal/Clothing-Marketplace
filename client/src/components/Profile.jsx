@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Link, Route, Redirect} from 'react-router-dom';
-import BrandService from '../services/BrandService';
+import {Link, Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -41,7 +40,7 @@ class Profile extends Component{
 
     componentWillUpdate(nextProps, nextState) {
         // console.log(nextProps, nextState)
-        if(nextProps.authState == true && nextState.uid != false){
+        if(nextProps.authState === true && nextState.uid !== false){
             console.log("user logged in")
             return true;
         }else{
@@ -49,16 +48,20 @@ class Profile extends Component{
         }
     }
 
+    logout=(authChange)=>{
+        console.log("logging out")
+        this.props.authStateChange(authChange)
+    }
+
     renderPage = () => {
-        if(this.state.uid != false){
+        if(this.state.uid !== false){
             return(
                 <div className="profile-page">
                     <h1 className="page-title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                     <div className="profile-links">
                         <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                         <Link to="/profile/product-create"><button className="ui button">Sell A Product</button></Link>
-                        <button className="ui button" onClick={this.props.authStateChange()} >Logout</button>
-                        
+                        <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
                     </div>
                 </div>
                 

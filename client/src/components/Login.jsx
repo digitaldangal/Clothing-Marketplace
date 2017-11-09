@@ -54,10 +54,10 @@ class Login extends Component{
             firebase.auth().onAuthStateChanged((user)=>{
                 if (user) {
                     this.setState({userInfo: user.toJSON()})
-                    this.props.authState(true)
+                    this.props.authState()
                 } else {
                     console.log('User is not logged in')
-                    this.props.authState(false)
+                    this.props.authState()
                 }
             })
         })
