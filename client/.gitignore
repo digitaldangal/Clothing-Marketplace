@@ -12,7 +12,10 @@
 
 # misc
 firebase.js
-firebaseAdmin.js
+admin.js
+serviceAccountKey.json
+serviceAccountKey.js
+copped-9a558-firebase-adminsdk-omwm1-ee1363253f.json
 .DS_Store
 .env.local
 .env.development.local

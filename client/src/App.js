@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './config/firebase';
-import firebaseAdmin from './config/firebaseAdmin';
+import admin from './config/admin';
 import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom';
 
 import Home from './components/Home';
