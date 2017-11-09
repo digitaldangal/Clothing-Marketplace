@@ -7,6 +7,9 @@ class ApprovedBrand extends Component {
             
         }
     }
+    
+    //Check status of approved brand
+
 
     render(){
         return(
