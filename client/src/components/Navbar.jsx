@@ -26,6 +26,11 @@ class Navbar extends Component {
         }
     }
 
+    logout=(authChange)=>{
+        console.log("logging out")
+        this.props.authStateChange(authChange)
+    }
+
     authUser=()=>{
         return(
                 <div className="ui simple dropdown">
@@ -35,7 +40,7 @@ class Navbar extends Component {
                         <div className="item"><Link to="/profile">Account Details</Link></div>
                         <div className="item"><Link to="/profile/history">Transactions</Link></div>
                         <div className="item"><Link to="/profile/wishlist">Wishlist</Link></div>
-                        {/* <div className="item"><Link to="#" onClick={this.handleLogOut}>Log out</Link></div> */}
+                        {<div className="item"><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></div>}
                     </div>
                 </div>
         )

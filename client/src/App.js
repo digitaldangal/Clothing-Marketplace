@@ -78,7 +78,7 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={()=>this.handleAuthState()}/>
+            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/>
             <div className="app-body">
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}
