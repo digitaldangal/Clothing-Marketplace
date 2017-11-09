@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link, Route, Redirect} from 'react-router-dom';
 import BrandService from '../services/BrandService';
 import firebase from '../config/firebase';
-
+var db = firebase.firestore();
 class Profile extends Component{
     constructor(props){
         super(props);

@@ -77,11 +77,25 @@ class Login extends Component{
         if(this.state.password === this.state.password_confirm){
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(res=>{
-                let user = firebase.auth().currentUser
+                console.log(res)
+                let user = firebase.auth().currentUser;
                 user.sendEmailVerification().then((res=>{
                     console.log(res)
                 }))
-                console.log(res)
+            })
+            .then(()=>{
+                db.collection('users').doc(firebase.auth().currentUser.uid).set({
+                    first_name: this.state.first_name,
+                    last_name: this.state.last_name,
+                    email: this.state.email,
+                    creation_time: new Date()
+                })
+                .then(function(docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
                 this.setState({
                     redirect: true,
                     currentPage: '/profile'
