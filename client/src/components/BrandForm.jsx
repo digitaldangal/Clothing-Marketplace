@@ -42,7 +42,29 @@ class BrandForm extends Component{
         e.preventDefault();
         if(firebase.auth().currentUser.emailVerified.valueOf()){
             console.log("Submitting Brand")
-            
+            db.collection("brands").doc(firebase.auth().currentUser.uid).set({
+                name: this.state.name,
+                inventory_size: this.state.inventory_size,
+                description: this.state.description,
+                shipping_address: this.state.shipping_address,
+                links: this.state.links,
+                website: this.state.website,
+                creation_time: new Date()
+            },{ merge: true })
+            .then(()=>{
+                db.collection("users").doc(firebase.auth().currentUser.uid).collection("brand").doc(this.state.name).set({
+                    name: this.state.name,
+                    inventory_size: this.state.inventory_size,
+                    description: this.state.description,
+                    shipping_address: this.state.shipping_address,
+                    links: this.state.links,
+                    website: this.state.website,
+                    creation_time: new Date()
+                }).catch(err=>(console.log(err)))
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
         }else{
             var errorMessage = `You must first verify your email before registering a brand`;
             var formError = document.getElementById("form-error");
