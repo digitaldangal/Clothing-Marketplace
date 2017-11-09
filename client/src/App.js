@@ -40,21 +40,23 @@ class App extends Component {
           })
       } else {
           console.log('User is not logged in')
+          this.setState({
+            authState: false
+          })
       }
     })
   }
 
-  handleAuthState(userStatus){
-    if(userStatus === "signed out"){
-      this.setState({
-        authState: false,
-        userInfo: false,
-        redirect: true,
-        currentPage: '/'
+  handleAuthState(){
+      firebase.auth().signOut()
+      .then((res)=>{
+        console.log(res)
+        this.setState({
+          authState: false,
+          userInfo: false
+        })
       })
-    }else{
-      return null
-    }
+      .catch(err=>console.log(err))
   }
 
   loginSuccess=(e)=>{
@@ -74,7 +76,7 @@ class App extends Component {
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
                 <Route exact path="/account/login" render={() => <Login authState={this.loginSuccess}  registersSubmit={this.handleRegisterSubmit} loginSubmit={this.handleLoginSubmit} /> } />
-                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(userStatus)=>this.handleAuthState(userStatus)}/> } />
+                <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={()=>this.handleAuthState()}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
                 <Route exact path="/profile/product-create" component={ProductUpload} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} /> } />

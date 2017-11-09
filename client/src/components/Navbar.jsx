@@ -10,6 +10,19 @@ class Navbar extends Component {
             user: undefined
         }
     }
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged(user=>{
+            if(user){
+                this.setState({signedIn: true})
+            }else{
+                this.setState({signedIn: false}) 
+            }
+        })
+    }
+
+    componentWillUpdate(prevState, nextState) {
+        console.log(prevState, nextState)
+    }
 
     authUser=()=>{
         return(

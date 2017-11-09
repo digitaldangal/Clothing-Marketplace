@@ -48,22 +48,6 @@ class Profile extends Component{
             return false;
         }
     }
-    
-    handleSubmit=(e)=>{
-        e.preventDefault(); 
-    }
-
-    handleLogOut=()=>{
-        if(window.confirm("Do you want to log out?")){
-            firebase.auth().signOut()
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
-            this.props.authStateChange("signed out")
-        }else{
-            console.log("logged out cancel")
-            return null
-        }
-    }
 
     renderPage = () => {
         if(this.state.uid != false){
@@ -73,7 +57,7 @@ class Profile extends Component{
                     <div className="profile-links">
                         <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                         <Link to="/profile/product-create"><button className="ui button">Sell A Product</button></Link>
-                        <button className="ui button" onClick={this.handleLogOut} >Logout</button>
+                        <button className="ui button" onClick={this.props.authStateChange()} >Logout</button>
                         
                     </div>
                 </div>
