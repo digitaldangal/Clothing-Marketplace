@@ -68,6 +68,8 @@ class Login extends Component{
             var errorCode = err.code;
             var errorMessage = err.message;
             console.log(errorCode, errorMessage)
+            var loginError = document.getElementById("login-error");
+            loginError.innerHTML = (`<div class="ui message"> <div class="header">We had some issues</div><ul class="list"><li>${errorMessage}</li></ul></div>`)
         });
     }
 
@@ -124,7 +126,7 @@ class Login extends Component{
                 <div className="login-form">
                     <h1>Login</h1>
                     <form onSubmit={this.handleLoginSubmit} className="ui equal width form">
-                        <div id="form-error"></div>
+                        <div id="login-error"></div>
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
