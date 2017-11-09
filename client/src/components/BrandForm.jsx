@@ -41,7 +41,8 @@ class BrandForm extends Component{
     handleSubmit=(e)=>{
         e.preventDefault();
         if(firebase.auth().currentUser.emailVerified.valueOf()){
-
+            console.log("Submitting Brand")
+            
         }else{
             var errorMessage = `You must first verify your email before registering a brand`;
             var formError = document.getElementById("form-error");
