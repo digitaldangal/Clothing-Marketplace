@@ -10,6 +10,7 @@ class BrandForm extends Component{
         super(props);
         this.state = {
             brandStatus: false,
+            brandCreated: false,
             uid: false,
             currentUser: undefined,
             redirect: false,
@@ -35,6 +36,10 @@ class BrandForm extends Component{
                 brandRef.get().then((res)=>{
                     if(res.exists && res.data().approved){
                         this.setState({brandStatus: true})
+                    }else if(res.exists){
+                        this.setState({
+                            brandCreated: true
+                        })
                     }
                 })
             }else{
@@ -74,7 +79,8 @@ class BrandForm extends Component{
                     approved: false
                 }).catch(err=>(console.log(err)))
                 this.setState({
-
+                    redirect: true,
+                    currentPage: '/profile'
                 })
             })
             .catch(function(error) {
@@ -95,7 +101,7 @@ class BrandForm extends Component{
         })
     }
     renderPage = () => {
-        if(this.state.brandStatus){
+        if(this.state.brandCreated){
             let brandRef = db.collection("brands").doc(this.state.uid);
             brandRef.get().then((res)=>{
             if(res.exists && res.data().approved){
@@ -111,7 +117,7 @@ class BrandForm extends Component{
                 formError.innerHTML = (`<div class="ui message"> <div class="header">We had some issues</div><ul class="list"><li>${errorMessage}</li></ul></div>`) 
             }
         })
-        }else{
+        }else if(!this.state.brandCreated){
             return(
                 <div>
                     <h1 className="page-title">Create a Brand</h1>
