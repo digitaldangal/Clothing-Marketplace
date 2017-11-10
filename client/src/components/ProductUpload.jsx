@@ -74,11 +74,15 @@ class ProductUpload extends Component {
     handleSubmit = (e) =>{
         e.preventDefault();
         var uploadedFiles = document.querySelector('#products_upload').files;
-        
+        let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
+
         for(let i = 0; i < uploadedFiles.length; i++){
             let currentFile = uploadedFiles[i];
             let currentFileUrl = URL.createObjectURL(currentFile);
- 
+            
+            imageRef.child(currentFile.name).put(currentFile).then((res)=>{
+                console.log(res)
+            }).catch(err=>console.log(err))
         }
 
     }
