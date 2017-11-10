@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from 'jquery'
 import {Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
 
@@ -80,7 +79,6 @@ class ProductUpload extends Component {
         
         for(let i = 0; i < uploadedFiles.length; i++){
             let currentFile = uploadedFiles[i];
-            let currentFileUrl = URL.createObjectURL(currentFile);
             
             imageRef.child(currentFile.name).put(currentFile).then((res)=>{
                 console.log(res)
@@ -92,6 +90,16 @@ class ProductUpload extends Component {
             }).catch(err=>console.log(err))
         }
 
+        db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
+            title: this.state.title,
+            designer: this.state.designer,
+            price: this.state.price,
+            size: this.state.title,
+            category: this.state.category,
+            description: this.state.description
+        },{ merge: true })
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
     }
 
     handleChange = (e) => {
@@ -141,6 +149,7 @@ class ProductUpload extends Component {
                                     Size
                                 </div>
                                 <select required="true" name="size" type="text" onChange={(e)=>this.handleChange(e)}>
+                                    <option disabled selected value> -- select -- </option>
                                     <option value="XS">XS</option>
                                     <option value="S">S</option>
                                     <option value="M">M</option>
@@ -155,6 +164,7 @@ class ProductUpload extends Component {
                                     Category
                                 </div>
                                 <select required="true" name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                                    <option disabled selected value> -- select -- </option>
                                     <option value="OUTERWEAR">OUTERWEAR</option>
                                     <option value="TOPS">TOPS</option>
                                     <option value="BOTTOMS">BOTTOMS</option>
