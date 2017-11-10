@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery'
 import {Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
 
@@ -76,27 +77,19 @@ class ProductUpload extends Component {
         var uploadedFiles = document.querySelector('#products_upload').files;
         let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
         let downloadUrl = '';
-        let success = 0;
-
+        
         for(let i = 0; i < uploadedFiles.length; i++){
             let currentFile = uploadedFiles[i];
             let currentFileUrl = URL.createObjectURL(currentFile);
             
             imageRef.child(currentFile.name).put(currentFile).then((res)=>{
                 console.log(res)
-                if(res.state == "success"){
-                    success = success + 1;
-                }
                 downloadUrl = res.downloadURL;
                 db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
                     [currentFile.name]: downloadUrl
                 },{ merge: true }).then(res=>console.log(res))
                 .catch(err=>console.log(err))
             }).catch(err=>console.log(err))
-        }
-
-        if(success === uploadedFiles.length){
-            document.querySelector('form').form('clear')
         }
 
     }
