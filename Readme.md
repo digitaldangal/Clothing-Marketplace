@@ -11,11 +11,11 @@ These are some of the features that I plan on tackling as I build this project
     - [X] Email Confirmation
     - [ ] Brand Signup or Consumer Signup
 - [ ] Integrating Redux
-- [ ] Integrating Firebase
+- [X] Integrating Firebase
     - [X] Authentication
-    - [ ] Storage
+    - [X] Storage
     - [X] Hosting 
-    - [ ] Database
+    - [X] Database
 - [ ] Searching
 - [ ] Brands
     - [ ] List of Designers/Brands 
