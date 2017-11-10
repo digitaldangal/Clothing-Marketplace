@@ -6,10 +6,10 @@ This application will serve as way to connect emerging streetwear brands directl
 ### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
 - [X] Registered Domain Name --> streetwearboutiques.com
-- [ ] Registration
+- [x] Registration
     - [X] Oauth
     - [X] Email Confirmation
-    - [ ] Brand Signup or Consumer Signup
+    - [x] Brand Signup or Consumer Signup
 - [ ] Integrating Redux
 - [X] Integrating Firebase
     - [X] Authentication
@@ -24,7 +24,7 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Products
     - [x] Create a new product
-    - [ ] Store Products on Firebase
+    - [x] Store Products on Firebase
     - [ ] Improve with drag and drop to reorder images
 - [ ] Purchasing
     - [ ] Delivery Logistics
