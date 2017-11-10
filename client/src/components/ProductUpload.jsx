@@ -1,11 +1,54 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
+import firebase from '../config/firebase';
+
+// Initialize Cloud Firestore through firebase
+var db = firebase.firestore();
+var storage = firebase.storage();
+var storageRef = storage.ref();
 
 class ProductUpload extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            imageBlobs: {}
         }
+    }
+
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged(user=>{
+            if(user){
+                db.collection('users').doc(user.uid).get()
+                .then(res=>{
+                    this.setState({currentUser: res.data()})
+                }).catch(err=>console.log(err))
+
+                this.setState({
+                    uid: user.uid,
+                    redirect: false,
+                    currentPage: ''
+                })
+
+                let brandRef = db.collection("brands").doc(this.state.uid);
+                brandRef.get().then((res)=>{
+                    if(res.exists && res.data().approved){
+                        this.setState({
+                            brandStatus: true,
+                            brandCreated: true
+                        })
+                    }else if(res.exists){
+                        this.setState({
+                            brandCreated: true
+                        })
+                    }
+                })
+            }else{
+                this.setState({
+                    redirect: true,
+                    currentPage: '/account/login'
+                }) 
+            }
+        })
     }
 
     renderPicPreviews = (e) =>{
@@ -17,9 +60,11 @@ class ProductUpload extends Component {
             var tempListTag = document.createElement('li');
             var tempPic = document.createElement('img');
             var removeIcon = document.createElement('i');
-            
-            tempPic.src = fileURL, tempPic.dataset.name = file.name, tempPic.id = i, tempPic.className = 'temp-pic';
-            // removeIcon.className = "remove icon", removeIcon.id = i, removeIcon.addEventListener('click', this.deleteImage);
+
+            tempPic.src = fileURL;
+            tempPic.dataset.name = file.name;
+            tempPic.id = i;
+            tempPic.className = 'temp-pic';
             
             tempListTag.appendChild(removeIcon)
             picPreview.appendChild(tempListTag).appendChild(tempPic)
@@ -28,6 +73,33 @@ class ProductUpload extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
+        var uploadedFiles = document.querySelector('#products_upload').files;
+        let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
+        let downloadUrl = '';
+        
+        for(let i = 0; i < uploadedFiles.length; i++){
+            let currentFile = uploadedFiles[i];
+            
+            imageRef.child(currentFile.name).put(currentFile).then((res)=>{
+                console.log(res)
+                downloadUrl = res.downloadURL;
+                db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
+                    [currentFile.name]: downloadUrl
+                },{ merge: true }).then(res=>console.log(res))
+                .catch(err=>console.log(err))
+            }).catch(err=>console.log(err))
+        }
+
+        db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
+            title: this.state.title,
+            designer: this.state.designer,
+            price: this.state.price,
+            size: this.state.title,
+            category: this.state.category,
+            description: this.state.description
+        },{ merge: true })
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
     }
 
     handleChange = (e) => {
@@ -37,15 +109,6 @@ class ProductUpload extends Component {
             [name]: value
         })
     }
-    /* deleteImage = (e) => {
-        var imgToRemove = document.querySelector(`img[id="${e.target.id}"]`)
-        let fileList = document.querySelector('input[type="file"]').files;
-        console.log(fileList)
-        e.target.remove();
-        imgToRemove.remove();
-        fileList.item
-        console.log('Image Deleted');
-    } */
 
     render(){
         return(
