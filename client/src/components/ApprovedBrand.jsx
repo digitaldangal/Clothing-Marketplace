@@ -10,7 +10,7 @@ class ApprovedBrand extends Component {
             uid: false,
             redirect: false,
             currentPage: null,
-            brandData: null,
+            brandData: false,
         }
     }
 
@@ -48,7 +48,7 @@ class ApprovedBrand extends Component {
     }
 
     renderPage(){
-        if(this.props.authState){
+        if(this.state.brandData){
             return(
                 <div className="brand-page">
                     <h1 className="page-title">{this.state.brandData.name}</h1>
