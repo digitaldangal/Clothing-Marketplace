@@ -66,22 +66,40 @@ class ApprovedBrand extends Component {
     }
     
     renderGallery(){
-        return(
-            <div className="card">
-                hey
-            </div>
-        )
+        if(this.state.productData){
+            return(
+                <div className="ui link cards">
+                    {Object.values(this.state.productData).map((product, i)=>{
+                        return(
+                            <div className="card">
+                                
+                            </div>     
+                        )
+                    })}
+                </div>
+            )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }
     }
 
     renderPage(){
-        if(this.state.brandData){
+        if(this.state.brandData && this.state.productData){
             return(
                 <div className="brand-page">
                     <h1 className="page-title">{this.state.brandData.name}</h1>
                     <div className="product-gallery">
-                        <div className="ui link cards">{this.renderGallery()}</div>
+                        {this.renderGallery()}
                     </div>
                 </div>
+            )
+        }else if(this.state.brandData && !this.state.productData){
+            return(
+                <div className="card">No Products Yet</div>
             )
         }else{
             return(
