@@ -25,7 +25,8 @@ class App extends Component {
       authState: false,
       userInfo: false,
       redirect: false,
-      currentPage: ''
+      currentPage: '',
+      uid: null
     }
   }
 
@@ -37,7 +38,8 @@ class App extends Component {
             userInfo: user.toJSON(),
             authState: true,
             redirect: false,
-            currentPage: ''
+            currentPage: '',
+            uid: user.uid
           })
       } else {
           console.log('User is not logged in')
@@ -80,15 +82,15 @@ class App extends Component {
       <Router>
           <div className="App">
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/>
-            <div className="app-body">
+            <div className="app-body ui container">
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
                 <Route exact path="/account/login" render={() => <Login authState={(authChange)=>this.handleAuthState(authChange)} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
-                <Route exact path="/profile/product-create" component={ProductUpload} />
-                <Route exact path="/profile/brand" component={ApprovedBrand} />
+                <Route exact path="/profile/product-create" component={ProductUpload}/>
+                <Route exact path="/profile/brand" render={()=> <ApprovedBrand authState={this.state.authState} userUid={this.state.uid} /> } />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} /> } />
                 <Route exact path="/designers/:brand" render={() => <Designer authState={this.state.authState} /> } />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
@@ -97,7 +99,7 @@ class App extends Component {
                 <Route component={NoMatch} />
               </Switch>
             </div>
-            <Footer />
+            {<Footer />}
           </div>
       </Router>
     );

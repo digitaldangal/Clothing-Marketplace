@@ -46,4 +46,18 @@ div#pic-preview {
       div#pic-preview ul li img.temp-pic {
         width: 100%; }
 
+.product-gallery {
+  margin-top: 2em; }
+  .product-gallery .ui.link.cards {
+    justify-content: center; }
+    .product-gallery .ui.link.cards .card {
+      text-align: left; }
+
+footer {
+  position: absolute;
+  bottom: 0em;
+  display: flex;
+  justify-content: center;
+  width: 100%; }
+
 /*# sourceMappingURL=App.css.map */

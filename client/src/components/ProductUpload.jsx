@@ -34,7 +34,8 @@ class ProductUpload extends Component {
                     if(res.exists && res.data().approved){
                         this.setState({
                             brandStatus: true,
-                            brandCreated: true
+                            brandCreated: true,
+                            brandData: res.data(),
                         })
                     }else if(res.exists){
                         this.setState({
@@ -77,12 +78,13 @@ class ProductUpload extends Component {
         let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
         let downloadUrl = '';
         let count = 0;
-        
+    
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
-            designer: this.state.designer,
-            price: this.state.price,
-            size: this.state.title,
+            designer: this.state.brandData.name,
+            item_count: this.state.item_count,
+            price: this.state.price, 
+            size: this.state.size,
             category: this.state.category,
             description: this.state.description
         },{ merge: true })
@@ -151,9 +153,9 @@ class ProductUpload extends Component {
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
-                                    Brand Name
+                                    Amount Available
                                 </div>
-                                <input required="true" name="designer" type="text" placeholder="Designer/Brand Name" onChange={(e)=>this.handleChange(e)}/>
+                                <input required="true" name="item_count" type="text" placeholder="Amount Available for Sale" onChange={(e)=>this.handleChange(e)}/>
                             </div>
                         </div>
                     </div>
@@ -192,7 +194,6 @@ class ProductUpload extends Component {
                                     <option value="OUTERWEAR">OUTERWEAR</option>
                                     <option value="TOPS">TOPS</option>
                                     <option value="BOTTOMS">BOTTOMS</option>
-                                    <option value="FOOTWEAR">FOOTWEAR</option>
                                     <option value="ACCESSORIES">ACCESSORIES</option>
                                 </select>
                             </div>
@@ -205,7 +206,7 @@ class ProductUpload extends Component {
                     </div>
 
                     <div className="field">
-                        <label>Upload At Least One Image for this Product </label>
+                        <label>First Image is Product Image </label>
                         <input type="file" name="photos" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
                         <div id="pic-preview">
                             <ul>

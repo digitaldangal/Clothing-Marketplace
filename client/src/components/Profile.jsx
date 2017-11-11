@@ -10,7 +10,9 @@ class Profile extends Component{
             uid: false,
             redirect: false,
             currentPage: null,
-            currentUser: false
+            currentUser: false,
+            brandCreated: null,
+            brandStatus: false
         }
     }
 
@@ -18,12 +20,23 @@ class Profile extends Component{
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
                 console.log(`Welcome ${user.email}`);
-                db.collection('users').doc(user.uid).get()
-                .then(res=>{
-                    console.log(res.data())
+                db.collection('users').doc(user.uid).get().then(res=>{
                     this.setState({currentUser: res.data()})
                 }).catch(err=>console.log(err))
 
+                db.collection('brands').doc(user.uid).get().then((res)=>{
+                    if(res.exists && res.data().approved){
+                        this.setState({
+                            brandStatus: true,
+                            brandCreated: true
+                        })
+                    }else if(res.exists && res.data().approved === false){
+                        this.setState({
+                            brandCreated: true,
+                            brandStatus: false
+                        })
+                    }
+                })
                 this.setState({
                     uid: user.uid,
                     redirect: false,
@@ -53,18 +66,30 @@ class Profile extends Component{
         this.props.authStateChange(authChange)
     }
 
-    renderPage = () => {
-        if(this.state.uid !== false){
+    renderPage(){
+        if(this.state.uid !== false && this.state.brandStatus){
             return(
                 <div className="profile-page">
                     <h1 className="page-title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                     <div className="profile-links">
-                        <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
-                        <Link to="/profile/product-create"><button className="ui button">Sell A Product</button></Link>
+                        <Link to="/profile/brand"><button className="ui button">Brand Page</button></Link>
+                        <Link to="/profile/product-create"><button className="ui button">List A Item</button></Link>
                         <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
                     </div>
+                </div>  
+            )
+        }else if(this.state.uid !== false && this.state.brandStatus){
+            return(
+                <div className="profile-links">
+                    <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
+                    <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
                 </div>
-                
+            )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
             )
         }
     }

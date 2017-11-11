@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.1.0-alpha (in progress)
+#  StreetwearBoutiques.com 1.2.0-alpha (in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 <!-- ![armoire image](./public/splashimage.png) -->
@@ -25,6 +25,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Products
     - [x] Create a new product
     - [x] Store Products on Firebase
+    - [x] Retrieve and view products
     - [ ] Improve with drag and drop to reorder images
 - [ ] Purchasing
     - [ ] Delivery Logistics
