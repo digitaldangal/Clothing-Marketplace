@@ -18,20 +18,26 @@ class ApprovedBrand extends Component {
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 db.collection('brands').doc(user.uid).get().then((res)=>{
-                    if(res.exists){
-                        console.log(res.data())
+                    if(res.exists && res.data().approved){
                         this.setState({
-                            uid: user.uid,
+                            brandStatus: true,
+                            brandCreated: true,
                             brandData: res.data(),
+                            uid: user.uid,
                             redirect: false,
                             currentPage: '',
+                        })
+                    }else if(res.exists && !res.data().approved){
+                        this.setState({
+                            redirect: true,
+                            currentPage: '/profile'
                         })
                     }
                 })
             }else{
                 this.setState({
                     redirect: true,
-                    currentPage: '/'
+                    currentPage: '/account/login'
                 }) 
             }
         })

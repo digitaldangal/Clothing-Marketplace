@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase';
 import {Link} from 'react-router-dom'
+import * as firebase from 'firebase';
+var db = firebase.firestore();
 
 class Navbar extends Component {
     constructor(props){
@@ -15,11 +16,10 @@ class Navbar extends Component {
             if(user){
                 this.setState({signedIn: true})
                 db.collection('brands').doc(user.uid).get().then((res)=>{
-                    if(res.exists){
-                        console.log(res.data())
+                    if(res.exists && res.data().approved){
                         this.setState({
                             uid: user.uid,
-                            brandData: res.data(),
+                            brandStatus: true,
                             redirect: false,
                             currentPage: '',
                         })
@@ -49,6 +49,7 @@ class Navbar extends Component {
                     <i className="dropdown icon"></i>
                     <div className="menu">
                         <div className="item"><Link to="/profile">Account Details</Link></div>
+                        {this.state.brandStatus ? <div className="item"><Link to="/profile/brand">Brand Dashboard</Link></div> : null}
                         <div className="item"><Link to="/profile/history">Transactions</Link></div>
                         <div className="item"><Link to="/profile/wishlist">Wishlist</Link></div>
                         {<div className="item"><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></div>}
