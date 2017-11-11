@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
+import firebase from '../config/firebase';
+
+// Initialize Cloud Firestore through firebase
+var db = firebase.firestore();
 
 class ApprovedBrand extends Component {
     constructor(props){
@@ -7,15 +12,22 @@ class ApprovedBrand extends Component {
             
         }
     }
-    
+    componentWillMount() {
+        
+    }
+    componentWillUpdate() {
+        
+    }
     //Check status of approved brand
 
 
     render(){
+        const {redirect, currentPage} = this.state;
         return(
-            <div>
-                <h1 className="page-title">Name of Brand</h1>
-            </div>
+            <section id="brand-page">
+                {redirect ? <Redirect to={currentPage} /> : null}
+                <h1 className="page-title">Brand Name</h1>
+            </section>
         )
     }
 }

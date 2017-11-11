@@ -46,4 +46,11 @@ div#pic-preview {
       div#pic-preview ul li img.temp-pic {
         width: 100%; }
 
+footer {
+  position: absolute;
+  bottom: 0em;
+  display: flex;
+  justify-content: center;
+  width: 100%; }
+
 /*# sourceMappingURL=App.css.map */
