@@ -11,6 +11,7 @@ class ApprovedBrand extends Component {
             redirect: false,
             currentPage: null,
             brandData: false,
+            productData: false
         }
     }
 
@@ -27,6 +28,17 @@ class ApprovedBrand extends Component {
                             redirect: false,
                             currentPage: '',
                         })
+                        let productRef = db.collection("brands").doc(this.state.uid).collection("products");
+                        let productData = {}
+                        productRef.get().then((res)=>{
+                            res.forEach((product)=>{
+                                console.log(product.id, product.data())
+                                return productData[product.id] = product.data()
+                            })
+                        }).then(()=>{
+                            console.log(productData)
+                            this.setState({productData: productData})
+                        }).catch(err=>{console.log(err)})
                     }else if(res.exists && !res.data().approved){
                         this.setState({
                             redirect: true,
@@ -44,13 +56,21 @@ class ApprovedBrand extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        console.log(nextProps, nextState)
         if(nextProps.authState && nextState.uid === false){
             console.log("update")
             return true;
         }else{
             console.log(" no update")
+            return false;
         }
+    }
+    
+    renderGallery(){
+        return(
+            <div className="card">
+                hey
+            </div>
+        )
     }
 
     renderPage(){
@@ -59,7 +79,7 @@ class ApprovedBrand extends Component {
                 <div className="brand-page">
                     <h1 className="page-title">{this.state.brandData.name}</h1>
                     <div className="product-gallery">
-                        
+                        <div className="ui link cards">{this.renderGallery()}</div>
                     </div>
                 </div>
             )
