@@ -178,7 +178,7 @@ class Login extends Component{
                                     <div className="ui label">
                                     Display Name
                                     </div>
-                                    <input required="true" name="display_name" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                    <input required="true" name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
                                 </div>
                             </div>
                             <div className="field">
