@@ -87,6 +87,7 @@ class Login extends Component{
                 db.collection('users').doc(firebase.auth().currentUser.uid).set({
                     first_name: this.state.first_name,
                     last_name: this.state.last_name,
+                    display_name: this.state.display_name,
                     email: this.state.email,
                     creation_time: new Date()
                 },{ merge: true })
@@ -125,21 +126,23 @@ class Login extends Component{
                     <h1>Login</h1>
                     <form onSubmit={this.handleLoginSubmit} className="ui equal width form">
                         <div id="login-error"></div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                   Email
+                        <div className="two fields">
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                    Email
+                                    </div>
+                                    <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
                                 </div>
-                                <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
                             </div>
-                        </div>
 
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Password
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                        Password
+                                    </div>
+                                    <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
                                 </div>
-                                <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
                             </div>
                         </div>
                         <button className="ui primary button" type="submit">Login</button>
@@ -169,12 +172,22 @@ class Login extends Component{
                             </div>
                         </div>
 
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                   Email
+                        <div className="two fields">
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                    Display Name
+                                    </div>
+                                    <input required="true" name="display_name" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
                                 </div>
-                                <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                    Email
+                                    </div>
+                                    <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                </div>
                             </div>
                         </div>
 
