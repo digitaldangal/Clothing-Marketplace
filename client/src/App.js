@@ -80,7 +80,7 @@ class App extends Component {
     const {redirect, currentPage} = this.state
     return (
       <Router>
-          <div className="App">
+          <div className="App ui container">
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/>
             <div className="app-body">
               <Switch>
@@ -99,7 +99,7 @@ class App extends Component {
                 <Route component={NoMatch} />
               </Switch>
             </div>
-            <Footer />
+            {/* <Footer /> */}
           </div>
       </Router>
     );

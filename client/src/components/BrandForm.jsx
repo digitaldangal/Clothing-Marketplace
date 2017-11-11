@@ -78,8 +78,7 @@ class BrandForm extends Component{
                     links: this.state.links,
                     website: this.state.website,
                     creation_time: new Date(),
-                    id: firebase.auth().currentUser.uid,
-                    approved: false
+                    id: firebase.auth().currentUser.uid
                 }).catch(err=>(console.log(err)))
                 this.setState({
                     redirect: true,

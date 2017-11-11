@@ -12,7 +12,7 @@ class Profile extends Component{
             currentPage: null,
             currentUser: false,
             brandCreated: null,
-            brandStatus: null
+            brandStatus: false
         }
     }
 
@@ -66,33 +66,24 @@ class Profile extends Component{
         this.props.authStateChange(authChange)
     }
 
-    brandAccess(){
-        return(
-            <div className="profile-links">
-                <Link to="/profile/brand"><button className="ui button">Brand Page</button></Link>
-                <Link to="/profile/product-create"><button className="ui button">List A Item</button></Link>
-                <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
-            </div>
-        )
-    }
-
-    brandRegister(){
-        return(
-            <div className="profile-links">
-                <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
-                <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
-            </div>
-        )
-    }
-
-    renderPage = () => {
-        if(this.state.uid !== false){
+    renderPage(){
+        if(this.state.uid !== false && this.state.brandStatus){
             return(
                 <div className="profile-page">
                     <h1 className="page-title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
-                    {this.state.brandStatus ? this.brandAccess() : this.brandRegister()}
+                    <div className="profile-links">
+                        <Link to="/profile/brand"><button className="ui button">Brand Page</button></Link>
+                        <Link to="/profile/product-create"><button className="ui button">List A Item</button></Link>
+                        <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
+                    </div>
+                </div>  
+            )
+        }else if(this.state.uid !== false && this.state.brandStatus){
+            return(
+                <div className="profile-links">
+                    <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
+                    <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
                 </div>
-                
             )
         }else{
             return(

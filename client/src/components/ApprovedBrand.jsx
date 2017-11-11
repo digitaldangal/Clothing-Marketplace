@@ -58,6 +58,9 @@ class ApprovedBrand extends Component {
             return(
                 <div className="brand-page">
                     <h1 className="page-title">{this.state.brandData.name}</h1>
+                    <div className="product-gallery">
+                        
+                    </div>
                 </div>
             )
         }else{
