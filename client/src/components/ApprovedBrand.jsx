@@ -89,7 +89,7 @@ class ApprovedBrand extends Component {
                                         Size: {product.size}
                                     </span>
                                     <span className="left floated">
-                                        <i className="user icon"></i>
+                                        <i className="shop icon"></i>
                                         {product.item_count}
                                     </span>
                                 </div>
@@ -112,7 +112,7 @@ class ApprovedBrand extends Component {
             return(
                 <div className="brand-page">
                     <h1 className="page-title">{this.state.brandData.name}</h1>
-                    lin
+                    <Link to="/profile/product-create"><button className="ui button">List A Item</button></Link>
                     <div className="product-gallery">
                         {this.renderGallery()}
                     </div>
