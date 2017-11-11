@@ -77,6 +77,17 @@ class ProductUpload extends Component {
         let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
         let downloadUrl = '';
         
+        db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
+            title: this.state.title,
+            designer: this.state.designer,
+            price: this.state.price,
+            size: this.state.title,
+            category: this.state.category,
+            description: this.state.description
+        },{ merge: true })
+        .then(res=>{console.log(res);
+        }).catch(err=>console.log(err))
+
         for(let i = 0; i < uploadedFiles.length; i++){
             let currentFile = uploadedFiles[i];
             
@@ -90,16 +101,8 @@ class ProductUpload extends Component {
             }).catch(err=>console.log(err))
         }
 
-        db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
-            title: this.state.title,
-            designer: this.state.designer,
-            price: this.state.price,
-            size: this.state.title,
-            category: this.state.category,
-            description: this.state.description
-        },{ merge: true })
-        .then(res=>console.log(res))
-        .catch(err=>console.log(err))
+        console.log("heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+
     }
 
     handleChange = (e) => {
@@ -111,8 +114,10 @@ class ProductUpload extends Component {
     }
 
     render(){
+        const {redirect, currentPage} = this.state;
         return(
             <div>
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <h1>Product Upload Page</h1>
                 <form onSubmit={this.handleSubmit} className="ui form">
                     <div className="two fields">
