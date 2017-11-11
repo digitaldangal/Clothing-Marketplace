@@ -7,13 +7,24 @@ class Navbar extends Component {
         super(props);
         this.state = {
             signedIn: false,
-            user: undefined
+            user: undefined,
         }
     }
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
                 this.setState({signedIn: true})
+                db.collection('brands').doc(user.uid).get().then((res)=>{
+                    if(res.exists){
+                        console.log(res.data())
+                        this.setState({
+                            uid: user.uid,
+                            brandData: res.data(),
+                            redirect: false,
+                            currentPage: '',
+                        })
+                    }
+                })
             }else{
                 this.setState({signedIn: false}) 
             }
