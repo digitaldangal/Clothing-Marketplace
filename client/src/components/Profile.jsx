@@ -94,6 +94,12 @@ class Profile extends Component{
                 </div>
                 
             )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
         }
     }
     render(){

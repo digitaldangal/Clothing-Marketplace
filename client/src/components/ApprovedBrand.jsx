@@ -10,9 +10,7 @@ class ApprovedBrand extends Component {
             uid: false,
             redirect: false,
             currentPage: null,
-            currentUser: false,
-            brandCreated: null,
-            brandStatus: null
+            brandData: null,
         }
     }
 
@@ -22,6 +20,12 @@ class ApprovedBrand extends Component {
                 db.collection('brands').doc(user.uid).get().then((res)=>{
                     if(res.exists){
                         console.log(res.data())
+                        this.setState({
+                            uid: user.uid,
+                            brandData: res.data(),
+                            redirect: false,
+                            currentPage: '',
+                        })
                     }
                 })
             }else{
@@ -43,12 +47,28 @@ class ApprovedBrand extends Component {
         }
     }
 
+    renderPage(){
+        if(this.props.authState){
+            return(
+                <div className="brand-page">
+                    <h1 className="page-title">{this.state.brandData.name}</h1>
+                </div>
+            )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }
+    }
+
     render(){
         const {redirect, currentPage} = this.state;
         return(
             <section id="brand-page">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <h1 className="page-title">{this.props.useruid}</h1>
+                {this.renderPage()}
             </section>
         )
     }
