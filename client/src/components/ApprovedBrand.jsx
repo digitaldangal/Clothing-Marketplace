@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -71,8 +71,28 @@ class ApprovedBrand extends Component {
                 <div className="ui link cards">
                     {Object.values(this.state.productData).map((product, i)=>{
                         return(
-                            <div className="card">
-                                
+                            <div className="card" key={i}>
+                                <div className="image">
+                                    <img src={product[Object.keys(product)[0]]} alt=""/>
+                                </div>
+                                <div className="content">
+                                    <div className="header">{product.title}</div>
+                                        <div className="meta">
+                                            <a>{product.category}</a>
+                                        </div>
+                                    <div className="description">
+                                        {product.description}
+                                    </div>
+                                </div>
+                                <div className="extra content">
+                                    <span className="right floated">
+                                        Size: {product.size}
+                                    </span>
+                                    <span className="left floated">
+                                        <i className="user icon"></i>
+                                        {product.item_count}
+                                    </span>
+                                </div>
                             </div>     
                         )
                     })}
@@ -92,6 +112,7 @@ class ApprovedBrand extends Component {
             return(
                 <div className="brand-page">
                     <h1 className="page-title">{this.state.brandData.name}</h1>
+                    lin
                     <div className="product-gallery">
                         {this.renderGallery()}
                     </div>

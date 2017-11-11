@@ -206,7 +206,7 @@ class ProductUpload extends Component {
                     </div>
 
                     <div className="field">
-                        <label>Upload At Least One Image for this Product </label>
+                        <label>First Image is Product Image </label>
                         <input type="file" name="photos" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
                         <div id="pic-preview">
                             <ul>

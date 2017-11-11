@@ -46,6 +46,9 @@ div#pic-preview {
       div#pic-preview ul li img.temp-pic {
         width: 100%; }
 
+.product-gallery .ui.link.cards .card {
+  text-align: left; }
+
 footer {
   position: absolute;
   bottom: 0em;

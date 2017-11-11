@@ -1,11 +1,10 @@
 .App {
     text-align: center;
-  }
+}
   
-  body{
+body{
     font-family: 'Raleway', 'Roboto', sans-serif;
-  }
-
+}
 
 //   NavBar
 .ui.stackable.menu{
@@ -41,6 +40,7 @@ form.ui.form {
     width: 65vw;
     margin: 0 auto;
 }
+
 div#pic-preview{
     margin-top: 1em;
     ul{
@@ -65,6 +65,16 @@ div#pic-preview{
         }
     }
 }
+
+// Brand Dashboard
+.product-gallery{
+    .ui.link.cards{
+        .card{
+            text-align: left;
+        }
+    }
+}
+
 footer {
     position: absolute;
     bottom: 0em;
