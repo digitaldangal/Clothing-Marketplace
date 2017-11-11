@@ -11,7 +11,7 @@ class ProductUpload extends Component {
     constructor(props){
         super(props);
         this.state = {
-            imageBlobs: {}
+            uploadCount: 0
         }
     }
 
@@ -76,6 +76,7 @@ class ProductUpload extends Component {
         var uploadedFiles = document.querySelector('#products_upload').files;
         let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
         let downloadUrl = '';
+        let count = 0;
         
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
@@ -96,13 +97,31 @@ class ProductUpload extends Component {
                 downloadUrl = res.downloadURL;
                 db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
                     [currentFile.name]: downloadUrl
-                },{ merge: true }).then(res=>console.log(res))
+                },{ merge: true })
                 .catch(err=>console.log(err))
-            }).catch(err=>console.log(err))
+            })
+            .then(()=>{
+                count++;
+                this.setState({
+                    uploadCount: count
+                })
+                console.log(this.state.uploadCount)
+                if(this.state.uploadCount === uploadedFiles.length){
+                    console.log("all files uploaded")
+                    this.redirectPage()
+                }else{
+                    console.log("all files not uploaded")
+                }
+            })
+            .catch(err=>console.log(err))
         }
+    }
 
-        console.log("heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
-
+    redirectPage = () =>{
+        this.setState({
+            redirect: true,
+            currentPage: '/profile/brand'
+        })
     }
 
     handleChange = (e) => {
