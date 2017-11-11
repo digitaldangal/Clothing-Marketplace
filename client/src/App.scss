@@ -68,7 +68,9 @@ div#pic-preview{
 
 // Brand Dashboard
 .product-gallery{
+    margin-top: 2em;
     .ui.link.cards{
+        justify-content: center;
         .card{
             text-align: left;
         }

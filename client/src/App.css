@@ -46,8 +46,12 @@ div#pic-preview {
       div#pic-preview ul li img.temp-pic {
         width: 100%; }
 
-.product-gallery .ui.link.cards .card {
-  text-align: left; }
+.product-gallery {
+  margin-top: 2em; }
+  .product-gallery .ui.link.cards {
+    justify-content: center; }
+    .product-gallery .ui.link.cards .card {
+      text-align: left; }
 
 footer {
   position: absolute;
