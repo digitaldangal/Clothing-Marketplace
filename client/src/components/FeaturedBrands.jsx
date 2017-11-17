@@ -14,12 +14,11 @@ class FeaturedBrands extends Component {
     }
 
     renderBrands(){
-        console.log("rendering brands")
         return(
             <ul>
-                <li>Brands</li>
-                <li>Brands</li>
-                <li>Brands</li>
+                <li><div>Brand 1</div></li>
+                <li><div>Brand 1</div></li>
+                <li><div>Brand 1</div></li>
             </ul>
         )
     }

@@ -67,7 +67,7 @@ class Profile extends Component{
     }
 
     renderPage(){
-        if(this.state.uid !== false && this.state.brandStatus){
+        if((this.state.uid !== false && this.state.brandCreated) && this.state.brandStatus){
             return(
                 <div className="profile-page">
                     <h1 className="page-title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
@@ -78,10 +78,12 @@ class Profile extends Component{
                     </div>
                 </div>  
             )
-        }else if(this.state.uid !== false && this.state.brandStatus){
+        }else if(this.state.uid !== false){
             return(
                 <div className="profile-links">
+                    <h1 className="page-title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                     <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
+                    <Link to="/profile/edit"><button className="ui button">Account Details</button></Link>
                     <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
                 </div>
             )

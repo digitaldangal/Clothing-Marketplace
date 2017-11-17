@@ -48,10 +48,10 @@ class Navbar extends Component {
                     <div className="text"><Link to="#">{this.props.userInfo.email}</Link></div>
                     <i className="dropdown icon"></i>
                     <div className="menu">
-                        <div className="item"><Link to="/profile">Account Details</Link></div>
+                        <div className="item"><Link to="/profile">Profile</Link></div>
                         {this.state.brandStatus ? <div className="item"><Link to="/profile/brand">Brand Dashboard</Link></div> : null}
+                        <div className="item"><Link to="/profile/edit">Account Details</Link></div>
                         <div className="item"><Link to="/profile/history">Transactions</Link></div>
-                        <div className="item"><Link to="/profile/wishlist">Wishlist</Link></div>
                         {<div className="item"><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></div>}
                     </div>
                 </div>

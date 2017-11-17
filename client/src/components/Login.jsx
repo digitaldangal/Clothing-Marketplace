@@ -99,7 +99,7 @@ class Login extends Component{
                 });
                 this.setState({
                     redirect: true,
-                    currentPage: '/profile'
+                    currentPage: '/'
                 })
             })
             .catch(err=>{
