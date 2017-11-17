@@ -62,9 +62,6 @@ These are some of the features that I plan on tackling as I build this project
 
 ### Wireframes
 
-#### Inital HomePage Wireframe
-![Copped WireFrame Screenshots](./assets/wireframe1.png?raw=true "Copped WireFrames")
-
 #### Brands Listing
 ![Copped WireFrame Screenshots](./assets/wireframe2.png?raw=true "Copped WireFrames")
 
@@ -78,6 +75,12 @@ These are some of the features that I plan on tackling as I build this project
 
 #### Upload A Clothing Item
 ![Upload A Clothing Item](./assets/productCreate.png?raw=true "Product Create")
+
+#### Login Page
+![Login page](./assets/login-page.png?raw=true "Login page")
+
+#### Product Page
+![Product Page](./assets/product-page.png?raw=true "Product page")
 
 ### Technical Discussion
 Tech Stack
