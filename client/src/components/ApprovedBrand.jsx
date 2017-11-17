@@ -30,7 +30,7 @@ class ApprovedBrand extends Component {
                         })
                         let productRef = db.collection("brands").doc(this.state.uid).collection("products");
                         let productData = {}
-                        productRef.get().then((res)=>{
+                        productRef.orderBy("title").get().then((res)=>{
                             res.forEach((product)=>{
                                 console.log(product.id, product.data())
                                 return productData[product.id] = product.data()
@@ -79,6 +79,7 @@ class ApprovedBrand extends Component {
                                     <div className="header">{product.title}</div>
                                         <div className="meta">
                                             <a>{product.category}</a>
+                                            <a>${product.price}</a>
                                         </div>
                                     <div className="description">
                                         {product.description}

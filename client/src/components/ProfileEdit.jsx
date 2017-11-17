@@ -22,15 +22,15 @@ class ProfileEdit extends Component {
     }
 
     rendePage(){
-        if(){
+        // if(){
 
-        }else{
-            return(
-                <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
-                </div>
-            )
-        }
+        // }else{
+        //     return(
+        //         <div className="ui active inverted dimmer">
+        //             <div className="ui indeterminate text loader">Preparing Files</div>
+        //         </div>
+        //     )
+        // }
     }
 
     render(){
@@ -45,3 +45,12 @@ class ProfileEdit extends Component {
 }
 
 export default ProfileEdit;
+
+/* 
+
+display_name
+email
+first_name
+last_name
+
+*/
