@@ -53,11 +53,4 @@ div#pic-preview {
     .product-gallery .ui.link.cards .card {
       text-align: left; }
 
-footer {
-  position: absolute;
-  bottom: 0em;
-  display: flex;
-  justify-content: center;
-  width: 100%; }
-
 /*# sourceMappingURL=App.css.map */
