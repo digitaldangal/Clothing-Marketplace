@@ -50,7 +50,7 @@ class Navbar extends Component {
                     <div className="menu">
                         <div className="item"><Link to="/profile">Profile</Link></div>
                         {this.state.brandStatus ? <div className="item"><Link to="/profile/brand">Brand Dashboard</Link></div> : null}
-                        <div className="item"><Link to="/profile/edit">Account Details</Link></div>
+                        <div className="item"><Link to="/profile/edit">Edit Account</Link></div>
                         <div className="item"><Link to="/profile/history">Transactions</Link></div>
                         {<div className="item"><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></div>}
                     </div>
@@ -87,6 +87,9 @@ class Navbar extends Component {
                     </div>
                     <div className="link item">
                         <Link to="/cart">Cart</Link>
+                    </div>
+                    <div className="link item">
+                        <Link to="/contact">Contact</Link>
                     </div>
                 </div>
             </div>
