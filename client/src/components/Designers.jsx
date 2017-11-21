@@ -42,7 +42,7 @@ class Designers extends Component {
     renderBrands(){
         if(this.state.brandData){
             return(
-                <div className="ui cards">
+                <div className="ui link cards">
                     {Object.values(this.state.brandData).map((brand, i)=>{
                         return(
                             <div className="card brandCard" key={i}>

@@ -68,7 +68,7 @@ div#pic-preview{
 }
 
 // Brand Dashboard
-.product-gallery{
+.product-gallery, .brand-gallery{
     margin-top: 2em;
     .ui.link.cards{
         justify-content: center;
@@ -79,7 +79,7 @@ div#pic-preview{
 }
 
 // Designers Page
-.card.brandCard {
+.card.brandCard{
     .header.title{
         text-transform: capitalize;
     }
@@ -89,7 +89,6 @@ div#pic-preview{
         white-space: pre-line;
         height: 55px;
     }
-
 }
 
 // footer {
