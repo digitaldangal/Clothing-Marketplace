@@ -120,7 +120,14 @@ class ApprovedBrand extends Component {
             )
         }else if(this.state.brandData && !this.state.productData){
             return(
-                <div className="card">No Products Yet</div>
+                <div className="brand-page">
+                    <h1 className="ui header">{this.state.brandData.name}</h1>
+                    <h3 className="ui header">{this.state.brandData.description}</h3>
+                    <Link to="/profile/product-create"><button className="ui button">List A Item</button></Link>
+                    <div className="product-gallery">
+                        <div className="card">No Products Yet! List a item to get started.</div>
+                    </div>
+                </div>
             )
         }else{
             return(

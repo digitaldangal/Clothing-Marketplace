@@ -31,17 +31,30 @@ class Designer extends Component {
                     this.setState({brandUid: brand.id})
                     return brandInfo = brand.data();
                 })
+                
                 let productRef = db.collection("brands").doc(this.state.brandUid).collection("products");
                 let productData = {}
                 productRef.orderBy("title").get().then((res)=>{
-                    res.forEach((product)=>{
-                        return productData[product.id] = product.data()
-                    })
+                    if(res.empty == false){
+                        res.forEach((product)=>{
+                            return productData[product.id] = product.data()
+                        })
+                        this.setState({
+                            productData: productData,
+                            productDataLoaded: true,
+                            singleBrandData: brandInfo,
+                            singleBrandDataLoaded: true
+                        })
+                    }else{
+                        this.setState({
+                            singleBrandData: brandInfo,
+                            singleBrandDataLoaded: true,
+                            productData: false,
+                            productDataLoaded: false, 
+                        })
+                    }
                 }).then(()=>{
-                    this.setState({
-                        productData: productData,
-                        productDataLoaded: true
-                    })
+                   console.log("Cat")
                 }).catch(err=>{console.log(err)})
             }else{
                 this.setState({
@@ -49,11 +62,6 @@ class Designer extends Component {
                     currentPage: '/designers'
                 })
             }
-        }).then(()=>{
-            this.setState({
-                singleBrandData: brandInfo,
-                singleBrandDataLoaded: true
-            })
         }).catch(err=>console.log(err))
     }
 
@@ -65,24 +73,20 @@ class Designer extends Component {
         if(this.state.singleBrandData){
             return(
                 <div className="ui link cards">
-                    {Object.values(this.state.brandData).map((brand, i)=>{
-                        return(
-                            <div className="card brandCard" key={i}>
-                                <div className="content">
-                                    <div className="header title">{brand.name}</div>
-                                        <div className="meta">
-                                            {brand.website != null ? <a href={brand.website} target="_blank">{brand.website}</a> : <a href="#">No Website</a>}
-                                        </div>
-                                    <div className="description">
-                                        <p className="brandText">{brand.description}</p>
-                                    </div>
+                    <div className="card brandCard" >
+                        {/* <div className="content">
+                            <div className="header title"></div>
+                                <div className="meta">
+                                    {brand.website != null ? <a href={brand.website} target="_blank">{brand.website}</a> : <a href="#">No Website</a>}
                                 </div>
-                                <div className="ui bottom attached button">
-                                    <Link to={`/designers/${brand.name}`}>View Brand</Link>
-                                </div>
-                            </div>     
-                        )
-                    })}
+                            <div className="description">
+                                <p className="brandText">{brand.description}</p>
+                            </div>
+                        </div>
+                        <div className="ui bottom attached button">
+                            <Link to={`/designers/${brand.name}`}>View Brand</Link>
+                        </div> */}
+                    </div> 
                 </div>
             )
         }else{
@@ -95,16 +99,23 @@ class Designer extends Component {
     }
 
     renderPage(){
-
-        return(
-            <h1>hey</h1>
-        )
-        /* if(this.state.singleBrandData && this.state.singleBrandDataLoaded){
+        if(this.state.productDataLoaded && this.state.singleBrandDataLoaded){
             return(
                 <div className="single-brand">
                     <h1 className="ui header">{this.state.singleBrandData.name}</h1>
+                    <h3 className="ui header">{this.state.singleBrandData.description}</h3>
                     <div className="brand-gallery">
                         {this.renderBrands()}
+                    </div>
+                </div>
+            )
+        }else if(this.state.productDataLoaded == false && this.state.singleBrandData){
+            return(
+                <div className="single-brand">
+                    <h1 className="ui header">{this.state.singleBrandData.name}</h1>
+                    <h3 className="ui header">{this.state.singleBrandData.description}</h3>
+                    <div className="brand-gallery">
+                        <h3 className="ui header">Either this brand has sold out or no products are available yet.</h3>
                     </div>
                 </div>
             )
@@ -114,7 +125,7 @@ class Designer extends Component {
                     <div className="ui indeterminate text loader">Preparing Files</div>
                 </div>
             )
-        } */
+        }
     }
     render(){
         const {redirect, currentPage} = this.state;
