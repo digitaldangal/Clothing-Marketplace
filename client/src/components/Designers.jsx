@@ -17,7 +17,7 @@ class Designers extends Component {
     componentWillMount() {
         let brandData = {};
         if(this.props.brandDataLoaded === false){
-            db.collection("brands").where("approved", "==", true).get().then(res=>{
+            db.collection("brands").where("approved", "==", true).orderBy("name").get().then(res=>{
                 res.forEach((brand)=>{
                     console.log(brand.id, brand.data())
                     return brandData[brand.id] = brand.data()
@@ -42,18 +42,14 @@ class Designers extends Component {
     renderBrands(){
         if(this.state.brandData){
             return(
-                <div className="ui link cards">
+                <div className="ui cards">
                     {Object.values(this.state.brandData).map((brand, i)=>{
                         return(
                             <div className="card" key={i}>
-                                <div className="image">
-                                    <img src={brand[Object.keys(brand)[0]]} alt=""/>
-                                </div>
                                 <div className="content">
-                                    <div className="header">{brand.title}</div>
+                                    <div className="header">{brand.name}</div>
                                         <div className="meta">
-                                            <a>{brand.category}</a>
-                                            <a>${brand.price}</a>
+                                            <a href={brand.website} target="_blank">{brand.website}</a>
                                         </div>
                                     <div className="description">
                                         {brand.description}
@@ -86,7 +82,7 @@ class Designers extends Component {
         if(this.state.brandData){
             return(
                 <div className="brand-list">
-                    <h1 className="page-title">Designers</h1>
+                    <h1 className="ui header">Designers</h1>
                     <div className="brand-gallery">
                         {this.renderBrands()}
                     </div>
