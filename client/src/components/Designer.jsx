@@ -13,49 +13,36 @@ class Designer extends Component {
             brandUid: false,
             singleBrandData: false,
             singleBrandDataLoaded: false,
+            productData: false,
+            productDataLoaded: false,
         }
     }
 
     componentWillMount() {
         let brandId = Number(this.props.match.params.brand_id);
         let brandInfo = {};
-        // db.collection('brands').doc(user.uid).get().then((res)=>{
-        //     if(res.exists && res.data().approved){
-        //         this.setState({
-        //             brandStatus: true,
-        //             brandCreated: true,
-        //             brandData: res.data(),
-        //             uid: user.uid,
-        //             redirect: false,
-        //             currentPage: '',
-        //         })
-        //         let productRef = db.collection("brands").doc(this.state.uid).collection("products");
-        //         let productData = {}
-        //         productRef.orderBy("title").get().then((res)=>{
-        //             res.forEach((product)=>{
-        //                 return productData[product.id] = product.data()
-        //             })
-        //         }).then(()=>{
-        //             this.setState({productData: productData})
-        //         }).catch(err=>{console.log(err)})
-        //     }else if(res.exists && !res.data().approved){
-        //         this.setState({
-        //             redirect: true,
-        //             currentPage: '/profile'
-        //         })
-        //     }
-        // })
         db.collection("brands").where("id", "==", brandId).get().then(res=>{
             if(res.empty == false){
                 this.setState({
                     redirect: false,
                     currentPage: '',
                 })
-                console.log(res)
                 res.forEach((brand)=>{
-                    console.log(brand.id)
+                    this.setState({brandUid: brand.id})
                     return brandInfo = brand.data();
                 })
+                let productRef = db.collection("brands").doc(this.state.brandUid).collection("products");
+                let productData = {}
+                productRef.orderBy("title").get().then((res)=>{
+                    res.forEach((product)=>{
+                        return productData[product.id] = product.data()
+                    })
+                }).then(()=>{
+                    this.setState({
+                        productData: productData,
+                        productDataLoaded: true
+                    })
+                }).catch(err=>{console.log(err)})
             }else{
                 this.setState({
                     redirect: true,
@@ -63,7 +50,6 @@ class Designer extends Component {
                 })
             }
         }).then(()=>{
-            console.log("hiiiiiiiiii")
             this.setState({
                 singleBrandData: brandInfo,
                 singleBrandDataLoaded: true
