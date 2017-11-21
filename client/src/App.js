@@ -12,6 +12,7 @@ import ProfileEdit from './components/ProfileEdit';
 import BrandForm from './components/BrandForm';
 import Designers from './components/Designers';
 import Designer from './components/Designer';
+import Clothing from './components/Clothing';
 import Article from './components/Article';
 import About from './components/About';
 import Footer from './components/Footer';
@@ -107,6 +108,7 @@ class App extends Component {
                 <Route exact path="/profile/brand" render={()=> <ApprovedBrand authState={this.state.authState} userUid={this.state.uid} /> } />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} brandData={this.state.brandData} brandDataLoaded={this.state.brandDataLoaded} storeFeed={(brandData)=> this.storeFeed(brandData)} />} />
                 <Route exact path="/designers/:brand/:brand_id" component={Designer} />
+                <Route exact path="/designers/:brand/:brand_id/:product_title" component={Clothing} />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/about" component={About} />

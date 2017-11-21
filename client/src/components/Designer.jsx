@@ -76,14 +76,7 @@ class Designer extends Component {
                 {Object.values(this.state.productData).map((product, i)=>{
                     return(
                         <div className="card" key={i}>
-                            <div className="blurring dimmable image">
-                                <div className="ui dimmer">
-                                    <div className="content">
-                                        <div className="center">
-                                            <div className="ui inverted button">View Item</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="image">
                                 <img src={product[Object.keys(product)[0]]} alt=""/>
                             </div>
                             <div className="content">
@@ -100,6 +93,9 @@ class Designer extends Component {
                                 <span className="left floated">
                                     Size: {product.size}
                                 </span>
+                            </div>
+                            <div className="ui bottom attached button">
+                                <Link to={`/designers/${brand.name}/${brand.id}`}>View Brand</Link>
                             </div>
                         </div>     
                     )

@@ -52,9 +52,9 @@ div#pic-preview {
 
 .product-gallery, .brand-gallery, .single-brand, .profile-page, .brand-list {
   margin-top: 2em; }
-  .product-gallery .ui.link.cards, .product-gallery .ui.special.cards, .brand-gallery .ui.link.cards, .brand-gallery .ui.special.cards, .single-brand .ui.link.cards, .single-brand .ui.special.cards, .profile-page .ui.link.cards, .profile-page .ui.special.cards, .brand-list .ui.link.cards, .brand-list .ui.special.cards {
+  .product-gallery .ui.link.cards, .brand-gallery .ui.link.cards, .single-brand .ui.link.cards, .profile-page .ui.link.cards, .brand-list .ui.link.cards {
     justify-content: center; }
-    .product-gallery .ui.link.cards .card, .product-gallery .ui.special.cards .card, .brand-gallery .ui.link.cards .card, .brand-gallery .ui.special.cards .card, .single-brand .ui.link.cards .card, .single-brand .ui.special.cards .card, .profile-page .ui.link.cards .card, .profile-page .ui.special.cards .card, .brand-list .ui.link.cards .card, .brand-list .ui.special.cards .card {
+    .product-gallery .ui.link.cards .card, .brand-gallery .ui.link.cards .card, .single-brand .ui.link.cards .card, .profile-page .ui.link.cards .card, .brand-list .ui.link.cards .card {
       text-align: left; }
 
 .card.brandCard .header.title {
