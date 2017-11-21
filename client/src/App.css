@@ -64,4 +64,7 @@ div#pic-preview {
   white-space: pre-line;
   height: 55px; }
 
+.description.links, .meta.links {
+  text-align: center; }
+
 /*# sourceMappingURL=App.css.map */

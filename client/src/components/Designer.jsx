@@ -72,7 +72,7 @@ class Designer extends Component {
     renderBrands(){
         if(this.state.productData){
             return(
-                <div className="ui links cards">
+                <div className="ui link cards">
                 {Object.values(this.state.productData).map((product, i)=>{
                     return(
                         <div className="card" key={i}>
@@ -81,19 +81,15 @@ class Designer extends Component {
                             </div>
                             <div className="content">
                                 <div className="header">{product.title}</div>
-                                    <div className="meta">
+                                    <div className="meta links">
                                         <a>{product.category}</a>
                                         <a>${product.price}</a>
+                                        <a>Size: {product.size}</a>
                                     </div>
-                                <div className="description">
+                                <div className="description links">
                                     <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}><button className="ui button">View Item</button></Link>
                                     <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}><button className="ui button">Add to Cart</button></Link>
                                 </div>
-                            </div>
-                            <div className="extra content">
-                                <span className="left floated">
-                                    Size: {product.size}
-                                </span>
                             </div>
                         </div>     
                     )
