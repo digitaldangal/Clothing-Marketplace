@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.2.0-alpha (in progress)
+#  StreetwearBoutiques.com 1.3.0-alpha (in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 
