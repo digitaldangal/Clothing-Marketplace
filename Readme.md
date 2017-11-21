@@ -63,7 +63,7 @@ These are some of the features that I plan on tackling as I build this project
     ```
 7. In the root folder of the project run npm install to install back end dependencies
 
-## The Making of Copped.com
+## The Making of Streerwear Boutiques
 
 ### Wireframes
 
