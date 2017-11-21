@@ -5,6 +5,9 @@
 body {
   font-family: 'Raleway', 'Roboto', sans-serif; }
 
+.ui.header {
+  text-transform: capitalize; }
+
 .ui.stackable.menu .item {
   justify-content: center; }
   .ui.stackable.menu .item a.brand {
@@ -47,11 +50,11 @@ div#pic-preview {
       div#pic-preview ul li img.temp-pic {
         width: 100%; }
 
-.product-gallery, .brand-gallery {
+.product-gallery, .brand-gallery, .single-brand, .profile-page, .brand-list {
   margin-top: 2em; }
-  .product-gallery .ui.link.cards, .brand-gallery .ui.link.cards {
+  .product-gallery .ui.link.cards, .brand-gallery .ui.link.cards, .single-brand .ui.link.cards, .profile-page .ui.link.cards, .brand-list .ui.link.cards {
     justify-content: center; }
-    .product-gallery .ui.link.cards .card, .brand-gallery .ui.link.cards .card {
+    .product-gallery .ui.link.cards .card, .brand-gallery .ui.link.cards .card, .single-brand .ui.link.cards .card, .profile-page .ui.link.cards .card, .brand-list .ui.link.cards .card {
       text-align: left; }
 
 .card.brandCard .header.title {
@@ -60,5 +63,8 @@ div#pic-preview {
   overflow: hidden;
   white-space: pre-line;
   height: 55px; }
+
+.description.links, .meta.links {
+  text-align: center; }
 
 /*# sourceMappingURL=App.css.map */
