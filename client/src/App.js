@@ -28,7 +28,7 @@ class App extends Component {
       redirect: false,
       currentPage: '',
       uid: null,
-      brandData: null,
+      brandData: false,
       brandDataLoaded: false
     }
   }
@@ -82,7 +82,8 @@ class App extends Component {
   storeFeed = (brandData) => {
     console.log(brandData)
     this.setState({
-      brandData: brandData
+      brandData: brandData,
+      brandDataLoaded: true
     })
   }
 

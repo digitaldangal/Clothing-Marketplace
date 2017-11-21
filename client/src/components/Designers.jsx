@@ -16,16 +16,23 @@ class Designers extends Component {
 
     componentWillMount() {
         let brandData = {};
-        db.collection("brands").where("approved", "==", true).get().then(res=>{
-            res.forEach((brand)=>{
-                console.log(brand.id, brand.data())
-                return brandData[brand.id] = brand.data()
+        if(this.props.brandDataLoaded === false){
+            db.collection("brands").where("approved", "==", true).get().then(res=>{
+                res.forEach((brand)=>{
+                    console.log(brand.id, brand.data())
+                    return brandData[brand.id] = brand.data()
+                })
+            }).then(()=>{
+                console.log(brandData)
+                this.setState({brandData: brandData})
+                this.props.storeFeed(brandData);
+            }).catch(err=>{console.log(err)})
+        }else{
+            let brandDataFeed = this.props.brandData;
+            this.setState({
+                brandData: brandDataFeed
             })
-        }).then(()=>{
-            console.log(brandData)
-            this.setState({brandData: brandData})
-            this.props.storeFeed(brandData);
-        }).catch(err=>{console.log(err)})
+        }
     }
 
     componentWillUpdate(prev, next) {
@@ -33,11 +40,46 @@ class Designers extends Component {
     }
 
     renderBrands(){
-        return(
-            <div>
-                hey
-            </div>
-        )
+        if(this.state.brandData){
+            return(
+                <div className="ui link cards">
+                    {Object.values(this.state.brandData).map((brand, i)=>{
+                        return(
+                            <div className="card" key={i}>
+                                <div className="image">
+                                    <img src={brand[Object.keys(brand)[0]]} alt=""/>
+                                </div>
+                                <div className="content">
+                                    <div className="header">{brand.title}</div>
+                                        <div className="meta">
+                                            <a>{brand.category}</a>
+                                            <a>${brand.price}</a>
+                                        </div>
+                                    <div className="description">
+                                        {brand.description}
+                                    </div>
+                                </div>
+                                <div className="extra content">
+                                    <span className="right floated">
+                                        Size: {brand.size}
+                                    </span>
+                                    <span className="left floated">
+                                        <i className="shop icon"></i>
+                                        {brand.item_count}
+                                    </span>
+                                </div>
+                            </div>     
+                        )
+                    })}
+                </div>
+            )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }
     }
 
     renderPage(){
