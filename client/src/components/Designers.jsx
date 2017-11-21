@@ -52,17 +52,11 @@ class Designers extends Component {
                                             <a href={brand.website} target="_blank">{brand.website}</a>
                                         </div>
                                     <div className="description">
-                                        {brand.description}
+                                        <p>{brand.description}</p>
                                     </div>
                                 </div>
-                                <div className="extra content">
-                                    <span className="right floated">
-                                        Size: {brand.size}
-                                    </span>
-                                    <span className="left floated">
-                                        <i className="shop icon"></i>
-                                        {brand.item_count}
-                                    </span>
+                                <div className="ui bottom attached button">
+                                    <Link to={`/designers/${brand.name}`}>View Brand</Link>
                                 </div>
                             </div>     
                         )
