@@ -13,26 +13,15 @@ class Designer extends Component {
             singleBrandData: false,
         }
     }
-
     componentWillMount() {
-        let brandData = {};
-        if(this.props.brandDataLoaded === false){
-            db.collection("brands").where("approved", "==", true).orderBy("name").get().then(res=>{
-                res.forEach((brand)=>{
-                    console.log(brand.id, brand.data())
-                    return brandData[brand.id] = brand.data()
-                })
-            }).then(()=>{
-                console.log(brandData)
-                this.setState({brandData: brandData})
-                this.props.storeFeed(brandData);
-            }).catch(err=>{console.log(err)})
-        }else{
-            let brandDataFeed = this.props.brandData;
-            this.setState({
-                brandData: brandDataFeed
-            })
-        }
+        let brandDatba = {};
+        let brandId = Number(this.props.match.params.brand_id);
+        db.collection("brands").where("id", "==", brandId).get().then(res=>{
+            console.log(res)
+            res.forEach((brand)=>{
+                console.log(brand.data())
+            }).catch(err=>{console.log(err)}) 
+        }).catch(err=>{console.log(err)})  
     }
 
     componentWillUpdate(prev, next) {
@@ -40,7 +29,7 @@ class Designer extends Component {
     }
 
     renderBrands(){
-        if(this.state.brandData){
+        if(this.state.singleBrandData){
             return(
                 <div className="ui link cards">
                     {Object.values(this.state.brandData).map((brand, i)=>{
