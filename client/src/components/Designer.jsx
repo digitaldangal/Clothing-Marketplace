@@ -70,23 +70,33 @@ class Designer extends Component {
     }
 
     renderBrands(){
-        if(this.state.singleBrandData){
+        if(this.state.productData){
             return(
                 <div className="ui link cards">
-                    <div className="card brandCard" >
-                        {/* <div className="content">
-                            <div className="header title"></div>
-                                <div className="meta">
-                                    {brand.website != null ? <a href={brand.website} target="_blank">{brand.website}</a> : <a href="#">No Website</a>}
-                                </div>
-                            <div className="description">
-                                <p className="brandText">{brand.description}</p>
+                {Object.values(this.state.productData).map((product, i)=>{
+                    return(
+                        <div className="card" key={i}>
+                            <div className="image">
+                                <img src={product[Object.keys(product)[0]]} alt=""/>
                             </div>
-                        </div>
-                        <div className="ui bottom attached button">
-                            <Link to={`/designers/${brand.name}`}>View Brand</Link>
-                        </div> */}
-                    </div> 
+                            <div className="content">
+                                <div className="header">{product.title}</div>
+                                    <div className="meta">
+                                        <a>{product.category}</a>
+                                        <a>${product.price}</a>
+                                    </div>
+                                <div className="description">
+                                    {product.description}
+                                </div>
+                            </div>
+                            <div className="extra content">
+                                <span className="left floated">
+                                    Size: {product.size}
+                                </span>
+                            </div>
+                        </div>     
+                    )
+                })}
                 </div>
             )
         }else{
@@ -112,7 +122,7 @@ class Designer extends Component {
         }else if(this.state.productDataLoaded == false && this.state.singleBrandData){
             return(
                 <div className="single-brand">
-                    <h1 className="ui header">{this.state.singleBrandData.name}</h1>
+                    <h1 className="ui header title">{this.state.singleBrandData.name}</h1>
                     <h3 className="ui header">{this.state.singleBrandData.description}</h3>
                     <div className="brand-gallery">
                         <h3 className="ui header">Either this brand has sold out or no products are available yet.</h3>
