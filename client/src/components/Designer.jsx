@@ -72,11 +72,18 @@ class Designer extends Component {
     renderBrands(){
         if(this.state.productData){
             return(
-                <div className="ui link cards">
+                <div className="ui special cards">
                 {Object.values(this.state.productData).map((product, i)=>{
                     return(
                         <div className="card" key={i}>
-                            <div className="image">
+                            <div className="blurring dimmable image">
+                                <div className="ui dimmer">
+                                    <div className="content">
+                                        <div className="center">
+                                            <div className="ui inverted button">View Item</div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <img src={product[Object.keys(product)[0]]} alt=""/>
                             </div>
                             <div className="content">
