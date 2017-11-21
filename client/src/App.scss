@@ -29,8 +29,8 @@ body{
         margin-top: 3em;
     }
 }
-// Brand form
 
+// Brand form
 div#brand-error {
     width: 65vw;
     margin: 0 auto;
@@ -68,13 +68,26 @@ div#pic-preview{
 }
 
 // Brand Dashboard
-.product-gallery{
+.product-gallery, .brand-gallery{
     margin-top: 2em;
     .ui.link.cards{
         justify-content: center;
         .card{
             text-align: left;
         }
+    }
+}
+
+// Designers Page
+.card.brandCard{
+    .header.title{
+        text-transform: capitalize;
+    }
+    
+    p.brandText{
+        overflow: hidden;
+        white-space: pre-line;
+        height: 55px;
     }
 }
 

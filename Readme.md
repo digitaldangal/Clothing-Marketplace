@@ -1,6 +1,11 @@
 #  StreetwearBoutiques.com 1.2.0-alpha (in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
+
+Test Account:
+email: test@gmail.com
+password: abc123
+
 <!-- ![armoire image](./public/splashimage.png) -->
 
 ### Project Stricture / Features
@@ -16,19 +21,31 @@ These are some of the features that I plan on tackling as I build this project
     - [X] Storage
     - [X] Hosting 
     - [X] Database
-- [ ] Searching
-- [ ] Brands
-    - [ ] List of Designers/Brands 
+- [x] Brands
+    - [X] List of Designers/Brands 
     - [x] Register a Brand 
     - [X] Store Brands on Firebase 
-    - [ ] 10-20 Starting Brands, go up by 5-10 every month
-- [ ] Products
+- [X] Products
     - [x] Create a new product
     - [x] Store Products on Firebase
     - [x] Retrieve and view products
-    - [ ] Improve with drag and drop to reorder images
 - [ ] Purchasing
+    - [ ] Cart
+    - [ ] Wishlist
     - [ ] Delivery Logistics
+- [ ] Home Section
+    - [ ] Articles View
+    - [ ] Featured Brands or Random Brands
+- [ ] Articles
+- [ ] About
+- [ ] Contact
+
+
+Future Improvements
+- [ ] Searching
+- [ ] 10-20 Starting Brands, go up by 5-10 every month
+- [ ] Weekly Articles
+- [ ] Improve with drag and drop to reorder images
 - [ ] Create Admin Dashboard
     - [ ] View All Users
     - [ ] View All Brands
@@ -58,7 +75,7 @@ These are some of the features that I plan on tackling as I build this project
     ```
 7. In the root folder of the project run npm install to install back end dependencies
 
-## The Making of Copped.com
+## The Making of Streerwear Boutiques
 
 ### Wireframes
 

@@ -47,11 +47,18 @@ div#pic-preview {
       div#pic-preview ul li img.temp-pic {
         width: 100%; }
 
-.product-gallery {
+.product-gallery, .brand-gallery {
   margin-top: 2em; }
-  .product-gallery .ui.link.cards {
+  .product-gallery .ui.link.cards, .brand-gallery .ui.link.cards {
     justify-content: center; }
-    .product-gallery .ui.link.cards .card {
+    .product-gallery .ui.link.cards .card, .brand-gallery .ui.link.cards .card {
       text-align: left; }
+
+.card.brandCard .header.title {
+  text-transform: capitalize; }
+.card.brandCard p.brandText {
+  overflow: hidden;
+  white-space: pre-line;
+  height: 55px; }
 
 /*# sourceMappingURL=App.css.map */
