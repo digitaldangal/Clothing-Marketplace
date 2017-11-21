@@ -1,6 +1,11 @@
 #  StreetwearBoutiques.com 1.2.0-alpha (in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
+
+Test Account:
+email: test@gmail.com
+password: abc123
+
 <!-- ![armoire image](./public/splashimage.png) -->
 
 ### Project Stricture / Features
