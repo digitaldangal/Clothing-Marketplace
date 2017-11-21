@@ -21,19 +21,31 @@ These are some of the features that I plan on tackling as I build this project
     - [X] Storage
     - [X] Hosting 
     - [X] Database
-- [ ] Searching
-- [ ] Brands
-    - [ ] List of Designers/Brands 
+- [x] Brands
+    - [X] List of Designers/Brands 
     - [x] Register a Brand 
     - [X] Store Brands on Firebase 
-    - [ ] 10-20 Starting Brands, go up by 5-10 every month
-- [ ] Products
+- [X] Products
     - [x] Create a new product
     - [x] Store Products on Firebase
     - [x] Retrieve and view products
-    - [ ] Improve with drag and drop to reorder images
 - [ ] Purchasing
+    - [ ] Cart
+    - [ ] Wishlist
     - [ ] Delivery Logistics
+- [ ] Home Section
+    - [ ] Articles View
+    - [ ] Featured Brands or Random Brands
+- [ ] Articles
+- [ ] About
+- [ ] Contact
+
+
+Future Improvements
+- [ ] Searching
+- [ ] 10-20 Starting Brands, go up by 5-10 every month
+- [ ] Weekly Articles
+- [ ] Improve with drag and drop to reorder images
 - [ ] Create Admin Dashboard
     - [ ] View All Users
     - [ ] View All Brands
