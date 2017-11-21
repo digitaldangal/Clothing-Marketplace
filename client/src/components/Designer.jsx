@@ -10,18 +10,65 @@ class Designer extends Component {
             redirect: false,
             currentPage: null,
             currentUser: false,
+            brandUid: false,
             singleBrandData: false,
+            singleBrandDataLoaded: false,
         }
     }
+
     componentWillMount() {
-        let brandDatba = {};
         let brandId = Number(this.props.match.params.brand_id);
+        let brandInfo = {};
+        // db.collection('brands').doc(user.uid).get().then((res)=>{
+        //     if(res.exists && res.data().approved){
+        //         this.setState({
+        //             brandStatus: true,
+        //             brandCreated: true,
+        //             brandData: res.data(),
+        //             uid: user.uid,
+        //             redirect: false,
+        //             currentPage: '',
+        //         })
+        //         let productRef = db.collection("brands").doc(this.state.uid).collection("products");
+        //         let productData = {}
+        //         productRef.orderBy("title").get().then((res)=>{
+        //             res.forEach((product)=>{
+        //                 return productData[product.id] = product.data()
+        //             })
+        //         }).then(()=>{
+        //             this.setState({productData: productData})
+        //         }).catch(err=>{console.log(err)})
+        //     }else if(res.exists && !res.data().approved){
+        //         this.setState({
+        //             redirect: true,
+        //             currentPage: '/profile'
+        //         })
+        //     }
+        // })
         db.collection("brands").where("id", "==", brandId).get().then(res=>{
-            console.log(res)
-            res.forEach((brand)=>{
-                console.log(brand.data())
-            }).catch(err=>{console.log(err)}) 
-        }).catch(err=>{console.log(err)})  
+            if(res.empty == false){
+                this.setState({
+                    redirect: false,
+                    currentPage: '',
+                })
+                console.log(res)
+                res.forEach((brand)=>{
+                    console.log(brand.id)
+                    return brandInfo = brand.data();
+                })
+            }else{
+                this.setState({
+                    redirect: true,
+                    currentPage: '/designers'
+                })
+            }
+        }).then(()=>{
+            console.log("hiiiiiiiiii")
+            this.setState({
+                singleBrandData: brandInfo,
+                singleBrandDataLoaded: true
+            })
+        }).catch(err=>console.log(err))
     }
 
     componentWillUpdate(prev, next) {
@@ -62,7 +109,11 @@ class Designer extends Component {
     }
 
     renderPage(){
-        if(this.state.singleBrandData && this.state.singleBrandDataLoaded){
+
+        return(
+            <h1>hey</h1>
+        )
+        /* if(this.state.singleBrandData && this.state.singleBrandDataLoaded){
             return(
                 <div className="single-brand">
                     <h1 className="ui header">{this.state.singleBrandData.name}</h1>
@@ -77,7 +128,7 @@ class Designer extends Component {
                     <div className="ui indeterminate text loader">Preparing Files</div>
                 </div>
             )
-        }
+        } */
     }
     render(){
         const {redirect, currentPage} = this.state;

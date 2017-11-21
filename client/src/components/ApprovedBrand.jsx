@@ -32,11 +32,9 @@ class ApprovedBrand extends Component {
                         let productData = {}
                         productRef.orderBy("title").get().then((res)=>{
                             res.forEach((product)=>{
-                                console.log(product.id, product.data())
                                 return productData[product.id] = product.data()
                             })
                         }).then(()=>{
-                            console.log(productData)
                             this.setState({productData: productData})
                         }).catch(err=>{console.log(err)})
                     }else if(res.exists && !res.data().approved){
