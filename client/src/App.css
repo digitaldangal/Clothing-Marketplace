@@ -54,4 +54,11 @@ div#pic-preview {
     .product-gallery .ui.link.cards .card {
       text-align: left; }
 
+.card.brandCard .header.title {
+  text-transform: capitalize; }
+.card.brandCard p.brandText {
+  overflow: hidden;
+  white-space: pre-line;
+  height: 55px; }
+
 /*# sourceMappingURL=App.css.map */

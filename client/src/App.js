@@ -29,7 +29,9 @@ class App extends Component {
       currentPage: '',
       uid: null,
       brandData: false,
-      brandDataLoaded: false
+      brandDataLoaded: false,
+      productData: false,
+      productDataLoaded: false
     }
   }
 

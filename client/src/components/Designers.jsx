@@ -45,14 +45,14 @@ class Designers extends Component {
                 <div className="ui cards">
                     {Object.values(this.state.brandData).map((brand, i)=>{
                         return(
-                            <div className="card" key={i}>
+                            <div className="card brandCard" key={i}>
                                 <div className="content">
-                                    <div className="header">{brand.name}</div>
+                                    <div className="header title">{brand.name}</div>
                                         <div className="meta">
-                                            <a href={brand.website} target="_blank">{brand.website}</a>
+                                            {brand.website != null ? <a href={brand.website} target="_blank">{brand.website}</a> : <a href="#">No Website</a>}
                                         </div>
                                     <div className="description">
-                                        <p>{brand.description}</p>
+                                        <p className="brandText">{brand.description}</p>
                                     </div>
                                 </div>
                                 <div className="ui bottom attached button">
