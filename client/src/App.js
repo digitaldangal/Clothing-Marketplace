@@ -106,7 +106,7 @@ class App extends Component {
                 <Route exact path="/profile/edit" render={()=> <ProfileEdit authState={this.state.authState} userUid={this.state.uid} /> } />
                 <Route exact path="/profile/brand" render={()=> <ApprovedBrand authState={this.state.authState} userUid={this.state.uid} /> } />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} brandData={this.state.brandData} brandDataLoaded={this.state.brandDataLoaded} storeFeed={(brandData)=> this.storeFeed(brandData)} />} />
-                <Route exact path="/designers/:brand" render={() => <Designer authState={this.state.authState} /> } />
+                <Route exact path="/designers/:brand/:brand_id" component={Designer} />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/about" component={About} />

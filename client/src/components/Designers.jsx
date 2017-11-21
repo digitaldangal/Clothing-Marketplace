@@ -56,7 +56,7 @@ class Designers extends Component {
                                     </div>
                                 </div>
                                 <div className="ui bottom attached button">
-                                    <Link to={`/designers/${brand.name}`}>View Brand</Link>
+                                    <Link to={`/designers/${brand.name}/${brand.id}`}>View Brand</Link>
                                 </div>
                             </div>     
                         )
