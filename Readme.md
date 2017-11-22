@@ -51,6 +51,7 @@ Future Improvements
     - [ ] View All Brands
     - [ ] Approve Brands
     - [ ] Upload and change articles
+    - [ ] Change featured brands
 
 ## Installation 
 1. Run npm install in the client folder.
