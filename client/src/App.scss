@@ -1,16 +1,18 @@
 .App {
     text-align: center;
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
   
 body{
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 a {
     color: black;
+    font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 .ui.header{
     text-transform: capitalize;
+    font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 
 section#home {
@@ -31,6 +33,15 @@ section#home {
 
 // Home 
 .home {
+    font-family: 'Raleway', 'Roboto', sans-serif !important;
+    .article {
+        .ui.header.article-title{
+            font-weight: bold;
+        }
+        .ui.header.article-subtitle{
+            font-weight: 300;
+        }
+    }
     @media (max-width: 767px) {
         .article {
             width: 90vw;
@@ -108,12 +119,25 @@ section#home {
                 background-color: rgba(0,0,0,.2);
             }
             .ui.header.article-title{
+                &:hover{
+                   text-decoration: underline; 
+                   color: white;
+                }
                 position: absolute;
-                bottom: 1em;
+                bottom: 3em;
                 left: 1em;
                 letter-spacing: 2px;
                 font-size: 2rem;
-                color: rgb(255, 255, 255);
+                color: white;
+            }
+            .ui.header.article-subtitle{
+                position: absolute;
+                bottom: 2em;
+                left: 2em;
+                letter-spacing: 2px;
+                font-size: 1.2rem;
+                color: white;
+                text-align: left;
             }
         }
         .article.imgHolder{

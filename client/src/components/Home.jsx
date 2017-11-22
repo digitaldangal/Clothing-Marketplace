@@ -35,6 +35,7 @@ class Home extends Component {
                         <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image + ')'}} >
                             <div className="overlay"></div>
                             <h2 className="ui header article-title">{articleData.title}</h2>
+                            <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
                         </div>
                     </Link>
                 </div>
