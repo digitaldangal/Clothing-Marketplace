@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.3.0-alpha (in progress)
+#  StreetwearBoutiques.com 1.4.0-alpha (in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 
@@ -6,7 +6,7 @@ Test Account:
 email: test@gmail.com
 password: abc123
 
-<!-- ![armoire image](./public/splashimage.png) -->
+![Copped WireFrame Screenshots](./assets/home-page.png?raw=true "Copped WireFrames")
 
 ### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
@@ -33,9 +33,9 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] Cart
     - [ ] Wishlist
     - [ ] Delivery Logistics
-- [ ] Home Section
-    - [ ] Articles View
-    - [ ] Featured Brands or Random Brands
+- [x] Home Section
+    - [x] Articles View
+    - [x] Featured Brands or Random Brands
 - [ ] Articles
 - [ ] About
 - [ ] Contact
@@ -50,6 +50,8 @@ Future Improvements
     - [ ] View All Users
     - [ ] View All Brands
     - [ ] Approve Brands
+    - [ ] Upload and change articles
+    - [ ] Change featured brands
 
 ## Installation 
 1. Run npm install in the client folder.
@@ -77,14 +79,6 @@ Future Improvements
 
 ## The Making of Streerwear Boutiques
 
-### Wireframes
-
-#### Brands Listing
-![Copped WireFrame Screenshots](./assets/wireframe2.png?raw=true "Copped WireFrames")
-
-#### Individual Brand
-![Copped WireFrame Screenshots](./assets/wireframe3.png?raw=true "Copped WireFrames")
-
 ### Screenshots
 
 #### Register as a brand
@@ -97,7 +91,7 @@ Future Improvements
 ![Login page](./assets/login-page.png?raw=true "Login page")
 
 #### Product Page
-![Product Page](./assets/product-page.png?raw=true "Product page")
+![Product Page](./assets/upload-page.png?raw=true "Product page")
 
 ### Technical Discussion
 Tech Stack
