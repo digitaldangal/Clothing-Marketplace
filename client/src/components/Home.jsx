@@ -11,18 +11,33 @@ class Home extends Component {
         super(props);
         this.state = {
             articleData: false,
-            featuredBrand: false
+            featuredBrand: false,
         }
     }
 
     componentWillMount() {
         let articleRef = db.collection("articles").doc("article_0");
+        let featBrandRef = articleRef.collection("brand").doc("brand_1");
         let articleData = {};
+        let brandData = {};
 
         articleRef.get().then((res)=>{
             console.log(res.data());
             return articleData = res.data();
         }).then(()=>{
+            featBrandRef.get().then((res)=>{
+                console.log(res.data());
+                return res;
+            }).then((res)=>{
+                db.collection("brands").where("id", "==", res.data().id).get().then((res)=>{
+                    res.forEach((brand)=>{
+                        console.log(brand.data());
+                        return brandData = brand.data();
+                    })
+                    this.setState({featuredBrand: brandData})
+                }).catch(err=>console.log(err))
+            })
+            .catch(err=>console.log(err))
             this.setState({articleData: articleData})
         })
     }
@@ -39,7 +54,7 @@ class Home extends Component {
                             <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
                         </div>
                     </Link>
-                    <Link to={`/designers/${brand.name}/${brand.id}`}>
+                    <Link to={`/designers/${featuredBrand.name}/${featuredBrand.id}`}>
                         <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + featuredBrand.image + ')'}}>
                         <div className="overlay"></div>
                             <h2 className="ui header brand-title">{featuredBrand.name}</h2>
