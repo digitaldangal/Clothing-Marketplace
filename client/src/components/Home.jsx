@@ -12,6 +12,7 @@ class Home extends Component {
         this.state = {
             articleData: false,
             featuredBrand: false,
+            brandImage: false,
         }
     }
 
@@ -27,6 +28,7 @@ class Home extends Component {
         }).then(()=>{
             featBrandRef.get().then((res)=>{
                 console.log(res.data());
+                this.setState({brandImage: res.data().image})
                 return res;
             }).then((res)=>{
                 db.collection("brands").where("id", "==", res.data().id).get().then((res)=>{
@@ -55,7 +57,7 @@ class Home extends Component {
                         </div>
                     </Link>
                     <Link to={`/designers/${featuredBrand.name}/${featuredBrand.id}`}>
-                        <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + featuredBrand.image + ')'}}>
+                        <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + this.state.brandImage + ')'}}>
                         <div className="overlay"></div>
                             <h2 className="ui header brand-title">{featuredBrand.name}</h2>
                         </div>
