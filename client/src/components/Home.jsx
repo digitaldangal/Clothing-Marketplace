@@ -11,6 +11,7 @@ class Home extends Component {
         super(props);
         this.state = {
             articleData: false,
+            featuredBrand: false
         }
     }
 
@@ -27,8 +28,8 @@ class Home extends Component {
     }
 
     renderPage(){
-        if(this.state.articleData !== false){
-            const {articleData} = this.state;
+        if(this.state.articleData !== false && this.state.featuredBrand !== false){
+            const {articleData, featuredBrand} = this.state;
             return(
                 <div className="home">
                     <Link to={`/editorial/${articleData.id}/${articleData.title}`}>
@@ -36,6 +37,12 @@ class Home extends Component {
                             <div className="overlay"></div>
                             <h2 className="ui header article-title">{articleData.title}</h2>
                             <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
+                        </div>
+                    </Link>
+                    <Link to={`/designers/${brand.name}/${brand.id}`}>
+                        <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + featuredBrand.image + ')'}}>
+                        <div className="overlay"></div>
+                            <h2 className="ui header brand-title">{featuredBrand.name}</h2>
                         </div>
                     </Link>
                 </div>
