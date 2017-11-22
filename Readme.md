@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.3.0-alpha (in progress)
+#  StreetwearBoutiques.com 1.4.0-alpha (in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 
@@ -33,9 +33,9 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] Cart
     - [ ] Wishlist
     - [ ] Delivery Logistics
-- [ ] Home Section
-    - [ ] Articles View
-    - [ ] Featured Brands or Random Brands
+- [x] Home Section
+    - [x] Articles View
+    - [x] Featured Brands or Random Brands
 - [ ] Articles
 - [ ] About
 - [ ] Contact
