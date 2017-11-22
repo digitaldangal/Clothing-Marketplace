@@ -111,7 +111,7 @@ class App extends Component {
                 <Route exact path="/designers/:brand/:brand_id" component={Designer} />
                 <Route exact path="/designers/:brand/:brand_id/:product_title" component={Clothing} />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
-                <Route exact path="/editorial/:article" render={() => <Article authState={this.state.authState} /> } />
+                <Route exact path="/editorial/:id/:article" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/about" component={About} />
                 <Route component={NoMatch} />
               </Switch>

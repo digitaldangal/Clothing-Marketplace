@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Article from './Article';
 import firebase from '../config/firebase';
 
@@ -30,10 +31,12 @@ class Home extends Component {
             const {articleData} = this.state;
             return(
                 <div className="home">
-                    <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image + ')'}} >
-                        <div className="overlay"></div>
-                        <h2 className="ui header article-title">{articleData.title}</h2>
-                    </div>
+                    <Link to={`/editorial/${articleData.id}/${articleData.title}`}>
+                        <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image + ')'}} >
+                            <div className="overlay"></div>
+                            <h2 className="ui header article-title">{articleData.title}</h2>
+                        </div>
+                    </Link>
                 </div>
             )
         }else{
