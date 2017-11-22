@@ -32,7 +32,7 @@ section#home {
   @media (max-width: 767px) {
     .home .article {
       width: 90vw;
-      height: 350px;
+      height: 330px;
       display: flex;
       justify-content: center;
       margin: 0 auto;
@@ -46,10 +46,21 @@ section#home {
         background-color: rgba(0, 0, 0, 0.2); }
       .home .article .ui.header.article-title {
         position: absolute;
+        bottom: 2em;
+        left: 0.5em;
+        font-size: 1.6rem;
+        color: white;
+        text-shadow: 4px 4px 4px black; }
+      .home .article .ui.header.article-subtitle {
+        position: absolute;
         bottom: 1em;
-        letter-spacing: 1px;
-        font-size: 1.8rem;
-        color: white; }
+        left: 2em;
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+        color: white;
+        text-align: left;
+        text-shadow: 4px 4px 4px black;
+        font-weight: bold; }
     .home .article.imgHolder {
       background-size: cover;
       background-position: center;
@@ -71,16 +82,27 @@ section#home {
         background-color: rgba(0, 0, 0, 0.2); }
       .home .article .ui.header.article-title {
         position: absolute;
-        bottom: 1em;
+        bottom: 3em;
         left: 1em;
         letter-spacing: 2px;
-        font-size: 2.3rem;
+        font-size: 2rem;
         color: white; }
+        .home .article .ui.header.article-title:hover {
+          text-decoration: underline;
+          color: white; }
+      .home .article .ui.header.article-subtitle {
+        position: absolute;
+        bottom: 2em;
+        left: 2em;
+        letter-spacing: 2px;
+        font-size: 1.2rem;
+        color: white;
+        text-align: left; }
     .home .article.imgHolder {
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat; } }
-  @media (min-width: 1028px) {
+  @media (min-width: 1024px) {
     .home .article {
       width: 55vw;
       height: 550px;

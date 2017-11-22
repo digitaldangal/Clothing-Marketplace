@@ -45,7 +45,7 @@ section#home {
     @media (max-width: 767px) {
         .article {
             width: 90vw;
-            height: 350px;
+            height: 330px;
             display: flex;
             justify-content: center;
             margin: 0 auto;
@@ -60,10 +60,22 @@ section#home {
             }
             .ui.header.article-title{
                 position: absolute;
+                bottom: 2em;
+                left: 0.5em;
+                font-size: 1.6rem;
+                color: white;
+                text-shadow: 4px 4px 4px black;
+            }
+            .ui.header.article-subtitle{
+                position: absolute;
                 bottom: 1em;
-                letter-spacing: 1px;
-                font-size: 1.8rem;
-                color: rgb(255, 255, 255);
+                left: 2em;
+                letter-spacing: 2px;
+                font-size: 0.7rem;
+                color: white;
+                text-align: left;
+                text-shadow: 4px 4px 4px black;
+                font-weight: bold;
             }
         }
         .article.imgHolder{
@@ -90,12 +102,25 @@ section#home {
                 background-color: rgba(0,0,0,.2);
             }
             .ui.header.article-title{
+                &:hover{
+                   text-decoration: underline; 
+                   color: white;
+                }
                 position: absolute;
-                bottom: 1em;
+                bottom: 3em;
                 left: 1em;
                 letter-spacing: 2px;
-                font-size: 2.3rem;
+                font-size: 2rem;
                 color: white;
+            }
+            .ui.header.article-subtitle{
+                position: absolute;
+                bottom: 2em;
+                left: 2em;
+                letter-spacing: 2px;
+                font-size: 1.2rem;
+                color: white;
+                text-align: left;
             }
         }
         .article.imgHolder{
@@ -105,7 +130,7 @@ section#home {
         }
     }
 
-    @media (min-width: 1028px) {
+    @media (min-width: 1024px) {
         .article {
             width: 55vw;
             height: 550px;
