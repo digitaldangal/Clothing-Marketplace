@@ -85,13 +85,13 @@ Future Improvements
 ![Register As a Brand](./assets/brandCreate.png?raw=true "Brand Create")
 
 #### Upload A Clothing Item
-![Upload A Clothing Item](./assets/productCreate.png?raw=true "Product Create")
+![Upload A Clothing Item](./assets/upload-page.png?raw=true "Product Create")
 
 #### Login Page
 ![Login page](./assets/login-page.png?raw=true "Login page")
 
 #### Product Page
-![Product Page](./assets/upload-page.png?raw=true "Product page")
+![Product Page](./assets/product-page.png?raw=true "Product page")
 
 ### Technical Discussion
 Tech Stack
