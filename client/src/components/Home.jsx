@@ -59,7 +59,7 @@ class Home extends Component {
                     <Link to={`/designers/${featuredBrand.name}/${featuredBrand.id}`}>
                         <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + this.state.brandImage + ')'}}>
                         <div className="overlay"></div>
-                            <h2 className="ui header brand-title">{featuredBrand.name}</h2>
+                            <h2 className="ui header brand-title">Featured Brand: <br/>{featuredBrand.name}</h2>
                         </div>
                     </Link>
                 </div>
