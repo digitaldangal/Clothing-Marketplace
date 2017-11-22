@@ -27,8 +27,14 @@ a {
 @media (min-width: 768px) {
   .home .article {
     width: 50vw; }
+    .home .article .overlay {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)); }
     .home .article img {
-      width: 100%; } }
+      width: 100%; }
+    .home .article .ui.header.article-title {
+      position: relative;
+      top: -4em;
+      color: white; } }
 
 .auth-form .login-form {
   border-bottom: 1px solid #bbb;

@@ -40,8 +40,16 @@ a {
     @media (min-width: 768px) {
         .article {
             width: 50vw;
+            .overlay{
+                background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+            }
             img{
                 width: 100%;
+            }
+            .ui.header.article-title{
+                position: relative;
+                top: -4em;
+                color: rgb(255, 255, 255);
             }
         }
     }
