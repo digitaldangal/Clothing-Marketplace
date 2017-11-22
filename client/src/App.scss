@@ -40,6 +40,7 @@ section#home {
     font-family: 'Raleway', 'Roboto', sans-serif !important;
     display: flex;
     justify-content: center;
+    flex-flow: row wrap;
     overflow: hidden;
     text-shadow: 4px 4px 4px black;
     .article {
@@ -90,6 +91,38 @@ section#home {
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+        }
+        .featured-brand {
+            width: 90vw;
+            height: 330px;
+            position: relative;
+            margin-top: 1em;
+            .overlay{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,.2);
+            }
+            .ui.header.brand-title{
+                &:hover{
+                   text-decoration: underline; 
+                   color: white;
+                }
+                position: absolute;
+                bottom: 1em;
+                left: 1em;
+                letter-spacing: 2px;
+                font-size: 2rem;
+                color: white;
+            }
+        }
+        .featured-brand.imgHolder{
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            // position: absolute;
         }
     }
 
@@ -152,7 +185,7 @@ section#home {
                    color: white;
                 }
                 position: absolute;
-                bottom: 3em;
+                bottom: 1em;
                 left: 1em;
                 letter-spacing: 2px;
                 font-size: 2rem;
@@ -244,7 +277,6 @@ section#home {
                color: white;
             }
             position: absolute;
-            bottom: 3em;
             left: 1em;
             letter-spacing: 2px;
             font-size: 2rem;
