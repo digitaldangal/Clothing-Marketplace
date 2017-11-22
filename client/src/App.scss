@@ -12,6 +12,10 @@ a {
 .ui.header{
     text-transform: capitalize;
 }
+
+section#home {
+    height: 100vh;
+}
 //   NavBar
 .ui.stackable.menu{
     .item{
@@ -30,10 +34,61 @@ a {
     @media (max-width: 767px) {
         .article {
             width: 90vw;
+            height: 350px;
+            display: flex;
+            justify-content: center;
             margin: 0 auto;
-            img{
+            position: relative;
+            .overlay{
                 width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,.2);
             }
+            .ui.header.article-title{
+                position: absolute;
+                bottom: 1em;
+                letter-spacing: 1px;
+                font-size: 1.8rem;
+                color: rgb(255, 255, 255);
+            }
+        }
+        .article.imgHolder{
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .article {
+            width: 55vw;
+            height: 550px;
+            position: relative;
+            .overlay{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,.2);
+            }
+            .ui.header.article-title{
+                position: absolute;
+                bottom: 1em;
+                left: 1em;
+                letter-spacing: 2px;
+                font-size: 2rem;
+                color: rgb(255, 255, 255);
+            }
+        }
+        .article.imgHolder{
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
         }
     }
 

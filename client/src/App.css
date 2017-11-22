@@ -11,6 +11,9 @@ a {
 .ui.header {
   text-transform: capitalize; }
 
+section#home {
+  height: 100vh; }
+
 .ui.stackable.menu .item {
   justify-content: center; }
   .ui.stackable.menu .item a.brand {
@@ -21,9 +24,52 @@ a {
 @media (max-width: 767px) {
   .home .article {
     width: 90vw;
-    margin: 0 auto; }
-    .home .article img {
-      width: 100%; } }
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative; }
+    .home .article .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.2); }
+    .home .article .ui.header.article-title {
+      position: absolute;
+      bottom: 1em;
+      letter-spacing: 1px;
+      font-size: 1.8rem;
+      color: white; }
+  .home .article.imgHolder {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; } }
+@media (min-width: 768px) {
+  .home .article {
+    width: 55vw;
+    height: 550px;
+    position: relative; }
+    .home .article .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.2); }
+    .home .article .ui.header.article-title {
+      position: absolute;
+      bottom: 1em;
+      left: 1em;
+      letter-spacing: 2px;
+      font-size: 2rem;
+      color: white; }
+  .home .article.imgHolder {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute; } }
 @media (min-width: 1028px) {
   .home .article {
     width: 55vw;
