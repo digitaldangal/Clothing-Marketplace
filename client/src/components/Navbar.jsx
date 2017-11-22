@@ -17,7 +17,6 @@ class Navbar extends Component {
                 this.setState({signedIn: true})
                 db.collection('brands').doc(user.uid).get().then((res)=>{
                     if(res.exists && res.data().approved){
-                        console.log(res.data())
                         this.setState({
                             uid: user.uid,
                             brandStatus: true,

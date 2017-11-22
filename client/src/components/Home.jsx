@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-// import{Link} from 'react-router-dom';
-
 import Article from './Article';
 import FeaturedBrands from './FeaturedBrands';
+import firebase from '../config/firebase';
 
+// Initialize Cloud Firestore through firebase
+var db = firebase.firestore();
 
 class Home extends Component {
     constructor(props){
@@ -11,6 +12,12 @@ class Home extends Component {
         this.state = {
             
         }
+    }
+
+    componentWillMount() {
+        let articleRef = db.collection("articles").doc("article_0");
+
+        articleRef.get()
     }
 
     render(){

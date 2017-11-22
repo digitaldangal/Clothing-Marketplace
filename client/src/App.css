@@ -5,6 +5,9 @@
 body {
   font-family: 'Raleway', 'Roboto', sans-serif; }
 
+a {
+  color: black; }
+
 .ui.header {
   text-transform: capitalize; }
 

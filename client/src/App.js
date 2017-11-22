@@ -32,7 +32,8 @@ class App extends Component {
       brandData: false,
       brandDataLoaded: false,
       productData: false,
-      productDataLoaded: false
+      productDataLoaded: false,
+      articleData: false
     }
   }
 

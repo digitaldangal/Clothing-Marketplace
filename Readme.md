@@ -50,6 +50,7 @@ Future Improvements
     - [ ] View All Users
     - [ ] View All Brands
     - [ ] Approve Brands
+    - [ ] Upload and change articles
 
 ## Installation 
 1. Run npm install in the client folder.
