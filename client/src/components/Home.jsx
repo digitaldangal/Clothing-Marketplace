@@ -30,9 +30,8 @@ class Home extends Component {
             const {articleData} = this.state;
             return(
                 <div className="home">
-                    <div className="article">
+                    <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image + ')'}} >
                         <div className="overlay"></div>
-                        <img src={articleData.screen_image} alt={articleData.title} title={articleData.subtitle} />
                         <h2 className="ui header article-title">{articleData.title}</h2>
                     </div>
                 </div>
