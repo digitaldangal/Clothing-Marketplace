@@ -18,6 +18,18 @@ a {
     .ui.stackable.menu .item a.brand img.logo {
       width: 100%; }
 
+@media (max-width: 767px) {
+  .home .article {
+    width: 90vw;
+    margin: 0 auto; }
+    .home .article img {
+      width: 100%; } }
+@media (min-width: 768px) {
+  .home .article {
+    width: 50vw; }
+    .home .article img {
+      width: 100%; } }
+
 .auth-form .login-form {
   border-bottom: 1px solid #bbb;
   margin-bottom: 3em;

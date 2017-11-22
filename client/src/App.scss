@@ -25,6 +25,28 @@ a {
     }
 }
 
+// Home 
+.home {
+    @media (max-width: 767px) {
+        .article {
+            width: 90vw;
+            margin: 0 auto;
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .article {
+            width: 50vw;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+
 //Login Page
 .auth-form{
     .login-form{
