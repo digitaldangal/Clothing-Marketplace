@@ -6,7 +6,7 @@ Test Account:
 email: test@gmail.com
 password: abc123
 
-<!-- ![armoire image](./public/splashimage.png) -->
+![Copped WireFrame Screenshots](./assets/home-page.png?raw=true "Copped WireFrames")
 
 ### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
@@ -79,14 +79,6 @@ Future Improvements
 
 ## The Making of Streerwear Boutiques
 
-### Wireframes
-
-#### Homepage
-![Copped WireFrame Screenshots](./assets/home-page.png?raw=true "Copped WireFrames")
-
-#### Individual Brand
-![Copped WireFrame Screenshots](./assets/wireframe3.png?raw=true "Copped WireFrames")
-
 ### Screenshots
 
 #### Register as a brand
@@ -99,7 +91,7 @@ Future Improvements
 ![Login page](./assets/login-page.png?raw=true "Login page")
 
 #### Product Page
-![Product Page](./assets/product-page.png?raw=true "Product page")
+![Product Page](./assets/upload-page.png?raw=true "Product page")
 
 ### Technical Discussion
 Tech Stack
