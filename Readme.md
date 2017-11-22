@@ -81,8 +81,8 @@ Future Improvements
 
 ### Wireframes
 
-#### Brands Listing
-![Copped WireFrame Screenshots](./assets/wireframe2.png?raw=true "Copped WireFrames")
+#### Homepage
+![Copped WireFrame Screenshots](./assets/home-page.png?raw=true "Copped WireFrames")
 
 #### Individual Brand
 ![Copped WireFrame Screenshots](./assets/wireframe3.png?raw=true "Copped WireFrames")

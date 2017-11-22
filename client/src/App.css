@@ -17,9 +17,6 @@ header {
   text-transform: capitalize;
   font-family: 'Raleway', 'Roboto', sans-serif !important; }
 
-section#home {
-  height: 100vh; }
-
 .ui.stackable.menu .item {
   justify-content: center; }
   .ui.stackable.menu .item a.brand {
