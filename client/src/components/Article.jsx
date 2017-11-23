@@ -19,7 +19,7 @@ class Article extends Component {
         let tempArticleData = {}
         let featuredArticleData = {}
 
-        articleFeed.limit(1).get().then((res)=>{
+        articleFeed.limit(15).get().then((res)=>{
             res.forEach((article)=>{
                 return tempArticleData[article.data().title] = article.data()
             })
@@ -47,17 +47,30 @@ class Article extends Component {
                                 <h3 className="ui header article-subtitle">{featuredArticle.subtitle}</h3>
                             </Link>
                         </div>
+
+                        <div className="ui divided items container">
                         {Object.values(articleData).map((article, i)=>{
                             return(
-                                <div className="article" key={i}>
+                                <div className="item article" key={i}>
                                     <div className="image">
-                                        <img src={article[Object.keys(article)[5]]} alt=""/>
+                                        <img src={article[Object.keys(article)[5]]} alt="" />
                                     </div>
-                                    <h2 className="ui header article-title">{article.title}</h2>
-                                    <h3 className="ui header article-subtitle">{article.subtitle}</h3>
+                                    <div className="content">
+                                        <a className="header">{article.title}</a>
+                                        <div className="meta">
+                                            <span>Description</span>
+                                        </div>
+                                        <div className="description">
+                                            <p>{article.subtitle}</p>
+                                        </div>
+                                        <div className="extra">
+                                            Additional Details
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         })}
+                        </div>
                     </div>
                 </div>
             )

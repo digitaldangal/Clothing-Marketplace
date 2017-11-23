@@ -301,15 +301,15 @@ div#pic-preview {
     margin-bottom: 2em;
     letter-spacing: 1px;
     font-weight: 300; }
-.page-container.article-list .article {
+.page-container.article-list .item.article {
   width: 60vw;
   margin: 0 auto;
   position: relative; }
-  .page-container.article-list .article .image {
-    width: 450px; }
-    .page-container.article-list .article .image img {
+  .page-container.article-list .item.article .image {
+    width: 450px !important; }
+    .page-container.article-list .item.article .image img {
       width: 100%; }
-  .page-container.article-list .article .ui.header {
+  .page-container.article-list .item.article .ui.header {
     font-size: 2rem;
     color: red; }
 

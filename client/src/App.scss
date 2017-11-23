@@ -397,12 +397,12 @@ div#pic-preview{
         }
     }
     
-    .article{
+    .item.article{
         width: 60vw;
         margin: 0 auto;
         position: relative;
         .image{
-            width: 450px;
+            width: 450px !important;
             img{
                 width: 100%;
             }
