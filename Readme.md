@@ -37,6 +37,8 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Articles View
     - [x] Featured Brands or Random Brands
 - [ ] Articles
+    - [x] Can display a article
+    - [ ] Article Feed
 - [ ] About
 - [ ] Contact
 
@@ -44,7 +46,9 @@ These are some of the features that I plan on tackling as I build this project
 Future Improvements
 - [ ] Searching
 - [ ] 10-20 Starting Brands, go up by 5-10 every month
-- [ ] Weekly Articles
+- [ ] Articles
+    - [ ] Weekly or bi weekly
+    - [ ] categories and archives 
 - [ ] Improve with drag and drop to reorder images
 - [ ] Create Admin Dashboard
     - [ ] View All Users
@@ -135,5 +139,3 @@ renderPicPreviews = (e) =>{
     </div>
 </div>
 ```
-
-## Opportunities for Future Growth 

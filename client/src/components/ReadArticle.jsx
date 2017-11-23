@@ -71,6 +71,8 @@ class ReadArticle extends Component {
 
                     <div className="article-text" dangerouslySetInnerHTML={{__html: articleData.text}}>
                     </div>
+
+                    {/* Todo: Render previous, next articles or recommdations */}
                 </div>
             )
         }else if(this.state.articleDataLoaded && !this.state.articleData.hasOwnProperty("id")){
