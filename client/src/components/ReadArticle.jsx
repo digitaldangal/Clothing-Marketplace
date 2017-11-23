@@ -9,7 +9,8 @@ class ReadArticle extends Component {
     constructor(props){
         super(props);
         this.state = {
-            articleData: false
+            articleData: false,
+            articleDataLoaded: false,
         }
     }
 
@@ -34,7 +35,8 @@ class ReadArticle extends Component {
             }
         }).then(()=>{
             this.setState({
-                articleData: articleInfo
+                articleData: articleInfo,
+                articleDataLoaded: true
             })
         })
         .catch(err=>console.log(err))
@@ -44,25 +46,25 @@ class ReadArticle extends Component {
     componentWillUpdate(prevProps, prevState) {
         console.log(prevProps, prevState)
     }
-    // rendePage(){
-    //     if(){
+    rendePage(){
+        if(this.state.articleDataLoaded){
 
-    //     }else{
-    //         return(
-    //             <div className="ui active inverted dimmer">
-    //                 <div className="ui indeterminate text loader">Preparing Files</div>
-    //             </div>
-    //         )
-    //     }
-    // }
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }
+    }
 
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <div>
+            <section id="single-article">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                {/* {this.rendePage()} */}
-            </div>
+                {this.rendePage()}
+            </section>
         )
     }
 }
