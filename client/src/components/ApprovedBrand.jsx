@@ -113,7 +113,7 @@ class ApprovedBrand extends Component {
                     <h1 className="ui header">{this.state.brandData.name}</h1>
                     <h3 className="ui header">{this.state.brandData.description}</h3>
                     <Link to="/profile/product-create"><button className="ui button">List A Item</button></Link>
-                    <div className="product-gallery">
+                    <div className="page-container">
                         {this.renderGallery()}
                     </div>
                 </div>

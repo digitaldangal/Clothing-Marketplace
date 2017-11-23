@@ -39,6 +39,7 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Articles
     - [x] Can display a article
     - [ ] Article Feed
+    - [ ] Share Articles
 - [ ] About
 - [ ] Contact
 

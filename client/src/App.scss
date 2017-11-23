@@ -362,13 +362,17 @@ div#pic-preview{
         height: 55px;
     }
 }
-
 .description.links, .meta.links {
     text-align: center;
 }
+.single-brand{
+    div.image{
+        overflow: hidden;
+        max-height: 350px;
+    }
+}
 
 // Single Article
-
 .page-container.single-article {
     margin-bottom: 10em;
     img.article-image {

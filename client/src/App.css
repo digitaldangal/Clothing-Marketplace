@@ -279,6 +279,10 @@ div#pic-preview {
 .description.links, .meta.links {
   text-align: center; }
 
+.single-brand div.image {
+  overflow: hidden;
+  max-height: 350px; }
+
 .page-container.single-article {
   margin-bottom: 10em; }
   .page-container.single-article img.article-image {
