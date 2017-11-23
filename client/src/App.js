@@ -34,7 +34,8 @@ class App extends Component {
       productData: false,
       productDataLoaded: false,
       articleData: false,
-      articleDataLoaded: false
+      articleDataLoaded: false,
+      image: false
     }
   }
 
@@ -97,6 +98,12 @@ class App extends Component {
       articleDataLoaded: true
     })
   }
+  storeBrandImage = (image) => {
+    this.setState({
+      image: image,
+      imageLoaded: true
+    })
+  }
 
   render() {
     const {redirect, currentPage} = this.state
@@ -107,7 +114,7 @@ class App extends Component {
             <div className="app-body">
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} storeArticleData={(articleData)=> this.storeArticleData(articleData)} /> } />
+                <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} image={this.state.image} storeArticleData={(articleData)=> this.storeArticleData(articleData)} storeBrandImage={(image)=> this.storeBrandImage(image)}/> } />
                 <Route exact path="/account/login" render={() => <Login authState={(authChange)=>this.handleAuthState(authChange)} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
