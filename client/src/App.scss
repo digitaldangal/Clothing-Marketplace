@@ -375,7 +375,76 @@ div#pic-preview{
 // Article Feed
 .page-container.article-list {
     margin-bottom: 10em;
-    @media(min-width: 768px) and (max-width: 1025px){
+    @media (max-width: 1024px){
+        .featured-article{
+            margin: 0 auto;
+            border-bottom: 1px solid #bbb;
+            padding-bottom: 1em;
+            img{
+                width: 100%;
+            }
+            .ui.header.article-title{
+                font-size: 2.5rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            .ui.header.article-subtitle {
+                font-size: 1rem;
+                margin-top: -1em;
+                margin-bottom: 2em;
+                letter-spacing: 1px;
+                font-weight: 300;
+            }
+        }
+        
+        .item.article{
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            flex-flow: column;
+            margin: 0 auto;
+            justify-content: center;
+            .image{
+                width: 70vw;
+                max-height: 450px;
+                overflow: hidden;
+                margin: 0 auto;
+                @media(min-width:768px) and (max-width: 1024px){
+                    margin-bottom: 1em;
+                }
+                padding-bottom: 1em;
+                img{
+                    width: 100%;
+                }
+            }
+            .content{
+                text-align: left;
+                font-weight: 300;
+                @media(min-width:768px) and (max-width: 1024px){
+                    padding: 0em 3em;
+                }
+                .header{
+                    font-size: 2rem;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    letter-spacing: 0.02188rem;
+                    line-height: 110%;
+                }
+                .meta, .extra{
+                    font-weight: 400;
+                    text-transform: capitalize;
+                }
+                .description{
+                    p{
+                        line-height: 170%;
+                        text-indent: 1.75rem;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: 1025px){
         .featured-article{
             width: 60vw;
             margin: 0 auto;
@@ -430,63 +499,6 @@ div#pic-preview{
                         line-height: 170%;
                         text-indent: 1.75rem;
                     }
-                }
-            }
-        }
-    }
-    .featured-article{
-        width: 60vw;
-        margin: 0 auto;
-        border-bottom: 1px solid #bbb;
-        padding-bottom: 1em;
-        img{
-            width: 100%;
-        }
-        .ui.header.article-title{
-            font-size: 2.5rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .ui.header.article-subtitle {
-            font-size: 1rem;
-            margin-top: -1em;
-            margin-bottom: 2em;
-            letter-spacing: 1px;
-            font-weight: 300;
-        }
-    }
-    
-    .item.article{
-        width: 60vw;
-        margin: 0 auto;
-        position: relative;
-        .image{
-            width: 400px;
-            max-height: 450px;
-            overflow: hidden;
-            img{
-                width: 100%;
-            }
-        }
-        .content{
-            text-align: left;
-            font-weight: 300;
-            .header{
-                font-size: 2rem;
-                font-weight: 300;
-                text-transform: uppercase;
-                letter-spacing: 0.02188rem;
-                line-height: 110%;
-            }
-            .meta, .extra{
-                font-weight: 400;
-                text-transform: capitalize;
-            }
-            .description{
-                p{
-                    line-height: 170%;
-                    text-indent: 1.75rem;
                 }
             }
         }

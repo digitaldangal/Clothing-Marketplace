@@ -40,7 +40,7 @@ class Article extends Component {
             return(
                 <div className="article-list">
                     <div className="page-container article-list">
-                        <div className="featured-article">
+                        <div className="featured-article ui container">
                             <Link to={`/editorial/${featuredArticle.id}/${featuredArticle.title}`}>
                                 <img src={featuredArticle.screen_image } alt={featuredArticle.title} title={featuredArticle.title}/>
                                 <h2 className="ui header article-title">{featuredArticle.title}</h2>
@@ -48,7 +48,7 @@ class Article extends Component {
                             </Link>
                         </div>
 
-                        <div className="ui divided items">
+                        <div className="ui divided items container">
                         {Object.values(articleData).map((article, i)=>{
                             return(
                                 <div className="item article" key={i}>
