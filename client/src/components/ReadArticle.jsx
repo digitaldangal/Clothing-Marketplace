@@ -55,6 +55,11 @@ class ReadArticle extends Component {
                     <h1 className="ui header title">{articleData.title}</h1>
                     <h3 className="ui header title">{articleData.subtitle}</h3>
                     
+                    <div className="article-info">
+                        <p className="author">Written by: {articleData.author}</p>
+                        <p className="photographer">Photos by: {articleData.photographer}</p>
+                    </div>
+
                     <div className="article-text">
                         <p>{articleData.text}</p>
                     </div>
