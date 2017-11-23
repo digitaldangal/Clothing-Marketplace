@@ -20,26 +20,38 @@ class Article extends Component {
         articleFeed.limit(15).get().then((res)=>{
             res.forEach((article)=>{
                 console.log(article.data())
-                tempArticleData[article.data().title] = article.data()
-                this.setState({articleData: tempArticleData})
+                return tempArticleData[article.data().title] = article.data()
             })
+            this.setState({articleData: tempArticleData})
         }).catch(err=>console.log(err))
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        
-    }
-
     rendePage(){
-        // if(){
-
-        // }else{
-        //     return(
-        //         <div className="ui active inverted dimmer">
-        //             <div className="ui indeterminate text loader">Preparing Files</div>
-        //         </div>
-        //     )
-        // }
+        if(this.state.articleData !== false){
+            const {articleData} = this.state;
+            return(
+                <div className="article-list">
+                    <h1 className="ui header">Latest Articles</h1>
+                    <div className="page-container">
+                        {Object.values(articleData).map((article, i)=>{
+                            return(
+                                <div className="article" key={i}>
+                                    <img src={article[Object.keys(article)[4]]} alt=""/>
+                                    <h2 className="ui header article-title">{articleData.title}</h2>
+                                    <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }
     }
 
     render(){
