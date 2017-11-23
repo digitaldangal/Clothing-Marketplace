@@ -39,12 +39,10 @@ class Article extends Component {
             const {articleData, featuredArticle} = this.state;
             return(
                 <div className="article-list">
-                    <h1 className="ui header title">Latest Articles</h1>
-                    <div className="page-container article-list ui container">
+                    <div className="page-container article-list">
                         <div className="featured-article">
                             <Link to={`/editorial/${featuredArticle.id}/${featuredArticle.title}`}>
                                 <img src={featuredArticle.screen_image } alt={featuredArticle.title} title={featuredArticle.title}/>
-                                <div className="overlay"></div>
                                 <h2 className="ui header article-title">{featuredArticle.title}</h2>
                                 <h3 className="ui header article-subtitle">{featuredArticle.subtitle}</h3>
                             </Link>

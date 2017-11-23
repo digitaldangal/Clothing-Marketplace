@@ -283,12 +283,32 @@ div#pic-preview {
   overflow: hidden;
   max-height: 350px; }
 
+.page-container.article-list .featured-article {
+  width: 60vw;
+  margin: 0 auto;
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 1em; }
+  .page-container.article-list .featured-article img {
+    width: 100%; }
+  .page-container.article-list .featured-article .ui.header.article-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px; }
+  .page-container.article-list .featured-article .ui.header.article-subtitle {
+    font-size: 1rem;
+    margin-top: -1em;
+    margin-bottom: 2em;
+    letter-spacing: 1px;
+    font-weight: 300; }
 .page-container.article-list .article {
   width: 60vw;
   margin: 0 auto;
   position: relative; }
-  .page-container.article-list .article .image img {
-    width: 100%; }
+  .page-container.article-list .article .image {
+    width: 450px; }
+    .page-container.article-list .article .image img {
+      width: 100%; }
   .page-container.article-list .article .ui.header {
     font-size: 2rem;
     color: red; }

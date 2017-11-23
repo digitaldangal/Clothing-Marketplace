@@ -40,6 +40,7 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Can display a article
     - [ ] Article Feed
     - [ ] Share Articles
+    - [ ] Sub Menu to filter articles
 - [ ] About
 - [ ] Contact
 
