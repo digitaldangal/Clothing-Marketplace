@@ -14,31 +14,37 @@ class ReadArticle extends Component {
     }
 
     componentWillMount() {
-        
+        let articleId = Number(this.props.match.params.id);
+        let articleRef = db.collection('articles').doc(`article_${articleId}`);
+        let articleInfo = {};
+
+        articleRef.get().then((res)=>{
+            console.log(res.data());
+        }).catch(err=>console.log(err))
+
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        
+    componentWillUpdate(prevProps, prevState) {
+        console.log(prevProps, prevState)
     }
+    // rendePage(){
+    //     if(){
 
-    rendePage(){
-        if(){
-
-        }else{
-            return(
-                <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
-                </div>
-            )
-        }
-    }
+    //     }else{
+    //         return(
+    //             <div className="ui active inverted dimmer">
+    //                 <div className="ui indeterminate text loader">Preparing Files</div>
+    //             </div>
+    //         )
+    //     }
+    // }
 
     render(){
         const {redirect, currentPage} = this.state;
         return(
             <div>
                 {redirect ? <Redirect to={currentPage} /> : null}
-                {this.rendePage()}
+                {/* {this.rendePage()} */}
             </div>
         )
     }
