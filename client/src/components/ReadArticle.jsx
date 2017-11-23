@@ -60,6 +60,13 @@ class ReadArticle extends Component {
                         <p className="photographer">Photos by: {articleData.photographer}</p>
                     </div>
 
+                    <div className="share">
+                        <a href=""><i> facebook </i></a>
+                        <a href=""><i> twitter </i></a>
+                        <a href=""><i> pinterest </i></a>
+                        <a href=""><i> email </i></a>
+                    </div>
+
                     <div className="article-text">
                         <p>{articleData.text}</p>
                     </div>
