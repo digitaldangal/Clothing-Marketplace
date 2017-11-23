@@ -374,6 +374,7 @@ div#pic-preview{
 
 // Article Feed
 .page-container.article-list {
+    margin-bottom: 10em;
     .featured-article{
         width: 60vw;
         margin: 0 auto;
@@ -402,14 +403,27 @@ div#pic-preview{
         margin: 0 auto;
         position: relative;
         .image{
-            width: 450px !important;
+            width: 450px;
+            max-height: 450px;
+            overflow: hidden;
             img{
                 width: 100%;
             }
         }
-        .ui.header{
-            font-size: 2rem;
-            color: red;
+        .content{
+            text-align: left;
+            .header{
+                font-size: 2rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            .meta{
+                font-weight: 400;
+            }
+            .extra{
+                font-style: italic;
+            }
         }
     }
 }

@@ -53,10 +53,13 @@ class Article extends Component {
                             return(
                                 <div className="item article" key={i}>
                                     <div className="image">
-                                        <img src={article[Object.keys(article)[5]]} alt="" />
+                                        <Link to={`/editorial/${article.id}/${article.title}`}
+                                        >
+                                            <img src={article[Object.keys(article)[5]]} alt="" />
+                                        </Link>
                                     </div>
                                     <div className="content">
-                                        <a className="header">{article.title}</a>
+                                        <a className="header" href={`/editorial/${article.id}/${article.title}`}>{article.title}</a>
                                         <div className="meta">
                                             <span>{article.subtitle}</span>
                                         </div>
