@@ -14,11 +14,13 @@ import Designers from './components/Designers';
 import Designer from './components/Designer';
 import Clothing from './components/Clothing';
 import Article from './components/Article';
+import ReadArticle from './components/ReadArticle';
 import About from './components/About';
 import Footer from './components/Footer';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
+import { __esModule } from 'react-router-dom/NavLink';
 
 class App extends Component {
   constructor(){
@@ -33,7 +35,9 @@ class App extends Component {
       brandDataLoaded: false,
       productData: false,
       productDataLoaded: false,
-      articleData: false
+      articleData: false,
+      articleDataLoaded: false,
+      image: false
     }
   }
 
@@ -84,10 +88,24 @@ class App extends Component {
   }
 
   storeFeed = (brandData) => {
-    console.log(brandData)
     this.setState({
       brandData: brandData,
       brandDataLoaded: true
+    })
+  }
+
+  storeArticleData = (articleData, brandData) => {
+    this.setState({
+      articleData: articleData,
+      articleDataLoaded: true,
+      featBrandData: brandData,
+      featBrandDataLoaded: true
+    })
+  }
+  storeBrandImage = (image) => {
+    this.setState({
+      image: image,
+      imageLoaded: true
     })
   }
 
@@ -100,7 +118,7 @@ class App extends Component {
             <div className="app-body">
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <Route exact path="/" render={() => <Home authState={this.state.authState} /> } />
+                <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} image={this.state.image} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} storeBrandImage={(image)=> this.storeBrandImage(image)}/> } />
                 <Route exact path="/account/login" render={() => <Login authState={(authChange)=>this.handleAuthState(authChange)} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
@@ -111,7 +129,7 @@ class App extends Component {
                 <Route exact path="/designers/:brand/:brand_id" component={Designer} />
                 <Route exact path="/designers/:brand/:brand_id/:product_title" component={Clothing} />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
-                <Route exact path="/editorial/:id/:article" render={() => <Article authState={this.state.authState} /> } />
+                <Route exact path="/editorial/:id/:article" component={ReadArticle} />
                 <Route exact path="/about" component={About} />
                 <Route component={NoMatch} />
               </Switch>

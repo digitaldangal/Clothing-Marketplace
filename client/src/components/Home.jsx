@@ -22,26 +22,49 @@ class Home extends Component {
         let articleData = {};
         let brandData = {};
 
-        articleRef.get().then((res)=>{
-            console.log(res.data());
-            return articleData = res.data();
-        }).then(()=>{
-            featBrandRef.get().then((res)=>{
+        if(this.props.articleDataLoaded === false){
+            articleRef.get().then((res)=>{
                 console.log(res.data());
-                this.setState({brandImage: res.data().image})
-                return res;
-            }).then((res)=>{
-                db.collection("brands").where("id", "==", res.data().id).get().then((res)=>{
-                    res.forEach((brand)=>{
-                        console.log(brand.data());
-                        return brandData = brand.data();
-                    })
-                    this.setState({featuredBrand: brandData})
-                }).catch(err=>console.log(err))
+                return articleData = res.data();
+            }).then(()=>{
+                featBrandRef.get().then((res)=>{
+                    console.log(res.data());
+                    this.setState({brandImage: res.data().image})
+                    this.props.storeBrandImage(res.data().image)
+                    return res;
+                }).then((res)=>{
+                    db.collection("brands").where("id", "==", res.data().id).get().then((res)=>{
+                        res.forEach((brand)=>{
+                            console.log(brand.data());
+                            return brandData = brand.data();
+                        })
+                        this.setState({featuredBrand: brandData})
+                        this.props.storeArticleData(articleData, brandData);
+                    }).catch(err=>console.log(err))
+                })
+                .catch(err=>console.log(err))
+                this.setState({articleData: articleData})
             })
-            .catch(err=>console.log(err))
-            this.setState({articleData: articleData})
-        })
+        }else{
+            let articleDataInfo = this.props.articleData;
+            let featBrandDataInfo = this.props.featBrandData;
+            let featImage = this.props.image;
+
+            this.setState({
+                featuredBrand: featBrandDataInfo,
+                brandImage: featImage,
+                articleData: articleDataInfo,
+            })
+        }
+    }
+
+    shouldComponentUpdate(prev, next){
+        console.log(prev, next)
+        if(next.articleData && next.featuredBrand){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     renderPage(){

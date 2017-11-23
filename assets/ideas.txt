@@ -9,6 +9,7 @@ Articles Section could focus
     - interviews
     - music possibly
     - lifestyle
+    -Art, culture, fashion, music, news
 
 Clothing types breakdown
     OUTERWEAR
@@ -20,15 +21,3 @@ Clothing types breakdown
         Sandals
         sneakers
     ACCESSORIES
-
-Routes:
-
-/designers/:brand
-/editorial/:category/:article 
-
-
-Names:
-streetwearboutiques
-armoirecollective
-couture
-StreetBoutique

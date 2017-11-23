@@ -77,7 +77,7 @@ class Designers extends Component {
             return(
                 <div className="brand-list">
                     <h1 className="ui header">Designers</h1>
-                    <div className="brand-gallery">
+                    <div className="page-container">
                         {this.renderBrands()}
                     </div>
                 </div>

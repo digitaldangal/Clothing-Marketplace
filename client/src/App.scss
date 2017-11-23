@@ -14,14 +14,15 @@ header {
     width: 90vw;
     margin: 0 auto;
 }
-.ui.header{
+.ui.header, .ui.header.title{
     text-transform: capitalize;
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 
-section#home {
-    // height: 100vh;
+section#single-article{
+    height: 100vh;
 }
+
 //   NavBar
 .ui.stackable.menu{
     .item{
@@ -338,8 +339,8 @@ div#pic-preview{
     }
 }
 
-// Brand Dashboard
-.product-gallery, .brand-gallery, .single-brand, .profile-page, .brand-list, .home{
+// Standard Page Layout with cards or not
+.page-container, .home{
     margin-top: 2em;
     .ui.link.cards{
         justify-content: center;
@@ -361,10 +362,212 @@ div#pic-preview{
         height: 55px;
     }
 }
-
 .description.links, .meta.links {
     text-align: center;
 }
+.single-brand{
+    div.image{
+        overflow: hidden;
+        max-height: 350px;
+    }
+}
+
+// Article Feed
+.page-container.article-list {
+    margin-bottom: 10em;
+    @media (max-width: 1024px){
+        .featured-article{
+            margin: 0 auto;
+            border-bottom: 1px solid #bbb;
+            padding-bottom: 1em;
+            img{
+                width: 100%;
+            }
+            .ui.header.article-title{
+                font-size: 2.5rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            .ui.header.article-subtitle {
+                font-size: 1rem;
+                margin-top: -1em;
+                margin-bottom: 2em;
+                letter-spacing: 1px;
+                font-weight: 300;
+            }
+        }
+        
+        .item.article{
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            flex-flow: column;
+            margin: 0 auto;
+            justify-content: center;
+            .image{
+                width: 70vw;
+                max-height: 450px;
+                overflow: hidden;
+                margin: 0 auto;
+                @media(min-width:768px) and (max-width: 1024px){
+                    margin-bottom: 1em;
+                }
+                padding-bottom: 1em;
+                img{
+                    width: 100%;
+                }
+            }
+            .content{
+                text-align: left;
+                font-weight: 300;
+                @media(min-width:768px) and (max-width: 1024px){
+                    padding: 0em 3em;
+                }
+                .header{
+                    font-size: 2rem;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    letter-spacing: 0.02188rem;
+                    line-height: 110%;
+                }
+                .meta, .extra{
+                    font-weight: 400;
+                    text-transform: capitalize;
+                }
+                .description{
+                    p{
+                        line-height: 170%;
+                        text-indent: 1.75rem;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: 1025px){
+        .featured-article{
+            width: 60vw;
+            margin: 0 auto;
+            border-bottom: 1px solid #bbb;
+            padding-bottom: 1em;
+            img{
+                width: 100%;
+            }
+            .ui.header.article-title{
+                font-size: 2.5rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            .ui.header.article-subtitle {
+                font-size: 1rem;
+                margin-top: -1em;
+                margin-bottom: 2em;
+                letter-spacing: 1px;
+                font-weight: 300;
+            }
+        }
+        
+        .item.article{
+            width: 60vw;
+            margin: 0 auto;
+            position: relative;
+            .image{
+                width: 400px;
+                max-height: 450px;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
+            }
+            .content{
+                text-align: left;
+                font-weight: 300;
+                .header{
+                    font-size: 2rem;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    letter-spacing: 0.02188rem;
+                    line-height: 110%;
+                }
+                .meta, .extra{
+                    font-weight: 400;
+                    text-transform: capitalize;
+                }
+                .description{
+                    p{
+                        line-height: 170%;
+                        text-indent: 1.75rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Single Article
+.page-container.single-article {
+    margin-bottom: 10em;
+    img.article-image {
+        width: 100%;
+    }
+    h1.ui.header.title {
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 0.02188rem;
+        text-align: center;
+    }
+    h3.ui.header.title {
+        font-weight: 400;
+        letter-spacing: 0.0375rem;
+        line-height: 170%;
+        font-size: 1rem;
+        margin-top: 0em;
+        padding-bottom: 1em;
+        border-bottom: 1px solid #bbb;
+    }
+    .article-info {
+        font-size: 0.8rem;
+        font-weight: bold;
+        p {
+            line-height: 40%;
+            text-align: left;
+            font-weight: 300;
+            letter-spacing: 0.104rem;
+        }
+        div.share {
+            display: flex;
+            justify-content: flex-start;
+            border: 1px solid;
+            position: absolute;
+            a {
+                margin: 0 5px;
+            }
+        }
+    }
+    .article-text {
+        margin-top: 3em;
+        border-top: 1px solid #bbb;
+        padding-top: 1em;
+        p {
+        line-height: 170%;
+        font-weight: 300;
+        text-indent: 1.75rem;
+        text-align: justify;
+        padding: 0em 1em;
+        }
+    }
+
+    @media (min-width: 768px) {
+        font-size: 1.5rem;
+        h1.ui.header.title{
+            font-size: 3rem;
+        }
+    }
+}
+
+
+
 
 // footer {
 //     position: absolute;
