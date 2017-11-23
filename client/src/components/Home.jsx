@@ -44,6 +44,14 @@ class Home extends Component {
         })
     }
 
+    shouldComponentUpdate(prev, next){
+        if(next.articleData){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     renderPage(){
         if(this.state.articleData !== false && this.state.featuredBrand !== false){
             const {articleData, featuredBrand} = this.state;

@@ -33,7 +33,8 @@ class App extends Component {
       brandDataLoaded: false,
       productData: false,
       productDataLoaded: false,
-      articleData: false
+      articleData: false,
+      articleDataLoaded: false
     }
   }
 
@@ -84,10 +85,16 @@ class App extends Component {
   }
 
   storeFeed = (brandData) => {
-    console.log(brandData)
     this.setState({
       brandData: brandData,
       brandDataLoaded: true
+    })
+  }
+
+  storeArticleData = (articleData) => {
+    this.setState({
+      articleData: articleData,
+      articleDataLoaded: true
     })
   }
 
