@@ -283,6 +283,16 @@ div#pic-preview {
   overflow: hidden;
   max-height: 350px; }
 
+.page-container.article-list .article {
+  width: 60vw;
+  margin: 0 auto;
+  position: relative; }
+  .page-container.article-list .article .image img {
+    width: 100%; }
+  .page-container.article-list .article .ui.header {
+    font-size: 2rem;
+    color: red; }
+
 .page-container.single-article {
   margin-bottom: 10em; }
   .page-container.single-article img.article-image {

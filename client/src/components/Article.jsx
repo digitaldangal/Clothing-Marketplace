@@ -10,20 +10,27 @@ class Article extends Component {
         super(props);
         this.state = {
             articleData: false,
+            featuredArticle: false
         }
     }
 
     componentWillMount() {
         let articleFeed = db.collection("articles").orderBy("created");
         let tempArticleData = {}
+        let featuredArticleData = {}
 
         articleFeed.limit(15).get().then((res)=>{
             res.forEach((article)=>{
-                console.log(article.data())
                 return tempArticleData[article.data().title] = article.data()
             })
             this.setState({articleData: tempArticleData})
-        }).catch(err=>console.log(err))
+        }).then(()=>{
+            db.collection("articles").doc("article_0").get().then((res)=>{
+                return featuredArticleData = res.data();
+            })
+            this.setState({featuredArticle: featuredArticleData})
+        })
+        .catch(err=>console.log(err))
     }
 
     rendePage(){
@@ -31,14 +38,19 @@ class Article extends Component {
             const {articleData} = this.state;
             return(
                 <div className="article-list">
-                    <h1 className="ui header">Latest Articles</h1>
-                    <div className="page-container">
+                    <h1 className="ui header title">Latest Articles</h1>
+                    <div className="page-container article-list ui container">
+                        <div className="featured-article">
+                        
+                        </div>
                         {Object.values(articleData).map((article, i)=>{
                             return(
                                 <div className="article" key={i}>
-                                    <img src={article[Object.keys(article)[4]]} alt=""/>
-                                    <h2 className="ui header article-title">{articleData.title}</h2>
-                                    <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
+                                    <div className="image">
+                                        <img src={article[Object.keys(article)[5]]} alt=""/>
+                                    </div>
+                                    <h2 className="ui header article-title">{article.title}</h2>
+                                    <h3 className="ui header article-subtitle">{article.subtitle}</h3>
                                 </div>
                             )
                         })}
@@ -57,12 +69,10 @@ class Article extends Component {
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <div>
+            <section className="article-feed">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <section className="article-feed">
-                    {this.rendePage()}
-                </section>
-            </div>
+                {this.rendePage()}
+            </section>
         )
     }
 }

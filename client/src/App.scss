@@ -372,6 +372,24 @@ div#pic-preview{
     }
 }
 
+// Article Feed
+.page-container.article-list {
+    .article{
+        width: 60vw;
+        margin: 0 auto;
+        position: relative;
+        .image{
+            img{
+                width: 100%;
+            }
+        }
+        .ui.header{
+            font-size: 2rem;
+            color: red;
+        }
+    }
+}
+
 // Single Article
 .page-container.single-article {
     margin-bottom: 10em;
