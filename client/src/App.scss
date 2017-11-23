@@ -420,6 +420,13 @@ div#pic-preview{
         padding: 0em 1em;
         }
     }
+
+    @media (min-width: 768px) {
+        font-size: 1.5rem;
+        h1.ui.header.title{
+            font-size: 3rem;
+        }
+    }
 }
 
 

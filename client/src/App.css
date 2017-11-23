@@ -321,5 +321,10 @@ div#pic-preview {
       text-indent: 1.75rem;
       text-align: justify;
       padding: 0em 1em; }
+  @media (min-width: 768px) {
+    .page-container.single-article {
+      font-size: 1.5rem; }
+      .page-container.single-article h1.ui.header.title {
+        font-size: 3rem; } }
 
 /*# sourceMappingURL=App.css.map */
