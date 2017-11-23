@@ -43,13 +43,27 @@ class ReadArticle extends Component {
 
     }
 
-    componentWillUpdate(prevProps, prevState) {
-        console.log(prevProps, prevState)
-        JSON.stringify()
+    shouldComponentUpdate(prevProps, prevState) {
+        if(prevState.articleData !== false && prevState.articleDataLoaded === true){
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    rendePage(){
-        if(this.state.articleDataLoaded && this.state.articleData.hasOwnProperty("id")){
+    componentWillUpdate(prev, next){
+        console.log(prev, next)
+        if(next.articleDataLoaded === true){
+            console.log("updated")
+            return true;
+        }else{
+            console.log("did not update");
+            return false;
+        }
+    }
+
+    renderArticle(){
+        if(this.state.articleData.hasOwnProperty("id")){
             const {articleData} = this.state;
             return(
                 <div className="page-container single-article ui container">
@@ -73,6 +87,21 @@ class ReadArticle extends Component {
 
                     {/* Todo: Render previous, next articles or recommdations */}
                 </div>
+            )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }
+    }
+
+    rendePage(){
+        if(this.state.articleDataLoaded && this.state.articleData.hasOwnProperty("id")){
+            const {articleData} = this.state;
+            return(
+                this.renderArticle()
             )
         }else if(this.state.articleDataLoaded && !this.state.articleData.hasOwnProperty("id")){
             return(
