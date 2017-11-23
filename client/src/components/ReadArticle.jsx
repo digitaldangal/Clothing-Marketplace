@@ -45,7 +45,9 @@ class ReadArticle extends Component {
 
     componentWillUpdate(prevProps, prevState) {
         console.log(prevProps, prevState)
+        JSON.stringify()
     }
+
     rendePage(){
         if(this.state.articleDataLoaded && this.state.articleData.hasOwnProperty("id")){
             const {articleData} = this.state;
@@ -68,9 +70,8 @@ class ReadArticle extends Component {
                         </div>
                     </div>
 
-
                     <div className="article-text">
-                        <p>{articleData.text}</p>
+                        <p dangerouslySetInnerHTML={{__html: articleData.text}}></p>
                     </div>
                 </div>
             )
