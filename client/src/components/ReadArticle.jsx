@@ -51,7 +51,13 @@ class ReadArticle extends Component {
             const {articleData} = this.state;
             return(
                 <div className="page-container single-article">
+                    <img src={articleData.screen_image} alt={articleData.title} title={articleData.title} className="article-image"/>
                     <h1 className="ui header title">{articleData.title}</h1>
+                    <h3 className="ui header title">{articleData.subtitle}</h3>
+                    
+                    <div className="article-text">
+                        <p>{articleData.text}</p>
+                    </div>
                 </div>
             )
         }else if(this.state.articleDataLoaded && !this.state.articleData.hasOwnProperty("id")){

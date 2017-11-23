@@ -14,9 +14,13 @@ header {
     width: 90vw;
     margin: 0 auto;
 }
-.ui.header{
+.ui.header, .ui.header.title{
     text-transform: capitalize;
     font-family: 'Raleway', 'Roboto', sans-serif !important;
+}
+
+section#single-article{
+    height: 100vh;
 }
 
 //   NavBar
