@@ -30,6 +30,7 @@ class Home extends Component {
                 featBrandRef.get().then((res)=>{
                     console.log(res.data());
                     this.setState({brandImage: res.data().image})
+                    this.props.storeBrandImage(res.data().image)
                     return res;
                 }).then((res)=>{
                     db.collection("brands").where("id", "==", res.data().id).get().then((res)=>{
@@ -38,21 +39,23 @@ class Home extends Component {
                             return brandData = brand.data();
                         })
                         this.setState({featuredBrand: brandData})
+                        this.props.storeArticleData(articleData, brandData);
                     }).catch(err=>console.log(err))
                 })
                 .catch(err=>console.log(err))
                 this.setState({articleData: articleData})
-                this.props.storeArticleData(articleData);
             })
         }else{
             let articleDataInfo = this.props.articleData;
             this.setState({
-                featuredBrand: articleDataInfo
+                featuredBrand: articleDataInfo,
+
             })
         }
     }
 
     shouldComponentUpdate(prev, next){
+        console.log(prev, next)
         if(next.articleData){
             return true;
         }else{
