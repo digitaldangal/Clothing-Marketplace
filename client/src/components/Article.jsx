@@ -48,7 +48,7 @@ class Article extends Component {
                             </Link>
                         </div>
 
-                        <div className="ui divided items container">
+                        <div className="ui divided items">
                         {Object.values(articleData).map((article, i)=>{
                             return(
                                 <div className="item article" key={i}>
@@ -58,13 +58,12 @@ class Article extends Component {
                                     <div className="content">
                                         <a className="header">{article.title}</a>
                                         <div className="meta">
-                                            <span>Description</span>
+                                            <span>{article.subtitle}</span>
                                         </div>
-                                        <div className="description">
-                                            <p>{article.subtitle}</p>
+                                        <div className="description" dangerouslySetInnerHTML={{__html: article.text.split("</p>")[0]}}>
                                         </div>
                                         <div className="extra">
-                                            Additional Details
+                                            Written by: {article.author}, on {article.created}
                                         </div>
                                     </div>
                                 </div>
