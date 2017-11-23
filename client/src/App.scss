@@ -388,6 +388,30 @@ div#pic-preview{
         padding-bottom: 1em;
         border-bottom: 1px solid #bbb;
     }
+    .article-info {
+        font-size: 0.8rem;
+        font-weight: bold;
+        p {
+            line-height: 40%;
+            text-align: left;
+            font-weight: 300;
+            letter-spacing: 0.104rem;
+        }
+        div.share {
+            display: flex;
+            justify-content: flex-start;
+            border: 1px solid;
+            position: absolute;
+            a {
+                margin: 0 5px;
+            }
+        }
+    }
+    .article-text {
+        margin-top: 3em;
+        border-top: 1px solid #bbb;
+        padding-top: 1em;
+    }   
 }
 
 

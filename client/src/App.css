@@ -294,5 +294,24 @@ div#pic-preview {
   margin-top: 0em;
   padding-bottom: 1em;
   border-bottom: 1px solid #bbb; }
+.page-container.single-article .article-info {
+  font-size: 0.8rem;
+  font-weight: bold; }
+  .page-container.single-article .article-info p {
+    line-height: 40%;
+    text-align: left;
+    font-weight: 300;
+    letter-spacing: 0.104rem; }
+  .page-container.single-article .article-info div.share {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid;
+    position: absolute; }
+    .page-container.single-article .article-info div.share a {
+      margin: 0 5px; }
+.page-container.single-article .article-text {
+  margin-top: 3em;
+  border-top: 1px solid #bbb;
+  padding-top: 1em; }
 
 /*# sourceMappingURL=App.css.map */

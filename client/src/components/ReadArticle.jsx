@@ -52,7 +52,7 @@ class ReadArticle extends Component {
         if(this.state.articleDataLoaded && this.state.articleData.hasOwnProperty("id")){
             const {articleData} = this.state;
             return(
-                <div className="page-container single-article">
+                <div className="page-container single-article ui container">
                     <img src={articleData.screen_image} alt={articleData.title} title={articleData.title} className="article-image"/>
                     <h1 className="ui header title">{articleData.title}</h1>
                     <h3 className="ui header title">{articleData.subtitle}</h3>
@@ -62,7 +62,6 @@ class ReadArticle extends Component {
                         <p className="photographer">Photos by: {articleData.photographer}</p>
                         <p className="data">Date: {articleData.created}</p>
                         <div className="share">
-                            <p>Share: </p>
                             <a href=""><i> facebook </i></a>
                             <a href=""><i> twitter </i></a>
                             <a href=""><i> pinterest </i></a>
@@ -70,8 +69,7 @@ class ReadArticle extends Component {
                         </div>
                     </div>
 
-                    <div className="article-text">
-                        <p dangerouslySetInnerHTML={{__html: articleData.text}}></p>
+                    <div className="article-text" dangerouslySetInnerHTML={{__html: articleData.text}}>
                     </div>
                 </div>
             )
