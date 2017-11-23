@@ -47,16 +47,20 @@ class Home extends Component {
             })
         }else{
             let articleDataInfo = this.props.articleData;
-            this.setState({
-                featuredBrand: articleDataInfo,
+            let featBrandDataInfo = this.props.featBrandData;
+            let featImage = this.props.image;
 
+            this.setState({
+                featuredBrand: featBrandDataInfo,
+                brandImage: featImage,
+                articleData: articleDataInfo,
             })
         }
     }
 
     shouldComponentUpdate(prev, next){
         console.log(prev, next)
-        if(next.articleData){
+        if(next.articleData && next.featuredBrand){
             return true;
         }else{
             return false;
