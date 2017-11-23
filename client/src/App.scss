@@ -403,7 +403,7 @@ div#pic-preview{
         margin: 0 auto;
         position: relative;
         .image{
-            width: 450px;
+            width: 400px;
             max-height: 450px;
             overflow: hidden;
             img{
@@ -412,17 +412,22 @@ div#pic-preview{
         }
         .content{
             text-align: left;
+            font-weight: 300;
             .header{
                 font-size: 2rem;
                 font-weight: 300;
                 text-transform: uppercase;
-                letter-spacing: 2px;
+                letter-spacing: 0.02188rem;
+                line-height: 110%;
             }
-            .meta{
+            .meta, .extra{
                 font-weight: 400;
+                text-transform: capitalize;
             }
-            .extra{
-                font-style: italic;
+            .description{
+                p{
+                    line-height: 170%;
+                }
             }
         }
     }

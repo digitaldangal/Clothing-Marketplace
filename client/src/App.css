@@ -308,22 +308,25 @@ div#pic-preview {
     margin: 0 auto;
     position: relative; }
     .page-container.article-list .item.article .image {
-      width: 450px;
+      width: 400px;
       max-height: 450px;
       overflow: hidden; }
       .page-container.article-list .item.article .image img {
         width: 100%; }
     .page-container.article-list .item.article .content {
-      text-align: left; }
+      text-align: left;
+      font-weight: 300; }
       .page-container.article-list .item.article .content .header {
         font-size: 2rem;
         font-weight: 300;
         text-transform: uppercase;
-        letter-spacing: 2px; }
-      .page-container.article-list .item.article .content .meta {
-        font-weight: 400; }
-      .page-container.article-list .item.article .content .extra {
-        font-style: italic; }
+        letter-spacing: 0.02188rem;
+        line-height: 110%; }
+      .page-container.article-list .item.article .content .meta, .page-container.article-list .item.article .content .extra {
+        font-weight: 400;
+        text-transform: capitalize; }
+      .page-container.article-list .item.article .content .description p {
+        line-height: 170%; }
 
 .page-container.single-article {
   margin-bottom: 10em; }

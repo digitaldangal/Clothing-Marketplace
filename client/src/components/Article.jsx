@@ -66,7 +66,7 @@ class Article extends Component {
                                         <div className="description" dangerouslySetInnerHTML={{__html: article.text.split("</p>")[0]}}>
                                         </div>
                                         <div className="extra">
-                                            Written by: {article.author}, on {article.created}
+                                            By: {article.author} | {article.created} | <a href="#">{article.category}</a>
                                         </div>
                                     </div>
                                 </div>
