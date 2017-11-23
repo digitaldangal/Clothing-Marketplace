@@ -279,39 +279,47 @@ div#pic-preview {
 .description.links, .meta.links {
   text-align: center; }
 
-.page-container.single-article img.article-image {
-  width: 100%; }
-.page-container.single-article h1.ui.header.title {
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.02188rem;
-  text-align: center; }
-.page-container.single-article h3.ui.header.title {
-  font-weight: 400;
-  letter-spacing: 0.0375rem;
-  line-height: 170%;
-  font-size: 1rem;
-  margin-top: 0em;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #bbb; }
-.page-container.single-article .article-info {
-  font-size: 0.8rem;
-  font-weight: bold; }
-  .page-container.single-article .article-info p {
-    line-height: 40%;
-    text-align: left;
+.page-container.single-article {
+  margin-bottom: 10em; }
+  .page-container.single-article img.article-image {
+    width: 100%; }
+  .page-container.single-article h1.ui.header.title {
     font-weight: 300;
-    letter-spacing: 0.104rem; }
-  .page-container.single-article .article-info div.share {
-    display: flex;
-    justify-content: flex-start;
-    border: 1px solid;
-    position: absolute; }
-    .page-container.single-article .article-info div.share a {
-      margin: 0 5px; }
-.page-container.single-article .article-text {
-  margin-top: 3em;
-  border-top: 1px solid #bbb;
-  padding-top: 1em; }
+    text-transform: uppercase;
+    letter-spacing: 0.02188rem;
+    text-align: center; }
+  .page-container.single-article h3.ui.header.title {
+    font-weight: 400;
+    letter-spacing: 0.0375rem;
+    line-height: 170%;
+    font-size: 1rem;
+    margin-top: 0em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #bbb; }
+  .page-container.single-article .article-info {
+    font-size: 0.8rem;
+    font-weight: bold; }
+    .page-container.single-article .article-info p {
+      line-height: 40%;
+      text-align: left;
+      font-weight: 300;
+      letter-spacing: 0.104rem; }
+    .page-container.single-article .article-info div.share {
+      display: flex;
+      justify-content: flex-start;
+      border: 1px solid;
+      position: absolute; }
+      .page-container.single-article .article-info div.share a {
+        margin: 0 5px; }
+  .page-container.single-article .article-text {
+    margin-top: 3em;
+    border-top: 1px solid #bbb;
+    padding-top: 1em; }
+    .page-container.single-article .article-text p {
+      line-height: 170%;
+      font-weight: 300;
+      text-indent: 1.75rem;
+      text-align: justify;
+      padding: 0em 1em; }
 
 /*# sourceMappingURL=App.css.map */

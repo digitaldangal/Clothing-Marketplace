@@ -370,6 +370,7 @@ div#pic-preview{
 // Single Article
 
 .page-container.single-article {
+    margin-bottom: 10em;
     img.article-image {
         width: 100%;
     }
@@ -411,7 +412,14 @@ div#pic-preview{
         margin-top: 3em;
         border-top: 1px solid #bbb;
         padding-top: 1em;
-    }   
+        p {
+        line-height: 170%;
+        font-weight: 300;
+        text-indent: 1.75rem;
+        text-align: justify;
+        padding: 0em 1em;
+        }
+    }
 }
 
 
