@@ -47,8 +47,20 @@ class ReadArticle extends Component {
         console.log(prevProps, prevState)
     }
     rendePage(){
-        if(this.state.articleDataLoaded){
-
+        if(this.state.articleDataLoaded && this.state.articleData.hasOwnProperty("id")){
+            const {articleData} = this.state;
+            return(
+                <div className="page-container single-article">
+                    <h1 className="ui header title">{articleData.title}</h1>
+                </div>
+            )
+        }else if(this.state.articleDataLoaded && !this.state.articleData.hasOwnProperty("id")){
+            return(
+                <div className="page-container">
+                    <h1 className="ui header title">Sorry this article wasn't found!</h1>
+                    
+                </div>
+            )
         }else{
             return(
                 <div className="ui active inverted dimmer">

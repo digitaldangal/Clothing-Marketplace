@@ -259,11 +259,11 @@ div#pic-preview {
       div#pic-preview ul li img.temp-pic {
         width: 100%; }
 
-.product-gallery, .brand-gallery, .single-brand, .profile-page, .brand-list, .home {
+.page-container, .home {
   margin-top: 2em; }
-  .product-gallery .ui.link.cards, .brand-gallery .ui.link.cards, .single-brand .ui.link.cards, .profile-page .ui.link.cards, .brand-list .ui.link.cards, .home .ui.link.cards {
+  .page-container .ui.link.cards, .home .ui.link.cards {
     justify-content: center; }
-    .product-gallery .ui.link.cards .card, .brand-gallery .ui.link.cards .card, .single-brand .ui.link.cards .card, .profile-page .ui.link.cards .card, .brand-list .ui.link.cards .card, .home .ui.link.cards .card {
+    .page-container .ui.link.cards .card, .home .ui.link.cards .card {
       text-align: left; }
 
 .card.brandCard .header.title {

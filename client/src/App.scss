@@ -19,9 +19,6 @@ header {
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 
-section#home {
-    // height: 100vh;
-}
 //   NavBar
 .ui.stackable.menu{
     .item{
@@ -338,8 +335,8 @@ div#pic-preview{
     }
 }
 
-// Brand Dashboard
-.product-gallery, .brand-gallery, .single-brand, .profile-page, .brand-list, .home{
+// Standard Page Layout with cards or not
+.page-container, .home{
     margin-top: 2em;
     .ui.link.cards{
         justify-content: center;
