@@ -279,4 +279,20 @@ div#pic-preview {
 .description.links, .meta.links {
   text-align: center; }
 
+.page-container.single-article img.article-image {
+  width: 100%; }
+.page-container.single-article h1.ui.header.title {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.02188rem;
+  text-align: center; }
+.page-container.single-article h3.ui.header.title {
+  font-weight: 400;
+  letter-spacing: 0.0375rem;
+  line-height: 170%;
+  font-size: 1rem;
+  margin-top: 0em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #bbb; }
+
 /*# sourceMappingURL=App.css.map */
