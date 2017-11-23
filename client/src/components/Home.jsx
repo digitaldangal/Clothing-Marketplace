@@ -41,6 +41,7 @@ class Home extends Component {
             })
             .catch(err=>console.log(err))
             this.setState({articleData: articleData})
+            this.props.storeArticleData(articleData);
         })
     }
 
