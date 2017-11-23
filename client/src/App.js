@@ -14,6 +14,7 @@ import Designers from './components/Designers';
 import Designer from './components/Designer';
 import Clothing from './components/Clothing';
 import Article from './components/Article';
+import ReadArticle from './components/ReadArticle';
 import About from './components/About';
 import Footer from './components/Footer';
 import NoMatch from './components/NoMatch';
@@ -127,7 +128,7 @@ class App extends Component {
                 <Route exact path="/designers/:brand/:brand_id" component={Designer} />
                 <Route exact path="/designers/:brand/:brand_id/:product_title" component={Clothing} />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
-                <Route exact path="/editorial/:id/:article" render={() => <Article authState={this.state.authState} /> } />
+                <Route exact path="/editorial/:id/:article" render={() => <ReadArticle authState={this.state.authState} /> } />
                 <Route exact path="/about" component={About} />
                 <Route component={NoMatch} />
               </Switch>
