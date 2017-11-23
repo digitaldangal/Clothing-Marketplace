@@ -9,7 +9,7 @@ class ReadArticle extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            articleData: false
         }
     }
 
@@ -19,8 +19,25 @@ class ReadArticle extends Component {
         let articleInfo = {};
 
         articleRef.get().then((res)=>{
-            console.log(res.data());
-        }).catch(err=>console.log(err))
+            if(res.exists){
+                this.setState({
+                    redirect: false,
+                    currentPage: '',
+                })
+                console.log(res.data());
+                return articleInfo = res.data();
+            }else{
+                this.setState({
+                    redirect: true,
+                    currentPage: '/editorial'
+                })
+            }
+        }).then(()=>{
+            this.setState({
+                articleData: articleInfo
+            })
+        })
+        .catch(err=>console.log(err))
 
     }
 
