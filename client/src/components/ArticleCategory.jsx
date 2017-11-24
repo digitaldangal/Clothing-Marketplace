@@ -5,7 +5,7 @@ import firebase from '../config/firebase';
 // Initialize Cloud Firestore through firebase
 var db = firebase.firestore();
 
-class Article extends Component {
+class ArticleCategory extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -96,4 +96,4 @@ class Article extends Component {
     }
 }
 
-export default Article;
+export default ArticleCategory;
