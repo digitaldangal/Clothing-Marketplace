@@ -308,6 +308,9 @@ div#pic-preview {
 
 .page-container.article-list {
   margin-bottom: 10em; }
+  .page-container.article-list .ui.text.menu {
+    display: flex;
+    justify-content: center; }
   @media (max-width: 1024px) {
     .page-container.article-list .featured-article {
       margin: 0 auto;

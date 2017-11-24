@@ -26,7 +26,6 @@ class Article extends Component {
             this.setState({articleData: tempArticleData})
         }).then(()=>{
             db.collection("articles").doc("article_0").get().then((res)=>{
-                console.log(res.data())
                 featuredArticleData = res.data();
                 this.setState({featuredArticle: featuredArticleData})
             })
@@ -46,6 +45,14 @@ class Article extends Component {
                                 <h2 className="ui header article-title">{featuredArticle.title}</h2>
                                 <h3 className="ui header article-subtitle">{featuredArticle.subtitle}</h3>
                             </Link>
+                        </div>
+
+                        <div className="ui text menu">
+                            <div className="header item"> Category: </div>
+                            <a href='/editorial/archive/Art' className="item">Art</a>
+                            <a href='/editorial/archive/Culture' className="item">Culture</a>
+                            <a href='/editorial/archive/Fashion' className="item">Fashion</a>
+                            <a href='/editorial/archive/Life' className="item">Life</a>
                         </div>
 
                         <div className="ui divided items container">

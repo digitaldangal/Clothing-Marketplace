@@ -408,6 +408,10 @@ div#pic-preview{
 // Article Feed
 .page-container.article-list {
     margin-bottom: 10em;
+    .ui.text.menu{
+        display: flex;
+        justify-content: center;
+    }
     @media (max-width: 1024px){
         .featured-article{
             margin: 0 auto;
