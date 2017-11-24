@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import{Redirect} from 'react-router-dom';
+import firebase from '../config/firebase';
+var db = firebase.firestore();
 
 class Contact extends Component {
     constructor(props){
@@ -16,9 +18,18 @@ class Contact extends Component {
 
         fetch("https://formspree.io/kamidou95@gmail.com", {
             method: 'POST',
-            body: new FormData(document.getElementById('contact-form'))
+            body: new FormData(document.getElementById('contact-form')),
+        }).then((res)=>{
+            console.log(res);
+            db.collection("contact").doc(this.state.request).collection(`${new Date().getMonth()} ${new Date().getDay()}`).doc(`${new Date().getTime()}`).set({
+                display_name: this.state.display_name,
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                message: this.state.message,
+                request: this.state.request,
+                subject: this.state.subject
+            }).catch(err=>{console.log(err)})
         })
-        .then(res=>{console.log(res)})
         .then(()=>{
             this.redirectPage();
         })
