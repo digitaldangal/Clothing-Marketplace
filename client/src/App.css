@@ -14,7 +14,8 @@ a {
 
 header {
   width: 90vw;
-  margin: 0 auto; }
+  margin: 0 auto;
+  margin-bottom: 3em; }
 
 .ui.header, .ui.header.title {
   text-transform: uppercase;
