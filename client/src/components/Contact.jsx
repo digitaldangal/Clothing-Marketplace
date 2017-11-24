@@ -68,9 +68,8 @@ class Contact extends Component {
                                     </div>
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <select required="true" name="size" type="text" onChange={(e)=>this.handleChange(e)}>
-                                                <option disabled selected value> -- Reason -- </option>
-                                                <option value="general">General Question</option>
+                                            <select required="true" name="request" type="text" onChange={(e)=>this.handleChange(e)}>
+                                                <option defaultValue value="general">General Question</option>
                                                 <option value="order_info">Order Information</option>
                                                 <option value="seller_question">Seller Question</option>
                                                 <option value="purchasing">Purchasing or Paypal Issue</option>
