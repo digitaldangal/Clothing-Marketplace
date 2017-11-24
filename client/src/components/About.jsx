@@ -10,9 +10,18 @@ class About extends Component {
 
     render(){
         return(
-            <div className="about">
-                <h1>About</h1>
-            </div>
+            <section id="about">
+                <div className="about-page">
+                    <h1 className="ui header">Streetwear Boutiques</h1>
+                    <div className="page-container ui container">
+                        <div className="first-para">
+                            <p className="text">
+                                <span className="bold">Streetwear Boutiques</span> 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         )
     }
 }

@@ -47,15 +47,15 @@ class Article extends Component {
                             </Link>
                         </div>
 
-                        <div className="ui text menu">
-                            <div className="header item"> Category: </div>
-                            <a href='/editorial/archive/Art' className="item">Art</a>
-                            <a href='/editorial/archive/Culture' className="item">Culture</a>
-                            <a href='/editorial/archive/Fashion' className="item">Fashion</a>
-                            <a href='/editorial/archive/Life' className="item">Life</a>
-                        </div>
 
                         <div className="ui divided items container">
+                            <div className="ui text menu">
+                                <div className="header item"> Category: </div>
+                                <a href='/editorial/archive/Art' className="item">Art</a>
+                                <a href='/editorial/archive/Culture' className="item">Culture</a>
+                                <a href='/editorial/archive/Fashion' className="item">Fashion</a>
+                                <a href='/editorial/archive/Life' className="item">Life</a>
+                            </div>
                         {Object.values(articleData).map((article, i)=>{
                             return(
                                 <div className="item article" key={i}>

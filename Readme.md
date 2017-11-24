@@ -42,7 +42,7 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] Share Articles
     - [ ] Sub Menu to filter articles
 - [ ] About
-- [ ] Contact
+- [x] Contact
 - [ ] Design
     - [ ] constant ui header style, title or subtitle
     - [ ] use of font style and selectors
