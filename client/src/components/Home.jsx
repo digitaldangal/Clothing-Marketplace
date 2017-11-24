@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import Article from './Article';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase

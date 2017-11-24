@@ -18,7 +18,6 @@ import ReadArticle from './components/ReadArticle';
 import ArticleCategory from './components/ArticleCategory';
 import About from './components/About';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
@@ -137,7 +136,6 @@ class App extends Component {
                 <Route exact path="/contact-us" component={Contact} />
                 <Route component={NoMatch} />
               </Switch>
-            <Footer />
             </div>
           </div>
       </Router>
