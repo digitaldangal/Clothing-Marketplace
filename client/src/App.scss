@@ -1,3 +1,6 @@
+*{
+    font-family: 'Raleway', 'Roboto', sans-serif !important; 
+}
 .App {
     text-align: center;
     font-family: 'Raleway', 'Roboto', sans-serif !important;
@@ -293,12 +296,15 @@ section#single-article{
 }
 
 //Login Page
-.auth-form{
+section.login-page{
     .login-form{
         border-bottom: 1px solid #bbb;
         margin-bottom: 3em;
         padding-bottom: 3em;
-        margin-top: 3em;
+    }
+    .ui.header{
+        font-weight: 300;
+        letter-spacing: 1px;
     }
 }
 

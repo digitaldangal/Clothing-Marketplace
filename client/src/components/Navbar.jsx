@@ -89,7 +89,7 @@ class Navbar extends Component {
                         <Link to="/cart">Cart</Link>
                     </div>
                     <div className="link item">
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/contact-us">Contact</Link>
                     </div>
                 </div>
             </div>
