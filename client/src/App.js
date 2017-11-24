@@ -135,8 +135,8 @@ class App extends Component {
                 <Route exact path="/contact-us" component={Contact} />
                 <Route component={NoMatch} />
               </Switch>
+            <Footer />
             </div>
-            {/* {<Footer />} */}
           </div>
       </Router>
     );

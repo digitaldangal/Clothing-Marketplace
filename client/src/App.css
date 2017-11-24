@@ -1,5 +1,5 @@
 * {
-  font-family: 'Raleway', 'Roboto', sans-serif !important; }
+  font-family: 'Raleway', 'Roboto', sans-serif; }
 
 .App {
   text-align: center;
@@ -456,5 +456,13 @@ div#pic-preview {
       font-size: 1.5rem; }
       .page-container.single-article h1.ui.header.title {
         font-size: 3rem; } }
+
+footer {
+  bottom: 0em;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed; }
 
 /*# sourceMappingURL=App.css.map */

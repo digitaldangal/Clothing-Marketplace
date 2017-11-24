@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import{Redirect} from 'react-router-dom';
 
 class Contact extends Component {
     constructor(props){
         super(props);
         this.state = {
-            
+            request: 'general',
+            redirect: false,
+            currentPage: ''
         }
     }
 
@@ -16,6 +19,9 @@ class Contact extends Component {
             body: new FormData(document.getElementById('contact-form'))
         })
         .then(res=>{console.log(res)})
+        .then(()=>{
+            this.redirectPage();
+        })
         .catch(err=>console.log(err))
 
     }
@@ -30,9 +36,18 @@ class Contact extends Component {
         })
     }
 
+    redirectPage(){
+        this.setState({
+            redirect: true,
+            currentPage: '/'
+        })
+    }
+
     render(){
+        const {redirect, currentPage} = this.state;
         return(
             <section className="contact">
+            {redirect ? <Redirect to={currentPage} /> : null}
                 <div className="contact-form ui container">
                     <h1 className="ui header">Contact US</h1>
                     <p className="text">Hey there! If you have any questions, comments, or concerns, please let us know and fill out the form below. We will get back to you as soon as possible.</p>
@@ -61,7 +76,7 @@ class Contact extends Component {
                                     </div>
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <input required="true" name="_replyto" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                            <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +84,7 @@ class Contact extends Component {
                                 <div className="two fields">
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <input name="_subject" type="text" placeholder="Subject" onChange={(e)=>this.handleChange(e)}/>
+                                            <input name="subject" type="text" placeholder="Subject" onChange={(e)=>this.handleChange(e)}/>
                                         </div>
                                     </div>
                                     <div className="field">
