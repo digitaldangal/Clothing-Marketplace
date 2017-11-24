@@ -27,8 +27,9 @@ class Contact extends Component {
     render(){
         return(
             <section className="contact">
-                <div className="contact-form">
+                <div className="contact-form ui container">
                     <h1 className="ui header">Contact US</h1>
+                    <p className="text">Hey there! If you have any questions, comments, or concerns, please let us know and fill out the form below. We will get back to you as soon as possible.</p>
                     <div className="page-container">
                         <div className="contact-form">
                             <form onSubmit={this.handleContactSubmit} className="ui form">
@@ -79,7 +80,7 @@ class Contact extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div className="field">
                                     <label>Message</label>
                                     <textarea required="true" name="message" rows="10" placeholder="Message" onChange={(e)=>this.handleChange(e)}></textarea>        

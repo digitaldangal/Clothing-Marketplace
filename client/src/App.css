@@ -18,7 +18,12 @@ header {
   margin-bottom: 3em; }
 
 .ui.header, .ui.header.title {
+  font-weight: 300;
   text-transform: uppercase;
+  font-family: 'Raleway', 'Roboto', sans-serif !important; }
+
+.ui.header.subtitle {
+  text-transform: capitalize;
   font-family: 'Raleway', 'Roboto', sans-serif !important; }
 
 section#single-article {
@@ -237,6 +242,11 @@ section#single-article {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; }
+
+.contact p.text {
+  text-transform: initial;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300; }
 
 section.login-page .login-form {
   border-bottom: 1px solid #bbb;

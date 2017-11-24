@@ -43,6 +43,11 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] Sub Menu to filter articles
 - [ ] About
 - [ ] Contact
+- [ ] Design
+    - [ ] constant ui header style, title or subtitle
+    - [ ] use of font style and selectors
+    - [ ] button or link styling 
+
 
 
 Future Improvements
