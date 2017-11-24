@@ -11,6 +11,12 @@ class Contact extends Component {
     handleContactSubmit = (e) => {
         e.preventDefault();
 
+        fetch("https://formspree.io/kamidou95@gmail.com", {
+            method: 'POST',
+            body: new FormData(document.getElementById('contact-form'))
+        })
+        .then(res=>{console.log(res)})
+        .catch(err=>console.log(err))
 
     }
 
@@ -32,7 +38,7 @@ class Contact extends Component {
                     <p className="text">Hey there! If you have any questions, comments, or concerns, please let us know and fill out the form below. We will get back to you as soon as possible.</p>
                     <div className="page-container">
                         <div className="contact-form">
-                            <form onSubmit={this.handleContactSubmit} className="ui form">
+                            <form onSubmit={this.handleContactSubmit} className="ui form" id="contact-form">
                                 <div id="form-error"></div>
                                 <div className="two fields">
                                     <div className="field">
@@ -55,7 +61,7 @@ class Contact extends Component {
                                     </div>
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                            <input required="true" name="_replyto" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +69,7 @@ class Contact extends Component {
                                 <div className="two fields">
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <input name="subject" type="text" placeholder="Subject" onChange={(e)=>this.handleChange(e)}/>
+                                            <input name="_subject" type="text" placeholder="Subject" onChange={(e)=>this.handleChange(e)}/>
                                         </div>
                                     </div>
                                     <div className="field">
