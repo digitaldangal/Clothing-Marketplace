@@ -76,7 +76,7 @@ class Navbar extends Component {
             }
         }
         return(
-            <div className='ui secondary stackable menu'>
+            <Menu secondary stackable>
                 <div className="ui grid tablet mobile only container">
                     <Menu secondary stackable>
                         <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
@@ -104,39 +104,18 @@ class Navbar extends Component {
                 </div>
                 
                 <div className="ui grid computer only">
-                    <div className="item">
-                        <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
-                    </div>
-                    <div className="link item">
-                        <Link to="/designers">Designers</Link>
-                    </div>
-                    <div className="link item">
-                        <Link to="/editorial">Articles</Link>
-                    </div>
-                    <div className="link item">
-                        <Link to="/about">About</Link>
-                    </div>
-                    
-
-                    <div className="right menu">
-                        <div className="item">
-                            <div className="ui icon input">
-                                <input type="text" placeholder="Search..."/>
-                                <i className="search icon"></i>
-                            </div>
-                        </div>
-                        <div className="link item">
-                            {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
-                        </div>
-                        <div className="link item">
-                            <Link to="/cart">Cart</Link>
-                        </div>
-                        <div className="link item">
-                            <Link to="/contact-us">Contact</Link>
-                        </div>
-                    </div>
+                    <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
+                    <Menu.Item className="link"><Link to="/designers">Designers</Link></Menu.Item>
+                    <Menu.Item className="link"><Link to="/editorial">Articles</Link></Menu.Item>
+                    <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
+                    <Menu.Menu position="right">
+                        <Menu.Item><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
+                        <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
+                        <Menu.Item className="link"><Link to="/cart">Cart</Link></Menu.Item>
+                        <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
+                    </Menu.Menu>
                 </div>
-            </div>
+            </Menu>
         )
     }
 
