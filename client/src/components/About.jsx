@@ -16,7 +16,7 @@ class About extends Component {
                     <div className="page-container ui container">
                         <div className="first-para">
                             <p className="text">
-                                <span className="bold">Streetwear Boutiques</span> 
+                                <span className="bold">Streetwear Boutiques</span> was founded and created by, Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. Amidou Kante was inspired by various fashion communities and has built a place for different labels to grow and flourish. We take pride in being the first to provide a platform for new, innovative, unique, and emerging brands. 
                             </p>
                         </div>
                     </div>
