@@ -547,11 +547,15 @@ div#pic-preview{
             }
             .product-text{
                 width: 35vw; 
+                h1, h3 {
+                    line-height: 0%;
+                }
                 p.text{
                     line-height: 170%;
                     font-weight: 300;
                     letter-spacing: 1px;
                     text-align: justify;
+                    margin-top: 3em;
                     span#details{
                         font-weight: bold;
                         text-transform: uppercase;

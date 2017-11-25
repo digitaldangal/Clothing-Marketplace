@@ -407,11 +407,14 @@ div#pic-preview {
       width: 100%; }
   .single-clothing .page-container .product-info .product-text {
     width: 35vw; }
+    .single-clothing .page-container .product-info .product-text h1, .single-clothing .page-container .product-info .product-text h3 {
+      line-height: 0%; }
     .single-clothing .page-container .product-info .product-text p.text {
       line-height: 170%;
       font-weight: 300;
       letter-spacing: 1px;
-      text-align: justify; }
+      text-align: justify;
+      margin-top: 3em; }
       .single-clothing .page-container .product-info .product-text p.text span#details {
         font-weight: bold;
         text-transform: uppercase; }
