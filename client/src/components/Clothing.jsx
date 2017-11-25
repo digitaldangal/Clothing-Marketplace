@@ -98,7 +98,7 @@ class Clothing extends Component {
                                 <h1 className="ui header">{brandData.name}</h1>
                                 <h3 className="ui header">{clothingData.title}</h3>
                                 <h3 className="ui header">${clothingData.price}</h3>
-                                <p className="text">{clothingData.description}</p>
+                                <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
                                 <div className="add-to-bag">
                                     <Form onSubmit={this.handleSubmit}>
                                         <Form.Group>
@@ -106,7 +106,7 @@ class Clothing extends Component {
                                             <Form.Field required control={Select} label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onChange={this.handleChange}/>
                                         </Form.Group>
                                         <Button secondary type="submit">Add to Cart</Button>
-                                        <Button secondary>Add to Wishlist</Button>
+                                        <Button secondary><i className="like icon"></i> Wishlist</Button>
                                     </Form>
                                 </div>
                             </div>

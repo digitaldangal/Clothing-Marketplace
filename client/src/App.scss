@@ -537,6 +537,8 @@ div#pic-preview{
         .product-info{
             display: flex;
             justify-content: center;
+            flex-flow: row nowrap;
+            margin-top: 5em;
             .imgHolder{
                 width: 50vw;
                 img{
@@ -545,8 +547,23 @@ div#pic-preview{
             }
             .product-text{
                 width: 35vw; 
+                p.text{
+                    line-height: 170%;
+                    font-weight: 300;
+                    letter-spacing: 1px;
+                    text-align: justify;
+                    span#details{
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
                 .add-to-bag{
-                    // width: 10vw;
+                    div.fields{
+                        display: flex;
+                        justify-content:center; 
+                        width: 100%;
+                        margin-bottom: 2em;
+                    }
                 }
             }
         }

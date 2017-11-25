@@ -398,13 +398,28 @@ div#pic-preview {
 
 .single-clothing .page-container .product-info {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  flex-flow: row nowrap;
+  margin-top: 5em; }
   .single-clothing .page-container .product-info .imgHolder {
     width: 50vw; }
     .single-clothing .page-container .product-info .imgHolder img {
       width: 100%; }
   .single-clothing .page-container .product-info .product-text {
     width: 35vw; }
+    .single-clothing .page-container .product-info .product-text p.text {
+      line-height: 170%;
+      font-weight: 300;
+      letter-spacing: 1px;
+      text-align: justify; }
+      .single-clothing .page-container .product-info .product-text p.text span#details {
+        font-weight: bold;
+        text-transform: uppercase; }
+    .single-clothing .page-container .product-info .product-text .add-to-bag div.fields {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 2em; }
 
 .page-container.article-list {
   margin-bottom: 10em; }
