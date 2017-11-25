@@ -63,7 +63,7 @@ class Clothing extends Component {
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
             return(
-                <div className="single-brand">
+                <div className="single-clothing">
                     <div className="page-container">
                         <div className="product-info">
                             <div className="imgHolder">
@@ -75,7 +75,8 @@ class Clothing extends Component {
                                 <p className="text">{clothingData.description}</p>
                             </div>
                             <div className="add-to-bag">
-                                
+                                <Button secondary>Add to Cart</Button>
+                                <Button secondary>Add to Wishlist</Button>
                             </div>
                         </div>
                     </div>
