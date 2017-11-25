@@ -164,7 +164,7 @@ class ProductUpload extends Component {
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
-                                    USD Price
+                                    $
                                 </div>
                                 <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
                             </div>

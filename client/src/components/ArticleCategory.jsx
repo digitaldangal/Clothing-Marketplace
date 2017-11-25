@@ -5,57 +5,37 @@ import firebase from '../config/firebase';
 // Initialize Cloud Firestore through firebase
 var db = firebase.firestore();
 
-class Article extends Component {
+class ArticleCategory extends Component {
     constructor(props){
         super(props);
         this.state = {
             articleData: false,
-            featuredArticle: false
         }
     }
 
     componentWillMount() {
-        let articleFeed = db.collection("articles").orderBy("created");
+        let category = this.props.match.params.category;
+        let articleFeed = db.collection("articles");
         let tempArticleData = {}
         let featuredArticleData = {}
 
-        articleFeed.limit(15).get().then((res)=>{
+        articleFeed.where("category", "==", category).limit(15).get().then((res)=>{
             res.forEach((article)=>{
                 return tempArticleData[article.data().title] = article.data()
             })
             this.setState({articleData: tempArticleData})
-        }).then(()=>{
-            db.collection("articles").doc("article_0").get().then((res)=>{
-                featuredArticleData = res.data();
-                this.setState({featuredArticle: featuredArticleData})
-            })
         })
         .catch(err=>console.log(err))
     }
 
     rendePage(){
-        if(this.state.articleData !== false && this.state.featuredArticle !== false){
-            const {articleData, featuredArticle} = this.state;
+        if(this.state.articleData !== false){
+            const {articleData} = this.state;
             return(
                 <div className="article-list">
+                    <h1 className="ui header">Articles under {this.props.match.params.category}</h1>
                     <div className="page-container article-list">
-                        <div className="featured-article ui container">
-                            <Link to={`/editorial/${featuredArticle.id}/${featuredArticle.title}`}>
-                                <img src={featuredArticle.screen_image } alt={featuredArticle.title} title={featuredArticle.title}/>
-                                <h2 className="ui header article-title">{featuredArticle.title}</h2>
-                                <h3 className="ui header article-subtitle">{featuredArticle.subtitle}</h3>
-                            </Link>
-                        </div>
-
-
                         <div className="ui divided items container">
-                            <div className="ui text menu">
-                                <div className="header item"> Category: </div>
-                                <a href='/editorial/archive/Art' className="item">Art</a>
-                                <a href='/editorial/archive/Culture' className="item">Culture</a>
-                                <a href='/editorial/archive/Fashion' className="item">Fashion</a>
-                                <a href='/editorial/archive/Life' className="item">Life</a>
-                            </div>
                         {Object.values(articleData).map((article, i)=>{
                             return(
                                 <div className="item article" key={i}>
@@ -103,4 +83,4 @@ class Article extends Component {
     }
 }
 
-export default Article;
+export default ArticleCategory;

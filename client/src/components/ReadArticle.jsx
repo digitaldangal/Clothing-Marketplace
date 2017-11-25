@@ -76,9 +76,9 @@ class ReadArticle extends Component {
                         <p className="photographer">Photos by: {articleData.photographer}</p>
                         <p className="data">Date: {articleData.created}</p>
                         <div className="share">
-                            <a href="#"><i className="facebook square icon"></i></a>
-                            <a href="#"><i className="twitter icon"></i></a>
-                            <a href="#"><i className="mail icon"></i></a>
+                            <button className="ui secondary button"><i className="facebook square icon"></i></button>
+                            <button className="ui secondary button"><i className="twitter icon"></i></button>
+                            <button className="ui secondary button"><i className="mail icon"></i></button>
                         </div>
                     </div>
 
@@ -99,7 +99,6 @@ class ReadArticle extends Component {
 
     rendePage(){
         if(this.state.articleDataLoaded && this.state.articleData.hasOwnProperty("id")){
-            const {articleData} = this.state;
             return(
                 this.renderArticle()
             )

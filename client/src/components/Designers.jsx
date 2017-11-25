@@ -19,11 +19,9 @@ class Designers extends Component {
         if(this.props.brandDataLoaded === false){
             db.collection("brands").where("approved", "==", true).orderBy("name").get().then(res=>{
                 res.forEach((brand)=>{
-                    console.log(brand.id, brand.data())
                     return brandData[brand.id] = brand.data()
                 })
             }).then(()=>{
-                console.log(brandData)
                 this.setState({brandData: brandData})
                 this.props.storeFeed(brandData);
             }).catch(err=>{console.log(err)})
@@ -33,10 +31,6 @@ class Designers extends Component {
                 brandData: brandDataFeed
             })
         }
-    }
-
-    componentWillUpdate(prev, next) {
-        console.log(prev, next)
     }
 
     renderBrands(){
@@ -49,7 +43,7 @@ class Designers extends Component {
                                 <div className="content">
                                     <div className="header title">{brand.name}</div>
                                         <div className="meta">
-                                            {brand.website != null ? <a href={brand.website} target="_blank">{brand.website}</a> : <a href="#">No Website</a>}
+                                            {brand.website != null ? <a href={brand.website} target="_blank">{brand.website}</a> : <p>No Website</p>}
                                         </div>
                                     <div className="description">
                                         <p className="brandText">{brand.description}</p>
@@ -58,7 +52,7 @@ class Designers extends Component {
                                 <div className="ui bottom attached button">
                                     <Link to={`/designers/${brand.name}/${brand.id}`}>View Brand</Link>
                                 </div>
-                            </div>     
+                            </div> 
                         )
                     })}
                 </div>

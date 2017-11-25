@@ -15,12 +15,13 @@ import Designer from './components/Designer';
 import Clothing from './components/Clothing';
 import Article from './components/Article';
 import ReadArticle from './components/ReadArticle';
+import ArticleCategory from './components/ArticleCategory';
 import About from './components/About';
-import Footer from './components/Footer';
+import Contact from './components/Contact';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
-import { __esModule } from 'react-router-dom/NavLink';
+// import { __esModule } from 'react-router-dom/NavLink';
 
 class App extends Component {
   constructor(){
@@ -129,12 +130,13 @@ class App extends Component {
                 <Route exact path="/designers/:brand/:brand_id" component={Designer} />
                 <Route exact path="/designers/:brand/:brand_id/:product_title" component={Clothing} />
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
+                <Route exact path="/editorial/archive/:category" component={ArticleCategory} />
                 <Route exact path="/editorial/:id/:article" component={ReadArticle} />
                 <Route exact path="/about" component={About} />
+                <Route exact path="/contact-us" component={Contact} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
-            {/* {<Footer />} */}
           </div>
       </Router>
     );
