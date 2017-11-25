@@ -39,6 +39,24 @@ section#single-article{
     margin-top: 0.5em;
     .ui.grid.tablet.mobile.only.container{
         .ui.secondary.stackable.menu{
+            @media (min-width: 768px) and(max-width: 1024px){
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                div.item.logo{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                }
+                .ui.icon.input{
+                    display: flex;
+                    position: absolute;
+                    right: 0;
+                    bottom: 1em
+                }
+            }
+        }
+        .ui.secondary.stackable.menu{
             position: relative;
             .ui.simple.dropdown.hamburger{
                 position: absolute;

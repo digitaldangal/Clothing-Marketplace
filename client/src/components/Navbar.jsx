@@ -70,7 +70,7 @@ class Navbar extends Component {
             <div className='ui secondary stackable menu'>
                 <div className="ui grid tablet mobile only container">
                     <div className='ui secondary stackable menu'>
-                        <div className="item">
+                        <div className="item logo">
                             <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
                         </div>
 
@@ -95,10 +95,17 @@ class Navbar extends Component {
                                 <div className="link item">
                                     <Link to="/contact-us">Contact</Link>
                                 </div>
+
+                                <div className="item">
+                                    <div className="ui icon input">
+                                        <input type="text" placeholder="Search..."/>
+                                        <i className="search icon"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="item">
+                        <div className="link item">
                             <div className="ui icon input">
                                 <input type="text" placeholder="Search..."/>
                                 <i className="search icon"></i>
