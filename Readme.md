@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.5.0-alpha (in progress)
+#  StreetwearBoutiques.com 1.6.0-alpha (in progress)
 
 This application will serve as way to connect emerging streetwear brands directly to the customers. 
 
@@ -40,8 +40,8 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Can display a article
     - [x] Article Feed
     - [ ] Share Articles
-    - [ ] Sub Menu to filter articles
-- [ ] About
+    - [x] Sub Menu to filter articles
+- [x] About
 - [x] Contact
 - [ ] Design
     - [ ] constant ui header style, title or subtitle
