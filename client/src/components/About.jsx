@@ -7,8 +7,13 @@ class About extends Component {
 
         }
     }
-
+    
     render(){
+        const paraTitle = {
+            marginBottom: '1em',
+            textAlign: 'center',
+            marginTop: '1em',
+        }
         return(
             <section id="about">
                 <div className="about-page">
@@ -31,6 +36,15 @@ class About extends Component {
                                 <div className="img">
                                     <img src="https://firebasestorage.googleapis.com/v0/b/copped-9a558.appspot.com/o/images%2F12666326_1080641875288231_678991855_n.jpg?alt=media&token=93a94ac0-dc59-45e3-b8b2-e9c4ed3e6e22" alt=""/>
                                 </div>
+                            </div>
+                            <div className="item paragraph three">
+                                <div className="img">
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/copped-9a558.appspot.com/o/images%2FONI_FRONT.png?alt=media&token=22b7d355-c402-4766-84cf-0a473fb9455d" alt=""/>
+                                </div>
+                                <p className="text">
+                                <h1 className="ui header title" style={paraTitle}>Your Safety First</h1>
+                                In order to protect our users, and keep our community safe, each brand is approved first before they are allowed to sell clothing. We have a zero-tolerance policy for any fraudulent behavior. We are always monitoring the marketplace, and any fraudulent user will be banned from our services immediately. Please exercise good judgment when using the marketplace.
+                                </p>
                             </div>
                         </div>
                     </div>

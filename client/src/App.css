@@ -252,6 +252,7 @@ div.about-page .page-container.ui.container .ui.divided.items.container .paragra
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
       width: 100%; }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
+    margin-top: 1em;
     font-weight: 300;
     width: 30vw;
     font-size: 1.3rem;
