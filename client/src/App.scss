@@ -57,9 +57,6 @@ section#single-article{
                 .ui.icon.input{
                     display: flex;
                     justify-content: center;
-                    // position: absolute;
-                    // right: 0;
-                    // bottom: 1em;
                     width: 90vw;
                 }
             }
@@ -72,7 +69,7 @@ section#single-article{
                 .sidebar.icon{
                     font-size: 1.5rem;
                 }
-                .menu .link.item a{
+                div.menu div.item a{
                     font-family: 'Raleway', 'Roboto', sans-serif !important;
                     text-transform: uppercase;
                     font-weight: 300;
@@ -98,7 +95,7 @@ section#single-article{
         }
     }
     .link.item{
-        .ui.simple.dropdown{
+        .ui.dropdown{
             .menu .item a{
             text-transform: uppercase;
             font-weight: 300;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Dropdown, Input, Menu} from 'semantic-ui-react';
+import {Dropdown, Input, Menu, Grid} from 'semantic-ui-react';
 import * as firebase from 'firebase';
 var db = firebase.firestore();
 
@@ -53,7 +53,7 @@ class Navbar extends Component {
 
     authUser=()=>{
         return(
-            <Dropdown text={this.state.user !== undefined ? this.state.user.display_name : `Account`}>
+            <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`}>
                 <Dropdown.Menu>
                     <Dropdown.Item><Link to="/profile">Profile</Link></Dropdown.Item>
                     <Dropdown.Divider />
@@ -73,11 +73,16 @@ class Navbar extends Component {
         const style = {
             menuWidth: {
                 width: '50vw',
+            },
+            fontStyle: {
+                fontFamily: 'Raleway, Roboto, sans-serif',
+                textTransform: 'uppercase',
+                fontWeight: '300'
             }
         }
         return(
             <Menu secondary stackable>
-                <div className="ui grid tablet mobile only container">
+                <Grid className="tablet mobile only container">
                     <Menu secondary stackable>
                         <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
 
@@ -101,9 +106,9 @@ class Navbar extends Component {
 
                         <Menu.Item className="link"><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
                     </Menu>
-                </div>
+                </Grid>
                 
-                <div className="ui grid computer only">
+                <Grid className="computer only">
                     <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
                     <Menu.Item className="link"><Link to="/designers">Designers</Link></Menu.Item>
                     <Menu.Item className="link"><Link to="/editorial">Articles</Link></Menu.Item>
@@ -114,7 +119,7 @@ class Navbar extends Component {
                         <Menu.Item className="link"><Link to="/cart">Cart</Link></Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>
-                </div>
+                </Grid>
             </Menu>
         )
     }
