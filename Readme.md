@@ -1,6 +1,10 @@
 #  StreetwearBoutiques.com 1.5.0-alpha (in progress)
 
-This application will serve as way to connect emerging streetwear brands directly to the customers. 
+Streetwear Boutiques was founded and created by, me Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. I have always been interested in fashion, streetwear, and supporting smaller brands. However, there isn't a convenient way to explore all those brands, so I've decided to build a place where that is possible. I was inspired by various fashion communities and I'm on a mission to create a place for different labels to grow and flourish. 
+
+We provided an exclusive curated selection of various brands, and our goal is to eventually become the source of the latest and most stunning labels. The more brands that sign up, the more our community grows to reach more customers, and the more our platform grows in the fashion world. We take pride in being the first to provide a platform for new, innovative, unique, and emerging brands. 
+
+In order to protect our users, and keep our community safe, each brand is approved first before they are allowed to sell clothing. We have a zero-tolerance policy for any fraudulent behavior. We are always monitoring the marketplace, and any fraudulent user will be banned from our services immediately. Please exercise good judgment when using the marketplace.
 
 Test Account:
 email: test@gmail.com
