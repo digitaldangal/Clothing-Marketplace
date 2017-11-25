@@ -57,7 +57,7 @@ class Navbar extends Component {
                 <Dropdown.Menu>
                     <Dropdown.Item><Link to="/profile">Profile</Link></Dropdown.Item>
                     <Dropdown.Divider />
-                    {this.state.brandStatus ? <Dropdown.Item><Link to="/profile/brand">Brand Dashboard</Link></Dropdown.Item> : null}
+                    {this.state.brandStatus ? <Dropdown.Item><Link to="/profile/brand">Brand Dashboard</Link></Dropdown.Item> : <Dropdown.Item><Link to="/profile/brand-signup">Register A Brand</Link></Dropdown.Item>}
                     <Dropdown.Divider />
                     <Dropdown.Item><Link to="/profile/edit">Edit Account</Link></Dropdown.Item>
                     <Dropdown.Divider />
@@ -85,6 +85,8 @@ class Navbar extends Component {
 
                         <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
                             <Dropdown.Menu style={style.menuWidth}>
+                                <Dropdown.Item><Link to="/">Home</Link></Dropdown.Item>
+                                <Dropdown.Divider />
                                 <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
                                 <Dropdown.Divider />
                                 <Dropdown.Item><Link to="/editorial">Articles</Link></Dropdown.Item>
