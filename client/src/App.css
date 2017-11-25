@@ -522,7 +522,8 @@ div#pic-preview {
       border: 1px solid;
       position: absolute; }
       .page-container.single-article .article-info div.share a {
-        margin: 0 5px; }
+        margin: 0 5px;
+        cursor: pointer; }
   .page-container.single-article .article-text {
     margin-top: 3em;
     border-top: 1px solid #bbb;
