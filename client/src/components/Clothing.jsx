@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import {Button} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -10,7 +11,6 @@ class Clothing extends Component {
         super(props);
         this.state = {
             clothingData: false,
-            clothingDataLoaded: false,
             brandData: false,
         }
     }
@@ -18,7 +18,7 @@ class Clothing extends Component {
     componentWillMount() {
         let brandID = Number(this.props.match.params.brand_id);
         let productTitle = this.props.match.params.product_title;
-        let productID = this.props.match.params.id;
+        let productID = Number(this.props.match.params.id);
         let brandRef = db.collection('brands').where('id', "==", brandID);
         let brandData = {};
         let productData = {};
@@ -38,7 +38,17 @@ class Clothing extends Component {
                 })
                 db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
                 .then((res)=>{
-                    console.log(res)
+                    if(res.empty){
+                        this.setState({
+                            clothingData: false
+                        })
+                    }else{
+                        res.forEach((product)=>{
+                            console.log(product.data())
+                            return productData = product.data();
+                        })
+                        this.setState({clothingData: productData, clothingDataLoaded: true})
+                    }
                 }).catch(err=>(console.log(err)))
                 this.setState({brandData: brandData})
             }
@@ -50,9 +60,20 @@ class Clothing extends Component {
     }
 
     renderPage(){
-        if(this.state.clothingData === false && this.state.clothingDataLoaded === false){
+        if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             return(
-                <h1 className="ui header title"> 404 - Page not found</h1>
+                <h1>Clothes</h1>
+            )
+        }
+        else if(this.state.brandData === false && this.state.clothingData === false){
+            return(
+                <div className="single-brand">
+                    <h1 className="ui header title"> 404 - Page not found</h1>
+                    <Link to='/designers'><Button secondary>Check Out Some Designers</Button></Link>
+                    <div className="page-container">
+                        <img src="" alt=""/>
+                    </div>
+                </div>
             )
         }else{
             return(
