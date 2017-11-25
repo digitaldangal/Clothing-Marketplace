@@ -323,17 +323,30 @@ div.about-page {
                 justify-content: center;
                 flex-flow: row nowrap;
                 div{
-                width: 60vw;
+                width: 40vw;
                     img{
                     width: 100%;
                     }
                 }
                 p.text{
+                    span.bold{
+                        font-weight: bold;
+                        font-weight: 2rem;
+                    }
+                    font-weight: 300;
                     width: 30vw;
                     font-size: 1.3rem;
                     line-height: 170%;
                     text-align: justify;
                     text-indent: 1em;
+                }
+            }
+            .paragraph.two{
+                div{
+                    width: 35vw;
+                }
+                p.text{
+                    padding: 1em;
                 }
             }
         }

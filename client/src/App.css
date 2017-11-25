@@ -248,15 +248,23 @@ div.about-page .page-container.ui.container .ui.divided.items.container .paragra
   justify-content: center;
   flex-flow: row nowrap; }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div {
-    width: 60vw; }
+    width: 40vw; }
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
       width: 100%; }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
+    font-weight: 300;
     width: 30vw;
     font-size: 1.3rem;
     line-height: 170%;
     text-align: justify;
     text-indent: 1em; }
+    div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text span.bold {
+      font-weight: bold;
+      font-weight: 2rem; }
+div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two div {
+  width: 35vw; }
+div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two p.text {
+  padding: 1em; }
 
 .contact p.text {
   text-transform: initial;
