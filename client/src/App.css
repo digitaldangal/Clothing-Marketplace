@@ -243,6 +243,21 @@ section#single-article {
     background-position: center;
     background-repeat: no-repeat; }
 
+div.about-page .page-container.ui.container .ui.divided.items.container .paragraph {
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap; }
+  div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div {
+    width: 60vw; }
+    div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
+      width: 100%; }
+  div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
+    width: 30vw;
+    font-size: 1.3rem;
+    line-height: 170%;
+    text-align: justify;
+    text-indent: 1em; }
+
 .contact p.text {
   text-transform: initial;
   font-family: 'Roboto', sans-serif !important;

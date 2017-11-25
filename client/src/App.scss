@@ -314,6 +314,32 @@ section#single-article{
     }
 }
 
+// About 
+div.about-page {
+    .page-container.ui.container {
+        .ui.divided.items.container {
+            .paragraph {
+                display: flex;
+                justify-content: center;
+                flex-flow: row nowrap;
+                div{
+                width: 60vw;
+                    img{
+                    width: 100%;
+                    }
+                }
+                p.text{
+                    width: 30vw;
+                    font-size: 1.3rem;
+                    line-height: 170%;
+                    text-align: justify;
+                    text-indent: 1em;
+                }
+            }
+        }
+    }
+}
+
 // Contact
 .contact{
     p.text{
