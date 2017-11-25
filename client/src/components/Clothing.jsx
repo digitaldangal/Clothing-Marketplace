@@ -12,6 +12,7 @@ class Clothing extends Component {
         this.state = {
             clothingData: false,
             brandData: false,
+            loadPage: false,
         }
     }
 
@@ -28,7 +29,9 @@ class Clothing extends Component {
             console.log(res)
             if(res.empty){
                 this.setState({
-                    clothingData: false
+                    clothingData: false,
+                    dontLoad: true,
+                    clothingDataLoaded: false
                 })
             }else{
                 res.forEach((res)=>{
@@ -40,14 +43,15 @@ class Clothing extends Component {
                 .then((res)=>{
                     if(res.empty){
                         this.setState({
-                            clothingData: false
+                            clothingData: false,
+                            clothingDataLoaded: false
                         })
                     }else{
                         res.forEach((product)=>{
                             console.log(product.data())
                             return productData = product.data();
                         })
-                        this.setState({clothingData: productData, clothingDataLoaded: true})
+                        this.setState({clothingData: productData, clothingDataLoaded: true, loadPage: true})
                     }
                 }).catch(err=>(console.log(err)))
                 this.setState({brandData: brandData})
@@ -65,7 +69,13 @@ class Clothing extends Component {
                 <h1>Clothes</h1>
             )
         }
-        else if(this.state.brandData === false && this.state.clothingData === false){
+        else if(this.state.clothingDataLoaded === undefined && this.state.loadPage === false){
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }else if(this.state.dontLoad === true && this.state.clothingDataLoaded === false){
             return(
                 <div className="single-brand">
                     <h1 className="ui header title"> 404 - Page not found</h1>
@@ -73,12 +83,6 @@ class Clothing extends Component {
                     <div className="page-container">
                         <img src="" alt=""/>
                     </div>
-                </div>
-            )
-        }else{
-            return(
-                <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
                 </div>
             )
         }
