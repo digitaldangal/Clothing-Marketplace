@@ -37,6 +37,7 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Retrieve and view products
     - [ ] View Single Product
     - [ ] Choose amounts per size, when uploading
+    - [ ] Ability to like or add to wishlist
 - [ ] Purchasing
     - [ ] Cart
     - [ ] Wishlist

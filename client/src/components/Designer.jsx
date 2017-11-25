@@ -71,18 +71,22 @@ class Designer extends Component {
                 {Object.values(this.state.productData).map((product, i)=>{
                     return(
                         <div className="card" key={i}>
-                            <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}>
+                            <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}/${product.title}`}>
                                 <div className="image">
                                     <img src={product[Object.keys(product)[0]]} alt=""/>
                                 </div>
                             </Link>    
                                 <div className="content">
-                                    <div className="header">{product.title}</div>
-                                        <div className="meta links">
-                                            <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
-                                            <a>${product.price}</a>
-                                            <a>Size: {product.size}</a>
-                                        </div>
+                                    {/* <div className="header">{product.title}</div> */}
+                                    <div className="header">{this.state.singleBrandData.name}</div>
+                                    <div className="description links">
+                                        {product.title}
+                                    </div>
+                                    <div className="meta links">
+                                        <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
+                                        <a>${product.price}</a>
+                                        <i className="like icon"></i>
+                                    </div>
                                 </div>
                         </div> 
                     )

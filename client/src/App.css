@@ -386,6 +386,15 @@ div#pic-preview {
   max-height: 350px; }
   .single-brand div.image img {
     width: 100%; }
+.single-brand div.header {
+  text-align: center; }
+.single-brand .description {
+  margin-bottom: 0.3em; }
+.single-brand .meta.links {
+  display: flex;
+  justify-content: space-between; }
+  .single-brand .meta.links a {
+    font-family: 'Roboto' !important; }
 
 .page-container.article-list {
   margin-bottom: 10em; }
