@@ -16,7 +16,7 @@ class About extends Component {
         }
         return(
             <section id="about">
-                <div className="about-page">
+                <div className="about-page ui container">
                     <h1 className="ui header">Discover Streetwear Boutiques</h1>
                     <h3 className="ui header">Expand Your Wardrobe</h3>
                     <div className="page-container ui container">
@@ -47,7 +47,7 @@ class About extends Component {
                                 </p>
                             </div>
 
-                            <a href="/designers" className="ui inverted secondary button">Shop Designers</a>
+                            <a href="/designers" className="ui secondary button">Shop Designers</a>
                         </div>
                     </div>
                 </div>

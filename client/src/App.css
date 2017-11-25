@@ -3,7 +3,8 @@
 
 .App {
   text-align: center;
-  font-family: 'Raleway', 'Roboto', sans-serif !important; }
+  font-family: 'Raleway', 'Roboto', sans-serif !important;
+  padding-bottom: 1em; }
 
 body {
   font-family: 'Raleway', 'Roboto', sans-serif !important; }
@@ -249,6 +250,15 @@ div.about-page .page-container.ui.container {
     display: flex;
     justify-content: center;
     flex-flow: row nowrap; }
+    @media (max-width: 768px) {
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph {
+        flex-flow: column wrap; }
+        div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div.img {
+          width: 100%; }
+          div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div.img img {
+            width: 100%; }
+        div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
+          width: 100% !important; } }
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div {
       width: 40vw; }
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
@@ -266,10 +276,16 @@ div.about-page .page-container.ui.container {
         font-weight: 2rem; }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two div {
     width: 35vw; }
+    @media (max-width: 768px) {
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two div {
+        width: 100%; } }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two p.text {
     padding: 1em; }
+    @media (max-width: 768px) {
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two p.text {
+        padding: 0em; } }
   div.about-page .page-container.ui.container .ui.divided.items.container a {
-    font-size: 2rem; }
+    font-size: 1.5rem; }
 
 .contact p.text {
   text-transform: initial;
