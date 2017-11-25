@@ -75,6 +75,7 @@ section#single-article{
     .ui.grid.computer.only{
         display: flex;
         flex-flow: row nowrap;
+        width: 100%;
     }
     .item{
         justify-content: center;

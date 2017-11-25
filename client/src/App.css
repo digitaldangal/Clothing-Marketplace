@@ -59,7 +59,8 @@ section#single-article {
         font-weight: 300; }
   .ui.stackable.menu .ui.grid.computer.only {
     display: flex;
-    flex-flow: row nowrap; }
+    flex-flow: row nowrap;
+    width: 100%; }
   .ui.stackable.menu .item {
     justify-content: center;
     text-transform: uppercase;
