@@ -57,7 +57,7 @@ class Navbar extends Component {
                 <Dropdown.Menu>
                     <Dropdown.Item><Link to="/profile">Profile</Link></Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item>{this.state.brandStatus ? <Link to="/profile/brand">Brand Dashboard</Link>: null}</Dropdown.Item>
+                    {this.state.brandStatus ? <Dropdown.Item><Link to="/profile/brand">Brand Dashboard</Link></Dropdown.Item> : null}
                     <Dropdown.Divider />
                     <Dropdown.Item><Link to="/profile/edit">Edit Account</Link></Dropdown.Item>
                     <Dropdown.Divider />

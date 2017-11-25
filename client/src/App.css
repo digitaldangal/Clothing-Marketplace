@@ -35,18 +35,21 @@ section#single-article {
   @media (min-width: 768px) and (max-width: 1024px) {
     .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
       display: flex;
+      flex-flow: column wrap;
       justify-content: space-between;
       width: 100%; }
+      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .sidebar.icon {
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0em; }
       .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu div.item.logo {
         display: flex;
         justify-content: center;
         width: 100%; }
       .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.icon.input {
         display: flex;
-        position: absolute;
-        right: 0;
-        bottom: 1em;
-        widows: 15vw; } }
+        justify-content: center;
+        width: 90vw; } }
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
     position: relative; }
     .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {

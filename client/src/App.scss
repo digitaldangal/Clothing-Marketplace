@@ -41,8 +41,14 @@ section#single-article{
         .ui.secondary.stackable.menu{
             @media (min-width: 768px) and(max-width: 1024px){
                 display: flex;
+                flex-flow: column wrap;
                 justify-content: space-between;
                 width: 100%;
+                .sidebar.icon{
+                    font-size: 1.5rem;
+                    position: absolute;
+                    left: 0em;
+                }
                 div.item.logo{
                     display: flex;
                     justify-content: center;
@@ -50,10 +56,11 @@ section#single-article{
                 }
                 .ui.icon.input{
                     display: flex;
-                    position: absolute;
-                    right: 0;
-                    bottom: 1em;
-                    widows: 15vw;
+                    justify-content: center;
+                    // position: absolute;
+                    // right: 0;
+                    // bottom: 1em;
+                    width: 90vw;
                 }
             }
         }
