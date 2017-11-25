@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Dropdown, Input} from 'semantic-ui-react';
+import {Dropdown, Input, Menu} from 'semantic-ui-react';
 import * as firebase from 'firebase';
 var db = firebase.firestore();
 
@@ -9,7 +9,7 @@ class Navbar extends Component {
         super(props);
         this.state = {
             signedIn: false,
-            user: undefined,
+            user: undefined
         }
     }
     
@@ -78,10 +78,8 @@ class Navbar extends Component {
         return(
             <div className='ui secondary stackable menu'>
                 <div className="ui grid tablet mobile only container">
-                    <div className='ui secondary stackable menu'>
-                        <div className="item logo">
-                            <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
-                        </div>
+                    <Menu secondary stackable>
+                        <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
 
                         <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
                             <Dropdown.Menu style={style.menuWidth}>
@@ -101,13 +99,8 @@ class Navbar extends Component {
                             </Dropdown.Menu>
                         </Dropdown>
 
-                        <div className="link item">
-                            <div className="ui icon input">
-                                <input type="text" placeholder="Search..."/>
-                                <i className="search icon"></i>
-                            </div>
-                        </div>
-                    </div>
+                        <Menu.Item className="link"><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
+                    </Menu>
                 </div>
                 
                 <div className="ui grid computer only">
