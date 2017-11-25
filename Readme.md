@@ -30,10 +30,12 @@ These are some of the features that I plan on tackling as I build this project
     - [X] List of Designers/Brands 
     - [x] Register a Brand 
     - [X] Store Brands on Firebase 
-- [X] Products
+    - [x] View Single Brand
+- [ ] Products
     - [x] Create a new product
     - [x] Store Products on Firebase
     - [x] Retrieve and view products
+    - [ ] View Single Product
 - [ ] Purchasing
     - [ ] Cart
     - [ ] Wishlist
