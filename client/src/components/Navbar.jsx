@@ -67,11 +67,11 @@ class Navbar extends Component {
     }
 
     renderNav(){
-        const options = [
-            { key: 1, text: 'Choice 1', value: 1 },
-            { key: 2, text: 'Choice 2', value: 2 },
-            { key: 3, text: 'Choice 3', value: 3 },
-        ]
+        const style = {
+            menuWidth: {
+                width: '30vw',
+            }
+        }
         return(
             <div className='ui secondary stackable menu'>
                 <div className="ui grid tablet mobile only container">
@@ -80,8 +80,8 @@ class Navbar extends Component {
                             <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
                         </div>
 
-                        <Dropdown icon='sidebar' closeOnBlur >
-                            <Dropdown.Menu>
+                        <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
+                            <Dropdown.Menu style={style.menuWidth}>
                                 <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
                                 <Dropdown.Divider />
                                 <Dropdown.Item><Link to="/editorial">Articles</Link></Dropdown.Item>

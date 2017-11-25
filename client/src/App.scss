@@ -52,13 +52,14 @@ section#single-article{
                     display: flex;
                     position: absolute;
                     right: 0;
-                    bottom: 1em
+                    bottom: 1em;
+                    widows: 15vw;
                 }
             }
         }
         .ui.secondary.stackable.menu{
             position: relative;
-            .ui.simple.dropdown.hamburger{
+            .ui.dropdown.hamburger{
                 position: absolute;
                 top: 1.5em;
                 .sidebar.icon{

@@ -45,15 +45,16 @@ section#single-article {
         display: flex;
         position: absolute;
         right: 0;
-        bottom: 1em; } }
+        bottom: 1em;
+        widows: 15vw; } }
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
     position: relative; }
-    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown.hamburger {
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
       position: absolute;
       top: 1.5em; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown.hamburger .sidebar.icon {
+      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger .sidebar.icon {
         font-size: 1.5rem; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown.hamburger .menu .link.item a {
+      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger .menu .link.item a {
         font-family: 'Raleway', 'Roboto', sans-serif !important;
         text-transform: uppercase;
         font-weight: 300; }
