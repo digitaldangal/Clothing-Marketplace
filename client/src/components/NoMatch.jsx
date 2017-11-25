@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import {Button} from 'semantic-ui-react';
 
-const NoMatch = (props) =>{
-    return(
-        <h1>No Match for this route</h1>
-    )
+class NoMatch extends Component{
+    render(){
+        return(
+            <section id="no-match">
+                <div className="brand-list">
+                <h1 className="ui header title"> 404 - Page not found</h1>
+                    <div className="page-container">
+                        <Link to='/designers'><Button secondary>Check Out Some Designers</Button></Link>
+                        <img src="" alt=""/>
+                    </div>
+                </div>
+            </section>
+        )
+    }
 }
 
 export default NoMatch;
