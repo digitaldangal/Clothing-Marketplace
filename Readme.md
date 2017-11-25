@@ -38,6 +38,7 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] View Single Product
     - [ ] Choose amounts per size, when uploading
     - [ ] Ability to like or add to wishlist
+    - [ ] Brands can edit inventory of a product
 - [ ] Purchasing
     - [ ] Cart
     - [ ] Wishlist

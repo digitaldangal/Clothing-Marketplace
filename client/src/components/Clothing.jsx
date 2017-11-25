@@ -59,14 +59,27 @@ class Clothing extends Component {
         }).catch(err=>{console.log(err)})
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        
-    }
-
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
+            const {clothingData, brandData} = this.state;
             return(
-                <h1>Clothes</h1>
+                <div className="single-brand">
+                    <div className="page-container">
+                        <div className="product-info">
+                            <div className="imgHolder">
+                                <img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>
+                            </div>
+                            <div className="product-text">
+                                <h1 className="ui header">{brandData.name}</h1>
+                                <h3 className="ui header">{clothingData.title}</h3>
+                                <p className="text">{clothingData.description}</p>
+                            </div>
+                            <div className="add-to-bag">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )
         }
         else if(this.state.clothingDataLoaded === undefined && this.state.loadPage === false){

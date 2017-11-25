@@ -86,7 +86,12 @@ class ProductUpload extends Component {
             price: this.state.price, 
             size: this.state.size,
             category: this.state.category,
-            description: this.state.description
+            description: this.state.description,
+            main_image: this.state.main_image,
+            id: new Date().getTime(),
+            inventory: {
+
+            },
         },{ merge: true })
         .then(res=>{console.log(res);
         }).catch(err=>console.log(err))
