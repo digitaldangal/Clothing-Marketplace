@@ -17,7 +17,6 @@ class ArticleCategory extends Component {
         let category = this.props.match.params.category;
         let articleFeed = db.collection("articles");
         let tempArticleData = {}
-        let featuredArticleData = {}
 
         articleFeed.where("category", "==", category).limit(15).get().then((res)=>{
             res.forEach((article)=>{
