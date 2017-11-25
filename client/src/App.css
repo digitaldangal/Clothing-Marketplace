@@ -30,19 +30,21 @@ header {
 section#single-article {
   height: 100vh; }
 
-.ui.stackable.menu .item {
-  justify-content: center;
-  text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 1px; }
-  .ui.stackable.menu .item a.brand {
-    width: 10em; }
-    .ui.stackable.menu .item a.brand img.logo {
-      width: 100%; }
-.ui.stackable.menu .link.item .ui.simple.dropdown .menu .item a {
-  text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 1px; }
+.ui.stackable.menu {
+  margin-top: 1em; }
+  .ui.stackable.menu .item {
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 1px; }
+    .ui.stackable.menu .item a.brand {
+      width: 10em; }
+      .ui.stackable.menu .item a.brand img.logo {
+        width: 100%; }
+  .ui.stackable.menu .link.item .ui.simple.dropdown .menu .item a {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 1px; }
 
 .home {
   font-family: 'Raleway', 'Roboto', sans-serif !important;

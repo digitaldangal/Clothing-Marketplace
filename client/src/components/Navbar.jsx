@@ -53,7 +53,7 @@ class Navbar extends Component {
         return(
                 <div className="ui simple dropdown">
                     <div className="text"><Link to="#">{this.state.user !== undefined ? this.state.user.display_name : `Account`}</Link></div>
-                    {/* <i className="dropdown icon"></i> */}
+                    <i className="dropdown icon"></i>
                     <div className="menu">
                         <div className="item"><Link to="/profile">Profile</Link></div>
                         {this.state.brandStatus ? <div className="item"><Link to="/profile/brand">Brand Dashboard</Link></div> : null}
@@ -68,36 +68,76 @@ class Navbar extends Component {
     renderNav(){
         return(
             <div className='ui secondary stackable menu'>
-                <div className="item">
-                    <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
-                </div>
-                <div className="link item">
-                    <Link to="/designers">Designers</Link>
-                </div>
-                <div className="link item">
-                    <Link to="/editorial">Articles</Link>
-                </div>
-                <div className="link item">
-                    <Link to="/about">About</Link>
-                </div>
-                
-                
-                <div className="right menu">
-                    <div className="item">
-                        <div className="ui icon input">
-                            <input type="text" placeholder="Search..."/>
-                            <i className="search icon"></i>
+                <div className="ui grid tablet mobile only">
+                    <div className='ui secondary stackable menu'>
+                        <div className="item">
+                            <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
+                        </div>
+
+                        <div className="ui simple dropdown">
+                            <div className="text"></div>
+                            <i className="sidebar icon"></i>
+                            <div className="menu">
+                                <div className="link item">
+                                    <Link to="/designers">Designers</Link>
+                                </div>
+                                <div className="link item">
+                                    <Link to="/editorial">Articles</Link>
+                                </div>
+                                <div className="link item">
+                                    <Link to="/about">About</Link>
+                                </div>
+                                <div className="link item">
+                                    {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
+                                </div>
+                                <div className="link item">
+                                    <Link to="/cart">Cart</Link>
+                                </div>
+                                <div className="link item">
+                                    <Link to="/contact-us">Contact</Link>
+                                </div>
+                            </div>
+
+                            <div className="item">
+                                <div className="ui icon input">
+                                    <input type="text" placeholder="Search..."/>
+                                    <i className="search icon"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="link item">
-                        {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
+                </div>
+                
+                <div className="ui grid computer only">
+                    <div className="item">
+                        <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
                     </div>
                     <div className="link item">
-                        <Link to="/cart">Cart</Link>
+                        <Link to="/designers">Designers</Link>
                     </div>
                     <div className="link item">
-                        <Link to="/contact-us">Contact</Link>
+                        <Link to="/editorial">Articles</Link>
                     </div>
+                    <div className="link item">
+                        <Link to="/about">About</Link>
+                    </div>
+                    
+                    
+                        <div className="item">
+                            <div className="ui icon input">
+                                <input type="text" placeholder="Search..."/>
+                                <i className="search icon"></i>
+                            </div>
+                        </div>
+                        <div className="link item">
+                            {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
+                        </div>
+                        <div className="link item">
+                            <Link to="/cart">Cart</Link>
+                        </div>
+                        <div className="link item">
+                            <Link to="/contact-us">Contact</Link>
+                        </div>
                 </div>
             </div>
         )
