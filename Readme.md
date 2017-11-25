@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.6.1-alpha (in progress)
+#  StreetwearBoutiques.com 1.7.1-alpha (in progress)
 
 Streetwear Boutiques was founded and created by, me Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. I have always been interested in fashion, streetwear, and supporting smaller brands. However, there isn't a convenient way to explore all those brands, so I've decided to build a place where that is possible. I was inspired by various fashion communities and I'm on a mission to create a place for different labels to grow and flourish. 
 
@@ -20,7 +20,6 @@ These are some of the features that I plan on tackling as I build this project
     - [X] Email Confirmation
     - [x] Brand Signup or Consumer Signup
 - [ ] Integrating Redux
-- [ ] Integrating Semantic UI
 - [X] Integrating Firebase
     - [X] Authentication
     - [X] Storage
@@ -31,13 +30,13 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Register a Brand 
     - [X] Store Brands on Firebase 
     - [x] View Single Brand
-- [ ] Products
+- [x] Products
     - [x] Create a new product
     - [x] Store Products on Firebase
     - [x] Retrieve and view products
-    - [ ] View Single Product
+    - [x] View Single Product
+- [ ] Brand Control
     - [ ] Choose amounts per size, when uploading
-    - [ ] Ability to like or add to wishlist
     - [ ] Brands can edit inventory of a product
 - [ ] Purchasing
     - [ ] Cart
@@ -53,14 +52,11 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Sub Menu to filter articles
 - [x] About
 - [x] Contact
-- [ ] Design
-    - [ ] constant ui header style, title or subtitle
-    - [ ] use of font style and selectors
-    - [ ] button or link styling 
 
 
 
 Future Improvements
+- [ ] Integrating Semantic UI
 - [ ] Searching
 - [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Articles
@@ -73,7 +69,6 @@ Future Improvements
 - [ ] Create Brand Dashboard
     - [ ] activate sales
     - [ ] mark items soldout
-    - [ ]
 - [ ] Create Admin Dashboard
     - [ ] View All Users
     - [ ] View All Brands
