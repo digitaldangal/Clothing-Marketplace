@@ -50,7 +50,6 @@ class Login extends Component{
         console.log('Login Submit')
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(res=>{
-            console.log(res)
             firebase.auth().onAuthStateChanged((user)=>{
                 if (user) {
                     this.setState({userInfo: user.toJSON()})
@@ -77,7 +76,6 @@ class Login extends Component{
         if(this.state.password === this.state.password_confirm){
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(res=>{
-                console.log(res)
                 let user = firebase.auth().currentUser;
                 user.sendEmailVerification().then((res=>{
                     console.log(res)

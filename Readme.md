@@ -20,6 +20,7 @@ These are some of the features that I plan on tackling as I build this project
     - [X] Email Confirmation
     - [x] Brand Signup or Consumer Signup
 - [ ] Integrating Redux
+- [ ] Integrating Semantic UI
 - [X] Integrating Firebase
     - [X] Authentication
     - [X] Storage

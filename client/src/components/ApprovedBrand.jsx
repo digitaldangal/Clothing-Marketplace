@@ -42,6 +42,11 @@ class ApprovedBrand extends Component {
                             redirect: true,
                             currentPage: '/profile'
                         })
+                    }else if(res.exists === false){
+                        this.setState({
+                            redirect: true,
+                            currentPage: '/profile/brand-signup'
+                        })
                     }
                 })
             }else{

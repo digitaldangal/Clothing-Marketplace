@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {Dropdown, Input, Menu, Grid} from 'semantic-ui-react';
 import * as firebase from 'firebase';
 var db = firebase.firestore();
 
@@ -8,9 +9,10 @@ class Navbar extends Component {
         super(props);
         this.state = {
             signedIn: false,
-            user: undefined,
+            user: undefined
         }
     }
+    
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user=>{
             let userInfo = {};
@@ -51,55 +53,74 @@ class Navbar extends Component {
 
     authUser=()=>{
         return(
-                <div className="ui simple dropdown">
-                    <div className="text"><Link to="#">{this.state.user !== undefined ? this.state.user.display_name : `Account`}</Link></div>
-                    {/* <i className="dropdown icon"></i> */}
-                    <div className="menu">
-                        <div className="item"><Link to="/profile">Profile</Link></div>
-                        {this.state.brandStatus ? <div className="item"><Link to="/profile/brand">Brand Dashboard</Link></div> : null}
-                        <div className="item"><Link to="/profile/edit">Edit Account</Link></div>
-                        <div className="item"><Link to="/profile/history">Transactions</Link></div>
-                        {<div className="item"><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></div>}
-                    </div>
-                </div>
+            <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`}>
+                <Dropdown.Menu>
+                    <Dropdown.Item><Link to="/profile">Profile</Link></Dropdown.Item>
+                    <Dropdown.Divider />
+                    {this.state.brandStatus ? <Dropdown.Item><Link to="/profile/brand">Brand Dashboard</Link></Dropdown.Item> : <Dropdown.Item><Link to="/profile/brand-signup">Register A Brand</Link></Dropdown.Item>}
+                    <Dropdown.Divider />
+                    <Dropdown.Item><Link to="/profile/edit">Edit Account</Link></Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item><Link to="/profile/history">Transactions</Link></Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
         )
     }
 
     renderNav(){
+        const style = {
+            menuWidth: {
+                width: '50vw',
+            },
+            fontStyle: {
+                fontFamily: 'Raleway, Roboto, sans-serif',
+                textTransform: 'uppercase',
+                fontWeight: '300'
+            }
+        }
         return(
-            <div className='ui secondary stackable menu'>
-                <div className="item">
-                    <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
-                </div>
-                <div className="link item">
-                    <Link to="/designers">Designers</Link>
-                </div>
-                <div className="link item">
-                    <Link to="/editorial">Articles</Link>
-                </div>
-                <div className="link item">
-                    <Link to="/about">About</Link>
-                </div>
+            <Menu secondary stackable>
+                <Grid className="tablet mobile only container">
+                    <Menu secondary stackable>
+                        <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
+
+                        <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
+                            <Dropdown.Menu style={style.menuWidth}>
+                                <Dropdown.Item><Link to="/">Home</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/editorial">Articles</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/about">About</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item>{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/cart">Cart</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/contact-us">Contact</Link></Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Menu.Item className="link"><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
+                    </Menu>
+                </Grid>
                 
-                
-                <div className="right menu">
-                    <div className="item">
-                        <div className="ui icon input">
-                            <input type="text" placeholder="Search..."/>
-                            <i className="search icon"></i>
-                        </div>
-                    </div>
-                    <div className="link item">
-                        {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
-                    </div>
-                    <div className="link item">
-                        <Link to="/cart">Cart</Link>
-                    </div>
-                    <div className="link item">
-                        <Link to="/contact-us">Contact</Link>
-                    </div>
-                </div>
-            </div>
+                <Grid className="computer only">
+                    <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
+                    <Menu.Item className="link"><Link to="/designers">Designers</Link></Menu.Item>
+                    <Menu.Item className="link"><Link to="/editorial">Articles</Link></Menu.Item>
+                    <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
+                    <Menu.Menu position="right">
+                        <Menu.Item><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
+                        <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
+                        <Menu.Item className="link"><Link to="/cart">Cart</Link></Menu.Item>
+                        <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
+                    </Menu.Menu>
+                </Grid>
+            </Menu>
         )
     }
 
