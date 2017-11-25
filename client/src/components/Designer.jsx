@@ -73,7 +73,7 @@ class Designer extends Component {
                         <div className="card" key={i}>
                             <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}/${product.title}/${product.id}`}>
                                 <div className="image">
-                                    <img src={product[Object.keys(product)[0]]} alt=""/>
+                                    <img src={product.main_image} alt=""/>
                                 </div>
                             </Link>    
                                 <div className="content">

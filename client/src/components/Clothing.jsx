@@ -95,7 +95,7 @@ class Clothing extends Component {
                                 <img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>
                             </div>
                             <div className="product-text">
-                                <h1 className="ui header">{brandData.name}</h1>
+                                <Link to={`/designers/${brandData.name}/${brandData.id}`}><h1 className="ui header">{brandData.name}</h1></Link>
                                 <h3 className="ui header">{clothingData.title}</h3>
                                 <h3 className="ui header">${clothingData.price}</h3>
                                 <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
