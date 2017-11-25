@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button} from 'semantic-ui-react';
+import {Button, Form, Select} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -62,6 +62,23 @@ class Clothing extends Component {
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
+            const sizes = [
+                {key: 'XS', text: 'XS', value: 'XS'},
+                {key: 'S', text: 'S', value: 'S'},
+                {key: 'M', text: 'M', value: 'M'},
+                {key: 'L', text: 'L', value: 'L'},
+                {key: 'XL', text: 'XL', value: 'XL'},
+            ]
+            const shoeSize = [
+                {key: 'XS', text: 'XS', value: 'XS'},
+                {key: 'S', text: 'S', value: 'S'},
+                {key: 'M', text: 'M', value: 'M'},
+                {key: 'L', text: 'L', value: 'L'},
+                {key: 'XL', text: 'XL', value: 'XL'},
+            ]
+            const oneSize = [
+                {key: 'OS', text: 'One Size', value: 'OS'}
+            ]
             return(
                 <div className="single-clothing">
                     <div className="page-container">
@@ -72,11 +89,15 @@ class Clothing extends Component {
                             <div className="product-text">
                                 <h1 className="ui header">{brandData.name}</h1>
                                 <h3 className="ui header">{clothingData.title}</h3>
+                                <h3 className="ui header">${clothingData.price}</h3>
                                 <p className="text">{clothingData.description}</p>
                             </div>
                             <div className="add-to-bag">
-                                <Button secondary>Add to Cart</Button>
-                                <Button secondary>Add to Wishlist</Button>
+                                <Form>
+                                    <Form.Field control={Select} label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onSelect={console.log("hey")}/>
+                                    <Button secondary>Add to Cart</Button>
+                                    <Button secondary>Add to Wishlist</Button>
+                                </Form>
                             </div>
                         </div>
                     </div>
