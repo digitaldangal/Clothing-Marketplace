@@ -146,8 +146,15 @@ class ProductUpload extends Component {
 
     render(){
         const {redirect, currentPage} = this.state;
+        const sizes = [
+            {key: 'XS', text: 'XS', value: 'XS'},
+            {key: 'S', text: 'S', value: 'S'},
+            {key: 'M', text: 'M', value: 'M'},
+            {key: 'L', text: 'L', value: 'L'},
+            {key: 'XL', text: 'XL', value: 'XL'},
+        ]
         return(
-            <div>
+            <section id="product-upload">
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="ui header title">Upload A New Product</h1>
                 <form onSubmit={this.handleSubmit} className="ui form">
@@ -170,28 +177,13 @@ class ProductUpload extends Component {
                         </div>
                     </div>
 
-                    <div className="three fields">
+                    <div className="two fields">
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
                                     $
                                 </div>
                                 <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Size
-                                </div>
-                                <select required="true" name="size" type="text" onChange={(e)=>this.handleChange(e)}>
-                                    <option disabled selected value> -- select -- </option>
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
                             </div>
                         </div>
                         <div className="field">
@@ -208,6 +200,44 @@ class ProductUpload extends Component {
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
+                    <div className="five fields">
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="xs" type="number" placeholder="XS" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="s" type="number" placeholder="S" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="m" type="number" placeholder="M" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui  input">
+                                <input required="true" name="l" type="number" placeholder="L" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="l" type="number" placeholder="XL" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+
+                        {this.state.category == 'ACCESSORIES' ? (<div className="field">
+                            <div className="ui labeled input">
+                                <div className="ui label">
+                                    One-Size
+                                </div>
+                                <input required="true" name="os" type="number" placeholder="One Size" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>) : null}
                     </div>
 
                     <div className="field">
@@ -228,7 +258,7 @@ class ProductUpload extends Component {
                     </div>
                     <button className="ui primary button" type="submit">Create Product</button>
                 </form>
-            </div>
+            </section>
         )
     }
 }
