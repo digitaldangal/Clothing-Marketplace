@@ -92,11 +92,7 @@ class Navbar extends Component {
                                 <Dropdown.Divider />
                                 <Dropdown.Item><Link to="/cart">Cart</Link></Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/contact">Contact</Link></Dropdown.Item>
-                                <Dropdown.Divider />
-                                <Dropdown.Item>
-                                    <Input icon='search' iconPosition='right' name='search' placeholder="Search..." />
-                                </Dropdown.Item>
+                                <Dropdown.Item><Link to="/contact-us">Contact</Link></Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
 
