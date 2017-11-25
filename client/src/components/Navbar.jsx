@@ -74,8 +74,7 @@ class Navbar extends Component {
                             <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
                         </div>
 
-                        <div className="ui simple dropdown">
-                            <div className="text"></div>
+                        <div className="ui simple dropdown hamburger">
                             <i className="sidebar icon"></i>
                             <div className="menu">
                                 <div className="link item">
@@ -98,7 +97,7 @@ class Navbar extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="item">
                             <div className="ui icon input">
                                 <input type="text" placeholder="Search..."/>

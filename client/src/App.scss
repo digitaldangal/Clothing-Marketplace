@@ -40,11 +40,16 @@ section#single-article{
     .ui.grid.tablet.mobile.only.container{
         .ui.secondary.stackable.menu{
             position: relative;
-            .ui.simple.dropdown{
+            .ui.simple.dropdown.hamburger{
                 position: absolute;
                 top: 1.5em;
-                .icon{
+                .sidebar.icon{
                     font-size: 1.5rem;
+                }
+                .menu .link.item a{
+                    font-family: 'Raleway', 'Roboto', sans-serif !important;
+                    text-transform: uppercase;
+                    font-weight: 300;
                 }
             }
         }

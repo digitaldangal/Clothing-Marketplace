@@ -34,11 +34,15 @@ section#single-article {
   margin-top: 0.5em; }
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
     position: relative; }
-    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown {
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown.hamburger {
       position: absolute;
       top: 1.5em; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown .icon {
+      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown.hamburger .sidebar.icon {
         font-size: 1.5rem; }
+      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown.hamburger .menu .link.item a {
+        font-family: 'Raleway', 'Roboto', sans-serif !important;
+        text-transform: uppercase;
+        font-weight: 300; }
   .ui.stackable.menu .item {
     justify-content: center;
     text-transform: uppercase;
