@@ -12,6 +12,7 @@ class Navbar extends Component {
             user: undefined,
         }
     }
+    
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user=>{
             let userInfo = {};
@@ -52,24 +53,26 @@ class Navbar extends Component {
 
     authUser=()=>{
         return(
-                <div className="ui simple dropdown">
-                    <div className="text"><Link to="#">{this.state.user !== undefined ? this.state.user.display_name : `Account`}</Link></div>
-                    <i className="dropdown icon"></i>
-                    <div className="menu">
-                        <div className="item"><Link to="/profile">Profile</Link></div>
-                        {this.state.brandStatus ? <div className="item"><Link to="/profile/brand">Brand Dashboard</Link></div> : null}
-                        <div className="item"><Link to="/profile/edit">Edit Account</Link></div>
-                        <div className="item"><Link to="/profile/history">Transactions</Link></div>
-                        {<div className="item"><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></div>}
-                    </div>
-                </div>
+            <Dropdown text={this.state.user !== undefined ? this.state.user.display_name : `Account`}>
+                <Dropdown.Menu>
+                    <Dropdown.Item><Link to="/profile">Profile</Link></Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item>{this.state.brandStatus ? <Link to="/profile/brand">Brand Dashboard</Link>: null}</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item><Link to="/profile/edit">Edit Account</Link></Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item><Link to="/profile/history">Transactions</Link></Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
         )
     }
 
     renderNav(){
         const style = {
             menuWidth: {
-                width: '30vw',
+                width: '50vw',
             }
         }
         return(
