@@ -36,6 +36,9 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Store Products on Firebase
     - [x] Retrieve and view products
     - [ ] View Single Product
+    - [ ] Choose amounts per size, when uploading
+    - [ ] Ability to like or add to wishlist
+    - [ ] Brands can edit inventory of a product
 - [ ] Purchasing
     - [ ] Cart
     - [ ] Wishlist
@@ -64,6 +67,13 @@ Future Improvements
     - [ ] Weekly or bi weekly
     - [ ] categories and archives 
 - [ ] Improve with drag and drop to reorder images
+- [ ] Tracking
+    - [ ] Transactions
+    - [ ] Rating
+- [ ] Create Brand Dashboard
+    - [ ] activate sales
+    - [ ] mark items soldout
+    - [ ]
 - [ ] Create Admin Dashboard
     - [ ] View All Users
     - [ ] View All Brands

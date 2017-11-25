@@ -507,13 +507,117 @@ div#pic-preview{
 .description.links, .meta.links {
     text-align: center;
 }
+
 .single-brand{
     div.image{
         overflow: hidden;
         max-height: 350px;
+        img{
+            width: 100%;
+        }
+    }
+    div.header{
+        text-align: center;
+    }
+    .description{
+        margin-bottom: 0.3em;
+    }
+    .meta.links{
+        display: flex;
+        justify-content: space-between;
+        a {
+            font-family: 'Roboto' !important;
+        }
     }
 }
 
+// Single Clothing
+.single-clothing{
+    .page-container{
+        @media (max-width: 768px) {
+            .product-info{
+                display: flex;
+                justify-content: center;
+                flex-flow: column wrap;
+                .imgHolder{
+                    img{
+                        width: 100%;
+                    }
+                }
+                .product-text{
+                    padding: 1em;
+                    margin-top: 2em;
+                    h1, h3 {
+                        line-height: 0%;
+                    }
+                    p.text{
+                        line-height: 170%;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        text-align: justify;
+                        margin-top: 3em;
+                        span#details{
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                    }
+                    .add-to-bag{
+                        div.fields{
+                            display: flex;
+                            justify-content:center; 
+                            flex-flow: row wrap;
+                            width: 100%;
+                            margin-bottom: 2em;
+                        }
+                        button{
+                            margin-bottom: 1em;
+                        }
+                    }
+                }
+            }
+        }
+        @media (min-width: 768px) {
+            .product-info{
+                display: flex;
+                justify-content: center;
+                flex-flow: row nowrap;
+                margin-top: 5em;
+                .imgHolder{
+                    width: 40vw;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .product-text{
+                    width: 35vw; 
+                    h1, h3 {
+                        line-height: 0%;
+                    }
+                    p.text{
+                        line-height: 170%;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        text-align: justify;
+                        margin-top: 3em;
+                        span#details{
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                    }
+                    .add-to-bag{
+                        div.fields{
+                            display: flex;
+                            justify-content:center; 
+                            flex-flow: row wrap;
+                            width: 100%;
+                            margin-bottom: 2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 // Article Feed
 .page-container.article-list {
     margin-bottom: 10em;
@@ -712,9 +816,6 @@ div#pic-preview{
         }
     }
 }
-
-
-
 
 footer {
     bottom: 0em;

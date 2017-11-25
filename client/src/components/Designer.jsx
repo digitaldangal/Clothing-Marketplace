@@ -22,7 +22,7 @@ class Designer extends Component {
         let brandId = Number(this.props.match.params.brand_id);
         let brandInfo = {};
         db.collection("brands").where("id", "==", brandId).get().then(res=>{
-            if(res.empty == false){
+            if(res.empty === false){
                 this.setState({
                     redirect: false,
                     currentPage: '',
@@ -35,7 +35,7 @@ class Designer extends Component {
                 let productRef = db.collection("brands").doc(this.state.brandUid).collection("products");
                 let productData = {}
                 productRef.orderBy("title").get().then((res)=>{
-                    if(res.empty == false){
+                    if(res.empty === false){
                         res.forEach((product)=>{
                             return productData[product.id] = product.data()
                         })
@@ -71,22 +71,24 @@ class Designer extends Component {
                 {Object.values(this.state.productData).map((product, i)=>{
                     return(
                         <div className="card" key={i}>
-                            <div className="image">
-                                <img src={product[Object.keys(product)[0]]} alt=""/>
-                            </div>
-                            <div className="content">
-                                <div className="header">{product.title}</div>
-                                    <div className="meta links">
-                                        <a>{product.category}</a>
-                                        <a>${product.price}</a>
-                                        <a>Size: {product.size}</a>
-                                    </div>
-                                <div className="description links">
-                                    <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}><button className="ui button">View Item</button></Link>
-                                    <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}><button className="ui button">Add to Cart</button></Link>
+                            <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}/${product.title}/${product.id}`}>
+                                <div className="image">
+                                    <img src={product.main_image} alt=""/>
                                 </div>
-                            </div>
-                        </div>     
+                            </Link>    
+                                <div className="content">
+                                    {/* <div className="header">{product.title}</div> */}
+                                    <div className="header">{this.state.singleBrandData.name}</div>
+                                    <div className="description links">
+                                        {product.title}
+                                    </div>
+                                    <div className="meta links">
+                                        <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
+                                        <a>${product.price}</a>
+                                        <i className="like icon"></i>
+                                    </div>
+                                </div>
+                        </div> 
                     )
                 })}
                 </div>
@@ -111,7 +113,7 @@ class Designer extends Component {
                     </div>
                 </div>
             )
-        }else if(this.state.productDataLoaded == false && this.state.singleBrandData){
+        }else if(this.state.productDataLoaded === false && this.state.singleBrandData){
             return(
                 <div className="single-brand">
                     <h1 className="ui header title">{this.state.singleBrandData.name}</h1>

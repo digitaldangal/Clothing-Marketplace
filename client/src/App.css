@@ -384,6 +384,76 @@ div#pic-preview {
 .single-brand div.image {
   overflow: hidden;
   max-height: 350px; }
+  .single-brand div.image img {
+    width: 100%; }
+.single-brand div.header {
+  text-align: center; }
+.single-brand .description {
+  margin-bottom: 0.3em; }
+.single-brand .meta.links {
+  display: flex;
+  justify-content: space-between; }
+  .single-brand .meta.links a {
+    font-family: 'Roboto' !important; }
+
+@media (max-width: 768px) {
+  .single-clothing .page-container .product-info {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap; }
+    .single-clothing .page-container .product-info .imgHolder img {
+      width: 100%; }
+    .single-clothing .page-container .product-info .product-text {
+      padding: 1em;
+      margin-top: 2em; }
+      .single-clothing .page-container .product-info .product-text h1, .single-clothing .page-container .product-info .product-text h3 {
+        line-height: 0%; }
+      .single-clothing .page-container .product-info .product-text p.text {
+        line-height: 170%;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-top: 3em; }
+        .single-clothing .page-container .product-info .product-text p.text span#details {
+          font-weight: bold;
+          text-transform: uppercase; }
+      .single-clothing .page-container .product-info .product-text .add-to-bag div.fields {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        width: 100%;
+        margin-bottom: 2em; }
+      .single-clothing .page-container .product-info .product-text .add-to-bag button {
+        margin-bottom: 1em; } }
+@media (min-width: 768px) {
+  .single-clothing .page-container .product-info {
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    margin-top: 5em; }
+    .single-clothing .page-container .product-info .imgHolder {
+      width: 40vw; }
+      .single-clothing .page-container .product-info .imgHolder img {
+        width: 100%; }
+    .single-clothing .page-container .product-info .product-text {
+      width: 35vw; }
+      .single-clothing .page-container .product-info .product-text h1, .single-clothing .page-container .product-info .product-text h3 {
+        line-height: 0%; }
+      .single-clothing .page-container .product-info .product-text p.text {
+        line-height: 170%;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-top: 3em; }
+        .single-clothing .page-container .product-info .product-text p.text span#details {
+          font-weight: bold;
+          text-transform: uppercase; }
+      .single-clothing .page-container .product-info .product-text .add-to-bag div.fields {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        width: 100%;
+        margin-bottom: 2em; } }
 
 .page-container.article-list {
   margin-bottom: 10em; }
