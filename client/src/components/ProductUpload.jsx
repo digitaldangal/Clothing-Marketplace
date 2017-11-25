@@ -55,12 +55,7 @@ class ProductUpload extends Component {
 
     uploadMainPhoto=(e)=>{
         let imageToUplaod = e.target.files[0];
-
-        this.setState({
-            main_image: imageToUplaod
-        })
-
-        console.log(this.state.main_image)
+        console.log(imageToUplaod);
     }
 
     renderPicPreviews = (e) =>{
@@ -94,15 +89,21 @@ class ProductUpload extends Component {
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
             designer: this.state.brandData.name,
-            item_count: this.state.item_count,
+            item_count: eval(this.state.xs + this.state.s + this.state.m + this.state.l + this.state.xl),
             price: this.state.price, 
             size: this.state.size,
             category: this.state.category,
             description: this.state.description,
             main_image: this.state.main_image,
             id: new Date().getTime(),
+            sold_out: false,
             inventory: {
-                
+                xs: this.state.xs,
+                s: this.state.s,
+                m: this.state.m,
+                l: this.state.l,
+                xl: this.state.xl,
+                oneSize: this.state.os,
             },
         },{ merge: true })
         .then(res=>{console.log(res);
