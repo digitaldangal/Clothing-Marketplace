@@ -216,8 +216,9 @@ class ProductUpload extends Component {
                     </div>
 
                     <div className="field">
-                        <label>First Image is Product Image </label>
+                        <label>Upload Main Image for Product</label>
                         <input type="file" name="main_image" id="products_upload" required onChange={(e)=>this.uploadMainPhoto(e)} />
+                        <label>Upload additonal images (recommmended)</label>
                         <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
                         <div id="pic-preview">
                             <ul>
