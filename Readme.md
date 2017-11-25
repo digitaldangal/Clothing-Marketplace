@@ -67,6 +67,13 @@ Future Improvements
     - [ ] Weekly or bi weekly
     - [ ] categories and archives 
 - [ ] Improve with drag and drop to reorder images
+- [ ] Tracking
+    - [ ] Transactions
+    - [ ] Rating
+- [ ] Create Brand Dashboard
+    - [ ] activate sales
+    - [ ] mark items soldout
+    - [ ]
 - [ ] Create Admin Dashboard
     - [ ] View All Users
     - [ ] View All Brands

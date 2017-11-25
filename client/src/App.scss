@@ -534,39 +534,84 @@ div#pic-preview{
 // Single Clothing
 .single-clothing{
     .page-container{
-        .product-info{
-            display: flex;
-            justify-content: center;
-            flex-flow: row nowrap;
-            margin-top: 5em;
-            .imgHolder{
-                width: 40vw;
-                img{
-                    width: 100%;
-                }
-            }
-            .product-text{
-                width: 35vw; 
-                h1, h3 {
-                    line-height: 0%;
-                }
-                p.text{
-                    line-height: 170%;
-                    font-weight: 300;
-                    letter-spacing: 1px;
-                    text-align: justify;
-                    margin-top: 3em;
-                    span#details{
-                        font-weight: bold;
-                        text-transform: uppercase;
+        @media (max-width: 768px) {
+            .product-info{
+                display: flex;
+                justify-content: center;
+                flex-flow: column wrap;
+                .imgHolder{
+                    img{
+                        width: 100%;
                     }
                 }
-                .add-to-bag{
-                    div.fields{
-                        display: flex;
-                        justify-content:center; 
+                .product-text{
+                    padding: 1em;
+                    margin-top: 2em;
+                    h1, h3 {
+                        line-height: 0%;
+                    }
+                    p.text{
+                        line-height: 170%;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        text-align: justify;
+                        margin-top: 3em;
+                        span#details{
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                    }
+                    .add-to-bag{
+                        div.fields{
+                            display: flex;
+                            justify-content:center; 
+                            flex-flow: row wrap;
+                            width: 100%;
+                            margin-bottom: 2em;
+                        }
+                        button{
+                            margin-bottom: 1em;
+                        }
+                    }
+                }
+            }
+        }
+        @media (min-width: 768px) {
+            .product-info{
+                display: flex;
+                justify-content: center;
+                flex-flow: row nowrap;
+                margin-top: 5em;
+                .imgHolder{
+                    width: 40vw;
+                    img{
                         width: 100%;
-                        margin-bottom: 2em;
+                    }
+                }
+                .product-text{
+                    width: 35vw; 
+                    h1, h3 {
+                        line-height: 0%;
+                    }
+                    p.text{
+                        line-height: 170%;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        text-align: justify;
+                        margin-top: 3em;
+                        span#details{
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                    }
+                    .add-to-bag{
+                        div.fields{
+                            display: flex;
+                            justify-content:center; 
+                            flex-flow: row wrap;
+                            width: 100%;
+                            margin-bottom: 2em;
+                        }
                     }
                 }
             }

@@ -21,3 +21,10 @@ Clothing types breakdown
         Sandals
         sneakers
     ACCESSORIES
+
+
+Products made to order option if no sizes are available
+
+sizes for ACCESSORIES
+
+optional brand logo
