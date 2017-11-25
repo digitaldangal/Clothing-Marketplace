@@ -53,6 +53,16 @@ class ProductUpload extends Component {
         })
     }
 
+    uploadMainPhoto=(e)=>{
+        let imageToUplaod = e.target.files[0];
+
+        this.setState({
+            main_image: imageToUplaod
+        })
+
+        console.log(this.state.main_image)
+    }
+
     renderPicPreviews = (e) =>{
         let fileList = e.target.files;
         let picPreview = document.querySelector('#pic-preview ul');
@@ -77,6 +87,7 @@ class ProductUpload extends Component {
         e.preventDefault();
         var uploadedFiles = document.querySelector('#products_upload').files;
         let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
+        let mainImage = document.querySelector("#main_image").files[0];
         let downloadUrl = '';
         let count = 0;
     
@@ -97,6 +108,16 @@ class ProductUpload extends Component {
         .then(res=>{console.log(res);
         }).catch(err=>console.log(err))
 
+        if(uploadedFiles.length === 0){
+            imageRef.child(mainImage.name).put(mainImage).then((res)=>{
+                console.log(res)
+                downloadUrl = res.downloadURL;
+                db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
+                    main_image: downloadUrl
+                },{ merge: true })
+                .catch(err=>console.log(err))
+            })
+        }
         for(let i = 0; i < uploadedFiles.length; i++){
             let currentFile = uploadedFiles[i];
             
@@ -140,19 +161,8 @@ class ProductUpload extends Component {
         })
     }
 
-    uploadMainPhoto=(e)=>{
-        
-    }
-
     render(){
         const {redirect, currentPage} = this.state;
-        const sizes = [
-            {key: 'XS', text: 'XS', value: 'XS'},
-            {key: 'S', text: 'S', value: 'S'},
-            {key: 'M', text: 'M', value: 'M'},
-            {key: 'L', text: 'L', value: 'L'},
-            {key: 'XL', text: 'XL', value: 'XL'},
-        ]
         return(
             <section id="product-upload">
                 {redirect ? <Redirect to={currentPage} /> : null}
@@ -247,7 +257,7 @@ class ProductUpload extends Component {
 
                     <div className="field">
                         <label>Upload Main Image for Product</label>
-                        <input type="file" name="main_image" id="products_upload" required onChange={(e)=>this.uploadMainPhoto(e)} />
+                        <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
                         <label>Upload additonal images (recommmended)</label>
                         <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
                         <div id="pic-preview">
