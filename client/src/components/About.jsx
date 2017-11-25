@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class About extends Component {
     constructor(props){
@@ -47,7 +48,7 @@ class About extends Component {
                                 </p>
                             </div>
 
-                            <a href="/designers" className="ui secondary button">Shop Designers</a>
+                            <Link to="/designers" className="ui secondary button">Shop Designers</Link>
                         </div>
                     </div>
                 </div>
