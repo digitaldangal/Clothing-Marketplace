@@ -9,40 +9,57 @@ class Clothing extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            clothingData: false,
+            clothingDataLoaded: false
         }
     }
 
     componentWillMount() {
-        // /designers/:brand/:brand_id/:product_title
+        let brandID = Number(this.props.match.params.brand_id);
+        let productTitle = this.props.match.params.product_title;
+        let brandRef = db.collection('brands').where('id', "==", brandID);
+        let productData = {};
+        
+        brandRef.get().then((res)=>{
+            console.log(res)
+            if(res.empty){
+                this.setState({
+                    clothingData: false
+                })
+            }else{
+                res.forEach((res)=>{
+                    console.log(res.data())
+                })
+                this.setState({})
+            }
+        }).catch(err=>{console.log(err)})
     }
 
     componentDidUpdate(prevProps, prevState) {
         
     }
 
-    rendePage(){
-        return(
-            <h1>Clothings</h1>
-        )
-        // if(){
-
-        // }else{
-        //     return(
-        //         <div className="ui active inverted dimmer">
-        //             <div className="ui indeterminate text loader">Preparing Files</div>
-        //         </div>
-        //     )
-        // }
+    renderPage(){
+        if(this.state.clothingData === false && this.state.clothingDataLoaded === false){
+            return(
+                <h1 className="ui header title"> 404 - Page not found</h1>
+            )
+        }else{
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }
     }
 
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <div>
+            <section id="single-clothing">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                {this.rendePage()}
-            </div>
+                {this.renderPage()}
+            </section>
         )
     }
 }
