@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Dropdown} from 'semantic-ui-react';
+import {Dropdown, Input} from 'semantic-ui-react';
 import * as firebase from 'firebase';
 var db = firebase.firestore();
 
@@ -84,46 +84,20 @@ class Navbar extends Component {
                             <Dropdown.Menu>
                                 <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Item><Link to="/editorial">Articles</Link></Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Item><Link to="/about">About</Link></Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Item>{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Item><Link to="/cart">Cart</Link></Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Item><Link to="/contact">Contact</Link></Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Item>
+                                    <Input icon='search' iconPosition='right' name='search' placeholder="Search..." />
+                                </Dropdown.Item>
                             </Dropdown.Menu>
-                            {/* <i className="sidebar icon"></i>
-                            <div className="menu">
-                                <div className="link item">
-                                    <Link to="/designers">Designers</Link>
-                                </div>
-                                <div className="link item">
-                                    <Link to="/editorial">Articles</Link>
-                                </div>
-                                <div className="link item">
-                                    <Link to="/about">About</Link>
-                                </div>
-                                <div className="link item">
-                                    {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
-                                </div>
-                                <div className="link item">
-                                    <Link to="/cart">Cart</Link>
-                                </div>
-                                <div className="link item">
-                                    <Link to="/contact-us">Contact</Link>
-                                </div>
-
-                                <div className="item">
-                                    <div className="ui icon input">
-                                        <input type="text" placeholder="Search..."/>
-                                        <i className="search icon"></i>
-                                    </div>
-                                </div>
-                            </div> */}
                         </Dropdown>
 
                         <div className="link item">
