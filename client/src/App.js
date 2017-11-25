@@ -132,6 +132,7 @@ class App extends Component {
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/editorial/archive/:category" component={ArticleCategory} />
                 <Route exact path="/editorial/:id/:article" component={ReadArticle} />
+                {/* <Route exact path="/search/products/:product_type" component={ProductQuery} /> */}
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact-us" component={Contact} />
                 <Route component={NoMatch} />

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -80,7 +79,7 @@ class Designer extends Component {
                                 <div className="content">
                                     <div className="header">{product.title}</div>
                                         <div className="meta links">
-                                            <a>{product.category}</a>
+                                            <Link to={`/search/products/${product.category}`}>{product.category}</Link>
                                             <a>${product.price}</a>
                                             <a>Size: {product.size}</a>
                                         </div>
