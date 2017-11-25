@@ -384,6 +384,8 @@ div#pic-preview {
 .single-brand div.image {
   overflow: hidden;
   max-height: 350px; }
+  .single-brand div.image img {
+    width: 100%; }
 
 .page-container.article-list {
   margin-bottom: 10em; }

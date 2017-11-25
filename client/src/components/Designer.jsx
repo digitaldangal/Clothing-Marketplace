@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import {Button} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -71,22 +72,20 @@ class Designer extends Component {
                 {Object.values(this.state.productData).map((product, i)=>{
                     return(
                         <div className="card" key={i}>
-                            <div className="image">
-                                <img src={product[Object.keys(product)[0]]} alt=""/>
-                            </div>
-                            <div className="content">
-                                <div className="header">{product.title}</div>
-                                    <div className="meta links">
-                                        <a>{product.category}</a>
-                                        <a>${product.price}</a>
-                                        <a>Size: {product.size}</a>
-                                    </div>
-                                <div className="description links">
-                                    <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}><button className="ui button">View Item</button></Link>
-                                    <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}><button className="ui button">Add to Cart</button></Link>
+                            <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}`}>
+                                <div className="image">
+                                    <img src={product[Object.keys(product)[0]]} alt=""/>
                                 </div>
-                            </div>
-                        </div>     
+                            </Link>    
+                                <div className="content">
+                                    <div className="header">{product.title}</div>
+                                        <div className="meta links">
+                                            <a>{product.category}</a>
+                                            <a>${product.price}</a>
+                                            <a>Size: {product.size}</a>
+                                        </div>
+                                </div>
+                        </div> 
                     )
                 })}
                 </div>

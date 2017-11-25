@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {Button} from 'semantic-ui-react';
 import {fb_key} from '../config/api-keys';
 import firebase from '../config/firebase';
 

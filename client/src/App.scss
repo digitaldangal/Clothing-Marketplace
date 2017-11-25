@@ -511,6 +511,9 @@ div#pic-preview{
     div.image{
         overflow: hidden;
         max-height: 350px;
+        img{
+            width: 100%;
+        }
     }
 }
 
