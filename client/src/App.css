@@ -31,7 +31,14 @@ section#single-article {
   height: 100vh; }
 
 .ui.stackable.menu {
-  margin-top: 1em; }
+  margin-top: 0.5em; }
+  .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
+    position: relative; }
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown {
+      position: absolute;
+      top: 1.5em; }
+      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.simple.dropdown .icon {
+        font-size: 1.5rem; }
   .ui.stackable.menu .item {
     justify-content: center;
     text-transform: uppercase;

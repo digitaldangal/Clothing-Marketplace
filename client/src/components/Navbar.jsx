@@ -68,7 +68,7 @@ class Navbar extends Component {
     renderNav(){
         return(
             <div className='ui secondary stackable menu'>
-                <div className="ui grid tablet mobile only">
+                <div className="ui grid tablet mobile only container">
                     <div className='ui secondary stackable menu'>
                         <div className="item">
                             <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
@@ -97,12 +97,12 @@ class Navbar extends Component {
                                     <Link to="/contact-us">Contact</Link>
                                 </div>
                             </div>
-
-                            <div className="item">
-                                <div className="ui icon input">
-                                    <input type="text" placeholder="Search..."/>
-                                    <i className="search icon"></i>
-                                </div>
+                        </div>
+                        
+                        <div className="item">
+                            <div className="ui icon input">
+                                <input type="text" placeholder="Search..."/>
+                                <i className="search icon"></i>
                             </div>
                         </div>
                     </div>
