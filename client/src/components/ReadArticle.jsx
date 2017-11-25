@@ -16,6 +16,7 @@ class ReadArticle extends Component {
     }
 
     componentWillMount() {
+        console.log(this.props)
         let articleId = Number(this.props.match.params.id);
         let articleRef = db.collection('articles').doc(`article_${articleId}`);
         let articleInfo = {};
@@ -26,7 +27,6 @@ class ReadArticle extends Component {
                     redirect: false,
                     currentPage: '',
                 })
-                console.log(res.data());
                 return articleInfo = res.data();
             }else{
                 this.setState({
@@ -53,7 +53,6 @@ class ReadArticle extends Component {
     }
 
     componentWillUpdate(prev, next){
-        console.log(prev, next)
         if(next.articleDataLoaded === true){
             console.log("updated")
             return true;
@@ -63,8 +62,8 @@ class ReadArticle extends Component {
         }
     }
 
-    share=(e)=>{
-        console.log(e)
+    share=(event)=>{
+        console.log(event)
     }
 
     renderArticle(){
@@ -81,9 +80,9 @@ class ReadArticle extends Component {
                         <p className="photographer">Photos by: {articleData.photographer}</p>
                         <p className="data">Date: {articleData.created}</p>
                         <div className="share">
-                            <Button secondary title="facebook" onClick={(event)=>this.share(event.target.title)}><i className="facebook square icon"></i></Button>
-                            <Button secondary title="twitter" onClick={(event)=>this.share(event.target.title)}><i className="twitter icon"></i></Button>
-                            <Button secondary title="email" onClick={(event)=>this.share(event.target.title)}><i className="mail icon"></i></Button>
+                            <a title="facebook" onClick={(event)=>this.share(event.target.title)}><i title="facebook" className="facebook square icon"></i></a>
+                            <a title="twitter" href={`https://twitter.com/home/?status=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="twitter" className="twitter icon"></i></a>
+                            <a title="email" onClick={(event)=>this.share(event.target.title)}><i title="email" className="mail icon"></i></a>
                         </div>
                     </div>
 
