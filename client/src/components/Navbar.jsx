@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {Dropdown} from 'semantic-ui-react';
 import * as firebase from 'firebase';
 var db = firebase.firestore();
 
@@ -66,6 +67,11 @@ class Navbar extends Component {
     }
 
     renderNav(){
+        const options = [
+            { key: 1, text: 'Choice 1', value: 1 },
+            { key: 2, text: 'Choice 2', value: 2 },
+            { key: 3, text: 'Choice 3', value: 3 },
+        ]
         return(
             <div className='ui secondary stackable menu'>
                 <div className="ui grid tablet mobile only container">
@@ -74,8 +80,23 @@ class Navbar extends Component {
                             <Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link>
                         </div>
 
-                        <div className="ui simple dropdown hamburger">
-                            <i className="sidebar icon"></i>
+                        <Dropdown icon='sidebar' closeOnBlur >
+                            <Dropdown.Menu>
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                            </Dropdown.Menu>
+                            {/* <i className="sidebar icon"></i>
                             <div className="menu">
                                 <div className="link item">
                                     <Link to="/designers">Designers</Link>
@@ -102,8 +123,8 @@ class Navbar extends Component {
                                         <i className="search icon"></i>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> */}
+                        </Dropdown>
 
                         <div className="link item">
                             <div className="ui icon input">
