@@ -12,6 +12,7 @@
 /build
 
 # misc
+api-keys.js
 firebase.js
 admin.js
 serviceAccountKey.json

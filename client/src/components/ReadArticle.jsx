@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import {Button} from 'semantic-ui-react';
+import {fb_key} from '../config/api-keys';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -62,10 +63,6 @@ class ReadArticle extends Component {
         }
     }
 
-    share=(event)=>{
-        console.log(event)
-    }
-
     renderArticle(){
         if(this.state.articleData.hasOwnProperty("id")){
             const {articleData} = this.state;
@@ -80,9 +77,9 @@ class ReadArticle extends Component {
                         <p className="photographer">Photos by: {articleData.photographer}</p>
                         <p className="data">Date: {articleData.created}</p>
                         <div className="share">
-                            <a title="facebook" onClick={(event)=>this.share(event.target.title)}><i title="facebook" className="facebook square icon"></i></a>
-                            <a title="twitter" href={`https://twitter.com/home/?status=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="twitter" className="twitter icon"></i></a>
-                            <a title="email" onClick={(event)=>this.share(event.target.title)}><i title="email" className="mail icon"></i></a>
+                            <a title="facebook" target="_blank" href={`https://www.facebook.com/dialog/share?app_id=${fb_key}&display=popup&href=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}&redirect_uri=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="facebook" className="facebook square icon"></i></a>
+                            <a title="twitter" target="_blank" href={`https://twitter.com/home/?status=${this.props.match.params.article} - https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}  @streetwearboutiques`}><i title="twitter" className="twitter icon"></i></a>
+                            <a title="email" target="_blank" href={`mailto:?Subject=Check out this Article: ${this.props.match.params.article}&body=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="email" className="mail icon"></i></a>
                         </div>
                     </div>
 
