@@ -531,6 +531,27 @@ div#pic-preview{
     }
 }
 
+// Single Clothing
+.single-clothing{
+    .page-container{
+        .product-info{
+            display: flex;
+            justify-content: center;
+            .imgHolder{
+                width: 50vw;
+                img{
+                    width: 100%;
+                }
+            }
+            .product-text{
+                width: 35vw; 
+                .add-to-bag{
+                    // width: 10vw;
+                }
+            }
+        }
+    }
+}
 // Article Feed
 .page-container.article-list {
     margin-bottom: 10em;
@@ -729,9 +750,6 @@ div#pic-preview{
         }
     }
 }
-
-
-
 
 footer {
     bottom: 0em;

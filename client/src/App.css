@@ -396,6 +396,16 @@ div#pic-preview {
   .single-brand .meta.links a {
     font-family: 'Roboto' !important; }
 
+.single-clothing .page-container .product-info {
+  display: flex;
+  justify-content: center; }
+  .single-clothing .page-container .product-info .imgHolder {
+    width: 50vw; }
+    .single-clothing .page-container .product-info .imgHolder img {
+      width: 100%; }
+  .single-clothing .page-container .product-info .product-text {
+    width: 35vw; }
+
 .page-container.article-list {
   margin-bottom: 10em; }
   .page-container.article-list .ui.text.menu {

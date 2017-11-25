@@ -59,6 +59,14 @@ class Clothing extends Component {
         }).catch(err=>{console.log(err)})
     }
 
+    handleChange = (e) => {
+        console.log("dog")
+    }
+
+    handleSubmit = (e) => {
+        console.log("cat")
+    }
+
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
@@ -81,7 +89,7 @@ class Clothing extends Component {
             ]
             return(
                 <div className="single-clothing">
-                    <div className="page-container">
+                    <div className="page-container ui container">
                         <div className="product-info">
                             <div className="imgHolder">
                                 <img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>
@@ -91,13 +99,16 @@ class Clothing extends Component {
                                 <h3 className="ui header">{clothingData.title}</h3>
                                 <h3 className="ui header">${clothingData.price}</h3>
                                 <p className="text">{clothingData.description}</p>
-                            </div>
-                            <div className="add-to-bag">
-                                <Form>
-                                    <Form.Field control={Select} label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onSelect={console.log("hey")}/>
-                                    <Button secondary>Add to Cart</Button>
-                                    <Button secondary>Add to Wishlist</Button>
-                                </Form>
+                                <div className="add-to-bag">
+                                    <Form onSubmit={this.handleSubmit}>
+                                        <Form.Group>
+                                            <Form.Field required label='Quantity' control='input' type='number' max={5} onChange={this.handleChange}/>
+                                            <Form.Field required control={Select} label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onChange={this.handleChange}/>
+                                        </Form.Group>
+                                        <Button secondary type="submit">Add to Cart</Button>
+                                        <Button secondary>Add to Wishlist</Button>
+                                    </Form>
+                                </div>
                             </div>
                         </div>
                     </div>
