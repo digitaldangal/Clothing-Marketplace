@@ -85,16 +85,15 @@ class ProductUpload extends Component {
         let mainImage = document.querySelector("#main_image").files[0];
         let downloadUrl = '';
         let count = 0;
+        let itemCount = eval(Number(this.state.xs) + Number(this.state.s) + Number(this.state.m) + Number(this.state.l) + Number(this.state.xl))
     
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
+            inventory_total: itemCount,
             designer: this.state.brandData.name,
-            item_count: eval(this.state.xs + this.state.s + this.state.m + this.state.l + this.state.xl),
             price: this.state.price, 
-            size: this.state.size,
             category: this.state.category,
             description: this.state.description,
-            main_image: this.state.main_image,
             id: new Date().getTime(),
             sold_out: false,
             inventory: {
@@ -103,13 +102,11 @@ class ProductUpload extends Component {
                 m: this.state.m,
                 l: this.state.l,
                 xl: this.state.xl,
-                oneSize: this.state.os,
+                oneSize: this.state.os > 0 ? this.state.os :0,
             },
         },{ merge: true })
-        .then(res=>{console.log(res);
-        }).catch(err=>console.log(err))
-
-        if(uploadedFiles.length === 0){
+        .then((res)=>{
+            console.log(res)
             imageRef.child(mainImage.name).put(mainImage).then((res)=>{
                 console.log(res)
                 downloadUrl = res.downloadURL;
@@ -118,32 +115,37 @@ class ProductUpload extends Component {
                 },{ merge: true })
                 .catch(err=>console.log(err))
             })
-        }
-        for(let i = 0; i < uploadedFiles.length; i++){
-            let currentFile = uploadedFiles[i];
-            
-            imageRef.child(currentFile.name).put(currentFile).then((res)=>{
-                console.log(res)
-                downloadUrl = res.downloadURL;
-                db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
-                    [currentFile.name]: downloadUrl
-                },{ merge: true })
-                .catch(err=>console.log(err))
-            })
-            .then(()=>{
-                count++;
-                this.setState({
-                    uploadCount: count
+        }).catch(err=>console.log(err))
+
+        if(uploadedFiles.length > 1){
+            for(let i = 0; i < uploadedFiles.length; i++){
+                let currentFile = uploadedFiles[i];
+                
+                imageRef.child(currentFile.name).put(currentFile).then((res)=>{
+                    console.log(res)
+                    downloadUrl = res.downloadURL;
+                    db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
+                        additonal_images:{
+                            [currentFile.name]: downloadUrl
+                        }
+                    },{ merge: true })
+                    .catch(err=>console.log(err))
                 })
-                console.log(this.state.uploadCount)
-                if(this.state.uploadCount === uploadedFiles.length){
-                    console.log("all files uploaded")
-                    this.redirectPage()
-                }else{
-                    console.log("all files not uploaded")
-                }
-            })
-            .catch(err=>console.log(err))
+                .then(()=>{
+                    count++;
+                    this.setState({
+                        uploadCount: count
+                    })
+                    console.log(this.state.uploadCount)
+                    if(this.state.uploadCount === uploadedFiles.length){
+                        console.log("all files uploaded")
+                        this.redirectPage()
+                    }else{
+                        console.log("all files not uploaded")
+                    }
+                })
+                .catch(err=>console.log(err))
+            }
         }
     }
 
@@ -169,7 +171,7 @@ class ProductUpload extends Component {
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="ui header title">Upload A New Product</h1>
                 <form onSubmit={this.handleSubmit} className="ui form">
-                    <div className="two fields">
+                    <div className="three fields">
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
@@ -178,17 +180,6 @@ class ProductUpload extends Component {
                                 <input required="true" name="title" type="text" placeholder="Product Title" onChange={(e)=>this.handleChange(e)}/>
                             </div>
                         </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Amount Available
-                                </div>
-                                <input required="true" name="item_count" type="text" placeholder="Amount Available for Sale" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="two fields">
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
@@ -237,7 +228,7 @@ class ProductUpload extends Component {
                         </div>
                         <div className="field">
                             <div className="ui input">
-                                <input required="true" name="l" type="number" placeholder="XL" onChange={(e)=>this.handleChange(e)}/>
+                                <input required="true" name="xl" type="number" placeholder="XL" onChange={(e)=>this.handleChange(e)}/>
                             </div>
                         </div>
 
