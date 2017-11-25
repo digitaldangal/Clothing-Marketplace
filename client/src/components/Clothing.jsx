@@ -14,7 +14,7 @@ class Clothing extends Component {
     }
 
     componentWillMount() {
-        
+        // /designers/:brand/:brand_id/:product_title
     }
 
     componentDidUpdate(prevProps, prevState) {
