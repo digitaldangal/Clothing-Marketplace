@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import {Form, Button, Select} from 'semantic-ui-react'; 
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -139,12 +140,16 @@ class ProductUpload extends Component {
         })
     }
 
+    uploadMainPhoto=(e)=>{
+        
+    }
+
     render(){
         const {redirect, currentPage} = this.state;
         return(
             <div>
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <h1>Product Upload Page</h1>
+                <h1 className="ui header title">Upload A New Product</h1>
                 <form onSubmit={this.handleSubmit} className="ui form">
                     <div className="two fields">
                         <div className="field">
@@ -212,7 +217,8 @@ class ProductUpload extends Component {
 
                     <div className="field">
                         <label>First Image is Product Image </label>
-                        <input type="file" name="photos" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
+                        <input type="file" name="main_image" id="products_upload" required onChange={(e)=>this.uploadMainPhoto(e)} />
+                        <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
                         <div id="pic-preview">
                             <ul>
                                 
