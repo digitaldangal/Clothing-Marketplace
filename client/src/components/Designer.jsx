@@ -54,7 +54,6 @@ class Designer extends Component {
                         })
                     }
                 }).then(()=>{
-                   console.log("Cat")
                 }).catch(err=>{console.log(err)})
             }else{
                 this.setState({
@@ -63,10 +62,6 @@ class Designer extends Component {
                 })
             }
         }).catch(err=>console.log(err))
-    }
-
-    componentWillUpdate(prev, next) {
-        console.log(prev, next)
     }
 
     renderBrands(){

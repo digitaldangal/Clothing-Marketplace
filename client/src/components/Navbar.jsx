@@ -13,8 +13,10 @@ class Navbar extends Component {
     }
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user=>{
+            let userInfo = {};
             if(user){
                 this.setState({signedIn: true})
+                
                 db.collection('brands').doc(user.uid).get().then((res)=>{
                     if(res.exists && res.data().approved){
                         this.setState({
@@ -24,6 +26,11 @@ class Navbar extends Component {
                             currentPage: '',
                         })
                     }
+                }).then(()=>{
+                    db.collection('users').doc(user.uid).get().then((res)=>{
+                        userInfo = res.data();
+                        this.setState({user: userInfo});
+                    })
                 })
             }else{
                 this.setState({signedIn: false}) 
@@ -45,8 +52,8 @@ class Navbar extends Component {
     authUser=()=>{
         return(
                 <div className="ui simple dropdown">
-                    <div className="text"><Link to="#">{this.props.userInfo.email}</Link></div>
-                    <i className="dropdown icon"></i>
+                    <div className="text"><Link to="#">{this.state.user !== undefined ? this.state.user.display_name : `Account`}</Link></div>
+                    {/* <i className="dropdown icon"></i> */}
                     <div className="menu">
                         <div className="item"><Link to="/profile">Profile</Link></div>
                         {this.state.brandStatus ? <div className="item"><Link to="/profile/brand">Brand Dashboard</Link></div> : null}
@@ -89,7 +96,7 @@ class Navbar extends Component {
                         <Link to="/cart">Cart</Link>
                     </div>
                     <div className="link item">
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/contact-us">Contact</Link>
                     </div>
                 </div>
             </div>

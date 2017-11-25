@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import Article from './Article';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -24,18 +23,15 @@ class Home extends Component {
 
         if(this.props.articleDataLoaded === false){
             articleRef.get().then((res)=>{
-                console.log(res.data());
                 return articleData = res.data();
             }).then(()=>{
                 featBrandRef.get().then((res)=>{
-                    console.log(res.data());
                     this.setState({brandImage: res.data().image})
                     this.props.storeBrandImage(res.data().image)
                     return res;
                 }).then((res)=>{
                     db.collection("brands").where("id", "==", res.data().id).get().then((res)=>{
                         res.forEach((brand)=>{
-                            console.log(brand.data());
                             return brandData = brand.data();
                         })
                         this.setState({featuredBrand: brandData})
@@ -59,7 +55,6 @@ class Home extends Component {
     }
 
     shouldComponentUpdate(prev, next){
-        console.log(prev, next)
         if(next.articleData && next.featuredBrand){
             return true;
         }else{

@@ -1,6 +1,10 @@
+* {
+  font-family: 'Raleway', 'Roboto', sans-serif; }
+
 .App {
   text-align: center;
-  font-family: 'Raleway', 'Roboto', sans-serif !important; }
+  font-family: 'Raleway', 'Roboto', sans-serif !important;
+  padding-bottom: 1em; }
 
 body {
   font-family: 'Raleway', 'Roboto', sans-serif !important; }
@@ -11,9 +15,15 @@ a {
 
 header {
   width: 90vw;
-  margin: 0 auto; }
+  margin: 0 auto;
+  margin-bottom: 3em; }
 
 .ui.header, .ui.header.title {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: 'Raleway', 'Roboto', sans-serif !important; }
+
+.ui.header.subtitle {
   text-transform: capitalize;
   font-family: 'Raleway', 'Roboto', sans-serif !important; }
 
@@ -21,11 +31,18 @@ section#single-article {
   height: 100vh; }
 
 .ui.stackable.menu .item {
-  justify-content: center; }
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px; }
   .ui.stackable.menu .item a.brand {
     width: 10em; }
     .ui.stackable.menu .item a.brand img.logo {
       width: 100%; }
+.ui.stackable.menu .link.item .ui.simple.dropdown .menu .item a {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px; }
 
 .home {
   font-family: 'Raleway', 'Roboto', sans-serif !important;
@@ -227,11 +244,61 @@ section#single-article {
     background-position: center;
     background-repeat: no-repeat; }
 
-.auth-form .login-form {
+div.about-page .page-container.ui.container {
+  margin-bottom: 10em; }
+  div.about-page .page-container.ui.container .ui.divided.items.container .paragraph {
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap; }
+    @media (max-width: 768px) {
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph {
+        flex-flow: column wrap; }
+        div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div.img {
+          width: 100%; }
+          div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div.img img {
+            width: 100%; }
+        div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
+          width: 100% !important; } }
+    div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div {
+      width: 40vw; }
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
+        width: 100%; }
+    div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
+      margin-top: 1em;
+      font-weight: 300;
+      width: 30vw;
+      font-size: 1.3rem;
+      line-height: 170%;
+      text-align: justify;
+      text-indent: 1em; }
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text span.bold {
+        font-weight: bold;
+        font-weight: 2rem; }
+  div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two div {
+    width: 35vw; }
+    @media (max-width: 768px) {
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two div {
+        width: 100%; } }
+  div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two p.text {
+    padding: 1em; }
+    @media (max-width: 768px) {
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two p.text {
+        padding: 0em; } }
+  div.about-page .page-container.ui.container .ui.divided.items.container a {
+    font-size: 1.5rem; }
+
+.contact p.text {
+  text-transform: initial;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300; }
+
+section.login-page .login-form {
   border-bottom: 1px solid #bbb;
   margin-bottom: 3em;
-  padding-bottom: 3em;
-  margin-top: 3em; }
+  padding-bottom: 3em; }
+section.login-page .ui.header {
+  font-weight: 300;
+  letter-spacing: 1px; }
 
 div#brand-error {
   width: 65vw;
@@ -285,6 +352,9 @@ div#pic-preview {
 
 .page-container.article-list {
   margin-bottom: 10em; }
+  .page-container.article-list .ui.text.menu {
+    display: flex;
+    justify-content: center; }
   @media (max-width: 1024px) {
     .page-container.article-list .featured-article {
       margin: 0 auto;
@@ -433,5 +503,13 @@ div#pic-preview {
       font-size: 1.5rem; }
       .page-container.single-article h1.ui.header.title {
         font-size: 3rem; } }
+
+footer {
+  bottom: 0em;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed; }
 
 /*# sourceMappingURL=App.css.map */

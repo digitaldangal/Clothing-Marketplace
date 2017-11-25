@@ -120,103 +120,103 @@ class Login extends Component{
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <div className="auth-form">
-                {redirect ? <Redirect to={currentPage} /> : null}
-                <div className="login-form">
-                    <h1>Login</h1>
-                    <form onSubmit={this.handleLoginSubmit} className="ui equal width form">
-                        <div id="login-error"></div>
-                        <div className="two fields">
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                    Email
+            <section className="login-page">
+                <div className="page-container ui container">
+                    {redirect ? <Redirect to={currentPage} /> : null}
+                    <div className="ui divided items container">
+                        <div className="login-form">
+                            <h1 className="ui header">Login</h1>
+                            <form onSubmit={this.handleLoginSubmit} className="ui equal width form">
+                                <div id="login-error"></div>
+                                <div className="two fields">
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                            Email
+                                            </div>
+                                            <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
                                     </div>
-                                    <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
-                                </div>
-                            </div>
 
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                        Password
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                                Password
+                                            </div>
+                                            <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
                                     </div>
-                                    <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
                                 </div>
-                            </div>
+                                <button className="ui primary button" type="submit">Login</button>
+                            </form>
                         </div>
-                        <button className="ui primary button" type="submit">Login</button>
-                    </form>
+
+                        <div className="register-form">
+                            <h1 className="ui header ">Create An Account</h1>
+                            <form onSubmit={this.handleRegisterSubmit} className="ui form">
+                                <div id="form-error"></div>
+                                <div className="two fields">
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                                First Name
+                                            </div>
+                                            <input required="true" name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                                Last Name
+                                            </div>
+                                            <input required="true" name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="two fields">
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                            Display Name
+                                            </div>
+                                            <input required="true" name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                            Email
+                                            </div>
+                                            <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="two fields">
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                                Password
+                                            </div>
+                                            <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                    <div className="field">
+                                        <div className="ui labeled input">
+                                            <div className="ui label">
+                                                Confirm Password
+                                            </div>
+                                            <input required="true" name="password_confirm" type="password" placeholder="Confirm Password" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button className="ui primary button" type="submit">Create</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-
-                <div className="register-form">
-                    <h1>Create An Account</h1>
-                    <form onSubmit={this.handleRegisterSubmit} className="ui form">
-                        <div id="form-error"></div>
-                        <div className="two fields">
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                        First Name
-                                    </div>
-                                    <input required="true" name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
-                                </div>
-                            </div>
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                        Last Name
-                                    </div>
-                                    <input required="true" name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="two fields">
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                    Display Name
-                                    </div>
-                                    <input required="true" name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
-                                </div>
-                            </div>
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                    Email
-                                    </div>
-                                    <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="two fields">
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                        Password
-                                    </div>
-                                    <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
-                                </div>
-                            </div>
-                            <div className="field">
-                                <div className="ui labeled input">
-                                    <div className="ui label">
-                                        Confirm Password
-                                    </div>
-                                    <input required="true" name="password_confirm" type="password" placeholder="Confirm Password" onChange={(e)=>this.handleChange(e)}/>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="ui primary button" type="submit">Create</button>
-                    </form>
-                </div>
-                {/* <div className="login-form">
-                    <h1>Or</h1>
-                    <div id="firebaseui-auth-container"></div>
-                </div> */}
-            </div>
+            </section>
         )
     }
 }

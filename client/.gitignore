@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /functions/node_modules
+/functions/
 
 # testing
 /coverage
@@ -15,6 +16,7 @@ firebase.js
 admin.js
 serviceAccountKey.json
 serviceAccountKey.js
+emailUsers.js
 copped-9a558-firebase-adminsdk-omwm1-ee1363253f.json
 .DS_Store
 .env.local
