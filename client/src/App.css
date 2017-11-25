@@ -43,6 +43,9 @@ section#single-article {
         font-family: 'Raleway', 'Roboto', sans-serif !important;
         text-transform: uppercase;
         font-weight: 300; }
+  .ui.stackable.menu .ui.grid.computer.only {
+    display: flex;
+    flex-flow: row nowrap; }
   .ui.stackable.menu .item {
     justify-content: center;
     text-transform: uppercase;

@@ -121,7 +121,8 @@ class Navbar extends Component {
                         <Link to="/about">About</Link>
                     </div>
                     
-                    
+
+                    <div className="right menu">
                         <div className="item">
                             <div className="ui icon input">
                                 <input type="text" placeholder="Search..."/>
@@ -137,6 +138,7 @@ class Navbar extends Component {
                         <div className="link item">
                             <Link to="/contact-us">Contact</Link>
                         </div>
+                    </div>
                 </div>
             </div>
         )

@@ -54,6 +54,10 @@ section#single-article{
             }
         }
     }
+    .ui.grid.computer.only{
+        display: flex;
+        flex-flow: row nowrap;
+    }
     .item{
         justify-content: center;
         text-transform: uppercase;
