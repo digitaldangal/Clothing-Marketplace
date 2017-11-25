@@ -317,6 +317,7 @@ section#single-article{
 // About 
 div.about-page {
     .page-container.ui.container {
+        margin-bottom: 10em;
         .ui.divided.items.container {
             .paragraph {
                 display: flex;
@@ -349,6 +350,9 @@ div.about-page {
                 p.text{
                     padding: 1em;
                 }
+            }
+            a {
+                font-size: 2rem;
             }
         }
     }
