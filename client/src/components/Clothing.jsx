@@ -10,16 +10,20 @@ class Clothing extends Component {
         super(props);
         this.state = {
             clothingData: false,
-            clothingDataLoaded: false
+            clothingDataLoaded: false,
+            brandData: false,
         }
     }
 
     componentWillMount() {
         let brandID = Number(this.props.match.params.brand_id);
         let productTitle = this.props.match.params.product_title;
+        let productID = this.props.match.params.id;
         let brandRef = db.collection('brands').where('id', "==", brandID);
+        let brandData = {};
         let productData = {};
-        
+        let brandUID = undefined;
+
         brandRef.get().then((res)=>{
             console.log(res)
             if(res.empty){
@@ -29,8 +33,14 @@ class Clothing extends Component {
             }else{
                 res.forEach((res)=>{
                     console.log(res.data())
+                    brandUID = res.id;
+                    return brandData = res.data();
                 })
-                this.setState({})
+                db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
+                .then((res)=>{
+                    console.log(res)
+                }).catch(err=>(console.log(err)))
+                this.setState({brandData: brandData})
             }
         }).catch(err=>{console.log(err)})
     }

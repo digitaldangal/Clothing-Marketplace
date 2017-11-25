@@ -71,7 +71,7 @@ class Designer extends Component {
                 {Object.values(this.state.productData).map((product, i)=>{
                     return(
                         <div className="card" key={i}>
-                            <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}/${product.title}`}>
+                            <Link to={`/designers/${this.state.singleBrandData.name}/${this.state.singleBrandData.id}/${product.title}/${product.id}`}>
                                 <div className="image">
                                     <img src={product[Object.keys(product)[0]]} alt=""/>
                                 </div>
