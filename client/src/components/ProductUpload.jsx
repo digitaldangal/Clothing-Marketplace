@@ -90,7 +90,7 @@ class ProductUpload extends Component {
             main_image: this.state.main_image,
             id: new Date().getTime(),
             inventory: {
-
+                
             },
         },{ merge: true })
         .then(res=>{console.log(res);
