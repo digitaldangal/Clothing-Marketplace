@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import {Button} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -62,6 +63,10 @@ class ReadArticle extends Component {
         }
     }
 
+    share=(e)=>{
+        console.log(e)
+    }
+
     renderArticle(){
         if(this.state.articleData.hasOwnProperty("id")){
             const {articleData} = this.state;
@@ -76,9 +81,9 @@ class ReadArticle extends Component {
                         <p className="photographer">Photos by: {articleData.photographer}</p>
                         <p className="data">Date: {articleData.created}</p>
                         <div className="share">
-                            <button className="ui secondary button"><i className="facebook square icon"></i></button>
-                            <button className="ui secondary button"><i className="twitter icon"></i></button>
-                            <button className="ui secondary button"><i className="mail icon"></i></button>
+                            <Button secondary title="facebook" onClick={(event)=>this.share(event.target.title)}><i className="facebook square icon"></i></Button>
+                            <Button secondary title="twitter" onClick={(event)=>this.share(event.target.title)}><i className="twitter icon"></i></Button>
+                            <Button secondary title="email" onClick={(event)=>this.share(event.target.title)}><i className="mail icon"></i></Button>
                         </div>
                     </div>
 
