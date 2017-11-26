@@ -1,0 +1,29 @@
+{
+  "name": "clothing-marketplace",
+  "version": "1.0.0",
+  "description": "Streetwear Boutiques was founded and created by, me Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. I have always been interested in fashion, streetwear, and supporting smaller brands. However, there isn't a convenient way to explore all those brands, so I've decided to build a place where that is possible. I was inspired by various fashion communities and I'm on a mission to create a place for different labels to grow and flourish.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "express": "^4.16.2",
+    "nodemailer": "^4.4.0",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KanteLabs/Clothing-Marketplace.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KanteLabs/Clothing-Marketplace/issues"
+  },
+  "homepage": "https://github.com/KanteLabs/Clothing-Marketplace#readme"
+}
