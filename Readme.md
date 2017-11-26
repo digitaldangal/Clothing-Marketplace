@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.7.1-alpha (in progress)
+#  StreetwearBoutiques.com 1.8.0-alpha (in progress)
 
 Streetwear Boutiques was founded and created by, me Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. I have always been interested in fashion, streetwear, and supporting smaller brands. However, there isn't a convenient way to explore all those brands, so I've decided to build a place where that is possible. I was inspired by various fashion communities and I'm on a mission to create a place for different labels to grow and flourish. 
 
@@ -57,6 +57,10 @@ These are some of the features that I plan on tackling as I build this project
 
 Future Improvements
 - [ ] Integrating Semantic UI
+- [ ] Product Share button
+- [ ] Sizing
+    - [ ] Pants
+    - [ ] Shoes
 - [ ] Searching
 - [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Articles

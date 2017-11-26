@@ -118,7 +118,7 @@ class ProductUpload extends Component {
             })
         }).catch(err=>console.log(err))
 
-        if(uploadedFiles.length > 1){
+        if(uploadedFiles.length > 0){
             for(let i = 0; i < uploadedFiles.length; i++){
                 let currentFile = uploadedFiles[i];
                 
@@ -160,7 +160,7 @@ class ProductUpload extends Component {
     handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        let regEx = /[^a-zA-Z0-9_^ ()]/gi;
+        let regEx = /[^a-zA-Z0-9_^ (),"]/gi;
         let filteredWord = '';
         if(e.target.name === 'title'){
             filteredWord = e.target.value.replace(regEx, "");
