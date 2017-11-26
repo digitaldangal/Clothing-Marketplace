@@ -160,9 +160,19 @@ class ProductUpload extends Component {
     handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        this.setState({
-            [name]: value
-        })
+        let regEx = /\W/gi;
+        let filteredWord = '';
+        if(e.target.name === 'title'){
+            filteredWord = e.target.value.replace(regEx, " ");
+            e.target.value = filteredWord;
+            this.setState({
+                title: filteredWord 
+            })
+        }else{
+            this.setState({
+                [name]: value
+            })
+        }
     }
 
     render(){
@@ -176,9 +186,9 @@ class ProductUpload extends Component {
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
-                                    Product Title
+                                    Title
                                 </div>
-                                <input required="true" name="title" type="text" placeholder="Product Title" onChange={(e)=>this.handleChange(e)}/>
+                                <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
                             </div>
                         </div>
                         <div className="field">
