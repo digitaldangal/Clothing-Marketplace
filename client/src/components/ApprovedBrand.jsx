@@ -105,7 +105,7 @@ class ApprovedBrand extends Component {
                                         SOLD: {product.amount_sold}
                                     </span>
                                     <span className="left floated">
-                                        Available: {product.inventory_total}
+                                        {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : (`Available: ${product.inventory_total}`)}
                                     </span>
                                     <Button negative onClick={()=>this.handleDelete(product.id, product.title)}>DELETE PRODUCT</Button>
                                 </div>

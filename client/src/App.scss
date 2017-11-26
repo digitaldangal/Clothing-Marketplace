@@ -532,6 +532,10 @@ div#pic-preview{
 }
 
 // Single Clothing
+p#soldout{
+    color: red;
+    font-weight: bold;
+}
 .brand-page{
     .card{
         .header{
@@ -549,6 +553,10 @@ div#pic-preview{
             a{
             font-family: 'Roboto' !important;
             }
+        }
+
+        .extra.content{
+            font-family: 'Roboto' !important;
         }
         button.ui.negative{
             width: 100%;

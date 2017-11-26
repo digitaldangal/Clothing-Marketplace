@@ -396,6 +396,10 @@ div#pic-preview {
   .single-brand .meta.links a {
     font-family: 'Roboto' !important; }
 
+p#soldout {
+  color: red;
+  font-weight: bold; }
+
 .brand-page .card .header {
   text-align: center; }
 .brand-page .card div.image {
@@ -407,6 +411,8 @@ div#pic-preview {
   text-align: center; }
   .brand-page .card .meta a {
     font-family: 'Roboto' !important; }
+.brand-page .card .extra.content {
+  font-family: 'Roboto' !important; }
 .brand-page .card button.ui.negative {
   width: 100%;
   margin-top: 0.5em;
