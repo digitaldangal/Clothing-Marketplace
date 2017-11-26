@@ -418,6 +418,13 @@ p#soldout {
   margin-top: 0.5em;
   letter-spacing: 1px; }
 
+.ui.page.modals.dimmer.transition.visible.active div.image-content {
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap; }
+.ui.page.modals.dimmer.transition.visible.active img.ui.image {
+  width: 100%; }
+
 @media (max-width: 768px) {
   .single-clothing .page-container .product-info {
     display: flex;

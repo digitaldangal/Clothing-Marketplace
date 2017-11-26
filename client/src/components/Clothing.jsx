@@ -101,9 +101,12 @@ class Clothing extends Component {
                             <div className="imgHolder">
                                 <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>}>
                                     <Modal.Content image>
-                                        <Modal.Description>
-                                            <Image src='/assets/images/wireframe/paragraph.png' />
-                                        </Modal.Description>
+                                            <Image src={clothingData.main_image} />
+                                            {Object.values(clothingData.additonal_images).map((image, i)=>{
+                                                return(
+                                                    <Image key={i} src={image} />
+                                                )
+                                            })}
                                     </Modal.Content>
                                 </Modal>
                             </div>
