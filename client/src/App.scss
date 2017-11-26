@@ -623,6 +623,13 @@ p#soldout{
                 }
             }
         }
+        @media (min-width: 768px) and (max-width: 768px){
+            .more-images{
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+        }
         @media (min-width: 768px) {
             .product-info{
                 display: flex;
@@ -663,7 +670,7 @@ p#soldout{
                     }
                     .more-images{
                         display: flex;
-                        justify-content: space-around;
+                        justify-content: center;
                         width: 100%;
                         margin-top: 1em;
                         flex-flow: row wrap;
@@ -672,6 +679,7 @@ p#soldout{
                             background-position: center;
                             width: 100px;
                             height: 100px;
+                            margin: 0em 1em 1em 0em;
                         }
                     }
                 }

@@ -459,6 +459,11 @@ p#soldout {
           width: 100px;
           height: 100px;
           margin: 0em 1em 1em 0em; } }
+@media (min-width: 768px) and (max-width: 768px) {
+  .single-clothing .page-container .more-images {
+    position: absolute;
+    width: 100%;
+    left: 0; } }
 @media (min-width: 768px) {
   .single-clothing .page-container .product-info {
     display: flex;
@@ -491,7 +496,7 @@ p#soldout {
         margin-bottom: 2em; }
       .single-clothing .page-container .product-info .product-text .more-images {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         width: 100%;
         margin-top: 1em;
         flex-flow: row wrap; }
@@ -499,7 +504,8 @@ p#soldout {
           background-size: cover;
           background-position: center;
           width: 100px;
-          height: 100px; } }
+          height: 100px;
+          margin: 0em 1em 1em 0em; } }
 
 .page-container.article-list {
   margin-bottom: 10em; }
