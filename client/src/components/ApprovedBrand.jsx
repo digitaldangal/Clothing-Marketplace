@@ -74,6 +74,7 @@ class ApprovedBrand extends Component {
             db.collection("brands").doc(this.props.userUid).collection("products").doc(title).delete().then((res)=>{
                 console.log(`${title} was deleted`)
                 alert(`${title} was deleted`)
+                window.location.reload();
             }).catch(err=>(console.log(err)))
         }else{
             return null;
