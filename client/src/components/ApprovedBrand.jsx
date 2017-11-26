@@ -74,9 +74,10 @@ class ApprovedBrand extends Component {
                 <div className="ui link cards">
                     {Object.values(this.state.productData).map((product, i)=>{
                         return(
+                        <Link to={`/designers/${this.state.brandData.name}/${this.state.brandData.id}/${product.title}/${product.id}`}>
                             <div className="card" key={i}>
                                 <div className="image">
-                                    <img src={product[Object.keys(product)[0]]} alt=""/>
+                                    <img src={product.main_image} alt={product.title}/>
                                 </div>
                                 <div className="content">
                                     <div className="header">{product.title}</div>
@@ -90,11 +91,10 @@ class ApprovedBrand extends Component {
                                 </div>
                                 <div className="extra content">
                                     <span className="right floated">
-                                        Size: {product.size}
+                                        SOLD: {product.amount_sold}
                                     </span>
                                     <span className="left floated">
-                                        <i className="shop icon"></i>
-                                        {product.item_count}
+                                        Available: {product.inventory_total}
                                     </span>
                                 </div>
                             </div>     

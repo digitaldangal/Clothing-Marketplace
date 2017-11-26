@@ -96,6 +96,7 @@ class ProductUpload extends Component {
             description: this.state.description,
             id: new Date().getTime(),
             sold_out: false,
+            amount_sold: 0,
             inventory: {
                 xs: this.state.xs,
                 s: this.state.s,
