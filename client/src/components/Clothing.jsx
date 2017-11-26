@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button, Form, Select} from 'semantic-ui-react';
+import {Button, Form, Select, Image, Modal} from 'semantic-ui-react';
+
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -98,7 +99,13 @@ class Clothing extends Component {
                     <div className="page-container ui container">
                         <div className="product-info">
                             <div className="imgHolder">
-                                <img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>
+                                <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>}>
+                                    <Modal.Content image>
+                                        <Modal.Description>
+                                            <Image src='/assets/images/wireframe/paragraph.png' />
+                                        </Modal.Description>
+                                    </Modal.Content>
+                                </Modal>
                             </div>
                             <div className="product-text">
                                 <Link to={`/designers/${brandData.name}/${brandData.id}`}><h1 className="ui header">{brandData.name}</h1></Link>
