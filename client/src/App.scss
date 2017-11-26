@@ -538,6 +538,8 @@ div#pic-preview{
             text-align: center;
         }
         div.image{
+            overflow: hidden;
+            max-height: 350px;
             img{
                 width: 100%;
             }

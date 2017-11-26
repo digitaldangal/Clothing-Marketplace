@@ -398,8 +398,11 @@ div#pic-preview {
 
 .brand-page .card .header {
   text-align: center; }
-.brand-page .card div.image img {
-  width: 100%; }
+.brand-page .card div.image {
+  overflow: hidden;
+  max-height: 350px; }
+  .brand-page .card div.image img {
+    width: 100%; }
 .brand-page .card .meta {
   text-align: center; }
   .brand-page .card .meta a {
