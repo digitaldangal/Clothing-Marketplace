@@ -476,7 +476,12 @@ p#soldout {
         justify-content: center;
         flex-flow: row wrap;
         width: 100%;
-        margin-bottom: 2em; } }
+        margin-bottom: 2em; }
+      .single-clothing .page-container .product-info .product-text .more-images .img {
+        background-size: cover;
+        background-position: center;
+        width: 100px;
+        height: 100px; } }
 
 .page-container.article-list {
   margin-bottom: 10em; }

@@ -109,6 +109,14 @@ class Clothing extends Component {
                                         <Button secondary><i className="like icon"></i> Wishlist</Button>
                                     </Form>
                                 </div>
+                                <div className="more-images">
+                                    {Object.values(clothingData.additonal_images).map((image, i)=>{
+                                        return(
+                                            <div className="img" key={i} style={{backgroundImage: `url('${image}')`}}>
+                                            </div> 
+                                        )
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>

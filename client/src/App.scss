@@ -647,6 +647,14 @@ p#soldout{
                             margin-bottom: 2em;
                         }
                     }
+                    .more-images{
+                        .img {
+                            background-size: cover;
+                            background-position: center;
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
                 }
             }
         }
