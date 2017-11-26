@@ -606,6 +606,20 @@ p#soldout{
                             margin-bottom: 1em;
                         }
                     }
+                    .more-images{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        margin-top: 1em;
+                        flex-flow: row wrap;
+                        .img {
+                            background-size: cover;
+                            background-position: center;
+                            width: 100px;
+                            height: 100px;
+                            margin: 0em 1em 1em 0em;
+                        }
+                    }
                 }
             }
         }
@@ -616,13 +630,13 @@ p#soldout{
                 flex-flow: row nowrap;
                 margin-top: 5em;
                 .imgHolder{
-                    width: 40vw;
+                    width: 35vw;
                     img{
                         width: 100%;
                     }
                 }
                 .product-text{
-                    width: 35vw;
+                    width: 30vw;
                     padding: 1em;
                     h1, h3 {
                         margin: 0em;
@@ -648,6 +662,11 @@ p#soldout{
                         }
                     }
                     .more-images{
+                        display: flex;
+                        justify-content: space-around;
+                        width: 100%;
+                        margin-top: 1em;
+                        flex-flow: row wrap;
                         .img {
                             background-size: cover;
                             background-position: center;

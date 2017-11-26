@@ -110,6 +110,7 @@ class Clothing extends Component {
                                     </Form>
                                 </div>
                                 <div className="more-images">
+                                    <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}}></div> 
                                     {Object.values(clothingData.additonal_images).map((image, i)=>{
                                         return(
                                             <div className="img" key={i} style={{backgroundImage: `url('${image}')`}}>
