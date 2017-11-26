@@ -418,7 +418,7 @@ p#soldout {
   margin-top: 0.5em;
   letter-spacing: 1px; }
 
-.ui.page.modals.dimmer.transition.visible.active div.image-content {
+.ui.page.modals.dimmer.transition.visible.active div.image.content {
   display: flex;
   justify-content: center;
   flex-flow: column nowrap; }
