@@ -68,6 +68,17 @@ class ApprovedBrand extends Component {
             return false;
         }
     }
+
+    handleDelete=(id, title)=>{
+        if(window.confirm(`Are you sure you want to delete ${title}? This action can't be reversed.`)){
+            db.collection("brands").doc(this.props.userUid).collection("products").doc(title).delete().then((res)=>{
+                console.log(`${title} was deleted`)
+                alert(`${title} was deleted`)
+            }).catch(err=>(console.log(err)))
+        }else{
+            return null;
+        }
+    }
     
     renderGallery(){
         if(this.state.productData){
@@ -95,7 +106,7 @@ class ApprovedBrand extends Component {
                                     <span className="left floated">
                                         Available: {product.inventory_total}
                                     </span>
-                                    <Button negative>DELETE PRODUCT</Button>
+                                    <Button negative onClick={()=>this.handleDelete(product.id, product.title)}>DELETE PRODUCT</Button>
                                 </div>
                             </div> 
                         )
