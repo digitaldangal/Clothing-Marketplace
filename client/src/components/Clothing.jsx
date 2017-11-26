@@ -99,7 +99,7 @@ class Clothing extends Component {
                     <div className="page-container ui container">
                         <div className="product-info">
                             <div className="imgHolder">
-                                <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeIcon>
+                                <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeOnDocumentClick={true} closeIcon>
                                     <Modal.Content image>
                                             <Image src={clothingData.main_image} />
                                             {Object.values(clothingData.additonal_images).map((image, i)=>{

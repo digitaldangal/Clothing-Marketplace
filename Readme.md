@@ -10,7 +10,7 @@ Test Account:
 email: test@gmail.com
 password: abc123
 
-![Copped WireFrame Screenshots](./assets/home-page.png?raw=true "Copped WireFrames")
+![Streetweat Boutiques WireFrame Screenshots](./assets/single-product.png?raw=true "Streetweat Boutiques WireFrames")
 
 ### Project Stricture / Features
 These are some of the features that I plan on tackling as I build this project
@@ -110,7 +110,7 @@ Future Improvements
 ### Screenshots
 
 #### Register as a brand
-![Register As a Brand](./assets/brandCreate.png?raw=true "Brand Create")
+![Register As a Brand](./assets/brand-create.png?raw=true "Brand Create")
 
 #### Upload A Clothing Item
 ![Upload A Clothing Item](./assets/upload-page.png?raw=true "Product Create")
@@ -118,8 +118,8 @@ Future Improvements
 #### Login Page
 ![Login page](./assets/login-page.png?raw=true "Login page")
 
-#### Product Page
-![Product Page](./assets/product-page.png?raw=true "Product page")
+#### View Clothing Items of A Brand
+![Product Page](./assets/product-page-as-user.png?raw=true "Product page")
 
 ### Feed for Articles
 ![Articles](./assets/articles-feed.png?raw=true "Article Feed")
