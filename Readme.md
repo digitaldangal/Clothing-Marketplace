@@ -36,7 +36,7 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Retrieve and view products
     - [x] View Single Product
 - [ ] Brand Control
-    - [ ] Choose amounts per size, when uploading
+    - [x] Choose amounts per size, when uploading
     - [ ] Brands can edit inventory of a product
 - [ ] Purchasing
     - [ ] Cart
@@ -58,6 +58,7 @@ These are some of the features that I plan on tackling as I build this project
 Future Improvements
 - [ ] Integrating Semantic UI
 - [ ] Product Share button
+- [ ] Compress Uploaded Images
 - [ ] Sizing
     - [ ] Pants
     - [ ] Shoes

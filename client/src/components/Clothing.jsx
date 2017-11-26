@@ -67,6 +67,10 @@ class Clothing extends Component {
         console.log("cat")
     }
 
+    handleImageChange=(image)=>{
+        console.log(image)
+    }
+
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
@@ -110,10 +114,10 @@ class Clothing extends Component {
                                     </Form>
                                 </div>
                                 <div className="more-images">
-                                    <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}}></div> 
+                                    <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
                                     {Object.values(clothingData.additonal_images).map((image, i)=>{
                                         return(
-                                            <div className="img" key={i} style={{backgroundImage: `url('${image}')`}}>
+                                            <div className="img" key={i}  datatype-img={image} style={{backgroundImage: `url('${image}')`}}>
                                             </div> 
                                         )
                                     })}
