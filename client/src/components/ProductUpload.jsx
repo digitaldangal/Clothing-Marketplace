@@ -160,10 +160,10 @@ class ProductUpload extends Component {
     handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        let regEx = /\W/gi;
+        let regEx = /[^a-zA-Z0-9_^ ]/gi;
         let filteredWord = '';
         if(e.target.name === 'title'){
-            filteredWord = e.target.value.replace(regEx, " ");
+            filteredWord = e.target.value.replace(regEx, "");
             e.target.value = filteredWord;
             this.setState({
                 title: filteredWord 
