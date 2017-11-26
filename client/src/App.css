@@ -429,7 +429,7 @@ p#soldout {
       padding: 1em;
       margin-top: 2em; }
       .single-clothing .page-container .product-info .product-text h1, .single-clothing .page-container .product-info .product-text h3 {
-        line-height: 0%; }
+        margin: 0em; }
       .single-clothing .page-container .product-info .product-text p.text {
         line-height: 170%;
         font-weight: 300;
@@ -458,9 +458,10 @@ p#soldout {
       .single-clothing .page-container .product-info .imgHolder img {
         width: 100%; }
     .single-clothing .page-container .product-info .product-text {
-      width: 35vw; }
+      width: 35vw;
+      padding: 1em; }
       .single-clothing .page-container .product-info .product-text h1, .single-clothing .page-container .product-info .product-text h3 {
-        line-height: 0%; }
+        margin: 0em; }
       .single-clothing .page-container .product-info .product-text p.text {
         line-height: 170%;
         font-weight: 300;

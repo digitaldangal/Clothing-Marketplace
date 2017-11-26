@@ -581,7 +581,7 @@ p#soldout{
                     padding: 1em;
                     margin-top: 2em;
                     h1, h3 {
-                        line-height: 0%;
+                        margin: 0em;
                     }
                     p.text{
                         line-height: 170%;
@@ -622,9 +622,10 @@ p#soldout{
                     }
                 }
                 .product-text{
-                    width: 35vw; 
+                    width: 35vw;
+                    padding: 1em;
                     h1, h3 {
-                        line-height: 0%;
+                        margin: 0em;
                     }
                     p.text{
                         line-height: 170%;
