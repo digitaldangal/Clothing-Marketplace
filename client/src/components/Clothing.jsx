@@ -68,7 +68,9 @@ class Clothing extends Component {
     }
 
     handleImageChange=(image)=>{
-        console.log(image)
+       let bigImage = document.querySelector('div.imgHolder img');
+
+       bigImage.src = (image);
     }
 
     renderPage(){
@@ -117,7 +119,7 @@ class Clothing extends Component {
                                     <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
                                     {Object.values(clothingData.additonal_images).map((image, i)=>{
                                         return(
-                                            <div className="img" key={i}  datatype-img={image} style={{backgroundImage: `url('${image}')`}}>
+                                            <div className="img" key={i} data-img={image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)} style={{backgroundImage: `url('${image}')`}}>
                                             </div> 
                                         )
                                     })}
