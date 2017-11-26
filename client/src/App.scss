@@ -532,6 +532,15 @@ div#pic-preview{
 }
 
 // Single Clothing
+.brand-page{
+    .card{
+        div.image{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
 .single-clothing{
     .page-container{
         @media (max-width: 768px) {

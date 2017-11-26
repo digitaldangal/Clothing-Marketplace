@@ -396,6 +396,9 @@ div#pic-preview {
   .single-brand .meta.links a {
     font-family: 'Roboto' !important; }
 
+.brand-page .card div.image img {
+  width: 100%; }
+
 @media (max-width: 768px) {
   .single-clothing .page-container .product-info {
     display: flex;

@@ -74,11 +74,12 @@ class ApprovedBrand extends Component {
                 <div className="ui link cards">
                     {Object.values(this.state.productData).map((product, i)=>{
                         return(
-                        <Link to={`/designers/${this.state.brandData.name}/${this.state.brandData.id}/${product.title}/${product.id}`}>
                             <div className="card" key={i}>
+                            <Link to={`/designers/${this.state.brandData.name}/${this.state.brandData.id}/${product.title}/${product.id}`}>
                                 <div className="image">
                                     <img src={product.main_image} alt={product.title}/>
                                 </div>
+                            </Link>    
                                 <div className="content">
                                     <div className="header">{product.title}</div>
                                         <div className="meta">
@@ -97,7 +98,7 @@ class ApprovedBrand extends Component {
                                         Available: {product.inventory_total}
                                     </span>
                                 </div>
-                            </div>     
+                            </div> 
                         )
                     })}
                 </div>
