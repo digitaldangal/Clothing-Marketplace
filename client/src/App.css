@@ -396,6 +396,35 @@ div#pic-preview {
   .single-brand .meta.links a {
     font-family: 'Roboto' !important; }
 
+p#soldout {
+  color: red;
+  font-weight: bold; }
+
+.brand-page .card .header {
+  text-align: center; }
+.brand-page .card div.image {
+  overflow: hidden;
+  max-height: 350px; }
+  .brand-page .card div.image img {
+    width: 100%; }
+.brand-page .card .meta {
+  text-align: center; }
+  .brand-page .card .meta a {
+    font-family: 'Roboto' !important; }
+.brand-page .card .extra.content {
+  font-family: 'Roboto' !important; }
+.brand-page .card button.ui.negative {
+  width: 100%;
+  margin-top: 0.5em;
+  letter-spacing: 1px; }
+
+.ui.page.modals.dimmer.transition.visible.active div.image.content {
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap; }
+.ui.page.modals.dimmer.transition.visible.active img.ui.image {
+  width: 100%; }
+
 @media (max-width: 768px) {
   .single-clothing .page-container .product-info {
     display: flex;
@@ -407,7 +436,7 @@ div#pic-preview {
       padding: 1em;
       margin-top: 2em; }
       .single-clothing .page-container .product-info .product-text h1, .single-clothing .page-container .product-info .product-text h3 {
-        line-height: 0%; }
+        margin: 0em; }
       .single-clothing .page-container .product-info .product-text p.text {
         line-height: 170%;
         font-weight: 300;
@@ -424,7 +453,24 @@ div#pic-preview {
         width: 100%;
         margin-bottom: 2em; }
       .single-clothing .page-container .product-info .product-text .add-to-bag button {
-        margin-bottom: 1em; } }
+        margin-bottom: 1em; }
+      .single-clothing .page-container .product-info .product-text .more-images {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 1em;
+        flex-flow: row wrap; }
+        .single-clothing .page-container .product-info .product-text .more-images .img {
+          background-size: cover;
+          background-position: center;
+          width: 100px;
+          height: 100px;
+          margin: 0em 1em 1em 0em; } }
+@media (min-width: 768px) and (max-width: 768px) {
+  .single-clothing .page-container .more-images {
+    position: absolute;
+    width: 100%;
+    left: 0; } }
 @media (min-width: 768px) {
   .single-clothing .page-container .product-info {
     display: flex;
@@ -432,13 +478,15 @@ div#pic-preview {
     flex-flow: row nowrap;
     margin-top: 5em; }
     .single-clothing .page-container .product-info .imgHolder {
-      width: 40vw; }
+      width: 35vw;
+      cursor: zoom-in; }
       .single-clothing .page-container .product-info .imgHolder img {
         width: 100%; }
     .single-clothing .page-container .product-info .product-text {
-      width: 35vw; }
+      width: 30vw;
+      padding: 1em; }
       .single-clothing .page-container .product-info .product-text h1, .single-clothing .page-container .product-info .product-text h3 {
-        line-height: 0%; }
+        margin: 0em; }
       .single-clothing .page-container .product-info .product-text p.text {
         line-height: 170%;
         font-weight: 300;
@@ -453,7 +501,19 @@ div#pic-preview {
         justify-content: center;
         flex-flow: row wrap;
         width: 100%;
-        margin-bottom: 2em; } }
+        margin-bottom: 2em; }
+      .single-clothing .page-container .product-info .product-text .more-images {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 1em;
+        flex-flow: row wrap; }
+        .single-clothing .page-container .product-info .product-text .more-images .img {
+          background-size: cover;
+          background-position: center;
+          width: 100px;
+          height: 100px;
+          margin: 0em 1em 1em 0em; } }
 
 .page-container.article-list {
   margin-bottom: 10em; }

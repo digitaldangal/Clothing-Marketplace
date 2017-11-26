@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button, Form, Select} from 'semantic-ui-react';
+import {Button, Form, Select, Image, Modal} from 'semantic-ui-react';
+
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -67,6 +68,12 @@ class Clothing extends Component {
         console.log("cat")
     }
 
+    handleImageChange=(image)=>{
+       let bigImage = document.querySelector('div.imgHolder img');
+
+       bigImage.src = (image);
+    }
+
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
@@ -92,7 +99,16 @@ class Clothing extends Component {
                     <div className="page-container ui container">
                         <div className="product-info">
                             <div className="imgHolder">
-                                <img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>
+                                <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeIcon>
+                                    <Modal.Content image>
+                                            <Image src={clothingData.main_image} />
+                                            {Object.values(clothingData.additonal_images).map((image, i)=>{
+                                                return(
+                                                    <Image key={i} src={image} />
+                                                )
+                                            })}
+                                    </Modal.Content>
+                                </Modal>
                             </div>
                             <div className="product-text">
                                 <Link to={`/designers/${brandData.name}/${brandData.id}`}><h1 className="ui header">{brandData.name}</h1></Link>
@@ -108,6 +124,15 @@ class Clothing extends Component {
                                         <Button secondary type="submit">Add to Cart</Button>
                                         <Button secondary><i className="like icon"></i> Wishlist</Button>
                                     </Form>
+                                </div>
+                                <div className="more-images">
+                                    <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
+                                    {Object.values(clothingData.additonal_images).map((image, i)=>{
+                                        return(
+                                            <div className="img" key={i} data-img={image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)} style={{backgroundImage: `url('${image}')`}}>
+                                            </div> 
+                                        )
+                                    })}
                                 </div>
                             </div>
                         </div>

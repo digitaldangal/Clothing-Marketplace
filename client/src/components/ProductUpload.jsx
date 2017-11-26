@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import {Form, Button, Select} from 'semantic-ui-react'; 
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -52,6 +53,11 @@ class ProductUpload extends Component {
         })
     }
 
+    uploadMainPhoto=(e)=>{
+        let imageToUplaod = e.target.files[0];
+        console.log(imageToUplaod);
+    }
+
     renderPicPreviews = (e) =>{
         let fileList = e.target.files;
         let picPreview = document.querySelector('#pic-preview ul');
@@ -76,51 +82,71 @@ class ProductUpload extends Component {
         e.preventDefault();
         var uploadedFiles = document.querySelector('#products_upload').files;
         let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
+        let mainImage = document.querySelector("#main_image").files[0];
         let downloadUrl = '';
         let count = 0;
+        let itemCount = eval(Number(this.state.xs) + Number(this.state.s) + Number(this.state.m) + Number(this.state.l) + Number(this.state.xl))
     
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
+            inventory_total: itemCount,
             designer: this.state.brandData.name,
-            item_count: this.state.item_count,
             price: this.state.price, 
-            size: this.state.size,
             category: this.state.category,
             description: this.state.description,
-            main_image: this.state.main_image,
             id: new Date().getTime(),
+            sold_out: false,
+            amount_sold: 0,
             inventory: {
-                
+                xs: this.state.xs,
+                s: this.state.s,
+                m: this.state.m,
+                l: this.state.l,
+                xl: this.state.xl,
+                oneSize: this.state.os > 0 ? this.state.os :0,
             },
         },{ merge: true })
-        .then(res=>{console.log(res);
-        }).catch(err=>console.log(err))
-
-        for(let i = 0; i < uploadedFiles.length; i++){
-            let currentFile = uploadedFiles[i];
-            
-            imageRef.child(currentFile.name).put(currentFile).then((res)=>{
+        .then((res)=>{
+            console.log(res)
+            imageRef.child(mainImage.name).put(mainImage).then((res)=>{
                 console.log(res)
                 downloadUrl = res.downloadURL;
                 db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
-                    [currentFile.name]: downloadUrl
+                    main_image: downloadUrl
                 },{ merge: true })
                 .catch(err=>console.log(err))
             })
-            .then(()=>{
-                count++;
-                this.setState({
-                    uploadCount: count
+        }).catch(err=>console.log(err))
+
+        if(uploadedFiles.length > 0){
+            for(let i = 0; i < uploadedFiles.length; i++){
+                let currentFile = uploadedFiles[i];
+                
+                imageRef.child(currentFile.name).put(currentFile).then((res)=>{
+                    console.log(res)
+                    downloadUrl = res.downloadURL;
+                    db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
+                        additonal_images:{
+                            [currentFile.name]: downloadUrl
+                        }
+                    },{ merge: true })
+                    .catch(err=>console.log(err))
                 })
-                console.log(this.state.uploadCount)
-                if(this.state.uploadCount === uploadedFiles.length){
-                    console.log("all files uploaded")
-                    this.redirectPage()
-                }else{
-                    console.log("all files not uploaded")
-                }
-            })
-            .catch(err=>console.log(err))
+                .then(()=>{
+                    count++;
+                    this.setState({
+                        uploadCount: count
+                    })
+                    console.log(this.state.uploadCount)
+                    if(this.state.uploadCount === uploadedFiles.length){
+                        console.log("all files uploaded")
+                        this.redirectPage()
+                    }else{
+                        console.log("all files not uploaded")
+                    }
+                })
+                .catch(err=>console.log(err))
+            }
         }
     }
 
@@ -134,59 +160,43 @@ class ProductUpload extends Component {
     handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        this.setState({
-            [name]: value
-        })
+        let regEx = /[^a-zA-Z0-9_^ (),"-]/gi;
+        let filteredWord = '';
+        if(e.target.name === 'title'){
+            filteredWord = e.target.value.replace(regEx, "");
+            e.target.value = filteredWord;
+            this.setState({
+                title: filteredWord 
+            })
+        }else{
+            this.setState({
+                [name]: value
+            })
+        }
     }
 
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <div>
+            <section id="product-upload">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <h1>Product Upload Page</h1>
+                <h1 className="ui header title">Upload A New Product</h1>
                 <form onSubmit={this.handleSubmit} className="ui form">
-                    <div className="two fields">
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Product Title
-                                </div>
-                                <input required="true" name="title" type="text" placeholder="Product Title" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Amount Available
-                                </div>
-                                <input required="true" name="item_count" type="text" placeholder="Amount Available for Sale" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                    </div>
-
                     <div className="three fields">
+                        <div className="field">
+                            <div className="ui labeled input">
+                                <div className="ui label">
+                                    Title
+                                </div>
+                                <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
                         <div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
                                     $
                                 </div>
                                 <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Size
-                                </div>
-                                <select required="true" name="size" type="text" onChange={(e)=>this.handleChange(e)}>
-                                    <option disabled selected value> -- select -- </option>
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
                             </div>
                         </div>
                         <div className="field">
@@ -205,14 +215,54 @@ class ProductUpload extends Component {
                         </div>
                     </div>
 
+                    <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
+                    <div className="five fields">
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="xs" type="number" placeholder="XS" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="s" type="number" placeholder="S" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="m" type="number" placeholder="M" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui  input">
+                                <input required="true" name="l" type="number" placeholder="L" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="ui input">
+                                <input required="true" name="xl" type="number" placeholder="XL" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>
+
+                        {this.state.category == 'ACCESSORIES' ? (<div className="field">
+                            <div className="ui labeled input">
+                                <div className="ui label">
+                                    One-Size
+                                </div>
+                                <input required="true" name="os" type="number" placeholder="One Size" onChange={(e)=>this.handleChange(e)}/>
+                            </div>
+                        </div>) : null}
+                    </div>
+
                     <div className="field">
                         <label>Product Description</label>
                         <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
                     </div>
 
                     <div className="field">
-                        <label>First Image is Product Image </label>
-                        <input type="file" name="photos" id="products_upload" multiple required onChange={(e)=>this.renderPicPreviews(e)} />
+                        <label>Upload Main Image for Product</label>
+                        <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
+                        <label>Upload additonal images (recommmended)</label>
+                        <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
                         <div id="pic-preview">
                             <ul>
                                 
@@ -221,7 +271,7 @@ class ProductUpload extends Component {
                     </div>
                     <button className="ui primary button" type="submit">Create Product</button>
                 </form>
-            </div>
+            </section>
         )
     }
 }

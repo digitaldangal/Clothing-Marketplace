@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import {Button} from 'semantic-ui-react'
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -67,6 +68,18 @@ class ApprovedBrand extends Component {
             return false;
         }
     }
+
+    handleDelete=(id, title)=>{
+        if(window.confirm(`Are you sure you want to delete ${title}? This action can't be reversed.`)){
+            db.collection("brands").doc(this.props.userUid).collection("products").doc(title).delete().then((res)=>{
+                console.log(`${title} was deleted`)
+                alert(`${title} was deleted`)
+                window.location.reload();
+            }).catch(err=>(console.log(err)))
+        }else{
+            return null;
+        }
+    }
     
     renderGallery(){
         if(this.state.productData){
@@ -75,29 +88,28 @@ class ApprovedBrand extends Component {
                     {Object.values(this.state.productData).map((product, i)=>{
                         return(
                             <div className="card" key={i}>
+                            <Link to={`/designers/${this.state.brandData.name}/${this.state.brandData.id}/${product.title}/${product.id}`}>
                                 <div className="image">
-                                    <img src={product[Object.keys(product)[0]]} alt=""/>
+                                    <img src={product.main_image} alt={product.title}/>
                                 </div>
+                            </Link>    
                                 <div className="content">
                                     <div className="header">{product.title}</div>
                                         <div className="meta">
                                             <a>{product.category}</a>
                                             <a>${product.price}</a>
                                         </div>
-                                    <div className="description">
-                                        {product.description}
-                                    </div>
                                 </div>
                                 <div className="extra content">
                                     <span className="right floated">
-                                        Size: {product.size}
+                                        SOLD: {product.amount_sold}
                                     </span>
                                     <span className="left floated">
-                                        <i className="shop icon"></i>
-                                        {product.item_count}
+                                        {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : (`Available: ${product.inventory_total}`)}
                                     </span>
+                                    <Button negative onClick={()=>this.handleDelete(product.id, product.title)}>DELETE PRODUCT</Button>
                                 </div>
-                            </div>     
+                            </div> 
                         )
                     })}
                 </div>
