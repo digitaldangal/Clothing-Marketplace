@@ -398,6 +398,8 @@ div#pic-preview {
 
 .brand-page .card div.image img {
   width: 100%; }
+.brand-page .card button.ui.negative {
+  width: 100%; }
 
 @media (max-width: 768px) {
   .single-clothing .page-container .product-info {

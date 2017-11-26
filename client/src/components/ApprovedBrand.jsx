@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import {Button} from 'semantic-ui-react'
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -87,7 +88,7 @@ class ApprovedBrand extends Component {
                                             <a>${product.price}</a>
                                         </div>
                                     <div className="description">
-                                        {product.description}
+                                        <Button negative>DELETE</Button>
                                     </div>
                                 </div>
                                 <div className="extra content">
