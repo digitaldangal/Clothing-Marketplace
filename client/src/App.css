@@ -396,10 +396,18 @@ div#pic-preview {
   .single-brand .meta.links a {
     font-family: 'Roboto' !important; }
 
+.brand-page .card .header {
+  text-align: center; }
 .brand-page .card div.image img {
   width: 100%; }
+.brand-page .card .meta {
+  text-align: center; }
+  .brand-page .card .meta a {
+    font-family: 'Roboto' !important; }
 .brand-page .card button.ui.negative {
-  width: 100%; }
+  width: 100%;
+  margin-top: 0.5em;
+  letter-spacing: 1px; }
 
 @media (max-width: 768px) {
   .single-clothing .page-container .product-info {

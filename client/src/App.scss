@@ -534,13 +534,24 @@ div#pic-preview{
 // Single Clothing
 .brand-page{
     .card{
+        .header{
+            text-align: center;
+        }
         div.image{
             img{
                 width: 100%;
             }
         }
+        .meta{ 
+            text-align: center;
+            a{
+            font-family: 'Roboto' !important;
+            }
+        }
         button.ui.negative{
             width: 100%;
+            margin-top: 0.5em;
+            letter-spacing: 1px;
         }
     }
 }

@@ -87,9 +87,6 @@ class ApprovedBrand extends Component {
                                             <a>{product.category}</a>
                                             <a>${product.price}</a>
                                         </div>
-                                    <div className="description">
-                                        <Button negative>DELETE</Button>
-                                    </div>
                                 </div>
                                 <div className="extra content">
                                     <span className="right floated">
@@ -98,6 +95,7 @@ class ApprovedBrand extends Component {
                                     <span className="left floated">
                                         Available: {product.inventory_total}
                                     </span>
+                                    <Button negative>DELETE PRODUCT</Button>
                                 </div>
                             </div> 
                         )
