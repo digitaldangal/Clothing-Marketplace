@@ -11,11 +11,16 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "morgan": "^1.8.2",
-    "nodemailer": "^4.4.0"
+    "nodemailer": "^4.4.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "debugger": "DEBUG=*:* npm run dev",
+    "deploy": "cd client && yarn build && cp -a ./build/ ../public/"
   },
   "repository": {
     "type": "git",
