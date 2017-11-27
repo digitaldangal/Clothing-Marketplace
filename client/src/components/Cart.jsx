@@ -12,6 +12,7 @@ class Cart extends Component {
             currentPage: null,
             productData: false,
             productDataLoaded: false,
+            cartEmpty: true
         }
     }
 
@@ -21,18 +22,20 @@ class Cart extends Component {
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 this.setState({redirect: false})
-                db.collection('users').doc(user.uid).collection('wishlist').limit(40).get().then((res)=>{
+                db.collection('users').doc(user.uid).collection('cart').get().then((res)=>{
                     if(res.empty === false){
                         res.forEach((product)=>{
                             return productInfo[product.data().title] = product.data();
                         })
                         this.setState({
                             productData: productInfo,
-                            productDataLoaded: true
+                            productDataLoaded: true,
+                            cartEmpty: false
                         })
                     }else{
                         this.setState({
-                            productDataLoaded: "empty"
+                            productDataLoaded: "empty",
+                            cartEmpty: false
                         });
                     }
                 }).then(res=>console.log(res)).catch(err=>console.log(err));
@@ -108,8 +111,8 @@ class Cart extends Component {
         }else{
             return(
                 <div className="single-brand">
-                    <h1 className="ui header">Wishlist</h1>
-                    <div className="page-container">
+                    <h1 className="ui header">Shopping Bag</h1>
+                    <div className="page-container ui container">
                     <h3 className="ui header">Shopping bag is empty :(</h3>
                         <Link to='/designers/'><Button secondary>Check out Designers</Button></Link>
                     </div>
