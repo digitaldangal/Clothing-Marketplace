@@ -18,6 +18,7 @@ import ReadArticle from './components/ReadArticle';
 import ArticleCategory from './components/ArticleCategory';
 import About from './components/About';
 import Contact from './components/Contact';
+import Cart from './components/Cart';
 import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
 
@@ -39,7 +40,8 @@ class App extends Component {
       productDataLoaded: false,
       articleData: false,
       articleDataLoaded: false,
-      image: false
+      image: false,
+      shopping_cart: 0
     }
   }
 
@@ -116,7 +118,7 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/>
+            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} shopping_cart={this.state.shopping_cart} authStateChange={(authChange)=>this.handleAuthState(authChange)}/>
             <div className="app-body">
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}
@@ -127,6 +129,7 @@ class App extends Component {
                 <Route exact path="/profile/product-create" component={ProductUpload}/>
                 <Route exact path="/profile/edit" render={()=> <ProfileEdit authState={this.state.authState} userUid={this.state.uid} /> } />
                 <Route exact path="/profile/brand" render={()=> <ApprovedBrand authState={this.state.authState} userUid={this.state.uid} /> } />
+                <Route exact path="/profile/cart" component={Cart} />
                 <Route exact path="/profile/wishlist" component={Wishlist} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} brandData={this.state.brandData} brandDataLoaded={this.state.brandDataLoaded} storeFeed={(brandData)=> this.storeFeed(brandData)} />} />
                 <Route exact path="/designers/:brand/:brand_id" component={Designer} />

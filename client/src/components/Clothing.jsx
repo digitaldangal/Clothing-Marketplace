@@ -118,7 +118,6 @@ class Clothing extends Component {
                                 <div className="add-to-bag">
                                     <Form onSubmit={this.handleSubmit}>
                                         <Form.Group>
-                                            <Form.Field required label='Quantity' control='input' type='number' max={5} onChange={this.handleChange}/>
                                             <Form.Field required control={Select} label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onChange={this.handleChange}/>
                                         </Form.Group>
                                         <Button secondary type="submit">Add to Cart</Button>

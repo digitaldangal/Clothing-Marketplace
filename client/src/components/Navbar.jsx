@@ -17,8 +17,8 @@ class Navbar extends Component {
         firebase.auth().onAuthStateChanged(user=>{
             let userInfo = {};
             if(user){
+                let userCartRef = db.collection('users').doc(user.uid).collection('cart');
                 this.setState({signedIn: true})
-                
                 db.collection('brands').doc(user.uid).get().then((res)=>{
                     if(res.exists && res.data().approved){
                         this.setState({
@@ -100,7 +100,7 @@ class Navbar extends Component {
                                 <Dropdown.Divider />
                                 <Dropdown.Item>{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/profile/cart"><i className="shopping bag icon"> (0)</i></Link></Dropdown.Item>
+                                <Dropdown.Item><Link to="/profile/cart"><i className="shopping bag icon"> ({this.props.shopping_cart})</i></Link></Dropdown.Item>
                                 <Dropdown.Divider />
                                 <Dropdown.Item><Link to="/contact-us">Contact</Link></Dropdown.Item>
                             </Dropdown.Menu>
@@ -118,7 +118,7 @@ class Navbar extends Component {
                     <Menu.Menu position="right">
                         <Menu.Item><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
                         <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
-                        <Menu.Item className="link"><Link to="/profile/cart"><i className="shopping bag icon" style={{display: 'inline'}}> (0)</i></Link></Menu.Item>
+                        <Menu.Item className="link"><Link to="/profile/cart"><i className="shopping bag icon" style={{display: 'inline'}}> ({this.props.shopping_cart})</i></Link></Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>
                 </Grid>
