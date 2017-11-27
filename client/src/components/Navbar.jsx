@@ -98,6 +98,7 @@ class Navbar extends Component {
                                 <Dropdown.Divider />
                                 <Dropdown.Item>{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Dropdown.Item>
                                 <Dropdown.Divider />
+                                <Dropdown.Item><Link to="/profile/wishlist">Wishlist</Link></Dropdown.Item>
                                 <Dropdown.Item><Link to="/contact-us">Contact</Link></Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -114,6 +115,7 @@ class Navbar extends Component {
                     <Menu.Menu position="right">
                         <Menu.Item><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
                         <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
+                        <Menu.Item className="link"><Link to="/profile/wishlist">Wishlist</Link></Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>
                 </Grid>

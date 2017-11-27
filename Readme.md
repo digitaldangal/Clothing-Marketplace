@@ -57,7 +57,7 @@ These are some of the features that I plan on tackling as I build this project
 
 
 Future Improvements
-- [ ] Integrating Semantic UI
+- [ ] Brand Image, Logo, or profile pic
 - [ ] Product Share button
 - [ ] Compress Uploaded Images
 - [ ] Sizing
