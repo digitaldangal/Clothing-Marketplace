@@ -64,19 +64,38 @@ class Designer extends Component {
         }).catch(err=>console.log(err))
     }
 
-    handleAddToWishlist = (e) =>{
-        let productId = e.id;
-        let productTitle = e.title;
+    handleAddToWishlist = (e, data) =>{
+        let productId = data.id;
+        let productTitle = data.title;
         let productToAdd = this.state.productData[productTitle]
-        console.log(productTitle, productToAdd)
-
+        let likedItem = e.target;
+        
+        
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
-                db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).set({
-                    productToAdd
-                },{merge: true})
+                if(localStorage.getItem(productId) === "red"){
+                    localStorage.removeItem(productId);
+                    likedItem.style.color = "gray";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).delete()
+                    .then(res=>console.log(res)).catch(err=>(console.log(err)))
+                }else{
+                    likedItem.style.color = "red";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).set({
+                        main_image: productToAdd.main_image,
+                        title: productTitle,
+                        designer: productToAdd.designer,
+                        price: productToAdd.price,
+                        category: productToAdd.category,
+                        description: productToAdd.description,
+                        id: productId,
+                    },{merge: true})
+                    .then(()=>{
+                        localStorage.setItem(productId, "red")
+                    })
+                    .catch(err=>(console.log(err)))
+                }
             }else{
-
+                alert("You must be signed in first to do that!")
             }
         })
     }
@@ -103,7 +122,7 @@ class Designer extends Component {
                                     <div className="meta links">
                                         <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
                                         <a>${product.price}</a>
-                                        <i className="like icon" title="add to wishlist" data-id={product.id} data-title={product.title} onClick={(e)=>this.handleAddToWishlist(e.target.dataset)}></i>
+                                        <i style={{color: localStorage.getItem(product.id)}} className="like icon" title="add to wishlist" data-id={product.id} data-title={product.title} onClick={(e)=>this.handleAddToWishlist(e,e.target.dataset)}></i>
                                     </div>
                                 </div>
                         </div> 
