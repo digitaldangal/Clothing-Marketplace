@@ -69,22 +69,16 @@ class Designer extends Component {
         let productTitle = e.title;
         let productToAdd = this.state.productData[productTitle]
         console.log(productTitle, productToAdd)
-        // db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
-        // .then((res)=>{
-        //     if(res.empty){
-        //         this.setState({
-        //             clothingData: false,
-        //             clothingDataLoaded: false
-        //         })
-        //     }else{
-        //         res.forEach((product)=>{
-        //             console.log(product.data())
-        //             return productData = product.data();
-        //         })
-        //         this.setState({clothingData: productData, clothingDataLoaded: true, loadPage: true})
-        //     }
-        // }).catch(err=>(console.log(err)))
-        // this.setState({brandData: brandData})
+
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).set({
+                    productToAdd
+                },{merge: true})
+            }else{
+
+            }
+        })
     }
 
     renderBrands(){
@@ -102,6 +96,7 @@ class Designer extends Component {
                                 <div className="content">
                                     {/* <div className="header">{product.title}</div> */}
                                     <div className="header">{this.state.singleBrandData.name}</div>
+                                        {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : null}
                                     <div className="description links">
                                         {product.title}
                                     </div>
