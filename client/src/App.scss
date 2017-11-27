@@ -900,6 +900,25 @@ p#soldout{
     }
 }
 
+// Shopping Cart
+section#cart{
+    .ui.divided.items.container{
+        .item.clothes{
+            .contact{
+                .description a{
+                    display: flex;
+                    justify-content: center;
+                    flex-flow: column;
+                    text-align: left;
+                    font-weight: 300;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}
+
+
 footer {
     bottom: 0em;
     margin-bottom: 1em;
