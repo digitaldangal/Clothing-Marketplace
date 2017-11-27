@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import{Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
@@ -16,24 +17,41 @@ class Contact extends Component {
     handleContactSubmit = (e) => {
         e.preventDefault();
 
-        fetch("https://formspree.io/kamidou95@gmail.com", {
-            method: 'POST',
-            body: new FormData(document.getElementById('contact-form')),
+        // fetch("https://api.sendgrid.com/api/mail.send.json", {
+        //     method: 'post',
+        //     body
+        // })
+
+        axios.post('/contact-submit', {
+            display_name: this.state.display_name,
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            message: this.state.message,
+            request: this.state.request,
+            subject: this.state.subject
         }).then((res)=>{
-            console.log(res);
-            db.collection("contact").doc(this.state.request).collection(`${new Date().getMonth()} ${new Date().getDay()}`).doc(`${new Date().getTime()}`).set({
-                display_name: this.state.display_name,
-                first_name: this.state.first_name,
-                last_name: this.state.last_name,
-                message: this.state.message,
-                request: this.state.request,
-                subject: this.state.subject
-            }).catch(err=>{console.log(err)})
-        })
-        .then(()=>{
-            this.redirectPage();
-        })
-        .catch(err=>console.log(err))
+            console.log(res)
+        }).catch(err=>(console.log(err)))
+        
+
+        // fetch("https://formspree.io/kamidou95@gmail.com", {
+        //     method: 'POST',
+        //     body: new FormData(document.getElementById('contact-form')),
+        // }).then((res)=>{
+        //     console.log(res);
+        //     db.collection("contact").doc(this.state.request).collection(`${new Date().getMonth()} ${new Date().getDay()}`).doc(`${new Date().getTime()}`).set({
+        //         display_name: this.state.display_name,
+        //         first_name: this.state.first_name,
+        //         last_name: this.state.last_name,
+        //         message: this.state.message,
+        //         request: this.state.request,
+        //         subject: this.state.subject
+        //     }).catch(err=>{console.log(err)})
+        // })
+        // .then(()=>{
+        //     this.redirectPage();
+        // })
+        // .catch(err=>console.log(err))
 
     }
 
