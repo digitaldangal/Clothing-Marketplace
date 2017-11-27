@@ -1,168 +1,76 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button, Form, Select, Image, Modal} from 'semantic-ui-react';
-
 import firebase from '../config/firebase';
-
-// Initialize Cloud Firestore through firebase
 var db = firebase.firestore();
 
 class Wishlist extends Component {
     constructor(props){
         super(props);
         this.state = {
-            clothingData: false,
-            brandData: false,
-            loadPage: false,
+            redirect: false,
+            currentPage: null,
+            productData: false,
+            productDataLoaded: false,
         }
     }
 
     componentWillMount() {
-        let brandID = Number(this.props.match.params.brand_id);
-        let productTitle = this.props.match.params.product_title;
-        let productID = Number(this.props.match.params.id);
-        let brandRef = db.collection('brands').where('id', "==", brandID);
-        let brandData = {};
-        let productData = {};
-        let brandUID = undefined;
-
-        brandRef.get().then((res)=>{
-            console.log(res)
-            if(res.empty){
-                this.setState({
-                    clothingData: false,
-                    dontLoad: true,
-                    clothingDataLoaded: false
-                })
-            }else{
-                res.forEach((res)=>{
-                    console.log(res.data())
-                    brandUID = res.id;
-                    return brandData = res.data();
-                })
-                db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
-                .then((res)=>{
-                    if(res.empty){
-                        this.setState({
-                            clothingData: false,
-                            clothingDataLoaded: false
-                        })
-                    }else{
+        let productInfo = {};
+        
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                this.setState({redirect: false})
+                db.collection('users').doc(user.uid).collection('wishlist').limit(40).get().then((res)=>{
+                    if(res.empty === false){
                         res.forEach((product)=>{
                             console.log(product.data())
-                            return productData = product.data();
                         })
-                        this.setState({clothingData: productData, clothingDataLoaded: true, loadPage: true})
+                    }else{
+                        return null;
                     }
-                }).catch(err=>(console.log(err)))
-                this.setState({brandData: brandData})
+                }).then(res=>console.log(res)).catch(err=>console.log(err));
+            }else{
+                this.setState({
+                    redirect: true,
+                    currentPage: '/account/login'
+                })
             }
-        }).catch(err=>{console.log(err)})
-    }
-
-    handleChange = (e) => {
-        console.log("dog")
-    }
-
-    handleSubmit = (e) => {
-        console.log("cat")
-    }
-
-    handleImageChange=(image)=>{
-       let bigImage = document.querySelector('div.imgHolder img');
-
-       bigImage.src = (image);
+        })
     }
 
     renderPage(){
-        if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
-            const {clothingData, brandData} = this.state;
-            const sizes = [
-                {key: 'XS', text: 'XS', value: 'XS'},
-                {key: 'S', text: 'S', value: 'S'},
-                {key: 'M', text: 'M', value: 'M'},
-                {key: 'L', text: 'L', value: 'L'},
-                {key: 'XL', text: 'XL', value: 'XL'},
-            ]
-            const shoeSize = [
-                {key: 'XS', text: 'XS', value: 'XS'},
-                {key: 'S', text: 'S', value: 'S'},
-                {key: 'M', text: 'M', value: 'M'},
-                {key: 'L', text: 'L', value: 'L'},
-                {key: 'XL', text: 'XL', value: 'XL'},
-            ]
-            const oneSize = [
-                {key: 'OS', text: 'One Size', value: 'OS'}
-            ]
+        if(this.state.productDataLoaded && this.state.singleBrandDataLoaded){
             return(
-                <div className="single-clothing">
-                    <div className="page-container ui container">
-                        <div className="product-info">
-                            <div className="imgHolder">
-                                <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeOnDocumentClick={true} closeIcon>
-                                    <Modal.Content image>
-                                            <Image src={clothingData.main_image} />
-                                            {Object.values(clothingData.additonal_images).map((image, i)=>{
-                                                return(
-                                                    <Image key={i} src={image} />
-                                                )
-                                            })}
-                                    </Modal.Content>
-                                </Modal>
-                            </div>
-                            <div className="product-text">
-                                <Link to={`/designers/${brandData.name}/${brandData.id}`}><h1 className="ui header">{brandData.name}</h1></Link>
-                                <h3 className="ui header">{clothingData.title}</h3>
-                                <h3 className="ui header">${clothingData.price}</h3>
-                                <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
-                                <div className="add-to-bag">
-                                    <Form onSubmit={this.handleSubmit}>
-                                        <Form.Group>
-                                            <Form.Field required label='Quantity' control='input' type='number' max={5} onChange={this.handleChange}/>
-                                            <Form.Field required control={Select} label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onChange={this.handleChange}/>
-                                        </Form.Group>
-                                        <Button secondary type="submit">Add to Cart</Button>
-                                        <Button secondary><i className="like icon"></i> Wishlist</Button>
-                                    </Form>
-                                </div>
-                                <div className="more-images">
-                                    <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
-                                    {Object.values(clothingData.additonal_images).map((image, i)=>{
-                                        return(
-                                            <div className="img" key={i} data-img={image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)} style={{backgroundImage: `url('${image}')`}}>
-                                            </div> 
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        </div>
+                <div className="single-brand">
+                    <h1 className="ui header">Wishlist</h1>
+                    <h3 className="ui header">{this.state.singleBrandData.description}</h3>
+                    <div className="page-container">
+                        {this.renderBrands()}
                     </div>
                 </div>
             )
-        }
-        else if(this.state.clothingDataLoaded === undefined && this.state.loadPage === false){
+        }else if(this.state.productDataLoaded === false && this.state.singleBrandData){
+            return(
+                <div className="single-brand">
+                    <h1 className="ui header title">{this.state.singleBrandData.name}</h1>
+                    <h3 className="ui header">{this.state.singleBrandData.description}</h3>
+                    <div className="page-container">
+                        <h3 className="ui header">Either this brand has sold out or no products are available yet.</h3>
+                    </div>
+                </div>
+            )
+        }else{
             return(
                 <div className="ui active inverted dimmer">
                     <div className="ui indeterminate text loader">Preparing Files</div>
                 </div>
             )
-        }else if(this.state.dontLoad === true && this.state.clothingDataLoaded === false){
-            return(
-                <div className="single-brand">
-                    <h1 className="ui header title"> 404 - Page not found</h1>
-                    <Link to='/designers'><Button secondary>Check Out Some Designers</Button></Link>
-                    <div className="page-container">
-                        <img src="" alt=""/>
-                    </div>
-                </div>
-            )
         }
     }
-
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <section id="single-clothing">
+            <section id="single-brand">
                 {redirect ? <Redirect to={currentPage} /> : null}
                 {this.renderPage()}
             </section>
