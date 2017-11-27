@@ -49,28 +49,30 @@ class Cart extends Component {
         const {productData} = this.state;
         let total = 0;
         return(
-            <div className="ui divided items container">
-                {Object.values(productData).map((product, i)=>{
-                    total = total + Number(product.price);
-                    return(
-                        <div className="item clothes" key={i}>
-                            <div className="image">
-                                <img src={product.main_image} alt=""/>
-                            </div>
-                            <div className="content">
-                                <Link className="header" to={`/designers/${product.designer}/${product.designerId}/${product.title}/${product.id}`}>{product.designer}</Link>
-                                <div className="meta">
-                                    <span>{product.title}</span>
+            <div className="ui container">
+                <div className="ui divided items">
+                    {Object.values(productData).map((product, i)=>{
+                        total = total + Number(product.price);
+                        return(
+                            <div className="item clothes" key={i}>
+                                <div className="image">
+                                    <img src={product.main_image} alt=""/>
                                 </div>
-                                <div className="description">
-                                    <a>Category: {product.category}</a>
-                                    <a>Cost: ${product.price}</a>
-                                    <a>Size: {product.size}</a>
+                                <div className="content">
+                                    <Link className="header" to={`/designers/${product.designer}/${product.designerId}/${product.title}/${product.id}`}>{product.designer}</Link>
+                                    <div className="meta">
+                                        <span>{product.title}</span>
+                                    </div>
+                                    <div className="description">
+                                        <a>Category: {product.category}</a>
+                                        <a>Cost: ${product.price}</a>
+                                        <a>Size: {product.size}</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div> 
-                    )
-                })}
+                            </div> 
+                        )
+                    })}
+                </div>
                 <div className="payment-info">
                     <h4 className="ui header">Order Summary</h4>
                     <p>Subtotal: $<span id="cost">{total}</span></p>

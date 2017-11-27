@@ -671,48 +671,65 @@ p#soldout {
       .page-container.single-article h1.ui.header.title {
         font-size: 3rem; } }
 
-section#cart .ui.divided.items.container .item.clothes {
+section#cart .ui.container .ui.divided.items .item.clothes {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center; }
-  section#cart .ui.divided.items.container .item.clothes .image {
+  section#cart .ui.container .ui.divided.items .item.clothes .image {
     width: 30vw !important; }
-    section#cart .ui.divided.items.container .item.clothes .image img {
+    section#cart .ui.container .ui.divided.items .item.clothes .image img {
       width: 100%; }
-  section#cart .ui.divided.items.container .item.clothes .content {
+  section#cart .ui.container .ui.divided.items .item.clothes .content {
     text-align: left;
     line-height: 170%;
     padding: 1em; }
-    section#cart .ui.divided.items.container .item.clothes .content .description {
+    section#cart .ui.container .ui.divided.items .item.clothes .content .description {
       display: flex;
       justify-content: center;
       flex-flow: column;
       text-align: left;
       font-weight: 300;
       letter-spacing: 1px; }
-      section#cart .ui.divided.items.container .item.clothes .content .description a {
+      section#cart .ui.container .ui.divided.items .item.clothes .content .description a {
         font-family: 'Roboto' !important; }
+section#cart .ui.container .payment-info {
+  text-align: left;
+  padding: 1em; }
+  section#cart .ui.container .payment-info h4.header {
+    text-align: center;
+    border-top: 1px solid #bbb;
+    padding-top: 1em; }
+  section#cart .ui.container .payment-info p {
+    font-weight: 300; }
+    section#cart .ui.container .payment-info p span#cost {
+      font-weight: bold;
+      float: right; }
+      section#cart .ui.container .payment-info p span#cost::before {
+        content: '$'; }
+  section#cart .ui.container .payment-info button {
+    display: flex;
+    margin: 0 auto; }
 @media (min-width: 1024px) {
-  section#cart .ui.divided.items.container .item.clothes {
+  section#cart .ui.container .item.clothes {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center; }
-    section#cart .ui.divided.items.container .item.clothes .image {
+    section#cart .ui.container .item.clothes .image {
       width: 30vw !important; }
-      section#cart .ui.divided.items.container .item.clothes .image img {
+      section#cart .ui.container .item.clothes .image img {
         width: 100%; }
-    section#cart .ui.divided.items.container .item.clothes .content {
+    section#cart .ui.container .item.clothes .content {
       text-align: left;
       line-height: 170%;
       padding: 1em; }
-      section#cart .ui.divided.items.container .item.clothes .content .description {
+      section#cart .ui.container .item.clothes .content .description {
         display: flex;
         justify-content: center;
         flex-flow: column;
         text-align: left;
         font-weight: 300;
         letter-spacing: 1px; }
-        section#cart .ui.divided.items.container .item.clothes .content .description a {
+        section#cart .ui.container .item.clothes .content .description a {
           font-family: 'Roboto' !important; } }
 
 footer {
