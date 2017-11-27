@@ -675,10 +675,11 @@ section#cart .ui.container .ui.divided.items .item.clothes {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center; }
-  section#cart .ui.container .ui.divided.items .item.clothes .image {
-    width: 30vw !important; }
-    section#cart .ui.container .ui.divided.items .item.clothes .image img {
-      width: 100%; }
+  @media (max-width: 768px) {
+    section#cart .ui.container .ui.divided.items .item.clothes .image {
+      width: 30vw !important; }
+      section#cart .ui.container .ui.divided.items .item.clothes .image img {
+        width: 100%; } }
   section#cart .ui.container .ui.divided.items .item.clothes .content {
     text-align: left;
     line-height: 170%;
@@ -692,6 +693,8 @@ section#cart .ui.container .ui.divided.items .item.clothes {
       letter-spacing: 1px; }
       section#cart .ui.container .ui.divided.items .item.clothes .content .description a {
         font-family: 'Roboto' !important; }
+      section#cart .ui.container .ui.divided.items .item.clothes .content .description button {
+        margin-top: 1em; }
 section#cart .ui.container .payment-info {
   text-align: left;
   padding: 1em; }
@@ -710,27 +713,32 @@ section#cart .ui.container .payment-info {
     display: flex;
     margin: 0 auto; }
 @media (min-width: 1024px) {
-  section#cart .ui.container .item.clothes {
+  section#cart .ui.container {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center; }
-    section#cart .ui.container .item.clothes .image {
-      width: 30vw !important; }
-      section#cart .ui.container .item.clothes .image img {
-        width: 100%; }
-    section#cart .ui.container .item.clothes .content {
-      text-align: left;
-      line-height: 170%;
-      padding: 1em; }
-      section#cart .ui.container .item.clothes .content .description {
-        display: flex;
-        justify-content: center;
-        flex-flow: column;
+    justify-content: space-between;
+    position: relative; }
+    section#cart .ui.container .item.clothes {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center; }
+      section#cart .ui.container .item.clothes .image {
+        width: 200px !important; }
+        section#cart .ui.container .item.clothes .image img {
+          width: 100%; }
+      section#cart .ui.container .item.clothes .content {
         text-align: left;
-        font-weight: 300;
-        letter-spacing: 1px; }
-        section#cart .ui.container .item.clothes .content .description a {
-          font-family: 'Roboto' !important; } }
+        line-height: 170%;
+        padding: 1em; }
+        section#cart .ui.container .item.clothes .content .description {
+          display: flex;
+          justify-content: center;
+          flex-flow: column;
+          text-align: left;
+          font-weight: 300;
+          letter-spacing: 1px; }
+          section#cart .ui.container .item.clothes .content .description a {
+            font-family: 'Roboto' !important; } }
 
 footer {
   bottom: 0em;

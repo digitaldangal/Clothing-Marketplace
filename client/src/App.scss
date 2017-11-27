@@ -908,10 +908,12 @@ section#cart{
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: center;
-                .image{
-                    width: 30vw !important;
-                    img{
-                        width: 100%;
+                @media (max-width: 768px) {
+                    .image{
+                        width: 30vw !important;
+                        img{
+                            width: 100%;
+                        }
                     }
                 }
                 .content{      
@@ -927,6 +929,9 @@ section#cart{
                         letter-spacing: 1px;
                         a{
                             font-family: 'Roboto' !important;
+                        }
+                        button{
+                            margin-top: 1em;
                         }
                     }
                 }
@@ -955,13 +960,19 @@ section#cart{
                 margin: 0 auto;
             }
         }
-        @media(min-width: 1024px) {
+    }
+    @media(min-width: 1024px) { 
+        .ui.container{ 
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            position: relative;
             .item.clothes{
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: center;
                 .image{
-                    width: 30vw !important;
+                    width: 200px !important;
                     img{
                         width: 100%;
                     }
@@ -983,23 +994,9 @@ section#cart{
                     }
                 }
             }
-            .payment-info{
-                h4.header{
-
-                }
-                p{
-                    span#cost{
-
-                    }
-                }
-                button{
-
-                }
-            }
         }
     }
 }
-
 
 footer {
     bottom: 0em;

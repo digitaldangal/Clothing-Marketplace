@@ -44,6 +44,10 @@ class Cart extends Component {
             }
         })
     }
+    
+    removeFromCart = (product) => {
+        console.log(product)
+    }
 
     renderClothing(){
         const {productData} = this.state;
@@ -67,6 +71,7 @@ class Cart extends Component {
                                         <a>Category: {product.category}</a>
                                         <a>Cost: ${product.price}</a>
                                         <a>Size: {product.size}</a>
+                                        <Button data-id={product.id} data-title={product.title} onClick={(e)=>this.removeFromCart(e.target.dataset)}>Remove</Button>
                                     </div>
                                 </div>
                             </div> 
@@ -75,10 +80,10 @@ class Cart extends Component {
                 </div>
                 <div className="payment-info">
                     <h4 className="ui header">Order Summary</h4>
-                    <p>Subtotal: $<span id="cost">{total}</span></p>
-                    <p>Shipping, calculated at checkout. <span id="cost">$0</span></p>
-                    <p>Total: $<span id="cost">{total}</span></p>
-                    <Button secondary>Check with Paypal</Button>
+                    <p>Subtotal: <span id="cost">{total}</span></p>
+                    <p>Shipping, calculated at checkout. <span id="cost">0</span></p>
+                    <p>Total: <span id="cost">{total}</span></p>
+                    <Button secondary>Checkout with Paypal</Button>
                 </div>
             </div>
         )
