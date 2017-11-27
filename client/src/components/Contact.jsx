@@ -16,20 +16,21 @@ class Contact extends Component {
 
     handleContactSubmit = (e) => {
         e.preventDefault();
-
-        // fetch("https://api.sendgrid.com/api/mail.send.json", {
-        //     method: 'post',
-        //     body
-        // })
-
+        let uid = '';
+        firebase.auth().onAuthStateChanged((user)=>{
+            user ? uid = user.uid : '';
+            return uid;
+        })
         axios.post('/contact-submit', {
             display_name: this.state.display_name,
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             message: this.state.message,
             request: this.state.request,
-            subject: this.state.subject
-        }).then((res)=>{
+            subject: this.state.subject,
+            email: this.state.email,
+            uid: uid
+        },{ mode: 'no-cors'}).then((res)=>{
             console.log(res)
         }).catch(err=>(console.log(err)))
         
