@@ -53,34 +53,6 @@ These are some of the features that I plan on tackling as I build this project
 - [x] About
 - [x] Contact(emails with sendgrid)
 
-
-
-Future Improvements
-- [ ] Brand Image, Logo, or profile pic
-- [ ] Product Share button
-- [ ] Compress Uploaded Images
-- [ ] Sizing
-    - [ ] Pants
-    - [ ] Shoes
-- [ ] Searching
-- [ ] 10-20 Starting Brands, go up by 5-10 every month
-- [ ] Articles
-    - [ ] Weekly or bi weekly
-    - [ ] categories and archives 
-- [ ] Improve with drag and drop to reorder images
-- [ ] Tracking
-    - [ ] Transactions
-    - [ ] Rating
-- [ ] Create Brand Dashboard
-    - [ ] activate sales
-    - [ ] mark items soldout
-- [ ] Create Admin Dashboard
-    - [ ] View All Users
-    - [ ] View All Brands
-    - [ ] Approve Brands
-    - [ ] Upload and change articles
-    - [ ] Change featured brands
-
 ## Installation 
 1. Run npm install in the client folder.
 2. in the same client folder run npm start
@@ -168,3 +140,29 @@ renderPicPreviews = (e) =>{
     </div>
 </div>
 ```
+### Future Improvements
+- [ ] Brand Image, Logo, or profile pic
+- [ ] Product Share button
+- [ ] Add to cart from wishlist page
+- [ ] Compress Uploaded Images
+- [ ] Sizing
+    - [ ] Pants
+    - [ ] Shoes
+- [ ] Searching
+- [ ] 10-20 Starting Brands, go up by 5-10 every month
+- [ ] Articles
+    - [ ] Weekly or bi weekly
+    - [ ] categories and archives 
+- [ ] Improve with drag and drop to reorder images
+- [ ] Tracking
+    - [ ] Transactions
+    - [ ] Rating
+- [ ] Create Brand Dashboard
+    - [ ] activate sales
+    - [ ] mark items soldout
+- [ ] Create Admin Dashboard
+    - [ ] View All Users
+    - [ ] View All Brands
+    - [ ] Approve Brands
+    - [ ] Upload and change articles
+    - [ ] Change featured brands
