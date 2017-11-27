@@ -52,6 +52,7 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Sub Menu to filter articles
 - [x] About
 - [x] Contact
+    - [x] Can send emails with sendgrid
 
 
 
@@ -129,11 +130,13 @@ Tech Stack
 * HTML / CSS (SASS)
 * JavaScript
 * Semantic UI
-* Payment(Shopify, Stripe, or Paypal)
+* Paypal Marketplace
+* SendGrid
 * React with Redux possibly
 * Node.js /Express.js
 * Redis
-* Google Firebase(Authentication, Storage, Hosting, & Database Services)
+* Google Firebase(Authentication, Storage, Database)
+* Digital Ocean (Hosting)
 
 ## Code Snippet
 

@@ -35,12 +35,22 @@ class Contact extends Component {
             subject: this.state.subject,
             email: this.state.email,
             uid: (this.state.uid ? this.state.uid : 'none')
-        },{ mode: 'no-cors'}).then((res)=>{
-            this.setState({
-                redirect: true,
-                currentPage: '/home'
-            })
-        }).catch(err=>(console.log(err)))
+        }).then(res=>{
+            this.redirectPage();
+        }).catch(err=>{
+            console.log(err);
+            this.redirectPage();
+        })
+
+        this.setState({
+            display_name: "",
+            first_name: "",
+            last_name: "",
+            message: "",
+            request: "",
+            subject: "",
+            email: "",
+        })
     }
 
     handleChange = (e) => {
@@ -75,25 +85,12 @@ class Contact extends Component {
                                 <div className="two fields">
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <input required="true" name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                                            <input required="true" value={this.state.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
                                         </div>
                                     </div>
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <input required="true" name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="two fields">
-                                    <div className="field">
-                                        <div className="ui input focus">
-                                            <input name="display_name" type="text" placeholder="Display Name" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                    <div className="field">
-                                        <div className="ui input focus">
-                                            <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                            <input required="true" value={this.state.last_name} name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
                                         </div>
                                     </div>
                                 </div>
@@ -101,12 +98,25 @@ class Contact extends Component {
                                 <div className="two fields">
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <input name="subject" type="text" placeholder="Subject" onChange={(e)=>this.handleChange(e)}/>
+                                            <input name="display_name" value={this.state.display_name} type="text" placeholder="Display Name" onChange={(e)=>this.handleChange(e)}/>
                                         </div>
                                     </div>
                                     <div className="field">
                                         <div className="ui input focus">
-                                            <select required="true" name="request" type="text" onChange={(e)=>this.handleChange(e)}>
+                                            <input required="true" value={this.state.email} name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="two fields">
+                                    <div className="field">
+                                        <div className="ui input focus">
+                                            <input name="subject" required="true" value={this.state.subject} type="text" placeholder="Subject" onChange={(e)=>this.handleChange(e)}/>
+                                        </div>
+                                    </div>
+                                    <div className="field">
+                                        <div className="ui input focus">
+                                            <select required="true" value={this.state.request} name="request" type="text" onChange={(e)=>this.handleChange(e)}>
                                                 <option defaultValue value="general">General Question</option>
                                                 <option value="order_info">Order Information</option>
                                                 <option value="seller_question">Seller Question</option>
@@ -120,10 +130,10 @@ class Contact extends Component {
 
                                 <div className="field">
                                     <label>Message</label>
-                                    <textarea required="true" name="message" rows="10" placeholder="Message" onChange={(e)=>this.handleChange(e)}></textarea>        
+                                    <textarea required="true" value={this.state.message} name="message" rows="10" placeholder="Message" onChange={(e)=>this.handleChange(e)}></textarea>        
                                 </div>
 
-                                <button className="ui secondary button" type="submit">Send</button>
+                                <button className="ui secondary button" type="submit" onSubmit={this.handleContactSubmit}>Send</button>
                             </form>
                         </div>
                     </div>
