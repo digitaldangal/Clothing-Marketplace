@@ -64,6 +64,29 @@ class Designer extends Component {
         }).catch(err=>console.log(err))
     }
 
+    handleAddToWishlist = (e) =>{
+        let productId = e.id;
+        let productTitle = e.title;
+        let productToAdd = this.state.productData[productTitle]
+        console.log(productTitle, productToAdd)
+        // db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
+        // .then((res)=>{
+        //     if(res.empty){
+        //         this.setState({
+        //             clothingData: false,
+        //             clothingDataLoaded: false
+        //         })
+        //     }else{
+        //         res.forEach((product)=>{
+        //             console.log(product.data())
+        //             return productData = product.data();
+        //         })
+        //         this.setState({clothingData: productData, clothingDataLoaded: true, loadPage: true})
+        //     }
+        // }).catch(err=>(console.log(err)))
+        // this.setState({brandData: brandData})
+    }
+
     renderBrands(){
         if(this.state.productData){
             return(
@@ -85,7 +108,7 @@ class Designer extends Component {
                                     <div className="meta links">
                                         <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
                                         <a>${product.price}</a>
-                                        <i className="like icon"></i>
+                                        <i className="like icon" title="add to wishlist" data-id={product.id} data-title={product.title} onClick={(e)=>this.handleAddToWishlist(e.target.dataset)}></i>
                                     </div>
                                 </div>
                         </div> 
