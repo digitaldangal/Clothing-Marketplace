@@ -671,13 +671,49 @@ p#soldout {
       .page-container.single-article h1.ui.header.title {
         font-size: 3rem; } }
 
-section#cart .ui.divided.items.container .item.clothes .contact .description a {
+section#cart .ui.divided.items.container .item.clothes {
   display: flex;
-  justify-content: center;
-  flex-flow: column;
-  text-align: left;
-  font-weight: 300;
-  letter-spacing: 1px; }
+  flex-flow: row nowrap;
+  justify-content: center; }
+  section#cart .ui.divided.items.container .item.clothes .image {
+    width: 30vw !important; }
+    section#cart .ui.divided.items.container .item.clothes .image img {
+      width: 100%; }
+  section#cart .ui.divided.items.container .item.clothes .content {
+    text-align: left;
+    line-height: 170%;
+    padding: 1em; }
+    section#cart .ui.divided.items.container .item.clothes .content .description {
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+      text-align: left;
+      font-weight: 300;
+      letter-spacing: 1px; }
+      section#cart .ui.divided.items.container .item.clothes .content .description a {
+        font-family: 'Roboto' !important; }
+@media (min-width: 1024px) {
+  section#cart .ui.divided.items.container .item.clothes {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center; }
+    section#cart .ui.divided.items.container .item.clothes .image {
+      width: 30vw !important; }
+      section#cart .ui.divided.items.container .item.clothes .image img {
+        width: 100%; }
+    section#cart .ui.divided.items.container .item.clothes .content {
+      text-align: left;
+      line-height: 170%;
+      padding: 1em; }
+      section#cart .ui.divided.items.container .item.clothes .content .description {
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        text-align: left;
+        font-weight: 300;
+        letter-spacing: 1px; }
+        section#cart .ui.divided.items.container .item.clothes .content .description a {
+          font-family: 'Roboto' !important; } }
 
 footer {
   bottom: 0em;

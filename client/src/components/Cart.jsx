@@ -74,28 +74,29 @@ class Cart extends Component {
         const {productData} = this.state;
         return(
             <div className="ui divided items container">
-            {Object.values(productData).map((product, i)=>{
-                return(
-                    <div className="item clothes" key={i}>
-                        <Link to={`/designers/${product.designer}/${product.designerId}/${product.title}/${product.id}`}>
+                {Object.values(productData).map((product, i)=>{
+                    return(
+                        <div className="item clothes" key={i}>
                             <div className="image">
                                 <img src={product.main_image} alt=""/>
                             </div>
-                        </Link>    
-                        <div className="content">
-                            <Link className="header" to={`/designers/${product.designer}/${product.designerId}/${product.title}/${product.id}`}>{product.designer}</Link>
-                            <div className="meta">
-                                <span>{product.title}</span>
+                            <div className="content">
+                                <Link className="header" to={`/designers/${product.designer}/${product.designerId}/${product.title}/${product.id}`}>{product.designer}</Link>
+                                <div className="meta">
+                                    <span>{product.title}</span>
+                                </div>
+                                <div className="description">
+                                    <a>Category: {product.category}</a>
+                                    <a>Cost: ${product.price}</a>
+                                    <a>Size: {product.size}</a>
+                                </div>
                             </div>
-                            <div className="description">
-                                <a>Category: {product.category}</a>
-                                <a>Cost: ${product.price}</a>
-                                <a>Size: {product.size}</a>
-                            </div>
-                        </div>
-                    </div> 
-                )
-            })}
+                        </div> 
+                    )
+                })}
+                <div className="payment-info">
+                    
+                </div>
             </div>
         )
     }
