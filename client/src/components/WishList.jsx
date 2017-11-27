@@ -16,14 +16,18 @@ class Wishlist extends Component {
 
     componentWillMount() {
         let productInfo = {};
-        
+
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 this.setState({redirect: false})
                 db.collection('users').doc(user.uid).collection('wishlist').limit(40).get().then((res)=>{
                     if(res.empty === false){
                         res.forEach((product)=>{
-                            console.log(product.data())
+                            return productInfo[product.data().title] = product.data();
+                        })
+                        this.setState({
+                            productData: productInfo,
+                            productDataLoaded: true
                         })
                     }else{
                         return null;
