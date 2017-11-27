@@ -88,6 +88,7 @@ class Designer extends Component {
                         category: productToAdd.category,
                         description: productToAdd.description,
                         id: productId,
+                        designerId: this.state.brandUid
                     },{merge: true})
                     .then(()=>{
                         localStorage.setItem(productId, "red")
