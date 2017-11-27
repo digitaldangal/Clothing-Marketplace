@@ -31,7 +31,9 @@ class Wishlist extends Component {
                             productDataLoaded: true
                         })
                     }else{
-                        return null;
+                        this.setState({
+                            productDataLoaded: "empty"
+                        });
                     }
                 }).then(res=>console.log(res)).catch(err=>console.log(err));
             }else{
@@ -75,7 +77,7 @@ class Wishlist extends Component {
             {Object.values(productData).map((product, i)=>{
                 return(
                     <div className="card" key={i}>
-                        <Link to={`/designers/${productData.designer}/${productData.designerId}/${product.title}/${product.id}`}>
+                        <Link to={`/designers/${product.designer}/${product.designerId}/${product.title}/${product.id}`}>
                             <div className="image">
                                 <img src={product.main_image} alt=""/>
                             </div>
@@ -109,7 +111,7 @@ class Wishlist extends Component {
                     </div>
                 </div>
             )
-        }else if(this.state.productData === false){
+        }else if(this.state.productDataLoaded === false ){
             return(
                 <div className="ui active inverted dimmer">
                     <div className="ui indeterminate text loader">Preparing Files</div>
@@ -119,8 +121,8 @@ class Wishlist extends Component {
             return(
                 <div className="single-brand">
                     <h1 className="ui header">Wishlist</h1>
-                    <h3 className="ui header"></h3>
                     <div className="page-container">
+                    <h3 className="ui header">Your wish list is empty :(</h3>
                     <Link to='/designers/'><Button secondary>Check out Designers</Button></Link>
                     </div>
                 </div>
