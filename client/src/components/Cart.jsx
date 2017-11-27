@@ -45,36 +45,13 @@ class Cart extends Component {
         })
     }
 
-    handleAddToWishlist = (e, data) =>{
-        let productId = data.id;
-        let productTitle = data.title;
-        let productToAdd = this.state.productData[productTitle]
-        let likedItem = e.target;
-
-        firebase.auth().onAuthStateChanged((user)=>{
-            if(user){
-                if(localStorage.getItem(productId) === "red"){
-                    localStorage.removeItem(productId);
-                    likedItem.style.color = "gray";
-                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).delete()
-                    .then((res)=>{
-                        console.log(res)
-                        window.location.reload();
-                    }).catch(err=>(console.log(err)))
-                }else{
-                    return null;
-                }
-            }else{
-                alert("You must be signed in first to do that!")
-            }
-        })
-    }
-
     renderClothing(){
         const {productData} = this.state;
+        let total = 0;
         return(
             <div className="ui divided items container">
                 {Object.values(productData).map((product, i)=>{
+                    total = total + Number(product.price);
                     return(
                         <div className="item clothes" key={i}>
                             <div className="image">
@@ -95,7 +72,11 @@ class Cart extends Component {
                     )
                 })}
                 <div className="payment-info">
-                    
+                    <h4 className="ui header">Order Summary</h4>
+                    <p>Subtotal: $<span id="cost">{total}</span></p>
+                    <p>Shipping, calculated at checkout. <span id="cost">$0</span></p>
+                    <p>Total: $<span id="cost">{total}</span></p>
+                    <Button secondary>Check with Paypal</Button>
                 </div>
             </div>
         )
