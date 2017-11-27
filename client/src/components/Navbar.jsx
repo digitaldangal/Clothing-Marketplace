@@ -61,6 +61,8 @@ class Navbar extends Component {
                     <Dropdown.Divider />
                     <Dropdown.Item><Link to="/profile/edit">Edit Account</Link></Dropdown.Item>
                     <Dropdown.Divider />
+                    <Dropdown.Item><Link to="/profile/wishlist">Wishlist</Link></Dropdown.Item>
+                    <Dropdown.Divider />
                     <Dropdown.Item><Link to="/profile/history">Transactions</Link></Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></Dropdown.Item>

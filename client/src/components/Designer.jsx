@@ -64,6 +64,43 @@ class Designer extends Component {
         }).catch(err=>console.log(err))
     }
 
+    handleAddToWishlist = (e, data) =>{
+        let productId = data.id;
+        let productTitle = data.title;
+        let productToAdd = this.state.productData[productTitle]
+        let likedItem = e.target;
+        
+        
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                if(localStorage.getItem(productId) === "red"){
+                    localStorage.removeItem(productId);
+                    likedItem.style.color = "gray";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).delete()
+                    .then(res=>console.log(res)).catch(err=>(console.log(err)))
+                }else{
+                    likedItem.style.color = "red";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).set({
+                        main_image: productToAdd.main_image,
+                        title: productTitle,
+                        designer: productToAdd.designer,
+                        price: productToAdd.price,
+                        category: productToAdd.category,
+                        description: productToAdd.description,
+                        id: productId,
+                        designerId: this.state.singleBrandData.id
+                    },{merge: true})
+                    .then(()=>{
+                        localStorage.setItem(productId, "red")
+                    })
+                    .catch(err=>(console.log(err)))
+                }
+            }else{
+                alert("You must be signed in first to do that!")
+            }
+        })
+    }
+
     renderBrands(){
         if(this.state.productData){
             return(
@@ -79,13 +116,14 @@ class Designer extends Component {
                                 <div className="content">
                                     {/* <div className="header">{product.title}</div> */}
                                     <div className="header">{this.state.singleBrandData.name}</div>
+                                        {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : null}
                                     <div className="description links">
                                         {product.title}
                                     </div>
                                     <div className="meta links">
                                         <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
                                         <a>${product.price}</a>
-                                        <i className="like icon"></i>
+                                        <i style={{color: localStorage.getItem(product.id)}} className="like icon" title="add to wishlist" data-id={product.id} data-title={product.title} onClick={(e)=>this.handleAddToWishlist(e,e.target.dataset)}></i>
                                     </div>
                                 </div>
                         </div> 
