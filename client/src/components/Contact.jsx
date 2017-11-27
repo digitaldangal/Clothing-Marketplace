@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import{Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
-var db = firebase.firestore();
 
 class Contact extends Component {
     constructor(props){
@@ -10,17 +9,23 @@ class Contact extends Component {
         this.state = {
             request: 'general',
             redirect: false,
-            currentPage: ''
+            currentPage: '',
+            uid: false
         }
     }
-
-    handleContactSubmit = (e) => {
-        e.preventDefault();
+    componentWillMount(){
         let uid = '';
         firebase.auth().onAuthStateChanged((user)=>{
-            user ? uid = user.uid : '';
-            return uid;
+            if(user){
+                uid = user.uid;
+                this.setState({uid: uid})
+            }else{
+                null;
+            }
         })
+    }
+    handleContactSubmit = (e) => {
+        e.preventDefault();
         axios.post('/contact-submit', {
             display_name: this.state.display_name,
             first_name: this.state.first_name,
@@ -29,31 +34,13 @@ class Contact extends Component {
             request: this.state.request,
             subject: this.state.subject,
             email: this.state.email,
-            uid: uid
+            uid: (this.state.uid ? this.state.uid : 'none')
         },{ mode: 'no-cors'}).then((res)=>{
-            console.log(res)
+            this.setState({
+                redirect: true,
+                currentPage: '/home'
+            })
         }).catch(err=>(console.log(err)))
-        
-
-        // fetch("https://formspree.io/kamidou95@gmail.com", {
-        //     method: 'POST',
-        //     body: new FormData(document.getElementById('contact-form')),
-        // }).then((res)=>{
-        //     console.log(res);
-        //     db.collection("contact").doc(this.state.request).collection(`${new Date().getMonth()} ${new Date().getDay()}`).doc(`${new Date().getTime()}`).set({
-        //         display_name: this.state.display_name,
-        //         first_name: this.state.first_name,
-        //         last_name: this.state.last_name,
-        //         message: this.state.message,
-        //         request: this.state.request,
-        //         subject: this.state.subject
-        //     }).catch(err=>{console.log(err)})
-        // })
-        // .then(()=>{
-        //     this.redirectPage();
-        // })
-        // .catch(err=>console.log(err))
-
     }
 
     handleChange = (e) => {
