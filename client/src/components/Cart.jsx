@@ -25,7 +25,7 @@ class Cart extends Component {
                 db.collection('users').doc(user.uid).collection('cart').get().then((res)=>{
                     if(res.empty === false){
                         res.forEach((product)=>{
-                            return productInfo[product.data().title] = product.data();
+                            return productInfo[product.id] = product.data();
                         })
                         this.setState({
                             productData: productInfo,

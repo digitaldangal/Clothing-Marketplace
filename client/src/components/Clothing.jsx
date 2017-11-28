@@ -71,19 +71,29 @@ class Clothing extends Component {
         let productToAdd = this.state.clothingData;
         let productTitle = productToAdd.title;
         let productId = productToAdd.id;
+        let button = document.querySelector('#cart-button')
 
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
-                db.collection('users').doc(user.uid).collection('cart').add({
-                    main_image: productToAdd.main_image,
-                    title: productTitle,
-                    designer: productToAdd.designer,
-                    price: productToAdd.price,
-                    category: productToAdd.category,
-                    description: productToAdd.description,
-                    id: productId,
-                    designerId: this.state.brandData.id
-                }).catch(err=>(console.log(err)))
+                if(productToAdd.inventory_total > 0){
+                    db.collection('users').doc(user.uid).collection('cart').add({
+                        main_image: productToAdd.main_image,
+                        title: productTitle,
+                        designer: productToAdd.designer,
+                        price: productToAdd.price,
+                        category: productToAdd.category,
+                        description: productToAdd.description,
+                        size: this.state.size,
+                        id: productId,
+                        designerId: this.state.brandData.id
+                    }).then(()=>{
+                        button.innerHTML = "Added to Cart"
+                    }).catch(err=>(console.log(err)))
+                }else{
+                    let errorFrom = document.querySelector('#error');
+                    let message = ("<pCurrently out of stock</p>")
+                    errorFrom.innerHTML = message;
+                }
             }else{
                 let errorFrom = document.querySelector('#error');
                 let message = ("<p><a href='/account/login'>In order to protect all of our users, we ask that you Login or Sign up first before you are allowed to make purchases.</a></p>")
@@ -195,7 +205,7 @@ class Clothing extends Component {
                                         <Form.Group required>
                                             {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
                                         </Form.Group>
-                                        <Button secondary >Add to Cart</Button>
+                                        <Button secondary id="cart-button" disabled={clothingData.inventory_total <= 0 ? true : false} >{clothingData.inventory_total <= 0 ? "Sold out" : "Add to Cart"}</Button>
                                     </Form>
                                     <Button secondary data-id={clothingData.id} data-title={clothingData.title} onClick={(e)=>this.handleWishlist(e,e.target.dataset)}><i className="like icon"></i> Wishlist</Button>
                                 </div>
