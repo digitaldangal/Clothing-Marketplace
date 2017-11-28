@@ -164,11 +164,11 @@ class Clothing extends Component {
                                 <h3 className="ui header">${clothingData.price}</h3>
                                 <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
                                 <div className="add-to-bag">
-                                    <Form required>
+                                    <Form required onSubmit={this.handleSubmit}>
                                         <Form.Group required>
                                             {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
                                         </Form.Group>
-                                            <Button secondary onClick={this.handleSubmit}>Add to Cart</Button>
+                                        <Button secondary >Add to Cart</Button>
                                     </Form>
                                     <Button secondary data-id={clothingData.id} data-title={clothingData.title} onClick={(e)=>this.handleWishlist(e,e.target.dataset)}><i className="like icon"></i> Wishlist</Button>
                                 </div>
