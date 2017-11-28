@@ -65,7 +65,8 @@ class Cart extends Component {
         })
         .then((res)=>{
             console.log(res)
-            window.location.assign(res.data.approval_url.href);
+            return res;
+            // window.location.assign(res.data["approval_url"].href);
         }).catch(err=>console.log(err))
     }
 

@@ -19,7 +19,7 @@ function pay (req, res, next) {
         },
         redirect_urls: {
           return_url: 'http://localhost:3000/process',
-          cancel_url: 'http://localhost:3000/cancel'
+          cancel_url: 'http://localhost:3000/profile/cart'
         },
         transactions: [{
           amount: {
@@ -52,41 +52,30 @@ function pay (req, res, next) {
             console.error('no redirect URI present');
           }
         }
-      });
-    // var myHeaders = new Headers();
-    // myHeaders.append("Content-Type", "application/json");
-    // myHeaders.append("Authorization", "Bearer A21AAFM_qGlrnxxiOHYJWqEHuneA-jX_7HeycwLUhyCyVk6t8V-LrBek5fH59JMqDzu4P6Q5VGNOg9-XAerMzP36oKsuBlZ_g");
-    // var init = {
-    //     method: 'post',
-    //     Headers: {
-    //         "Content-Type": "application/json",
-    //         "Authorization": "Bearer A21AAFM_qGlrnxxiOHYJWqEHuneA-jX_7HeycwLUhyCyVk6t8V-LrBek5fH59JMqDzu4P6Q5VGNOg9-XAerMzP36oKsuBlZ_g"
-    //     },
-    //     cache: 'default',
-    //     intent: 'sale',
-    //     redirect_urls: {
-    //         "return_url": "http://localhost:3000/profile/transactions",
-    //         "cancel_url": "http://localhost:3000/profile/cart"
-    //     },
-    //     payer: {
-    //         "payment_method": "paypal"
-    //     },
-    //     transactions: [{
-    //         "amount": {
-    //         "total": '10',
-    //         "currency": "USD"
-    //         }
-    //     }]
-    // }
+      })
+};
 
-    // fetch('https://api.sandbox.paypal.com/v1/payments/payment',{init})
-    // .then((res)=>{
-    //     console.log(res)
-    //     return res;
-    // }).catch((err)=>{
-    //     console.log(err)
-    //     return err;
-    // })
+function approved(req, res){
+    var paymentId = req.query.paymentId;
+    var payerId = { payer_id: req.query.PayerID };
+    var authid;
+    
+    paypal.payment.execute(paymentId, payerId, function (error, payment) {
+      if (error) {
+        console.error(JSON.stringify(error));
+      } else {
+        if (payment.state === 'approved'
+        && payment.transactions
+        && payment.transactions[0].related_resources
+        && payment.transactions[0].related_resources[0].authorization) {
+          // Capture authorization.
+          authid = payment.transactions[0].related_resources[0].authorization.id;
+        } else {
+          console.log('payment not successful');
+        }
+      }
+    });
 }
 
-module.exports = {pay};
+
+module.exports = {pay, approved};
