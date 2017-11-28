@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button, Form, Select, Image, Modal, Message} from 'semantic-ui-react';
+import {Button, Form, Image, Modal} from 'semantic-ui-react';
 
 import firebase from '../config/firebase';
 
@@ -27,7 +27,6 @@ class Clothing extends Component {
         let brandUID = undefined;
 
         brandRef.get().then((res)=>{
-            console.log(res)
             if(res.empty){
                 this.setState({
                     clothingData: false,
@@ -83,10 +82,12 @@ class Clothing extends Component {
                     category: productToAdd.category,
                     description: productToAdd.description,
                     id: productId,
-                    designerId: this.state.singleBrandData.id
+                    designerId: this.state.brandData.id
                 }).catch(err=>(console.log(err)))
             }else{
-                alert("You must be logged in first")
+                let errorFrom = document.querySelector('#error');
+                let message = ("<p><a href='/account/login'>In order to protect all of our users, we ask that you Login or Sign up first before you are allowed to make purchases.</a></p>")
+                errorFrom.innerHTML = message;
             }
         })
     }
@@ -190,6 +191,7 @@ class Clothing extends Component {
                                 <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
                                 <div className="add-to-bag">
                                     <Form required onSubmit={this.handleSubmit}>
+                                        <div id="error"></div>
                                         <Form.Group required>
                                             {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
                                         </Form.Group>
