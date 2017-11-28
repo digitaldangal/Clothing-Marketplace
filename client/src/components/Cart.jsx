@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import {Button} from 'semantic-ui-react';
 import firebase from '../config/firebase';
@@ -57,6 +58,17 @@ class Cart extends Component {
         }).catch(err=>console.log(err))
     }
 
+    handleCheckout(total){
+        console.log(total)
+        axios.post('/process-payment',{
+            total: total
+        })
+        .then((res)=>{
+            console.log(res)
+            window.location.assign(res.data.approval_url.href);
+        }).catch(err=>console.log(err))
+    }
+
     renderClothing(){
         const {productData} = this.state;
         let total = 0;
@@ -92,7 +104,7 @@ class Cart extends Component {
                     <p>Subtotal: <span id="cost">{total}</span></p>
                     <p>Shipping, calculated at checkout. <span id="cost">0</span></p>
                     <p>Total: <span id="cost">{total}</span></p>
-                    <Button secondary>Checkout with Paypal</Button>
+                    <Button secondary onClick={(event)=>this.handleCheckout(total)}>Checkout with Paypal</Button>
                 </div>
             </div>
         )
