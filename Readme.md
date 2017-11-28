@@ -146,6 +146,7 @@ renderPicPreviews = (e) =>{
 - [ ] Product Share button
 - [ ] Add to cart from wishlist page
 - [ ] Compress Uploaded Images
+- [ ] Error Handling
 - [ ] Sizing
     - [ ] Pants
     - [ ] Shoes

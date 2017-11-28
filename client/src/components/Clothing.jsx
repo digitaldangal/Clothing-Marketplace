@@ -59,11 +59,36 @@ class Clothing extends Component {
     }
 
     handleChange = (e) => {
-        console.log("dog")
+        let name = e.target.name;
+        let value = e.target.value;
+
+        this.setState({
+            [name]: value
+        })
     }
 
     handleSubmit = (e) => {
-        console.log("cat")
+        e.preventDefault();
+        let productToAdd = this.state.clothingData;
+        let productTitle = productToAdd.title;
+        let productId = productToAdd.id;
+
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                db.collection('users').doc(user.uid).collection('cart').add({
+                    main_image: productToAdd.main_image,
+                    title: productTitle,
+                    designer: productToAdd.designer,
+                    price: productToAdd.price,
+                    category: productToAdd.category,
+                    description: productToAdd.description,
+                    id: productId,
+                    designerId: this.state.singleBrandData.id
+                }).catch(err=>(console.log(err)))
+            }else{
+                alert("You must be logged in first")
+            }
+        })
     }
 
     handleImageChange=(image)=>{
@@ -73,7 +98,7 @@ class Clothing extends Component {
     }
     renderSizes(){
         return(
-            <select required name="size" onChange={this.handleChange}>
+            <select required name="size" onChange={(e)=>this.handleChange(e)}>
             <option value="">SELECT</option>
             <option value="xs">XS</option>
             <option value="s">S</option>
@@ -86,7 +111,7 @@ class Clothing extends Component {
 
     renderOneSize(){
         return(
-            <select required name="size" onChange={this.handleChange}>
+            <select required name="size"  onChange={(e)=>this.handleChange(e)}>
             <option value="">SELECT</option>
             <option value="oneSize">One Size</option>
         </select>
@@ -94,7 +119,7 @@ class Clothing extends Component {
     }
     renderShoeSize(){
         return(
-            <select required name="size" onChange={this.handleChange}>
+            <select required name="size"  onChange={(e)=>this.handleChange(e)}>
             <option value="">SELECT</option>
             <option value="">XS</option>
         </select>
