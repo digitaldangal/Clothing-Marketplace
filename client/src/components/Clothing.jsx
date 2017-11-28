@@ -71,7 +71,35 @@ class Clothing extends Component {
 
        bigImage.src = (image);
     }
+    renderSizes(){
+        return(
+            <select required name="size" onChange={this.handleChange}>
+            <option value="">SELECT</option>
+            <option value="xs">XS</option>
+            <option value="s">S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+        </select>
+        )
+    }
 
+    renderOneSize(){
+        return(
+            <select required name="size" onChange={this.handleChange}>
+            <option value="">SELECT</option>
+            <option value="oneSize">One Size</option>
+        </select>
+        )
+    }
+    renderShoeSize(){
+        return(
+            <select required name="size" onChange={this.handleChange}>
+            <option value="">SELECT</option>
+            <option value="">XS</option>
+        </select>
+        )
+    }
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
@@ -99,16 +127,7 @@ class Clothing extends Component {
                                 <div className="add-to-bag">
                                     <Form onSubmit={this.handleSubmit}>
                                         <Form.Group required>
-                                            <select required>
-                                                <option value="">SELECT</option>
-                                                <option value="xs">XS</option>
-                                                <option value="s">S</option>
-                                                <option value="m">M</option>
-                                                <option value="l">L</option>
-                                                <option value="xl">XL</option>
-                                            </select>
-                                            {/* <Form.Field control={Select} name="size" label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onChange={this.handleChange}  required={true}/> */}
-                                            {/* <Form.Button content='Submit' /> */}
+                                            {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
                                         </Form.Group>
                                         <Button secondary>Add to Cart</Button>
                                         <Button secondary><i className="like icon"></i> Wishlist</Button>
