@@ -52,20 +52,22 @@ class Navbar extends Component {
     }
 
     authUser=()=>{
+        const style = {
+            width: '100%',
+            textAlign: 'center'
+        }
         return(
-            <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`}>
+            <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`} style={style}>
                 <Dropdown.Menu>
-                    <Dropdown.Item><Link to="/profile">Profile</Link></Dropdown.Item>
+                    <Link to="/profile"><Dropdown.Item>Profile</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    {this.state.brandStatus ? <Dropdown.Item><Link to="/profile/brand">Brand Dashboard</Link></Dropdown.Item> : <Dropdown.Item><Link to="/profile/brand-signup">Register A Brand</Link></Dropdown.Item>}
+                    {this.state.brandStatus ? <Link to="/profile/brand"><Dropdown.Item>Brand Dashboard</Dropdown.Item></Link> : <Link to="/profile/brand-signup"><Dropdown.Item>Register A Brand</Dropdown.Item></Link>}
                     <Dropdown.Divider />
-                    <Dropdown.Item><Link to="/profile/edit">Edit Account</Link></Dropdown.Item>
+                    <Link to="/profile"><Dropdown.Item>Wishlist</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    <Dropdown.Item><Link to="/profile/wishlist">Wishlist</Link></Dropdown.Item>
+                    <Link to="/profile"><Dropdown.Item>Transactions</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    <Dropdown.Item><Link to="/profile/history">Transactions</Link></Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></Dropdown.Item>
+                    <Link to="#" onClick={()=>this.logout(false)}><Dropdown.Item>Logout</Dropdown.Item></Link>
                 </Dropdown.Menu>
             </Dropdown>
         )
