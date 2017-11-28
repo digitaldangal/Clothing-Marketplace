@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button, Form, Select, Image, Modal} from 'semantic-ui-react';
+import {Button, Form, Select, Image, Modal, Message} from 'semantic-ui-react';
 
 import firebase from '../config/firebase';
 
@@ -36,7 +36,6 @@ class Clothing extends Component {
                 })
             }else{
                 res.forEach((res)=>{
-                    console.log(res.data())
                     brandUID = res.id;
                     return brandData = res.data();
                 })
@@ -49,7 +48,6 @@ class Clothing extends Component {
                         })
                     }else{
                         res.forEach((product)=>{
-                            console.log(product.data())
                             return productData = product.data();
                         })
                         this.setState({clothingData: productData, clothingDataLoaded: true, loadPage: true})
@@ -77,23 +75,6 @@ class Clothing extends Component {
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
-            const sizes = [
-                {key: 'XS', text: 'XS', value: 'XS'},
-                {key: 'S', text: 'S', value: 'S'},
-                {key: 'M', text: 'M', value: 'M'},
-                {key: 'L', text: 'L', value: 'L'},
-                {key: 'XL', text: 'XL', value: 'XL'},
-            ]
-            const shoeSize = [
-                {key: 'XS', text: 'XS', value: 'XS'},
-                {key: 'S', text: 'S', value: 'S'},
-                {key: 'M', text: 'M', value: 'M'},
-                {key: 'L', text: 'L', value: 'L'},
-                {key: 'XL', text: 'XL', value: 'XL'},
-            ]
-            const oneSize = [
-                {key: 'OS', text: 'One Size', value: 'OS'}
-            ]
             return(
                 <div className="single-clothing">
                     <div className="page-container ui container">
@@ -117,10 +98,19 @@ class Clothing extends Component {
                                 <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
                                 <div className="add-to-bag">
                                     <Form onSubmit={this.handleSubmit}>
-                                        <Form.Group>
-                                            <Form.Field required control={Select} label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onChange={this.handleChange}/>
+                                        <Form.Group required>
+                                            <select required>
+                                                <option value="">SELECT</option>
+                                                <option value="xs">XS</option>
+                                                <option value="s">S</option>
+                                                <option value="m">M</option>
+                                                <option value="l">L</option>
+                                                <option value="xl">XL</option>
+                                            </select>
+                                            {/* <Form.Field control={Select} name="size" label='Size' options={clothingData.category === 'FOOTWEAR' ? shoeSize : clothingData.category === 'ACCESSORIES' ? oneSize : sizes} placeholder='Size' onChange={this.handleChange}  required={true}/> */}
+                                            {/* <Form.Button content='Submit' /> */}
                                         </Form.Group>
-                                        <Button secondary type="submit">Add to Cart</Button>
+                                        <Button secondary>Add to Cart</Button>
                                         <Button secondary><i className="like icon"></i> Wishlist</Button>
                                     </Form>
                                 </div>
