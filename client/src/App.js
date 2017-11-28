@@ -146,6 +146,7 @@ class App extends Component {
                 {/* <Route exact path="/search/products/:product_type" component={ProductQuery} /> */}
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact-us" component={Contact} />
+                {/* <Route exact path="customer/terms-conditions" component={Terms} /> */}
                 <Route component={NoMatch} />
               </Switch>
             </div>
