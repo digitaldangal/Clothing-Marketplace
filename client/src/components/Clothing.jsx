@@ -100,6 +100,45 @@ class Clothing extends Component {
         </select>
         )
     }
+
+    handleWishlist = (e, data) =>{
+        let productId = data.id;
+        let productTitle = data.title;
+        let productToAdd = this.state.clothingData;
+        let likedItem = e.target;
+        
+        console.log(e, data)
+        
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                if(localStorage.getItem(productId) === "red"){
+                    localStorage.removeItem(productId);
+                    likedItem.style.color = "gray";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).delete()
+                    .then(res=>console.log(res)).catch(err=>(console.log(err)))
+                }else{
+                    likedItem.style.color = "red";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).set({
+                        main_image: productToAdd.main_image,
+                        title: productTitle,
+                        designer: productToAdd.designer,
+                        price: productToAdd.price,
+                        category: productToAdd.category,
+                        description: productToAdd.description,
+                        id: productId,
+                        designerId: this.state.brandData.id
+                    },{merge: true})
+                    .then(()=>{
+                        localStorage.setItem(productId, "red")
+                    })
+                    .catch(err=>(console.log(err)))
+                }
+            }else{
+                alert("You must be signed in first to do that!")
+            }
+        })
+    }
+
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
@@ -125,13 +164,13 @@ class Clothing extends Component {
                                 <h3 className="ui header">${clothingData.price}</h3>
                                 <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
                                 <div className="add-to-bag">
-                                    <Form onSubmit={this.handleSubmit}>
+                                    <Form required>
                                         <Form.Group required>
                                             {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
                                         </Form.Group>
-                                        <Button secondary>Add to Cart</Button>
-                                        <Button secondary><i className="like icon"></i> Wishlist</Button>
+                                            <Button secondary onClick={this.handleSubmit}>Add to Cart</Button>
                                     </Form>
+                                    <Button secondary data-id={clothingData.id} data-title={clothingData.title} onClick={(e)=>this.handleWishlist(e,e.target.dataset)}><i className="like icon"></i> Wishlist</Button>
                                 </div>
                                 <div className="more-images">
                                     <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 

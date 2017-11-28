@@ -503,6 +503,8 @@ p#soldout {
         flex-flow: row wrap;
         width: 100%;
         margin-bottom: 2em; }
+      .single-clothing .page-container .product-info .product-text .add-to-bag button {
+        margin-top: 1em; }
       .single-clothing .page-container .product-info .product-text .more-images {
         display: flex;
         justify-content: center;
