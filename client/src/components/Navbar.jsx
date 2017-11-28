@@ -90,19 +90,20 @@ class Navbar extends Component {
 
                         <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
                             <Dropdown.Menu style={style.menuWidth}>
-                                <Dropdown.Item><Link to="/">Home</Link></Dropdown.Item>
+                                <Link to="/"><Dropdown.Item>Home</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Link to="/designers"><Dropdown.Item>Designers</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/editorial">Articles</Link></Dropdown.Item>
+                                <Link to="/editorial"><Dropdown.Item>Articles</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/about">About</Link></Dropdown.Item>
+                                <Link to="/about"><Dropdown.Item>About</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item>{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Dropdown.Item>
+                               {this.props.authState? this.authUser() : <Link to="/account/login"> <Dropdown.Item>Login</Dropdown.Item></Link>}
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/profile/cart"><i className="shopping bag icon"> ({this.props.shopping_cart})</i></Link></Dropdown.Item>
+                                <Link to="/profile/cart"><Dropdown.Item><i className="shopping bag icon">({this.props.shopping_cart})</i></Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/contact-us">Contact</Link></Dropdown.Item>
+                                <Link to="/contact-us"><Dropdown.Item>Contact</Dropdown.Item></Link>
+                                <Dropdown.Divider />
                             </Dropdown.Menu>
                         </Dropdown>
 
