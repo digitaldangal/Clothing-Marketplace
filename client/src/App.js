@@ -23,7 +23,8 @@ import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
-// import { __esModule } from 'react-router-dom/NavLink';
+
+var db = firebase.firestore();
 
 class App extends Component {
   constructor(){
@@ -48,6 +49,11 @@ class App extends Component {
   componentDidMount(){
     firebase.auth().onAuthStateChanged((user)=>{
       if (user) {
+      db.collection('users').doc(user.uid).collection('cart').onSnapshot((res)=>{
+        this.setState({
+          shopping_cart: res.size
+        })
+      })
         console.log(`${user.email} is logged in`)
           this.setState({
             userInfo: user.toJSON(),
