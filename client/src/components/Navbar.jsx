@@ -63,9 +63,9 @@ class Navbar extends Component {
                     <Dropdown.Divider />
                     {this.state.brandStatus ? <Link to="/profile/brand"><Dropdown.Item>Brand Dashboard</Dropdown.Item></Link> : <Link to="/profile/brand-signup"><Dropdown.Item>Register A Brand</Dropdown.Item></Link>}
                     <Dropdown.Divider />
-                    <Link to="/profile"><Dropdown.Item>Wishlist</Dropdown.Item></Link>
+                    <Link to="/profile/wishlist"><Dropdown.Item>Wishlist</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    <Link to="/profile"><Dropdown.Item>Transactions</Dropdown.Item></Link>
+                    <Link to="/profile/transactions"><Dropdown.Item>Transactions</Dropdown.Item></Link>
                     <Dropdown.Divider />
                     <Link to="#" onClick={()=>this.logout(false)}><Dropdown.Item>Logout</Dropdown.Item></Link>
                 </Dropdown.Menu>
