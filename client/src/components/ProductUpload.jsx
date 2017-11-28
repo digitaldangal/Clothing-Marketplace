@@ -103,7 +103,7 @@ class ProductUpload extends Component {
                 m: this.state.m,
                 l: this.state.l,
                 xl: this.state.xl,
-                oneSize: this.state.os > 0 ? this.state.os :0,
+                os: this.state.os > 0 ? this.state.os :0,
             },
         },{ merge: true })
         .then((res)=>{

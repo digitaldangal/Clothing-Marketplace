@@ -124,7 +124,7 @@ class Clothing extends Component {
         return(
             <select required name="size"  onChange={(e)=>this.handleChange(e)}>
             <option value="">SELECT</option>
-            <option value="oneSize">One Size</option>
+            <option value="os">One Size</option>
         </select>
         )
     }

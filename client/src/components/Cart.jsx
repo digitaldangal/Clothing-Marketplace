@@ -12,7 +12,7 @@ class Cart extends Component {
             currentPage: null,
             productData: false,
             productDataLoaded: false,
-            cartEmpty: true
+            cartLength: 0
         }
     }
 
@@ -21,11 +21,13 @@ class Cart extends Component {
 
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
-                this.setState({redirect: false})
-                db.collection('users').doc(user.uid).collection('cart').get().then((res)=>{
+                this.setState({redirect: false, uid: user.uid})
+                db.collection('users').doc(user.uid).collection('cart').onSnapshot((res)=>{
+                    console.log("heyyy")
+                    this.setState({cartLength: res.size})
                     if(res.empty === false){
                         res.forEach((product)=>{
-                            return productInfo[product.id] = product.data();
+                            return productInfo[product.id] = (product.data());
                         })
                         this.setState({
                             productData: productInfo,
@@ -38,7 +40,7 @@ class Cart extends Component {
                             cartEmpty: false
                         });
                     }
-                }).then(res=>console.log(res)).catch(err=>console.log(err));
+                })
             }else{
                 this.setState({
                     redirect: true,
@@ -47,9 +49,12 @@ class Cart extends Component {
             }
         })
     }
-    
+
     removeFromCart = (product) => {
-        console.log(product)
+        db.collection('users').doc(this.state.uid).collection('cart').doc(product.id).delete().then((res)=>{
+            console.log(res);
+            window.location.reload();
+        }).catch(err=>console.log(err))
     }
 
     renderClothing(){
@@ -59,6 +64,7 @@ class Cart extends Component {
             <div className="ui container">
                 <div className="ui divided items">
                     {Object.values(productData).map((product, i)=>{
+                        let id = Object.keys(productData);
                         total = total + Number(product.price);
                         return(
                             <div className="item clothes" key={i}>
@@ -74,7 +80,7 @@ class Cart extends Component {
                                         <a>Category: {product.category}</a>
                                         <a>Cost: ${product.price}</a>
                                         <a>Size: {product.size}</a>
-                                        <Button data-id={product.id} data-title={product.title} onClick={(e)=>this.removeFromCart(e.target.dataset)}>Remove</Button>
+                                        <Button data-id={id[i]} data-title={product.title} onClick={(e)=>this.removeFromCart(e.target.dataset)}>Remove</Button>
                                     </div>
                                 </div>
                             </div> 
