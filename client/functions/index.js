@@ -25,8 +25,8 @@ admin.initializeApp(functions.config().firebase);
 // Configure your environment
 paypal.configure({
   mode: 'sandbox', // sandbox or live
-  client_id: functions.config().paypal.client_id, // run: firebase functions:config:set paypal.client_id="yourPaypalClientID" 
-  client_secret: functions.config().paypal.client_secret // run: firebase functions:config:set paypal.client_secret="yourPaypalClientSecret"
+  client_id: "AVBubSe8JWx0VCQ_ngq3XXuN584uhLYCRUvm7Q4slkM454Snia7KFTWwGevdkr5KKpHnGxozsF9xw2tY", // run: firebase functions:config:set paypal.client_id="yourPaypalClientID" 
+  client_secret: "EO3hgmGhkqw73Tn4UIXUJGr67tyrKo89AD9Dyc8K6SxdsV6GWYh-bVjM3aYb90NZjwC1wSjklaxFsBuJ" // run: firebase functions:config:set paypal.client_secret="yourPaypalClientSecret"
 });
 
 /**
@@ -42,8 +42,8 @@ exports.pay = functions.https.onRequest((req, res) => {
           payment_method: 'paypal'
         },
         redirect_urls: {
-          return_url: `${req.protocol}://${req.get('host')}/process-payment/process`,
-          cancel_url: `${req.protocol}://${req.get('host')}/profile`
+          return_url: `/process-payment/process`,
+          cancel_url: `/profile`
         },
         transactions: [{
             "amount": {

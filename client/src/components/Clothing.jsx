@@ -77,7 +77,7 @@ class Clothing extends Component {
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 if(productToAdd.inventory_total > 0){
-                    axios.post('/pay',{
+                    axios.post('https://localhost:5000/pay',{
                         shipping: 6.00,
                         total: eval(Number(productToAdd.price) + 6),
                         cost: Number(productToAdd.price),

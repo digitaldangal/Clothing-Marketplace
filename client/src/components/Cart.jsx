@@ -60,7 +60,7 @@ class Cart extends Component {
     handleCheckout(e, total){
        document.querySelector('.paypal-button').setAttribute('disabled', 'true');
         console.log(total)
-        axios.post('/process-payment',{
+        axios.post('https://localhost:5000/pay',{
             data: this.state.productData,
             total: total,
             cartLength: this.state.cartLength
