@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import {Button, Form, Image, Modal} from 'semantic-ui-react';
 
@@ -70,26 +71,28 @@ class Clothing extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let productToAdd = this.state.clothingData;
-        let productTitle = productToAdd.title;
-        let productId = productToAdd.id;
         let button = document.querySelector('#cart-button')
+        document.querySelector('#cart-button').setAttribute('disabled', 'true');
 
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 if(productToAdd.inventory_total > 0){
-                    db.collection('users').doc(user.uid).collection('cart').add({
-                        main_image: productToAdd.main_image,
-                        title: productTitle,
+                    axios.post('/process-payment',{
+                        shipping: 6.00,
+                        total: eval(Number(productToAdd.price) + 6),
+                        cost: Number(productToAdd.price),
+                        description: productToAdd.descritpion,
                         designer: productToAdd.designer,
-                        price: productToAdd.price,
-                        category: productToAdd.category,
-                        description: productToAdd.description,
+                        title: productToAdd.title,
+                        id: productToAdd.id,
                         size: this.state.size,
-                        id: productId,
-                        designerId: this.state.brandData.id
-                    }).then(()=>{
-                        button.innerHTML = "Added to Cart"
-                    }).catch(err=>(console.log(err)))
+                        brandEmail: productToAdd.email
+                    })
+                    .then((res)=>{
+                        console.log(res)
+                        
+                        window.location.href=(res.data.href);
+                    }).catch(err=>console.log(err))
                 }else{
                     let errorFrom = document.querySelector('#error');
                     let message = ("<pCurrently out of stock</p>")
@@ -223,7 +226,7 @@ class Clothing extends Component {
                                         <Form.Group required>
                                             {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
                                         </Form.Group>
-                                        <Button secondary id="cart-button" disabled={clothingData.inventory_total <= 0 ? true : false} >{clothingData.inventory_total <= 0 ? "Sold out" : "Add to Cart"}</Button>
+                                        <Button secondary id="cart-button" disabled={clothingData.inventory_total <= 0 ? true : false}>{clothingData.inventory_total <= 0 ? "Sold out" : "Checkout with Paypal"}</Button>
                                     </Form>
                                     <Button secondary data-id={clothingData.id} data-title={clothingData.title} onClick={(e)=>this.handleWishlist(e,e.target.dataset)}><i className="like icon"></i> Wishlist</Button>
                                 </div>

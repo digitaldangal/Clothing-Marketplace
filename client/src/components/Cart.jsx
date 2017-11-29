@@ -62,7 +62,8 @@ class Cart extends Component {
         console.log(total)
         axios.post('/process-payment',{
             data: this.state.productData,
-            total: total
+            total: total,
+            cartLength: this.state.cartLength
         })
         .then((res)=>{
             console.log(res)

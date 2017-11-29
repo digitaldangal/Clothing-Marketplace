@@ -17,16 +17,22 @@ function pay (req, res, next) {
         payer: {
           payment_method: 'paypal'
         },
+        "note_to_payer": "Contact us for any questions on your order.",
         redirect_urls: {
           return_url: 'http://localhost:3000/profile/process-payment/process',
           cancel_url: 'http://localhost:3000/profile/cart'
         },
         transactions: [{
-          amount: {
-            total: req.body.total,
-            currency: 'USD'
-          },
-          description: 'This is the payment transaction description.',
+            "amount": {
+                "total": req.body.total,
+                "currency": "USD",
+                "details": {
+                    "subtotal": req.body.cost,
+                    "tax": '0.00',
+                    "shipping": "6.00",
+                },
+            },
+            description: `Purchase on Streetwear Boutiques from ${req.body.designer}, ${req.body.brandEmail}`
         }]
     });
     
@@ -49,8 +55,8 @@ function pay (req, res, next) {
             // When approval_url is present, redirect user.
             if (links.hasOwnProperty('approval_url')) {
                 // REDIRECT USER TO links['approval_url'].href
-                res.redirect(links['approval_url'].href)
-                // res.send(links['approval_url'])
+                // res.redirect(links['approval_url'].href)
+                res.send(links['approval_url'])
           } else {
             console.error('no redirect URI present');
           }
