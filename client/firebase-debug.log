@@ -1,0 +1,112 @@
+[debug] [2017-11-29T08:08:29.500Z] ----------------------------------------------------------------------
+[debug] [2017-11-29T08:08:29.503Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\watch\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-29T08:08:29.503Z] CLI Version:   3.15.3
+[debug] [2017-11-29T08:08:29.503Z] Platform:      win32
+[debug] [2017-11-29T08:08:29.503Z] Node Version:  v6.11.3
+[debug] [2017-11-29T08:08:29.504Z] Time:          Wed Nov 29 2017 03:08:29 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:08:29.504Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-29T08:08:29.531Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-29T08:08:29.531Z] > authorizing via signed-in user
+[debug] [2017-11-29T08:08:29.534Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:08:29 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:08:29.880Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:08:29.882Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/copped-9a558/tokens  
+ Wed Nov 29 2017 03:08:29 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:08:30.179Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\watch\Documents\GitHub\Clothing-Marketplace\client'...
+[info] 
+[debug] [2017-11-29T08:08:30.182Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:08:30 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:08:30.434Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:08:30.435Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1094268024837/clients/_:getWebAppConfig  
+ Wed Nov 29 2017 03:08:30 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:08:30.738Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2017-11-29T08:09:54.987Z] ----------------------------------------------------------------------
+[debug] [2017-11-29T08:09:54.991Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\watch\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-29T08:09:54.991Z] CLI Version:   3.15.3
+[debug] [2017-11-29T08:09:54.991Z] Platform:      win32
+[debug] [2017-11-29T08:09:54.991Z] Node Version:  v6.11.3
+[debug] [2017-11-29T08:09:54.992Z] Time:          Wed Nov 29 2017 03:09:54 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:09:54.992Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-29T08:09:55.019Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-29T08:09:55.020Z] > authorizing via signed-in user
+[debug] [2017-11-29T08:09:55.023Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:09:55 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:09:55.375Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:09:55.376Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/copped-9a558/tokens  
+ Wed Nov 29 2017 03:09:55 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:09:55.720Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\watch\Documents\GitHub\Clothing-Marketplace\client'...
+[info] 
+[debug] [2017-11-29T08:09:55.723Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:09:55 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:09:55.996Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:09:55.996Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1094268024837/clients/_:getWebAppConfig  
+ Wed Nov 29 2017 03:09:55 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:09:56.246Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2017-11-29T08:10:41.591Z] ----------------------------------------------------------------------
+[debug] [2017-11-29T08:10:41.594Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\watch\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-29T08:10:41.595Z] CLI Version:   3.15.3
+[debug] [2017-11-29T08:10:41.595Z] Platform:      win32
+[debug] [2017-11-29T08:10:41.595Z] Node Version:  v6.11.3
+[debug] [2017-11-29T08:10:41.595Z] Time:          Wed Nov 29 2017 03:10:41 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:10:41.596Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-29T08:10:41.610Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-29T08:10:41.610Z] > authorizing via signed-in user
+[debug] [2017-11-29T08:10:41.612Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:10:41 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:10:41.917Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:10:41.918Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/copped-9a558/tokens  
+ Wed Nov 29 2017 03:10:41 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:10:42.264Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\watch\Documents\GitHub\Clothing-Marketplace\client'...
+[info] 
+[debug] [2017-11-29T08:10:42.267Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:10:42 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:10:42.528Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:10:42.528Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1094268024837/clients/_:getWebAppConfig  
+ Wed Nov 29 2017 03:10:42 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:10:42.829Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2017-11-29T08:13:34.419Z] ----------------------------------------------------------------------
+[debug] [2017-11-29T08:13:34.422Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\watch\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-29T08:13:34.422Z] CLI Version:   3.15.3
+[debug] [2017-11-29T08:13:34.422Z] Platform:      win32
+[debug] [2017-11-29T08:13:34.422Z] Node Version:  v6.11.3
+[debug] [2017-11-29T08:13:34.423Z] Time:          Wed Nov 29 2017 03:13:34 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:13:34.423Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-29T08:13:34.446Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-29T08:13:34.447Z] > authorizing via signed-in user
+[debug] [2017-11-29T08:13:34.449Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:13:34 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:13:34.786Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:13:34.787Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/copped-9a558/tokens  
+ Wed Nov 29 2017 03:13:34 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:13:35.165Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\watch\Documents\GitHub\Clothing-Marketplace\client'...
+[info] 
+[debug] [2017-11-29T08:13:35.169Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/copped-9a558  
+ Wed Nov 29 2017 03:13:35 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:13:35.414Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-29T08:13:35.415Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1094268024837/clients/_:getWebAppConfig  
+ Wed Nov 29 2017 03:13:35 GMT-0500 (Eastern Standard Time)
+[debug] [2017-11-29T08:13:35.662Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
