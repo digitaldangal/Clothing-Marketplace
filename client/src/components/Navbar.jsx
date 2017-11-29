@@ -17,8 +17,8 @@ class Navbar extends Component {
         firebase.auth().onAuthStateChanged(user=>{
             let userInfo = {};
             if(user){
+                let userCartRef = db.collection('users').doc(user.uid).collection('cart');
                 this.setState({signedIn: true})
-                
                 db.collection('brands').doc(user.uid).get().then((res)=>{
                     if(res.exists && res.data().approved){
                         this.setState({
@@ -52,20 +52,22 @@ class Navbar extends Component {
     }
 
     authUser=()=>{
+        const style = {
+            width: '100%',
+            textAlign: 'center'
+        }
         return(
-            <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`}>
+            <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`} style={style}>
                 <Dropdown.Menu>
-                    <Dropdown.Item><Link to="/profile">Profile</Link></Dropdown.Item>
+                    <Link to="/profile"><Dropdown.Item>Profile</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    {this.state.brandStatus ? <Dropdown.Item><Link to="/profile/brand">Brand Dashboard</Link></Dropdown.Item> : <Dropdown.Item><Link to="/profile/brand-signup">Register A Brand</Link></Dropdown.Item>}
+                    {this.state.brandStatus ? <Link to="/profile/brand"><Dropdown.Item>Brand Dashboard</Dropdown.Item></Link> : <Link to="/profile/brand-signup"><Dropdown.Item>Register A Brand</Dropdown.Item></Link>}
                     <Dropdown.Divider />
-                    <Dropdown.Item><Link to="/profile/edit">Edit Account</Link></Dropdown.Item>
+                    <Link to="/profile/wishlist"><Dropdown.Item>Wishlist</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    <Dropdown.Item><Link to="/profile/wishlist">Wishlist</Link></Dropdown.Item>
+                    <Link to="/profile/transactions"><Dropdown.Item>Transactions</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    <Dropdown.Item><Link to="/profile/history">Transactions</Link></Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item><Link to="#" onClick={()=>this.logout(false)}>Log out</Link></Dropdown.Item>
+                    <Link to="#" onClick={()=>this.logout(false)}><Dropdown.Item>Logout</Dropdown.Item></Link>
                 </Dropdown.Menu>
             </Dropdown>
         )
@@ -90,17 +92,20 @@ class Navbar extends Component {
 
                         <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
                             <Dropdown.Menu style={style.menuWidth}>
-                                <Dropdown.Item><Link to="/">Home</Link></Dropdown.Item>
+                                <Link to="/"><Dropdown.Item>Home</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/designers">Designers</Link></Dropdown.Item>
+                                <Link to="/designers"><Dropdown.Item>Designers</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/editorial">Articles</Link></Dropdown.Item>
+                                <Link to="/editorial"><Dropdown.Item>Articles</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/about">About</Link></Dropdown.Item>
+                                <Link to="/about"><Dropdown.Item>About</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Dropdown.Item>{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Dropdown.Item>
+                               {this.props.authState? this.authUser() : <Link to="/account/login"> <Dropdown.Item>Login</Dropdown.Item></Link>}
                                 <Dropdown.Divider />
-                                <Dropdown.Item><Link to="/contact-us">Contact</Link></Dropdown.Item>
+                                <Link to="/profile/cart"><Dropdown.Item><i className="shopping bag icon">({this.props.shopping_cart})</i></Dropdown.Item></Link>
+                                <Dropdown.Divider />
+                                <Link to="/contact-us"><Dropdown.Item>Contact</Dropdown.Item></Link>
+                                <Dropdown.Divider />
                             </Dropdown.Menu>
                         </Dropdown>
 
@@ -116,6 +121,7 @@ class Navbar extends Component {
                     <Menu.Menu position="right">
                         <Menu.Item><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
                         <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
+                        <Menu.Item className="link"><Link to="/profile/cart"><i className="shopping bag icon" style={{display: 'inline'}}> ({this.props.shopping_cart})</i></Link></Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>
                 </Grid>

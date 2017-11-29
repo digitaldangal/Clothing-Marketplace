@@ -681,6 +681,9 @@ p#soldout{
                             width: 100%;
                             margin-bottom: 2em;
                         }
+                        button{
+                            margin-top: 1em;
+                        }
                     }
                     .more-images{
                         display: flex;
@@ -896,6 +899,104 @@ p#soldout{
         font-size: 1.5rem;
         h1.ui.header.title{
             font-size: 3rem;
+        }
+    }
+}
+
+// Shopping Cart
+section#cart{
+    .ui.container{ 
+        .ui.divided.items{
+            .item.clothes{
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                @media (max-width: 768px) {
+                    .image{
+                        width: 30vw !important;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                .content{      
+                    text-align: left;   
+                    line-height: 170%;
+                    padding: 1em;
+                    .description {
+                        display: flex;
+                        justify-content: center;
+                        flex-flow: column;
+                        text-align: left;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        a{
+                            font-family: 'Roboto' !important;
+                        }
+                        button{
+                            margin-top: 1em;
+                        }
+                    }
+                }
+            }
+        }
+        .payment-info{
+            text-align: left;
+            padding: 1em;
+            h4.header{
+                text-align: center;
+                border-top: 1px solid #bbb;
+                padding-top: 1em;
+            }
+            p{
+                font-weight: 300;
+                span#cost{
+                    font-weight: bold;
+                    float: right;
+                    &::before{
+                        content: '$';
+                    }
+                }
+            }
+            button{
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+    }
+    @media(min-width: 1024px) { 
+        .ui.container{ 
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            position: relative;
+            .item.clothes{
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                .image{
+                    width: 200px !important;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .content{      
+                    text-align: left;   
+                    line-height: 170%;
+                    padding: 1em;
+                    .description {
+                        display: flex;
+                        justify-content: center;
+                        flex-flow: column;
+                        text-align: left;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        a{
+                            font-family: 'Roboto' !important;
+                        }
+                    }
+                }
+            }
         }
     }
 }

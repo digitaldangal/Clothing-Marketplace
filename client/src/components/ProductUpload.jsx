@@ -103,7 +103,7 @@ class ProductUpload extends Component {
                 m: this.state.m,
                 l: this.state.l,
                 xl: this.state.xl,
-                oneSize: this.state.os > 0 ? this.state.os :0,
+                os: this.state.os > 0 ? this.state.os :0,
             },
         },{ merge: true })
         .then((res)=>{
@@ -114,6 +114,9 @@ class ProductUpload extends Component {
                 db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
                     main_image: downloadUrl
                 },{ merge: true })
+                .then((res)=>{
+                    this.redirectPage()
+                })
                 .catch(err=>console.log(err))
             })
         }).catch(err=>console.log(err))

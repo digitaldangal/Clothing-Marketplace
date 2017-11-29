@@ -36,21 +36,22 @@ class Contact extends Component {
             email: this.state.email,
             uid: (this.state.uid ? this.state.uid : 'none')
         }).then(res=>{
+            console.log(res.status, res.statusText)
             this.redirectPage();
         }).catch(err=>{
             console.log(err);
-            this.redirectPage();
+            // this.redirectPage();
         })
 
-        this.setState({
-            display_name: "",
-            first_name: "",
-            last_name: "",
-            message: "",
-            request: "",
-            subject: "",
-            email: "",
-        })
+        // this.setState({
+        //     display_name: "",
+        //     first_name: "",
+        //     last_name: "",
+        //     message: "",
+        //     request: "",
+        //     subject: "",
+        //     email: "",
+        // })
     }
 
     handleChange = (e) => {

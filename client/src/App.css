@@ -503,6 +503,8 @@ p#soldout {
         flex-flow: row wrap;
         width: 100%;
         margin-bottom: 2em; }
+      .single-clothing .page-container .product-info .product-text .add-to-bag button {
+        margin-top: 1em; }
       .single-clothing .page-container .product-info .product-text .more-images {
         display: flex;
         justify-content: center;
@@ -670,6 +672,75 @@ p#soldout {
       font-size: 1.5rem; }
       .page-container.single-article h1.ui.header.title {
         font-size: 3rem; } }
+
+section#cart .ui.container .ui.divided.items .item.clothes {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center; }
+  @media (max-width: 768px) {
+    section#cart .ui.container .ui.divided.items .item.clothes .image {
+      width: 30vw !important; }
+      section#cart .ui.container .ui.divided.items .item.clothes .image img {
+        width: 100%; } }
+  section#cart .ui.container .ui.divided.items .item.clothes .content {
+    text-align: left;
+    line-height: 170%;
+    padding: 1em; }
+    section#cart .ui.container .ui.divided.items .item.clothes .content .description {
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+      text-align: left;
+      font-weight: 300;
+      letter-spacing: 1px; }
+      section#cart .ui.container .ui.divided.items .item.clothes .content .description a {
+        font-family: 'Roboto' !important; }
+      section#cart .ui.container .ui.divided.items .item.clothes .content .description button {
+        margin-top: 1em; }
+section#cart .ui.container .payment-info {
+  text-align: left;
+  padding: 1em; }
+  section#cart .ui.container .payment-info h4.header {
+    text-align: center;
+    border-top: 1px solid #bbb;
+    padding-top: 1em; }
+  section#cart .ui.container .payment-info p {
+    font-weight: 300; }
+    section#cart .ui.container .payment-info p span#cost {
+      font-weight: bold;
+      float: right; }
+      section#cart .ui.container .payment-info p span#cost::before {
+        content: '$'; }
+  section#cart .ui.container .payment-info button {
+    display: flex;
+    margin: 0 auto; }
+@media (min-width: 1024px) {
+  section#cart .ui.container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    position: relative; }
+    section#cart .ui.container .item.clothes {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center; }
+      section#cart .ui.container .item.clothes .image {
+        width: 200px !important; }
+        section#cart .ui.container .item.clothes .image img {
+          width: 100%; }
+      section#cart .ui.container .item.clothes .content {
+        text-align: left;
+        line-height: 170%;
+        padding: 1em; }
+        section#cart .ui.container .item.clothes .content .description {
+          display: flex;
+          justify-content: center;
+          flex-flow: column;
+          text-align: left;
+          font-weight: 300;
+          letter-spacing: 1px; }
+          section#cart .ui.container .item.clothes .content .description a {
+            font-family: 'Roboto' !important; } }
 
 footer {
   bottom: 0em;
