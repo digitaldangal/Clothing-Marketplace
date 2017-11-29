@@ -26,7 +26,7 @@ const emailRoutes = require('./routes/email-routes');
 app.use('/contact-submit', emailRoutes);
 
 const paymentRoutes = require('./routes/payment-route');
-app.use('/process-payment', paymentRoutes);
+app.use('/checkout-order', paymentRoutes);
 
 app.get('*',(req,res)=>{
     res.status(400).json({
