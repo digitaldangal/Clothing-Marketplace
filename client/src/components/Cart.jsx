@@ -23,8 +23,7 @@ class Cart extends Component {
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 this.setState({redirect: false, uid: user.uid})
-                db.collection('users').doc(user.uid).collection('cart').onSnapshot((res)=>{
-                    console.log("heyyy")
+                db.collection('users').doc(user.uid).collection('cart').get().then((res)=>{
                     this.setState({cartLength: res.size})
                     if(res.empty === false){
                         res.forEach((product)=>{
@@ -58,7 +57,8 @@ class Cart extends Component {
         }).catch(err=>console.log(err))
     }
 
-    handleCheckout(total){
+    handleCheckout(e, total){
+       document.querySelector('.paypal-button').setAttribute('disabled', 'true');
         console.log(total)
         axios.post('/process-payment',{
             data: this.state.productData,
@@ -66,6 +66,7 @@ class Cart extends Component {
         })
         .then((res)=>{
             console.log(res)
+            window.location.href=(res.data);
         }).catch(err=>console.log(err))
     }
 
@@ -104,7 +105,7 @@ class Cart extends Component {
                     <p>Subtotal: <span id="cost">{total}</span></p>
                     <p>Shipping, calculated at checkout. <span id="cost">0</span></p>
                     <p>Total: <span id="cost">{total}</span></p>
-                    <Button secondary onClick={(event)=>this.handleCheckout(total)}>Checkout with Paypal</Button>
+                    <Button secondary className="paypal-button" onClick={(e)=>this.handleCheckout(e, total)}>Checkout with Paypal</Button>
                 </div>
             </div>
         )

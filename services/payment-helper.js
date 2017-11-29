@@ -30,7 +30,9 @@ function pay (req, res, next) {
         }]
     });
     
-    paypal.payment.create(payReq, function (error, payment) {
+    paypal.payment.create(payReq,{
+        'Access-Control-Allow-Origin': 'https://sandbox.paypal.com'
+    } ,function (error, payment) {
         var links = {};
       
         if (error){
@@ -48,7 +50,7 @@ function pay (req, res, next) {
             if (links.hasOwnProperty('approval_url')) {
                 // REDIRECT USER TO links['approval_url'].href
                 // res.redirect(links['approval_url'].href)
-                res.send()
+                res.send(links['approval_url'].href)
           } else {
             console.error('no redirect URI present');
           }
@@ -61,7 +63,7 @@ function approved(req, res){
     var payerId = { payer_id: req.query.PayerID };
     var authid;
     
-    paypal.payment.execute(paymentId, payerId, function (error, payment) {
+    paypal.payment.execute(paymentId, payerId, function (error, payment) {  
       if (error) {
         console.error(JSON.stringify(error));
       } else {
@@ -72,10 +74,12 @@ function approved(req, res){
           // Capture authorization.
           authid = payment.transactions[0].related_resources[0].authorization.id;
         } else {
-          console.log('payment not successful');
+            console.log('payment not successful');
         }
-      }
+        }
     });
+    console.log(res)
+    res.send(authid)
 }
 
 

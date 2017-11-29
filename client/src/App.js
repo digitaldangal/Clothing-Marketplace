@@ -19,6 +19,7 @@ import ArticleCategory from './components/ArticleCategory';
 import About from './components/About';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
+import ProcessPayment from './components/ProcessPayment';
 import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
 
@@ -136,7 +137,7 @@ class App extends Component {
                 <Route exact path="/profile/edit" render={()=> <ProfileEdit authState={this.state.authState} userUid={this.state.uid} /> } />
                 <Route exact path="/profile/brand" render={()=> <ApprovedBrand authState={this.state.authState} userUid={this.state.uid} /> } />
                 <Route exact path="/profile/cart" render={()=> <Cart authState={this.state.authState} userUid={this.state.uid} shopping_cart={this.state.shopping_cart} /> }/>
-                <Route exact path="/profile/process-payment/process" render={()=> <Cart authState={this.state.authState} userUid={this.state.uid} shopping_cart={this.state.shopping_cart} /> }/>
+                <Route exact path="/profile/process-payment/process" component={ProcessPayment} />
                 <Route exact path="/profile/wishlist" component={Wishlist} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} brandData={this.state.brandData} brandDataLoaded={this.state.brandDataLoaded} storeFeed={(brandData)=> this.storeFeed(brandData)} />} />
                 <Route exact path="/designers/:brand/:brand_id" component={Designer} />
