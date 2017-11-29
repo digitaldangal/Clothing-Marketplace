@@ -49,8 +49,8 @@ function pay (req, res, next) {
             // When approval_url is present, redirect user.
             if (links.hasOwnProperty('approval_url')) {
                 // REDIRECT USER TO links['approval_url'].href
-                // res.redirect(links['approval_url'].href)
-                res.send(links['approval_url'].href)
+                res.redirect(links['approval_url'].href)
+                // res.send(links['approval_url'])
           } else {
             console.error('no redirect URI present');
           }
@@ -71,8 +71,25 @@ function approved(req, res){
         && payment.transactions
         && payment.transactions[0].related_resources
         && payment.transactions[0].related_resources[0].authorization) {
-          // Capture authorization.
-          authid = payment.transactions[0].related_resources[0].authorization.id;
+            // Capture authorization.
+            authid = payment.transactions[0].related_resources[0].authorization.id;
+            // Set capture details.
+            var capture_details = {
+                amount: {
+                currency: 'USD',
+                total: '4.54'
+                },
+                is_final_capture: false
+            };
+            
+            // Capture authorization.
+            paypal.authorization.capture(authid, capture_details, function (error, capture) {
+                if (error) {
+                console.error(JSON.stringify(error));
+                } else {
+                console.log(JSON.stringify(capture));
+                }
+            });
         } else {
             console.log('payment not successful');
         }

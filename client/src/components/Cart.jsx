@@ -66,7 +66,7 @@ class Cart extends Component {
         })
         .then((res)=>{
             console.log(res)
-            window.location.href=(res.data);
+            // window.location.href=(res.data.href);
         }).catch(err=>console.log(err))
     }
 
