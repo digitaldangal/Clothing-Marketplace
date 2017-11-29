@@ -114,6 +114,9 @@ class ProductUpload extends Component {
                 db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
                     main_image: downloadUrl
                 },{ merge: true })
+                .then((res)=>{
+                    this.redirectPage()
+                })
                 .catch(err=>console.log(err))
             })
         }).catch(err=>console.log(err))

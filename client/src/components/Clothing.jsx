@@ -14,6 +14,7 @@ class Clothing extends Component {
             clothingData: false,
             brandData: false,
             loadPage: false,
+            clothingDataLoaded: false
         }
     }
 
@@ -175,6 +176,28 @@ class Clothing extends Component {
         })
     }
 
+    renderAdditonalImages=(clothingData)=>{
+        return(
+            Object.values(clothingData.additonal_images).map((image, i)=>{
+                return(
+                    <Image key={i} src={image} />
+                )
+            })
+        )
+    }
+
+    renderAdditonalImagesSmall=(clothingData)=>{
+        return(
+            Object.values(clothingData.additonal_images).map((image, i)=>{
+                console.log("but")
+                return(
+                    <div className="img" key={i} data-img={image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)} style={{backgroundImage: `url('${image}')`}}>
+                    </div> 
+                )
+            })
+        )
+    }
+
     renderPage(){
         if(this.state.clothingData !== false && this.state.clothingDataLoaded !== false){
             const {clothingData, brandData} = this.state;
@@ -186,11 +209,7 @@ class Clothing extends Component {
                                 <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeOnDocumentClick={true} closeIcon>
                                     <Modal.Content image>
                                             <Image src={clothingData.main_image} />
-                                            {Object.values(clothingData.additonal_images).map((image, i)=>{
-                                                return(
-                                                    <Image key={i} src={image} />
-                                                )
-                                            })}
+                                            {clothingData.hasOwnProperty("additonal_images") ? this.renderAdditonalImages(clothingData) : null}
                                     </Modal.Content>
                                 </Modal>
                             </div>
@@ -211,12 +230,7 @@ class Clothing extends Component {
                                 </div>
                                 <div className="more-images">
                                     <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
-                                    {Object.values(clothingData.additonal_images).map((image, i)=>{
-                                        return(
-                                            <div className="img" key={i} data-img={image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)} style={{backgroundImage: `url('${image}')`}}>
-                                            </div> 
-                                        )
-                                    })}
+                                    {clothingData.hasOwnProperty("additonal_images") ? this.renderAdditonalImagesSmall(clothingData) : null}
                                 </div>
                             </div>
                         </div>
