@@ -61,12 +61,11 @@ class Cart extends Component {
     handleCheckout(total){
         console.log(total)
         axios.post('/process-payment',{
+            data: this.state.productData,
             total: total
         })
         .then((res)=>{
             console.log(res)
-            return res;
-            // window.location.assign(res.data["approval_url"].href);
         }).catch(err=>console.log(err))
     }
 

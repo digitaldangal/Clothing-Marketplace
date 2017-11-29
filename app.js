@@ -11,12 +11,12 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8080;
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
-app.use(cors());
 
 app.listen(port, () => {
   console.log('Server started on port', port);

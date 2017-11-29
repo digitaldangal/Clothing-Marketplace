@@ -8,7 +8,7 @@ let PayPalClient_Secret = process.env.PayPalClient_Secret;
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': PayPalClient_id,
-    'client_secret': PayPalClient_Secret
+    'client_secret': PayPalClient_Secret,
   });
 
 function pay (req, res, next) {
@@ -18,7 +18,7 @@ function pay (req, res, next) {
           payment_method: 'paypal'
         },
         redirect_urls: {
-          return_url: 'http://localhost:3000/process',
+          return_url: 'http://localhost:3000/profile/process-payment/process',
           cancel_url: 'http://localhost:3000/profile/cart'
         },
         transactions: [{
@@ -47,7 +47,8 @@ function pay (req, res, next) {
             // When approval_url is present, redirect user.
             if (links.hasOwnProperty('approval_url')) {
                 // REDIRECT USER TO links['approval_url'].href
-                res.redirect(links['approval_url'].href)
+                // res.redirect(links['approval_url'].href)
+                res.send()
           } else {
             console.error('no redirect URI present');
           }
