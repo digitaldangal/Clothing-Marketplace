@@ -189,7 +189,6 @@ class Clothing extends Component {
     renderAdditonalImagesSmall=(clothingData)=>{
         return(
             Object.values(clothingData.additonal_images).map((image, i)=>{
-                console.log("but")
                 return(
                     <div className="img" key={i} data-img={image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)} style={{backgroundImage: `url('${image}')`}}>
                     </div> 
