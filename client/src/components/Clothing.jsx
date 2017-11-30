@@ -86,7 +86,7 @@ class Clothing extends Component {
                         id: productToAdd.id,
                         size: this.state.size,
                         paypal_email: this.state.brandData.paypal_email,
-                        designer: this.state.brandData.name
+                        designer_id: this.state.brandData.id
                     }
                     fetch('/pay',{
                         headers: {
@@ -98,7 +98,7 @@ class Clothing extends Component {
                     })
                     .then((res)=>{
                         console.log(res)
-                        window.location.href=(res.url);
+                        // window.location.href=(res.url);
                     }).catch(err=>console.log(err))
                 }else{
                     let errorFrom = document.querySelector('#error');

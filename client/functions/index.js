@@ -57,11 +57,20 @@ exports.pay = functions.https.onRequest((req, res) => {
             },
           // This is the payment transaction description. Maximum length: 127
           description: `Purchase on Streetwear Boutiques from ${req.body.designer}, email: ${req.body.paypal_email}`,
+          item_list: {
+            items: [{
+              currency: 'USD',
+              name: req.body.title,
+              price: req.body.cost,
+              quantity: 1,
+              sku: req.body.id,
+              description: (req.body.size, req.body.designer, req.body.designer_id),
+            }]
+          },
           // reference_id string .Optional. The merchant-provided ID for the purchase unit. Maximum length: 256.
           // reference_id: req.body.uid,
           custom: req.body.id,
-          soft_descriptor: req.body.description
-          // "invoice_number": req.body.uid,A
+          // soft_descriptor: req.body.designer_id
         }]
     });
 
@@ -112,12 +121,16 @@ exports.process = functions.https.onRequest((req, res) => {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
         console.info('req.custom: : ', payment.transactions[0].custom);
         // set paid status to True in RealTime Database
-        const date = Date.now();
-        const uid = payment.transactions[0].description;
-        const ref = admin.firestore().collection('payments/' + uid + '/');
-        ref.push({
+        const date =Date().toString();
+        const uid = payment.transactions[0].custom;
+        const ref = admin.firestore().collection('payments').doc(Date().toString()).collection(uid);
+
+        ref.add({
           'paid': true,
+          'amount': payment.transactions[0].amount,
           'description': uid,
+          'product': payment.transactions[0].item_list.items[0],
+          'person-that-paid': payerId.payer_id,
           'date': date
         }).then(r => console.info('promise: ', r));
         res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
