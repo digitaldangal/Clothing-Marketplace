@@ -509,6 +509,9 @@ div#pic-preview{
 }
 
 .single-brand{
+    h3.ui.header{
+        text-transform: inherit;
+    }
     div.image{
         overflow: hidden;
         max-height: 350px;

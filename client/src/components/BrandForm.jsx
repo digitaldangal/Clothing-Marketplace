@@ -14,7 +14,8 @@ class BrandForm extends Component{
             uid: false,
             currentUser: undefined,
             redirect: false,
-            currentPage: null
+            currentPage: null,
+            website: 'http://'
         }
     }
 
@@ -162,20 +163,21 @@ class BrandForm extends Component{
                             </div>
                             <div className="field">
                                 <label>Shipping Address</label>
-                                <textarea name="shipping_address" rows="2" placeholder="Where will you ship from?" onChange={(e)=>this.handleChange(e)}></textarea>
+                                <textarea required="true" name="shipping_address" rows="2" placeholder="Where will you ship from?" onChange={(e)=>this.handleChange(e)}></textarea>
                             </div>
                             <div className="field">
                                 <label>Social Media Links</label>
-                                <textarea name="links" rows="2" placeholder="Separate All Social Media links with a comma" onChange={(e)=>this.handleChange(e)}></textarea>
+                                <textarea required="true" name="links" rows="2" placeholder="Separate All Social Media links with a comma. If none enter N/A" onChange={(e)=>this.handleChange(e)}></textarea>
                             </div>
                         </div>
 
                         <div className="field">
+                            <p>If none enter N/A</p>
                             <div className="ui labeled input">
                                 <div className="ui label">
                                     Website Url
                                 </div>
-                                <input name="website" type="text" placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
+                                <input required="true" name="website" type="text" value={this.state.website} placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
                             </div>
                         </div>
                         <button className="ui primary button" type="submit">Save</button>

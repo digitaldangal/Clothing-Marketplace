@@ -145,8 +145,8 @@ class Designer extends Component {
             return(
                 <div className="single-brand">
                     <h1 className="ui header">{this.state.singleBrandData.name}</h1>
+                    <div className="page-container ui container">
                     <h3 className="ui header">{this.state.singleBrandData.description}</h3>
-                    <div className="page-container">
                         {this.renderBrands()}
                     </div>
                 </div>
@@ -155,8 +155,8 @@ class Designer extends Component {
             return(
                 <div className="single-brand">
                     <h1 className="ui header title">{this.state.singleBrandData.name}</h1>
+                    <div className="page-container ui container">
                     <h3 className="ui header">{this.state.singleBrandData.description}</h3>
-                    <div className="page-container">
                         <h3 className="ui header">Either this brand has sold out or no products are available yet.</h3>
                     </div>
                 </div>
