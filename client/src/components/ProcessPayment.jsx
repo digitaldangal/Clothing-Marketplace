@@ -25,12 +25,12 @@ class ProcessPayment extends Component {
                console.log("payment complete")
                firebase.auth().onAuthStateChanged((user)=>{
                    if(user){
-                        db.collection('users').doc(user.uid).collection('transactions').doc(new Date().toString()).set({
+                        db.collection('users').doc(user.uid).collection('transactions').doc(Date().toString()).set({
                             params: this.props.location.search,
                         }).then(()=>{
-                            db.collection('payments').doc(new Date().getUTCMilliseconds().toString()).collection(user.uid).add({
+                            db.collection('payments').doc(Date().toString()).collection(user.uid).add({
                                 params: this.props.location.search
-                            },{merge: true})
+                            })
                         }).catch(err=>(console.log(err)))
                    }else{
                        return null;

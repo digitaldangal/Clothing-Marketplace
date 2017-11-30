@@ -34,29 +34,31 @@ paypal.configure({
  * Set up the payment information object
  * Initialize the payment and redirect the user to the PayPal payment page
  */
+exports.sample = functions.https.onRequest((req, res) => {
+});
 exports.pay = functions.https.onRequest((req, res) => {
-    // 1.Set up a payment information object, Nuild PayPal payment request
-    const payReq = JSON.stringify({
-        intent: 'sale',
-        payer: {
-          payment_method: 'paypal'
+  // 1.Set up a payment information object, Nuild PayPal payment request
+  const payReq = JSON.stringify({
+    intent: 'sale',
+    payer: {
+      payment_method: 'paypal'
+    },
+    redirect_urls: {
+      return_url: `https://streetwearboutiques.com/profile/process`,
+      cancel_url: `https://streetwearboutiques.com/profile`
+    },
+    transactions: [{
+      "amount": {
+        "total": req.body.total,
+        "currency": "USD",
+        "details": {
+          "subtotal": req.body.cost,
+          "tax": '0.00',
+          "shipping": req.body.shipping,
         },
-        redirect_urls: {
-          return_url: `http://localhost:5000/profile/process`,
-          cancel_url: `http://localhost:5000/profile`
-        },
-        transactions: [{
-            "amount": {
-                "total": req.body.total,
-                "currency": "USD",
-                "details": {
-                    "subtotal": req.body.cost,
-                    "tax": '0.00',
-                    "shipping": req.body.shipping,
-                },
-            },
-          // This is the payment transaction description. Maximum length: 127
-          description: `Purchase on Streetwear Boutiques from ${req.body.designer}, email: ${req.body.paypal_email}`,
+      },
+      // This is the payment transaction description. Maximum length: 127
+      description: `Purchase on Streetwear Boutiques from ${req.body.designer}, email: ${req.body.paypal_email}`,
           item_list: {
             items: [{
               currency: 'USD',
@@ -72,38 +74,44 @@ exports.pay = functions.https.onRequest((req, res) => {
           custom: req.body.id,
           // soft_descriptor: req.body.designer_id
         }]
-    });
+      });
 
-
-    // 2.Initialize the payment and redirect the user.
-    paypal.payment.create(payReq,{'Access-Control-Allow-Origin': 'https://sandbox.paypal.com'}, 
+      
+      cors(req, res, () => {
+      
+      // 2.Initialize the payment and redirect the user.
+    paypal.payment.create(payReq,{'Access-Control-Allow-Origin': 'https://streetwearboutiques.com'}, 
     (error, payment) => {
-        const links = {};
-        if (error) {
-            console.error(error);
+      const links = {};
+      if (error) {
+        console.error(error);
             res.status('500').end();
-        } else {
-            // Capture HATEOAS links
-            payment.links.forEach((linkObj) => {
-              links[linkObj.rel] = {
-                href: linkObj.href,
-                method: linkObj.method
-              };
-            });
-            // If redirect url present, redirect user
-            if (links.hasOwnProperty('approval_url')) {
-                // REDIRECT USER TO links['approval_url'].href
-                console.info(links.approval_url.href);
-                // res.json({"approval_url":links.approval_url.href});
-                // res.redirect(links['approval_url'].href)
-                res.redirect(302, links['approval_url'].href);
-                // res.send(links['approval_url'])
-            } else {
-                console.error('no redirect URI present');
-                res.status('500').end();
-            }
+      }
+      else {
+        // Capture HATEOAS links
+        payment.links.forEach((linkObj) => {
+          links[linkObj.rel] = {
+            href: linkObj.href,
+            method: linkObj.method
+          };
+        });
+        // If redirect url present, redirect user
+        if (links.hasOwnProperty('approval_url')) {
+            // REDIRECT USER TO links['approval_url'].href
+            console.info(links.approval_url.href);
+            // res.json({"approval_url":links.approval_url.href});
+            // res.redirect(links['approval_url'].href)
+            
+              // res.redirect(302, links['approval_url'].href);
+              res.send(links['approval_url'].href)
+        } 
+        else {
+          console.error('no redirect URI present');
+          res.status('500').end();
         }
+      }
     });
+  });
 });
 
 // 3.Complete the payment. Use the payer and payment IDs provided in the query string following the redirect.
@@ -115,7 +123,7 @@ exports.process = functions.https.onRequest((req, res) => {
   paypal.payment.execute(paymentId, payerId, (error, payment) => {
     if (error) {
       console.error(error);
-      res.redirect(`http://localhost:5000/profile/error`); // replace with your url page error
+      res.redirect(`https://streetwearboutiques.com/profile/error`); // replace with your url page error
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
@@ -133,7 +141,7 @@ exports.process = functions.https.onRequest((req, res) => {
           'person-that-paid': payerId.payer_id,
           'date': date
         }).then(r => console.info('promise: ', r));
-        res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
+        res.redirect(`https://streetwearboutiques.com/profile/process`); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url

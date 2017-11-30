@@ -11,6 +11,10 @@
     ],
     "rewrites": [
       {
+        "source": "/sample",
+        "function": "sample"
+      },
+      {
         "source": "/process",
         "function": "process"
       },

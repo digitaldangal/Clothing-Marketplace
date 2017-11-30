@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import {Button, Form, Image, Modal} from 'semantic-ui-react';
 
@@ -88,18 +89,36 @@ class Clothing extends Component {
                         paypal_email: this.state.brandData.paypal_email,
                         designer_id: this.state.brandData.id
                     }
-                    fetch('/pay',{
+
+                    axios.post('/pay',data,{
                         headers: {
                             'Accept': 'application/json',
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': 'https://streetwearboutiques.com/',
+                            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
                         },
-                        method: 'POST',
-                        body: JSON.stringify(data)
-                    })
-                    .then((res)=>{
+                        mode: 'cors',
+                    }).then((res)=>{
                         console.log(res)
-                        // window.location.href=(res.url);
+                        window.location.href = res.data;
                     }).catch(err=>console.log(err))
+
+                    // fetch('/pay',{
+                    //     headers: {
+                    //         'Accept': 'application/json',
+                    //         'Content-Type': 'application/json',
+                    //         'Access-Control-Allow-Origin': 'https://streetwearboutiques.com/',
+                    //         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+                    //     },
+                    //     method: 'POST',
+                    //     mode: 'cors',
+                    //     body: JSON.stringify(data)
+                    // })
+                    // .then((res)=>{
+                    //     console.log(res)
+                    //     window.location.href = res.url;
+                    // }).catch(err=>console.log(err))
+
                 }else{
                     let errorFrom = document.querySelector('#error');
                     let message = ("<pCurrently out of stock</p>")
