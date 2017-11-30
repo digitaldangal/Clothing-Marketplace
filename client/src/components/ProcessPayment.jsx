@@ -19,10 +19,23 @@ class ProcessPayment extends Component {
 
     componentDidMount() {
        console.log(this.props)
-       axios.post(`/process-payment/process${this.props.location.search}`)
+       axios.post(`/process${this.props.location.search}`)
        .then((res)=>{
-           if(res.status === 200){
+           if(res.status === 200 || res.status === 400){
                console.log("payment complete")
+               firebase.auth().onAuthStateChanged((user)=>{
+                   if(user){
+                        db.collection('users').doc(user.uid).collection('transactions').doc(Date().toString()).set({
+                            params: this.props.location.search,
+                        }).then(()=>{
+                            db.collection('payments').doc(Date().toString()).collection(user.uid).add({
+                                params: this.props.location.search
+                            })
+                        }).catch(err=>(console.log(err)))
+                   }else{
+                       return null;
+                   }
+               })
            }
        }).catch(err=>{console.log(err)})
     }

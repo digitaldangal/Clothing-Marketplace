@@ -11,7 +11,15 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/process",
+        "function": "process"
+      },
+      {
+        "source": "/pay",
+        "function": "pay"
+      },
+      {
+        "source": "/*/*",
         "destination": "/index.html"
       }
     ]

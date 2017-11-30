@@ -42,7 +42,6 @@ These are some of the features that I plan on tackling as I build this project
     - [ ] Cart
     - [x] Wishlist
     - [ ] Paypal
-    - [ ] Save a Shipping & Billing Address
 - [x] Home Section
     - [x] Articles View
     - [x] Featured Brands or Random Brands

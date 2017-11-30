@@ -77,7 +77,7 @@ class Clothing extends Component {
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 if(productToAdd.inventory_total > 0){
-                    axios.post('/checkout-order',{
+                    let data = {
                         shipping: 6.00,
                         total: eval(Number(productToAdd.price) + 6),
                         cost: Number(productToAdd.price),
@@ -86,13 +86,39 @@ class Clothing extends Component {
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
-                        brandEmail: productToAdd.email
-                    })
-                    .then((res)=>{
+                        paypal_email: this.state.brandData.paypal_email,
+                        designer_id: this.state.brandData.id
+                    }
+
+                    axios.post('/pay',data,{
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': 'https://streetwearboutiques.com/',
+                            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+                        },
+                        mode: 'cors',
+                    }).then((res)=>{
                         console.log(res)
-                        
-                        window.location.href=(res.data.href);
+                        window.location.href = res.data;
                     }).catch(err=>console.log(err))
+
+                    // fetch('/pay',{
+                    //     headers: {
+                    //         'Accept': 'application/json',
+                    //         'Content-Type': 'application/json',
+                    //         'Access-Control-Allow-Origin': 'https://streetwearboutiques.com/',
+                    //         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+                    //     },
+                    //     method: 'POST',
+                    //     mode: 'cors',
+                    //     body: JSON.stringify(data)
+                    // })
+                    // .then((res)=>{
+                    //     console.log(res)
+                    //     window.location.href = res.url;
+                    // }).catch(err=>console.log(err))
+
                 }else{
                     let errorFrom = document.querySelector('#error');
                     let message = ("<pCurrently out of stock</p>")

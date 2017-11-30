@@ -381,6 +381,8 @@ div#pic-preview {
 .description.links, .meta.links {
   text-align: center; }
 
+.single-brand h3.ui.header {
+  text-transform: inherit; }
 .single-brand div.image {
   overflow: hidden;
   max-height: 350px; }

@@ -43,7 +43,7 @@ class Designers extends Component {
                                 <div className="content">
                                     <div className="header title">{brand.name}</div>
                                         <div className="meta">
-                                            {brand.website != null ? <a href={brand.website} target="_blank">{brand.website}</a> : <p>No Website</p>}
+                                            {brand.website != null ? <a href={`${brand.website}`} target="_blank">Website</a> : <p>No Website</p>}
                                         </div>
                                     <div className="description">
                                         <p className="brandText">{brand.description}</p>

@@ -14,7 +14,8 @@ class BrandForm extends Component{
             uid: false,
             currentUser: undefined,
             redirect: false,
-            currentPage: null
+            currentPage: null,
+            website: 'http://'
         }
     }
 
@@ -67,7 +68,8 @@ class BrandForm extends Component{
                 website: this.state.website,
                 creation_time: new Date(),
                 id: Date.now(),
-                approved: false
+                approved: false,
+                paypal_email: this.state.paypal_email
             },{ merge: true })
             .then(()=>{
                 db.collection("users").doc(firebase.auth().currentUser.uid).collection("brand").doc(this.state.name).set({
@@ -78,7 +80,8 @@ class BrandForm extends Component{
                     links: this.state.links,
                     website: this.state.website,
                     creation_time: new Date(),
-                    id: firebase.auth().currentUser.uid
+                    id: firebase.auth().currentUser.uid,
+                    paypal_email: this.state.paypal_email
                 }).catch(err=>(console.log(err)))
                 this.setState({
                     redirect: true,
@@ -126,13 +129,21 @@ class BrandForm extends Component{
                     <h3>Brands must first be approved before you are allowed to post</h3>
                     <form onSubmit={this.handleSubmit} className="ui equal width form">
                         <div id="form-error"></div>
-                        <div className="two fields">
+                        <div className="three fields">
                             <div className="field">
                                 <div className="ui labeled input">
                                     <div className="ui label">
                                         Brand Name
                                     </div>
                                     <input required="true" name="name" type="text" placeholder="Brand Name" onChange={(e)=>this.handleChange(e)}/>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                        PayPal Email
+                                    </div>
+                                    <input required="true" name="paypal_email" type="text" placeholder="PayPal Email" onChange={(e)=>this.handleChange(e)}/>
                                 </div>
                             </div>
                             <div className="field">
@@ -152,20 +163,21 @@ class BrandForm extends Component{
                             </div>
                             <div className="field">
                                 <label>Shipping Address</label>
-                                <textarea name="shipping_address" rows="2" placeholder="Where will you ship from?" onChange={(e)=>this.handleChange(e)}></textarea>
+                                <textarea required="true" name="shipping_address" rows="2" placeholder="Where will you ship from?" onChange={(e)=>this.handleChange(e)}></textarea>
                             </div>
                             <div className="field">
                                 <label>Social Media Links</label>
-                                <textarea name="links" rows="2" placeholder="Separate All Social Media links with a comma" onChange={(e)=>this.handleChange(e)}></textarea>
+                                <textarea required="true" name="links" rows="2" placeholder="Separate All Social Media links with a comma. If none enter N/A" onChange={(e)=>this.handleChange(e)}></textarea>
                             </div>
                         </div>
 
                         <div className="field">
+                            <p>If none enter N/A</p>
                             <div className="ui labeled input">
                                 <div className="ui label">
                                     Website Url
                                 </div>
-                                <input name="website" type="text" placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
+                                <input required="true" name="website" type="text" value={this.state.website} placeholder="https://example.com" onChange={(e)=>this.handleChange(e)}/>
                             </div>
                         </div>
                         <button className="ui primary button" type="submit">Save</button>
