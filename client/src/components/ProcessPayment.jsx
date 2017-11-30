@@ -23,8 +23,18 @@ class ProcessPayment extends Component {
        .then((res)=>{
            if(res.status === 200){
                console.log("payment complete")
-               db.collection('payments').doc(new Date().getUTCMilliseconds).set({
-                   params: this.props.location.search
+               firebase.auth().onAuthStateChanged((user)=>{
+                   if(user){
+                        db.collection('users').doc(user.uid).collection('transactions').doc(new Date()).set({
+                            params: this.props.location.search,
+                        }).then(()=>{
+                            db.collection('payments').doc(new Date().getUTCMilliseconds).collection(user.uid).add({
+                                params: this.props.location.search
+                            },{merge: true})
+                        }).catch(err=>(console.log(err)))
+                   }else{
+                       return null;
+                   }
                })
            }
        }).catch(err=>{console.log(err)})
