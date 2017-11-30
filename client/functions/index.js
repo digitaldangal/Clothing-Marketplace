@@ -34,8 +34,6 @@ paypal.configure({
  * Set up the payment information object
  * Initialize the payment and redirect the user to the PayPal payment page
  */
-exports.sample = functions.https.onRequest((req, res) => {
-});
 exports.pay = functions.https.onRequest((req, res) => {
   // 1.Set up a payment information object, Nuild PayPal payment request
   const payReq = JSON.stringify({
