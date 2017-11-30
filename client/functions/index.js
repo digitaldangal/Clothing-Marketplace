@@ -42,7 +42,7 @@ exports.pay = functions.https.onRequest((req, res) => {
           payment_method: 'paypal'
         },
         redirect_urls: {
-          return_url: `/process-payment/process`,
+          return_url: `/process`,
           cancel_url: `/profile`
         },
         transactions: [{
@@ -85,7 +85,8 @@ exports.pay = functions.https.onRequest((req, res) => {
                 // REDIRECT USER TO links['approval_url'].href
                 console.info(links.approval_url.href);
                 // res.json({"approval_url":links.approval_url.href});
-                res.redirect(302, links.approval_url.href);
+                // res.redirect(302, links.approval_url.href);
+                res.send(links['approval_url'])
             } else {
                 console.error('no redirect URI present');
                 res.status('500').end();
@@ -103,7 +104,7 @@ exports.process = functions.https.onRequest((req, res) => {
   paypal.payment.execute(paymentId, payerId, (error, payment) => {
     if (error) {
       console.error(error);
-      res.redirect(`${req.protocol}://${req.get('host')}/error`); // replace with your url page error
+      res.redirect(`/error`); // replace with your url page error
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
@@ -117,7 +118,7 @@ exports.process = functions.https.onRequest((req, res) => {
           'description': uid,
           'date': date
         }).then(r => console.info('promise: ', r));
-        res.redirect(`${req.protocol}://${req.get('host')}/success`); // replace with your url, page success
+        res.redirect('/process-payment/process'); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url

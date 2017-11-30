@@ -67,7 +67,8 @@ class BrandForm extends Component{
                 website: this.state.website,
                 creation_time: new Date(),
                 id: Date.now(),
-                approved: false
+                approved: false,
+                paypal_email: this.state.paypal_email
             },{ merge: true })
             .then(()=>{
                 db.collection("users").doc(firebase.auth().currentUser.uid).collection("brand").doc(this.state.name).set({
@@ -78,7 +79,8 @@ class BrandForm extends Component{
                     links: this.state.links,
                     website: this.state.website,
                     creation_time: new Date(),
-                    id: firebase.auth().currentUser.uid
+                    id: firebase.auth().currentUser.uid,
+                    paypal_email: this.state.paypal_email
                 }).catch(err=>(console.log(err)))
                 this.setState({
                     redirect: true,
@@ -126,13 +128,21 @@ class BrandForm extends Component{
                     <h3>Brands must first be approved before you are allowed to post</h3>
                     <form onSubmit={this.handleSubmit} className="ui equal width form">
                         <div id="form-error"></div>
-                        <div className="two fields">
+                        <div className="three fields">
                             <div className="field">
                                 <div className="ui labeled input">
                                     <div className="ui label">
                                         Brand Name
                                     </div>
                                     <input required="true" name="name" type="text" placeholder="Brand Name" onChange={(e)=>this.handleChange(e)}/>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <div className="ui labeled input">
+                                    <div className="ui label">
+                                        PayPal Email
+                                    </div>
+                                    <input required="true" name="paypal_email" type="text" placeholder="PayPal Email" onChange={(e)=>this.handleChange(e)}/>
                                 </div>
                             </div>
                             <div className="field">
