@@ -42,8 +42,11 @@ exports.pay = functions.https.onRequest((req, res) => {
           payment_method: 'paypal'
         },
         redirect_urls: {
-          return_url: `/process`,
+          return_url: `/profile/process`,
           cancel_url: `/profile`
+        },
+        paypee:{
+          email: req.body.paypal_email
         },
         transactions: [{
             "amount": {
@@ -59,8 +62,8 @@ exports.pay = functions.https.onRequest((req, res) => {
           description: `Purchase on Streetwear Boutiques from ${req.body.designer}, ${req.body.brandEmail}`,
           // reference_id string .Optional. The merchant-provided ID for the purchase unit. Maximum length: 256.
           // reference_id: req.body.uid,
-          custom: req.body.uid,
-          // soft_descriptor: req.body.uid
+          custom: req.body.id,
+          soft_descriptor: req.body.description
           // "invoice_number": req.body.uid,A
         }]
     });
@@ -108,17 +111,17 @@ exports.process = functions.https.onRequest((req, res) => {
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
-        // console.info('req.custom: : ', payment.transactions[0].custom);
+        console.info('req.custom: : ', payment.transactions[0].custom);
         // set paid status to True in RealTime Database
         const date = Date.now();
         const uid = payment.transactions[0].description;
-        const ref = admin.database().ref('users/' + uid + '/');
+        const ref = admin.firestore().collection('payments/' + uid + '/');
         ref.push({
           'paid': true,
           'description': uid,
           'date': date
         }).then(r => console.info('promise: ', r));
-        res.redirect('/process-payment/process'); // replace with your url, page success
+        res.redirect('/profile/process'); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url

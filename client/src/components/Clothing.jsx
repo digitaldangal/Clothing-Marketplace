@@ -86,7 +86,8 @@ class Clothing extends Component {
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
-                        brandEmail: productToAdd.email
+                        brandEmail: this.state.brandData.paypal_email,
+                        designer: this.state.brandData.name
                     })
                     .then((res)=>{
                         console.log(res)
