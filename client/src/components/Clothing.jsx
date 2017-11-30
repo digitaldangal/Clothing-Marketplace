@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import {Button, Form, Image, Modal} from 'semantic-ui-react';
 
@@ -77,7 +76,7 @@ class Clothing extends Component {
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 if(productToAdd.inventory_total > 0){
-                    axios.post('/pay',{
+                    let data = {
                         shipping: 6.00,
                         total: eval(Number(productToAdd.price) + 6),
                         cost: Number(productToAdd.price),
@@ -86,13 +85,20 @@ class Clothing extends Component {
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
-                        brandEmail: this.state.brandData.paypal_email,
+                        paypal_email: this.state.brandData.paypal_email,
                         designer: this.state.brandData.name
+                    }
+                    fetch('/pay',{
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        method: 'POST',
+                        body: JSON.stringify(data)
                     })
                     .then((res)=>{
                         console.log(res)
-                        
-                        window.location.href=(res.data.href);
+                        window.location.href=(res.url);
                     }).catch(err=>console.log(err))
                 }else{
                     let errorFrom = document.querySelector('#error');

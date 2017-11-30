@@ -42,11 +42,8 @@ exports.pay = functions.https.onRequest((req, res) => {
           payment_method: 'paypal'
         },
         redirect_urls: {
-          return_url: `/profile/process`,
-          cancel_url: `/profile`
-        },
-        paypee:{
-          email: req.body.paypal_email
+          return_url: `http://localhost:5000/profile/process`,
+          cancel_url: `http://localhost:5000/profile`
         },
         transactions: [{
             "amount": {
@@ -59,7 +56,7 @@ exports.pay = functions.https.onRequest((req, res) => {
                 },
             },
           // This is the payment transaction description. Maximum length: 127
-          description: `Purchase on Streetwear Boutiques from ${req.body.designer}, ${req.body.brandEmail}`,
+          description: `Purchase on Streetwear Boutiques from ${req.body.designer}, email: ${req.body.paypal_email}`,
           // reference_id string .Optional. The merchant-provided ID for the purchase unit. Maximum length: 256.
           // reference_id: req.body.uid,
           custom: req.body.id,
@@ -70,7 +67,8 @@ exports.pay = functions.https.onRequest((req, res) => {
 
 
     // 2.Initialize the payment and redirect the user.
-    paypal.payment.create(payReq, (error, payment) => {
+    paypal.payment.create(payReq,{'Access-Control-Allow-Origin': 'https://sandbox.paypal.com'}, 
+    (error, payment) => {
         const links = {};
         if (error) {
             console.error(error);
@@ -88,8 +86,9 @@ exports.pay = functions.https.onRequest((req, res) => {
                 // REDIRECT USER TO links['approval_url'].href
                 console.info(links.approval_url.href);
                 // res.json({"approval_url":links.approval_url.href});
-                // res.redirect(302, links.approval_url.href);
-                res.send(links['approval_url'])
+                // res.redirect(links['approval_url'].href)
+                res.redirect(302, links['approval_url'].href);
+                // res.send(links['approval_url'])
             } else {
                 console.error('no redirect URI present');
                 res.status('500').end();
@@ -107,7 +106,7 @@ exports.process = functions.https.onRequest((req, res) => {
   paypal.payment.execute(paymentId, payerId, (error, payment) => {
     if (error) {
       console.error(error);
-      res.redirect(`/error`); // replace with your url page error
+      res.redirect(`http://localhost:5000/profile/error`); // replace with your url page error
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
@@ -121,7 +120,7 @@ exports.process = functions.https.onRequest((req, res) => {
           'description': uid,
           'date': date
         }).then(r => console.info('promise: ', r));
-        res.redirect('/profile/process'); // replace with your url, page success
+        res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url

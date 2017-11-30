@@ -19,10 +19,13 @@ class ProcessPayment extends Component {
 
     componentDidMount() {
        console.log(this.props)
-       axios.post(`/process-payment/process${this.props.location.search}`)
+       axios.post(`/process${this.props.location.search}`)
        .then((res)=>{
            if(res.status === 200){
                console.log("payment complete")
+               db.collection('payments').doc(new Date().getUTCMilliseconds).set({
+                   params: this.props.location.search
+               })
            }
        }).catch(err=>{console.log(err)})
     }
