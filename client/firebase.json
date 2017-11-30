@@ -19,12 +19,7 @@
         "function": "pay"
       },
       {
-        "source":"/success",
-        "destination":"/profile/process",
-        "type":301
-      },
-      {
-        "source": "**",
+        "source": "/*/*",
         "destination": "/index.html"
       }
     ]
