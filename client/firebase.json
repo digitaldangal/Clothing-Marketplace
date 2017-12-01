@@ -19,6 +19,10 @@
         "function": "pay"
       },
       {
+        "source": "/contactEmail",
+        "function": "contactEmail"
+      },
+      {
         "source": "/*/*",
         "destination": "/index.html"
       }

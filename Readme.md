@@ -143,7 +143,6 @@ renderPicPreviews = (e) =>{
 - [ ] Uses semantic ui / addons/confirm instead of alerts or prompts
 - [ ] Error Handling and Success handling
 - [ ] Product Share button
-- [ ] Add to cart from wishlist page
 - [ ] Compress Uploaded Images
 - [ ] Error Handling
 - [ ] Sizing
