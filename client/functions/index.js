@@ -15,6 +15,7 @@
  */
 'use strict';
 
+
 const functions = require('firebase-functions');
 // CORS Express middleware to enable CORS Requests.
 const cors = require('cors')({origin: true});
@@ -25,8 +26,8 @@ admin.initializeApp(functions.config().firebase);
 // Configure your environment
 paypal.configure({
   mode: 'sandbox', // sandbox or live
-  client_id: "AVBubSe8JWx0VCQ_ngq3XXuN584uhLYCRUvm7Q4slkM454Snia7KFTWwGevdkr5KKpHnGxozsF9xw2tY", // run: firebase functions:config:set paypal.client_id="yourPaypalClientID" 
-  client_secret: "EO3hgmGhkqw73Tn4UIXUJGr67tyrKo89AD9Dyc8K6SxdsV6GWYh-bVjM3aYb90NZjwC1wSjklaxFsBuJ" // run: firebase functions:config:set paypal.client_secret="yourPaypalClientSecret"
+  client_id: functions.config().paypal.client_id, // run: firebase functions:config:set paypal.client_id="yourPaypalClientID" 
+  client_secret: functions.config().paypal.client_secret // run: firebase functions:config:set paypal.client_secret="yourPaypalClientSecret"
 });
 
 /**
@@ -64,13 +65,13 @@ exports.pay = functions.https.onRequest((req, res) => {
               price: req.body.cost,
               quantity: 1,
               sku: req.body.id,
-              description: (req.body.size, req.body.designer, req.body.designer_id),
+              description: req.body.size,
             }]
           },
           // reference_id string .Optional. The merchant-provided ID for the purchase unit. Maximum length: 256.
           // reference_id: req.body.uid,
-          custom: req.body.id,
-          // soft_descriptor: req.body.designer_id
+          custom: req.body.designer_id,
+          soft_descriptor: req.body.designer
         }]
       });
 
@@ -133,11 +134,21 @@ exports.process = functions.https.onRequest((req, res) => {
 
         ref.add({
           'paid': true,
+          'payment_info': {
+            'time': payment.create_time,
+            'payer': payment.payer,
+            'method': payment.payer.payment_method,
+            'paid_to': payment.transactions[0].payee,
+          },
           'amount': payment.transactions[0].amount,
-          'description': uid,
+          'designer': {
+            'id': uid,
+            'designer': payment.transactions[0].amount
+          },
           'product': payment.transactions[0].item_list.items[0],
           'person-that-paid': payerId.payer_id,
-          'date': date
+          'date': date,
+          'soft_descriptor': payment.transactions[0].soft_descriptor
         }).then(r => console.info('promise: ', r));
         res.redirect(`https://streetwearboutiques.com/profile/process`); // replace with your url, page success
       } else {
