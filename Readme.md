@@ -12,7 +12,7 @@ password: abc123
 
 ![Streetweat Boutiques WireFrame Screenshots](./assets/single-product.png?raw=true "Streetweat Boutiques WireFrames")
 
-### Project Stricture / Features
+### Project Stricture / Features - M.V.P
 These are some of the features that I plan on tackling as I build this project
 - [X] Registered Domain Name --> streetwearboutiques.com
 - [x] Registration
