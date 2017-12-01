@@ -92,10 +92,10 @@ class BrandForm extends Component{
                     description: this.state.description,
                     uid: this.state.uid
                 }).then(res=>{
-                    // this.setState({
-                    //     redirect: true,
-                    //     currentPage: '/profile'
-                    // })
+                    this.setState({
+                        redirect: true,
+                        currentPage: '/profile'
+                    })
                 }).catch(err=>{
                     console.log(err);
                 })
