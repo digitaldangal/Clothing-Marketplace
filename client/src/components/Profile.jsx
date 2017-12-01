@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Form, Button} from 'semantic-ui-react';
+import {Form, Button, Message} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -103,8 +103,15 @@ class Profile extends Component{
                     <div className="page-contianer ui container">
                         <div className="register-form">
                             <h1 className="ui header ">Account Information</h1>
-                            <Form onSubmit={this.handleProfileUpdate}>
+                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified}>
                                 <div id="form-error"></div>
+                                <Message
+                                warning
+                                header='Could you check something!'
+                                list={[
+                                    ' You have not yet clicked the verification link to verify your account!',
+                                ]}
+                                />
                                 <Form.Field>
                                     <label>First Name</label>
                                     <input required="true" value={this.state.currentUser.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
@@ -123,7 +130,7 @@ class Profile extends Component{
                     </div>
                 </div>  
             )
-        }else if(this.state.uid !== false){
+        }else if(this.state.uid === false){
             return(
                 <div className="ui active inverted dimmer">
                     <div className="ui indeterminate text loader">Preparing Files</div>
@@ -136,6 +143,34 @@ class Profile extends Component{
                         <h1 className="ui header">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                         <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                         <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
+                    </div>
+                    <div className="page-contianer ui container">
+                        <div className="register-form">
+                            <h1 className="ui header ">Account Information</h1>
+                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified}>
+                                <div id="form-error"></div>
+                                <Message
+                                warning
+                                header='Could you check something!'
+                                list={[
+                                    ' You have not yet clicked the verification link to verify your account!',
+                                ]}
+                                />
+                                <Form.Field>
+                                    <label>First Name</label>
+                                    <input required="true" value={this.state.currentUser.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                                </Form.Field>
+                                <Form.Field>
+                                    <label>Last Name</label>
+                                    <input required="true" value={this.state.currentUser.last_name} name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
+                                </Form.Field>
+                                <Form.Field>
+                                    <label>Dispaly Name</label>
+                                    <input required="true" value={this.state.currentUser.display_name} name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
+                                </Form.Field>
+                                <Button secondary>UPDATE</Button>
+                            </Form>
+                        </div>
                     </div>
                 </div>
             )
