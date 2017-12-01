@@ -28,8 +28,13 @@ class ProcessPayment extends Component {
                         db.collection('users').doc(user.uid).collection('transactions').doc(Date().toString()).set({
                             params: this.props.location.search,
                         }).then(()=>{
-                            db.collection('payments').doc(Date().toString()).collection(user.uid).add({
-                                params: this.props.location.search
+                           axios.post('/newPayment',{
+                                payment_info: this.props.location.search
+                           }).catch(err=>console.warn(err))
+                        }).then(()=>{
+                            this.setState({
+                                redirect: true,
+                                currentPage: '/profile'
                             })
                         }).catch(err=>(console.log(err)))
                    }else{

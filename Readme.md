@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.8.1-alpha (in progress)
+#  StreetwearBoutiques.com 1.9.0 Beta Testing
 
 Streetwear Boutiques was founded and created by, me Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. I have always been interested in fashion, streetwear, and supporting smaller brands. However, there isn't a convenient way to explore all those brands, so I've decided to build a place where that is possible. I was inspired by various fashion communities and I'm on a mission to create a place for different labels to grow and flourish. 
 
@@ -12,14 +12,13 @@ password: abc123
 
 ![Streetweat Boutiques WireFrame Screenshots](./assets/single-product.png?raw=true "Streetweat Boutiques WireFrames")
 
-### Project Stricture / Features
+### Project Stricture / Features - M.V.P
 These are some of the features that I plan on tackling as I build this project
 - [X] Registered Domain Name --> streetwearboutiques.com
 - [x] Registration
     - [X] Oauth
     - [X] Email Confirmation
     - [x] Brand Signup or Consumer Signup
-- [ ] Integrating Redux
 - [X] Integrating Firebase
     - [X] Authentication
     - [X] Storage
@@ -38,10 +37,9 @@ These are some of the features that I plan on tackling as I build this project
 - [ ] Brand Control
     - [x] Choose amounts per size, when uploading
     - [ ] Brands can edit inventory of a product
-- [ ] Purchasing
-    - [ ] Cart
+- [x] Purchasing
     - [x] Wishlist
-    - [ ] Paypal
+    - [x] Paypal
 - [x] Home Section
     - [x] Articles View
     - [x] Featured Brands or Random Brands
@@ -145,7 +143,6 @@ renderPicPreviews = (e) =>{
 - [ ] Uses semantic ui / addons/confirm instead of alerts or prompts
 - [ ] Error Handling and Success handling
 - [ ] Product Share button
-- [ ] Add to cart from wishlist page
 - [ ] Compress Uploaded Images
 - [ ] Error Handling
 - [ ] Sizing
