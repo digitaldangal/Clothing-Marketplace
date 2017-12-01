@@ -27,24 +27,24 @@ class ProcessPayment extends Component {
                    if(user){
                         db.collection('users').doc(user.uid).collection('transactions').doc(Date().toString()).set({
                             params: this.props.location.search,
-                        }).then(()=>{
-                           axios.post('/newPayment',{
-                                payment_info: this.props.location.search
-                           }).catch(err=>console.warn(err))
-                        }).then(()=>{
-                            this.setState({
-                                redirect: true,
-                                currentPage: '/profile'
-                            })
                         }).catch(err=>(console.log(err)))
                    }else{
                        return null;
                    }
                })
            }
+       }).then(()=>{
+            axios.post('/newPayment',{
+                payment_info: this.props.location.search
+            }).catch(err=>{
+                console.log(err)
+            })
+            this.setState({
+                redirect: true,
+                currentPage: '/profile'
+            })
        }).catch(err=>{console.log(err)})
     }
-
 
     render(){
         const {redirect, currentPage} = this.state;

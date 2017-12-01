@@ -134,19 +134,12 @@ exports.process = functions.https.onRequest((req, res) => {
 
         ref.add({
           'paid': true,
-          'payment_info': {
-            'time': payment.create_time,
-            'payer': payment.payer,
-            'method': payment.payer.payment_method,
-            'paid_to': payment.transactions[0].payee,
-          },
           'amount': payment.transactions[0].amount,
           'designer': {
             'id': uid,
             'designer': payment.transactions[0].amount
           },
           'product': payment.transactions[0].item_list.items[0],
-          'person-that-paid': payerId.payer_id,
           'date': date,
           'soft_descriptor': payment.transactions[0].soft_descriptor
         }).then(r => console.info('promise: ', r));

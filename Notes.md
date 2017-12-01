@@ -8,3 +8,6 @@
 
 - Get environment variables
 ``` firebase functions:config:get ```
+
+- Local Runtime variables
+``` firebase functions:config:get > .runtimeconfig.json ```
