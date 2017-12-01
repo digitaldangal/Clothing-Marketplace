@@ -67,6 +67,13 @@ class Profile extends Component{
         this.props.authStateChange(authChange)
     }
 
+    handleChange=(e)=>{
+        e.preventDefault();
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     renderPage(){
         if((this.state.uid !== false && this.state.brandCreated) && this.state.brandStatus){
             return(
@@ -78,24 +85,24 @@ class Profile extends Component{
                         <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
                     </div>
                     <div className="page-contianer ui container">
-                    <div className="register-form">
-                        <h1 className="ui header ">Account Information</h1>
-                        <Form>
-                            <div id="form-error"></div>
-                            <Form.Field>
-                                <label>First Name</label>
-                                <input required="true" value={this.state.currentUser.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
-                            </Form.Field>
-                            <Form.Field>
-                                <label>Last Name</label>
-                                <input required="true" value={this.state.currentUser.last_name} name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
-                            </Form.Field>
-                            <Form.Field>
-                                <label>Dispaly Name</label>
-                                <input required="true" value={this.state.currentUser.display_name} name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
-                            </Form.Field>
-                            <Button secondary>UPDATE</Button>
-                        </Form>
+                        <div className="register-form">
+                            <h1 className="ui header ">Account Information</h1>
+                            <Form>
+                                <div id="form-error"></div>
+                                <Form.Field>
+                                    <label>First Name</label>
+                                    <input required="true" value={this.state.currentUser.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                                </Form.Field>
+                                <Form.Field>
+                                    <label>Last Name</label>
+                                    <input required="true" value={this.state.currentUser.last_name} name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
+                                </Form.Field>
+                                <Form.Field>
+                                    <label>Dispaly Name</label>
+                                    <input required="true" value={this.state.currentUser.display_name} name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
+                                </Form.Field>
+                                <Button secondary>UPDATE</Button>
+                            </Form>
                         </div>
                     </div>
                 </div>  
