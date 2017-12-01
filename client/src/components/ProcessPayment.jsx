@@ -31,6 +31,11 @@ class ProcessPayment extends Component {
                            axios.post('/newPayment',{
                                 payment_info: this.props.location.search
                            }).catch(err=>console.warn(err))
+                        }).then(()=>{
+                            this.setState({
+                                redirect: true,
+                                currentPage: '/profile'
+                            })
                         }).catch(err=>(console.log(err)))
                    }else{
                        return null;
