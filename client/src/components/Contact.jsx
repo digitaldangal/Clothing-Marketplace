@@ -26,7 +26,7 @@ class Contact extends Component {
     }
     handleContactSubmit = (e) => {
         e.preventDefault();
-        axios.post('/contact-submit', {
+        axios.post('/contactEmail', {
             display_name: this.state.display_name,
             first_name: this.state.first_name,
             last_name: this.state.last_name,
@@ -42,16 +42,6 @@ class Contact extends Component {
             console.log(err);
             // this.redirectPage();
         })
-
-        // this.setState({
-        //     display_name: "",
-        //     first_name: "",
-        //     last_name: "",
-        //     message: "",
-        //     request: "",
-        //     subject: "",
-        //     email: "",
-        // })
     }
 
     handleChange = (e) => {

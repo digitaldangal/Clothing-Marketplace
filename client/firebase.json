@@ -19,6 +19,18 @@
         "function": "pay"
       },
       {
+        "source": "/contactEmail",
+        "function": "contactEmail"
+      },
+      {
+        "source": "/brandForm",
+        "function": "brandForm"
+      },
+      {
+        "source": "/newPayment",
+        "function": "newPayment"
+      },
+      {
         "source": "/*/*",
         "destination": "/index.html"
       }
