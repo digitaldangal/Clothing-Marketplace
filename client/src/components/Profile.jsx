@@ -67,6 +67,22 @@ class Profile extends Component{
         this.props.authStateChange(authChange)
     }
 
+    handleProfileUpdate(){
+        db.collection('users').doc(firebase.auth().currentUser.uid).set({
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            display_name: this.state.display_name,
+            email: this.state.currentUser.email,
+            creation_time: this.state.currentUser.creation_time
+        },{ merge: true })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+    }
+
     handleChange=(e)=>{
         e.preventDefault();
         this.setState({
@@ -87,7 +103,7 @@ class Profile extends Component{
                     <div className="page-contianer ui container">
                         <div className="register-form">
                             <h1 className="ui header ">Account Information</h1>
-                            <Form>
+                            <Form onSubmit={this.handleProfileUpdate}>
                                 <div id="form-error"></div>
                                 <Form.Field>
                                     <label>First Name</label>
