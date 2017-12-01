@@ -23,7 +23,7 @@ const paypal = require('paypal-rest-sdk');
 // firebase-admin SDK init
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
-Configure your environment
+// Configure your environment
 paypal.configure({
   mode: 'sandbox', // sandbox or live
   client_id: functions.config().paypal.client_id, // run: firebase functions:config:set paypal.client_id="yourPaypalClientID" 
@@ -205,6 +205,37 @@ exports.brandForm = functions.https.onRequest((req, res)=>{
       subject: `New Brand Registration: ${req.body.name}`,
       text: `A new brand has submitted a registration from.`,
       html: `paypal: ${req.body.paypal_email} \n uid: ${req.body.uid}<br/>Brand description: ${req.body.description}`,
+    };
+
+    sgMail.send(msg,false,function (error, message) {
+      if (error) {
+         (console.log(error));
+      } else {
+          console.log(message)
+          return res.send(message)
+      }
+    }).then((message)=>{
+        return message;
+      }).catch(err=>{
+        return err;
+    });
+  })
+})
+
+exports.newPayment = functions.https.onRequest((req, res)=>{
+  let SENDGRID_KEY = functions.config().sendgrid.key;
+  let email = functions.config().sendgrid.email;
+  cors(req, res, () => {
+
+    const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(SENDGRID_KEY);
+
+    const msg = {
+      to: email,
+      from: email,
+      subject: `New Payment on Streetwear Boutiques`,
+      text: `A brand has just received a purchase!`,
+      html: `paypal info: ${req.body.payment_info}`,
     };
 
     sgMail.send(msg,false,function (error, message) {
