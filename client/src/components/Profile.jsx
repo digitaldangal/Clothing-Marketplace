@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import {Form, Button} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -78,72 +79,34 @@ class Profile extends Component{
                     </div>
                     <div className="page-contianer ui container">
                     <div className="register-form">
-                            <h1 className="ui header ">Create An Account</h1>
-                            <form className="ui form">
-                                <div id="form-error"></div>
-                                <div className="two fields">
-                                    <div className="field">
-                                        <div className="ui labeled input">
-                                            <div className="ui label">
-                                                First Name
-                                            </div>
-                                            <input required="true" name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                    <div className="field">
-                                        <div className="ui labeled input">
-                                            <div className="ui label">
-                                                Last Name
-                                            </div>
-                                            <input required="true" name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="two fields">
-                                    <div className="field">
-                                        <div className="ui labeled input">
-                                            <div className="ui label">
-                                            Display Name
-                                            </div>
-                                            <input required="true" name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                    <div className="field">
-                                        <div className="ui labeled input">
-                                            <div className="ui label">
-                                            Email
-                                            </div>
-                                            <input required="true" name="email" type="text" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="two fields">
-                                    <div className="field">
-                                        <div className="ui labeled input">
-                                            <div className="ui label">
-                                                Password
-                                            </div>
-                                            <input required="true" name="password" type="password" placeholder="Password" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                    <div className="field">
-                                        <div className="ui labeled input">
-                                            <div className="ui label">
-                                                Confirm Password
-                                            </div>
-                                            <input required="true" name="password_confirm" type="password" placeholder="Confirm Password" onChange={(e)=>this.handleChange(e)}/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button className="ui primary button" type="submit">Create</button>
-                            </form>
+                        <h1 className="ui header ">Account Information</h1>
+                        <Form>
+                            <div id="form-error"></div>
+                            <Form.Field>
+                                <label>First Name</label>
+                                <input required="true" value={this.state.currentUser.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                            <Form.Field>
+                                <label>Last Name</label>
+                                <input required="true" value={this.state.currentUser.last_name} name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                            <Form.Field>
+                                <label>Dispaly Name</label>
+                                <input required="true" value={this.state.currentUser.display_name} name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                            <Button secondary>UPDATE</Button>
+                        </Form>
                         </div>
                     </div>
                 </div>  
             )
         }else if(this.state.uid !== false){
+            return(
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Preparing Files</div>
+                </div>
+            )
+        }else{
             return(
                 <div className="profile-page">
                     <div className="profile-links">
@@ -151,12 +114,6 @@ class Profile extends Component{
                         <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
                         <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
                     </div>
-                </div>
-            )
-        }else{
-            return(
-                <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
                 </div>
             )
         }
