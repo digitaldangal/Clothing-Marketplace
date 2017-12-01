@@ -7,8 +7,9 @@
 
 # testing
 /coverage
-/build
 
+# production
+/build
 
 # misc
 api-keys.js
