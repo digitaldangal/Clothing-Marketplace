@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
 
@@ -83,12 +84,23 @@ class BrandForm extends Component{
                     id: firebase.auth().currentUser.uid,
                     paypal_email: this.state.paypal_email
                 }).catch(err=>(console.log(err)))
-                this.setState({
-                    redirect: true,
-                    currentPage: '/profile'
+            }).then(()=>{
+                axios.post('/brandForm', {
+                    name: this.state.name,
+                    email: this.state.currentUser.email,
+                    paypal_email: this.state.paypal_email,
+                    description: this.state.description,
+                    uid: this.state.uid
+                }).then(res=>{
+                    // this.setState({
+                    //     redirect: true,
+                    //     currentPage: '/profile'
+                    // })
+                }).catch(err=>{
+                    console.log(err);
                 })
-            })
-            .catch(function(error) {
+
+            }).catch(function(error) {
                 console.error("Error adding document: ", error);
             });
         }else{

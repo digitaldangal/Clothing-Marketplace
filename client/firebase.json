@@ -23,6 +23,10 @@
         "function": "contactEmail"
       },
       {
+        "source": "/brandForm",
+        "function": "brandForm"
+      },
+      {
         "source": "/*/*",
         "destination": "/index.html"
       }

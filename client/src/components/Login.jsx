@@ -77,9 +77,7 @@ class Login extends Component{
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(res=>{
                 let user = firebase.auth().currentUser;
-                user.sendEmailVerification().then((res=>{
-                    console.log(res)
-                }))
+                user.sendEmailVerification();
             })
             .then(()=>{
                 db.collection('users').doc(firebase.auth().currentUser.uid).set({
