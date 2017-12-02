@@ -136,11 +136,11 @@ class Clothing extends Component {
         return(
             <select required name="size" onChange={(e)=>this.handleChange(e)}>
             <option value="">SELECT</option>
-            <option value="xs">XS</option>
-            <option value="s">S</option>
-            <option value="m">M</option>
-            <option value="l">L</option>
-            <option value="xl">XL</option>
+            {this.state.clothingData.inventory.xs > 0 ? <option value="xs">XS</option> : <option disabled>XS</option>}
+            {this.state.clothingData.inventory.s > 0 ? <option value="s">S</option> : <option disabled>S</option>}
+            {this.state.clothingData.inventory.m > 0 ? <option value="m">M</option> : <option disabled>M</option>}
+            {this.state.clothingData.inventory.l > 0 ? <option value="l">L</option> : <option disabled>L</option>}
+            {this.state.clothingData.inventory.xl > 0 ? <option value="xl">XL</option> : <option disabled>XL</option>}
         </select>
         )
     }
