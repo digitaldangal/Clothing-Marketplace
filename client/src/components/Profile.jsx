@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Form, Button, Message} from 'semantic-ui-react';
+import {Form, Button, Message, Menu} from 'semantic-ui-react';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -13,18 +13,24 @@ class Profile extends Component{
             currentPage: null,
             currentUser: false,
             brandCreated: null,
-            brandStatus: false
+            brandStatus: false,
+            profileUpdate: false
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
-                console.log(`Welcome ${user.email}`);
-                db.collection('users').doc(user.uid).get().then(res=>{
-                    this.setState({currentUser: res.data()})
-                }).catch(err=>console.log(err))
-
+                db.collection('users').doc(user.uid).get().then((res)=>{
+                    this.setState({
+                        currentUser: res.data(),
+                        uid: user.uid,
+                        redirect: false,
+                        currentPage: ''
+                    })
+                })
+                .catch(err=>console.log(err))
+                
                 db.collection('brands').doc(user.uid).get().then((res)=>{
                     if(res.exists && res.data().approved){
                         this.setState({
@@ -38,11 +44,7 @@ class Profile extends Component{
                         })
                     }
                 })
-                this.setState({
-                    uid: user.uid,
-                    redirect: false,
-                    currentPage: ''
-                })
+                
             }else{
                 this.setState({
                     redirect: true,
@@ -67,17 +69,14 @@ class Profile extends Component{
         this.props.authStateChange(authChange)
     }
 
-    handleProfileUpdate(){
-        db.collection('users').doc(firebase.auth().currentUser.uid).set({
+    handleProfileUpdate=()=>{
+        db.collection('users').doc(this.state.uid).update({
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             display_name: this.state.display_name,
             email: this.state.currentUser.email,
             creation_time: this.state.currentUser.creation_time
-        },{ merge: true })
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
+        }).then(()=>{this.setState({profileUpdate: true})})
         .catch(function(error) {
             console.error("Error adding document: ", error);
         });
@@ -91,20 +90,20 @@ class Profile extends Component{
     }
 
     renderPage(){
-        if((this.state.uid !== false && this.state.brandCreated) && this.state.brandStatus){
+        if(this.state.uid !== false && this.state.brandCreated !== null){
             return(
                 <div className="profile-page">
-                    <h1 className="page-title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
+                    <h1 className="ui header title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                     <div className="profile-links">
-                        <Link to="/profile/brand"><button className="ui button">Brand Page</button></Link>
-                        <Link to="/profile/product-create"><button className="ui button">List A Item</button></Link>
-                        <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
+                        <Menu text>
+                            <Menu.Item><Link to="/profile/brand">Brand Page</Link></Menu.Item>
+                            <Menu.Item><Link to="/profile/product-create">List A Item</Link></Menu.Item>
+                        </Menu>
                     </div>
                     <div className="page-contianer ui container">
                         <div className="register-form">
-                            <h1 className="ui header ">Account Information</h1>
-                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified}>
-                                <div id="form-error"></div>
+                            <h3 className="ui header ">Account Information</h3>
+                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified} success={this.state.profileUpdate}>
                                 <Message
                                 warning
                                 header='Could you check something!'
@@ -112,17 +111,22 @@ class Profile extends Component{
                                     ' You have not yet clicked the verification link to verify your account!',
                                 ]}
                                 />
+                                 <Message
+                                success
+                                header='Profile Updated'
+                                content="Your Profile information has been updated!"
+                                />
                                 <Form.Field>
                                     <label>First Name</label>
-                                    <input required="true" value={this.state.currentUser.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                                    <input required="true" placeholder={this.state.currentUser.first_name} name="first_name" type="text" onChange={(e)=>this.handleChange(e)}/>
                                 </Form.Field>
                                 <Form.Field>
                                     <label>Last Name</label>
-                                    <input required="true" value={this.state.currentUser.last_name} name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
+                                    <input required="true" placeholder={this.state.currentUser.last_name} name="last_name" type="text" onChange={(e)=>this.handleChange(e)}/>
                                 </Form.Field>
                                 <Form.Field>
                                     <label>Dispaly Name</label>
-                                    <input required="true" value={this.state.currentUser.display_name} name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
+                                    <input required="true" placeholder={this.state.currentUser.display_name} name="display_name" type="text" onChange={(e)=>this.handleChange(e)}/>
                                 </Form.Field>
                                 <Button secondary>UPDATE</Button>
                             </Form>
@@ -140,15 +144,15 @@ class Profile extends Component{
             return(
                 <div className="profile-page">
                     <div className="profile-links">
-                        <h1 className="ui header">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
-                        <Link to="/profile/brand-signup"><button className="ui button">Register A Brand</button></Link>
-                        <button className="ui button" onClick={()=>this.logout(false)} >Logout</button>
+                        <h1 className="ui header title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
+                        <Menu text>
+                            <Menu.Item><Link to="/profile/brand-signup">Register A Brand</Link></Menu.Item>
+                        </Menu>
                     </div>
                     <div className="page-contianer ui container">
                         <div className="register-form">
-                            <h1 className="ui header ">Account Information</h1>
-                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified}>
-                                <div id="form-error"></div>
+                            <h3 className="ui header ">Account Information</h3>
+                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified} success={this.state.profileUpdate}>
                                 <Message
                                 warning
                                 header='Could you check something!'
@@ -156,17 +160,22 @@ class Profile extends Component{
                                     ' You have not yet clicked the verification link to verify your account!',
                                 ]}
                                 />
+                                <Message
+                                success
+                                header='Profile Updated'
+                                content="Your Profile information has been updated!"
+                                />
                                 <Form.Field>
                                     <label>First Name</label>
-                                    <input required="true" value={this.state.currentUser.first_name} name="first_name" type="text" placeholder="First Name" onChange={(e)=>this.handleChange(e)}/>
+                                    <input required="true" placeholder={this.state.currentUser.first_name} name="first_name" type="text" onChange={(e)=>this.handleChange(e)}/>
                                 </Form.Field>
                                 <Form.Field>
                                     <label>Last Name</label>
-                                    <input required="true" value={this.state.currentUser.last_name} name="last_name" type="text" placeholder="Last Name" onChange={(e)=>this.handleChange(e)}/>
+                                    <input required="true" placeholder={this.state.currentUser.last_name} name="last_name" type="text" onChange={(e)=>this.handleChange(e)}/>
                                 </Form.Field>
                                 <Form.Field>
                                     <label>Dispaly Name</label>
-                                    <input required="true" value={this.state.currentUser.display_name} name="display_name" type="text" placeholder="Username" onChange={(e)=>this.handleChange(e)}/>
+                                    <input required="true" placeholder={this.state.currentUser.display_name} name="display_name" type="text" onChange={(e)=>this.handleChange(e)}/>
                                 </Form.Field>
                                 <Button secondary>UPDATE</Button>
                             </Form>
