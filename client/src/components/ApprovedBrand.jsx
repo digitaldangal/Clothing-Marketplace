@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button} from 'semantic-ui-react'
+import {Button, Confirm} from 'semantic-ui-react'
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -80,6 +80,14 @@ class ApprovedBrand extends Component {
             return null;
         }
     }
+
+    markSoldOut=(id, title)=>{
+        db.collection("brands").doc(this.props.userUid).collection("products").doc(title).update({
+            sold_out: true
+        }).then((res)=>{
+            window.location.reload();
+        }).catch(err=>(console.log(err)))
+    }
     
     renderGallery(){
         if(this.state.productData){
@@ -105,8 +113,9 @@ class ApprovedBrand extends Component {
                                         SOLD: {product.amount_sold}
                                     </span>
                                     <span className="left floated">
-                                        {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : (`Available: ${product.inventory_total}`)}
+                                        {product.sold_out ? (<p id="soldout">SOLD OUT</p>) : (`Available: ${product.inventory_total}`)}
                                     </span>
+                                    <Button secondary disabled={product.sold_out} onClick={()=>this.markSoldOut(product.id, product.title)}>Mark As Sold Out</Button>
                                     <Button negative onClick={()=>this.handleDelete(product.id, product.title)}>DELETE PRODUCT</Button>
                                 </div>
                             </div> 

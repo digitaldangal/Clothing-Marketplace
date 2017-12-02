@@ -422,7 +422,7 @@ p#soldout {
     font-family: 'Roboto' !important; }
 .brand-page .card .extra.content {
   font-family: 'Roboto' !important; }
-.brand-page .card button.ui.negative {
+.brand-page .card button.ui {
   width: 100%;
   margin-top: 0.5em;
   letter-spacing: 1px; }
