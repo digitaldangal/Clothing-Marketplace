@@ -52,7 +52,7 @@ class ProcessPayment extends Component {
             <section id="cart">
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
+                    <div className="ui indeterminate text loader">Finalizing Order</div>
                 </div>
             </section>
         )

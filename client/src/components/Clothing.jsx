@@ -15,7 +15,8 @@ class Clothing extends Component {
             clothingData: false,
             brandData: false,
             loadPage: false,
-            clothingDataLoaded: false
+            clothingDataLoaded: false,
+            active: false
         }
     }
 
@@ -73,6 +74,7 @@ class Clothing extends Component {
         let productToAdd = this.state.clothingData;
         let button = document.querySelector('#cart-button')
         button.setAttribute('disabled', 'true');
+        this.setState({active: true})
 
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
@@ -237,6 +239,9 @@ class Clothing extends Component {
                                 </Modal>
                             </div>
                             <div className="product-text">
+                            <div className={this.state.active ? "ui active inverted dimmer" : "ui disabled inverted dimmer"}>
+                                <div className="ui indeterminate text loader">Contacting PayPal. If this last longer than a minute refresh the page</div>
+                            </div>
                                 <Link to={`/designers/${brandData.name}/${brandData.id}`}><h1 className="ui header">{brandData.name}</h1></Link>
                                 <h3 className="ui header">{clothingData.title}</h3>
                                 <h3 className="ui header">${clothingData.price}</h3>
