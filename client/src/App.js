@@ -74,7 +74,6 @@ class App extends Component {
         this.setState({
           authState: false,
         })
-        window.location.reload()
       }).catch(err=>console.log(err))
     }else if(authChange === true){
       firebase.auth().onAuthStateChanged((user)=>{

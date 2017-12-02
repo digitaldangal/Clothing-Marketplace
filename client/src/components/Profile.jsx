@@ -48,7 +48,7 @@ class Profile extends Component{
             }else{
                 this.setState({
                     redirect: true,
-                    currentPage: '/'
+                    currentPage: '/account/login'
                 }) 
             }
         })

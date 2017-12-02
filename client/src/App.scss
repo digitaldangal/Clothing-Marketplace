@@ -445,6 +445,17 @@ section.login-page{
     }
 }
 
+// Profile Page
+section#profile-page{
+    .profile-links{
+        display: flex;
+        justify-content: center;
+        a{
+            text-decoration: underline;
+        }
+    }
+}
+
 // Brand form
 div#brand-error {
     width: 65vw;
