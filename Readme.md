@@ -34,9 +34,6 @@ These are some of the features that I plan on tackling as I build this project
     - [x] Store Products on Firebase
     - [x] Retrieve and view products
     - [x] View Single Product
-- [ ] Brand Control
-    - [x] Choose amounts per size, when uploading
-    - [ ] Brands can edit inventory of a product
 - [x] Purchasing
     - [x] Wishlist
     - [x] Paypal
@@ -159,7 +156,9 @@ renderPicPreviews = (e) =>{
     - [ ] Rating
 - [ ] Create Brand Dashboard
     - [ ] activate sales
-    - [ ] mark items soldout
+    - [x] mark items soldout
+    - [x] Choose amounts per size, when uploading
+    - [ ] Brands can edit inventory of a product
 - [ ] Create Admin Dashboard
     - [ ] View All Users
     - [ ] View All Brands
