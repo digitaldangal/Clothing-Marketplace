@@ -445,6 +445,17 @@ section.login-page{
     }
 }
 
+// Profile Page
+section#profile-page{
+    .profile-links{
+        display: flex;
+        justify-content: center;
+        a{
+            text-decoration: underline;
+        }
+    }
+}
+
 // Brand form
 div#brand-error {
     width: 65vw;
@@ -562,7 +573,7 @@ p#soldout{
         .extra.content{
             font-family: 'Roboto' !important;
         }
-        button.ui.negative{
+        button.ui{
             width: 100%;
             margin-top: 0.5em;
             letter-spacing: 1px;

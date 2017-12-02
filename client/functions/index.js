@@ -43,8 +43,8 @@ exports.pay = functions.https.onRequest((req, res) => {
       payment_method: 'paypal'
     },
     redirect_urls: {
-      return_url: `https://streetwearboutiques.com/profile/process`,
-      cancel_url: `https://streetwearboutiques.com/profile`
+      return_url: `http://localhost:5000/profile/process`,
+      cancel_url: `http://localhost:5000/profile`
     },
     transactions: [{
       "amount": {
@@ -122,11 +122,12 @@ exports.process = functions.https.onRequest((req, res) => {
   paypal.payment.execute(paymentId, payerId, (error, payment) => {
     if (error) {
       console.error(error);
-      res.redirect(`https://streetwearboutiques.com/profile/error`); // replace with your url page error
+      res.redirect(`http://localhost:5000/profile/error`); // replace with your url page error
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
         console.info('req.custom: : ', payment.transactions[0].custom);
+        console.info('req.items: : ', payment.transactions[0].item_list.items[0]);
         // set paid status to True in RealTime Database
         const date =Date().toString();
         const uid = payment.transactions[0].custom;
@@ -135,15 +136,15 @@ exports.process = functions.https.onRequest((req, res) => {
         ref.add({
           'paid': true,
           'amount': payment.transactions[0].amount,
-          'designer': {
-            'id': uid,
-            'designer': payment.transactions[0].amount
-          },
+          'designer': uid,
           'product': payment.transactions[0].item_list.items[0],
           'date': date,
-          'soft_descriptor': payment.transactions[0].soft_descriptor
-        }).then(r => console.info('promise: ', r));
-        res.redirect(`https://streetwearboutiques.com/profile/process`); // replace with your url, page success
+          'payment_info': {
+            'payer_id': payerId.payer_id,
+            'payer': payment.payer
+          }
+        }).then(r => console.info('promise: ', r)).catch(err=>console.log(err));
+        res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url
@@ -228,7 +229,7 @@ exports.newPayment = functions.https.onRequest((req, res)=>{
       from: email,
       subject: `New Payment on Streetwear Boutiques`,
       text: `A brand has just received a purchase!`,
-      html: `paypal info: ${req.body.payment_info}`,
+      html: `user: ${req.body.user} \n eamil: ${req.body.email} <br/> paypal info: ${req.body.payment_info}`,
     };
 
     sgMail.send(msg,false,function (error, message) {

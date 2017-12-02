@@ -65,8 +65,8 @@ class Navbar extends Component {
                     <Dropdown.Divider />
                     <Link to="/profile/wishlist"><Dropdown.Item>Wishlist</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    <Link to="/profile/transactions"><Dropdown.Item>Transactions</Dropdown.Item></Link>
-                    <Dropdown.Divider />
+                    {/* <Link to="/profile/transactions"><Dropdown.Item>Transactions</Dropdown.Item></Link>
+                    <Dropdown.Divider /> */}
                     <Link to="#" onClick={()=>this.logout(false)}><Dropdown.Item>Logout</Dropdown.Item></Link>
                 </Dropdown.Menu>
             </Dropdown>
@@ -101,8 +101,6 @@ class Navbar extends Component {
                                 <Link to="/about"><Dropdown.Item>About</Dropdown.Item></Link>
                                 <Dropdown.Divider />
                                {this.props.authState? this.authUser() : <Link to="/account/login"> <Dropdown.Item>Login</Dropdown.Item></Link>}
-                                {/* <Dropdown.Divider />
-                                <Link to="/profile/cart"><Dropdown.Item><i className="shopping bag icon">({this.props.shopping_cart})</i></Dropdown.Item></Link> */}
                                 <Dropdown.Divider />
                                 <Link to="/contact-us"><Dropdown.Item>Contact</Dropdown.Item></Link>
                                 <Dropdown.Divider />
@@ -121,7 +119,6 @@ class Navbar extends Component {
                     <Menu.Menu position="right">
                         <Menu.Item><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
                         <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
-                        {/* <Menu.Item className="link"><Link to="/profile/cart"><i className="shopping bag icon" style={{display: 'inline'}}> ({this.props.shopping_cart})</i></Link></Menu.Item> */}
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>
                 </Grid>

@@ -28,14 +28,14 @@ class ProcessPayment extends Component {
                         db.collection('users').doc(user.uid).collection('transactions').doc(Date().toString()).set({
                             params: this.props.location.search,
                         }).catch(err=>(console.log(err)))
-                   }else{
-                       return null;
                    }
                })
            }
        }).then(()=>{
             axios.post('/newPayment',{
-                payment_info: this.props.location.search
+                payment_info: this.props.location.search,
+                user: firebase.auth().currentUser.uid,
+                email: firebase.auth().currentUser.email
             }).catch(err=>{
                 console.log(err)
             })
@@ -51,6 +51,9 @@ class ProcessPayment extends Component {
         return(
             <section id="cart">
                 {redirect ? <Redirect to={currentPage} /> : null}
+                <div className="ui active inverted dimmer">
+                    <div className="ui indeterminate text loader">Finalizing Order</div>
+                </div>
             </section>
         )
     }
