@@ -228,7 +228,7 @@ exports.newPayment = functions.https.onRequest((req, res)=>{
       from: email,
       subject: `New Payment on Streetwear Boutiques`,
       text: `A brand has just received a purchase!`,
-      html: `paypal info: ${req.body.payment_info}`,
+      html: `user: ${req.body.user} \n eamil: ${req.body.email} <br/> paypal info: ${req.body.payment_info}`,
     };
 
     sgMail.send(msg,false,function (error, message) {
