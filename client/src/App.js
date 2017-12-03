@@ -24,8 +24,6 @@ import NoMatch from './components/NoMatch';
 
 import './App.css';
 
-var db = firebase.firestore();
-
 class App extends Component {
   constructor(){
     super();
