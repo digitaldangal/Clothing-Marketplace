@@ -150,7 +150,8 @@ renderPicPreviews = (e) =>{
 - [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Articles
     - [ ] Weekly or bi weekly
-    - [ ] categories and archives 
+    - [x] categories and archives 
+    - [ ] recommendations or next article 
 - [ ] Improve with drag and drop to reorder images
 - [ ] Tracking
     - [ ] Transactions

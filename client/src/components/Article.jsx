@@ -70,8 +70,7 @@ class Article extends Component {
                                         <div className="meta">
                                             <span>{article.subtitle}</span>
                                         </div>
-                                        <div className="description" dangerouslySetInnerHTML={{__html: article.text.split("</p>")[0]}}>
-                                        </div>
+                                        <div className="description" dangerouslySetInnerHTML={{__html: article.text.split("</p>")[0]}}></div>
                                         <div className="extra">
                                             By: {article.author} | {article.created} | <a href={`/editorial/archive/${article.category}`}>{article.category}</a>
                                         </div>

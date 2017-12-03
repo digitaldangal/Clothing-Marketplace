@@ -133,8 +133,7 @@ class ProductUpload extends Component {
                         }
                     },{ merge: true })
                     .catch(err=>console.log(err))
-                })
-                .then(()=>{
+                }).then(()=>{
                     count++;
                     this.setState({
                         uploadCount: count
@@ -146,8 +145,7 @@ class ProductUpload extends Component {
                     }else{
                         console.log("all files not uploaded")
                     }
-                })
-                .catch(err=>console.log(err))
+                }).catch(err=>console.log(err))
             }
         }
     }

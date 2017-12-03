@@ -82,10 +82,7 @@ class ReadArticle extends Component {
                         </div>
                     </div>
 
-                    <div className="article-text" dangerouslySetInnerHTML={{__html: articleData.text}}>
-                    </div>
-
-                    {/* Todo: Render previous, next articles or recommdations */}
+                    <div className="article-text" dangerouslySetInnerHTML={{__html: articleData.text}}></div>
                 </div>
             )
         }else{
