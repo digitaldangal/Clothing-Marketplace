@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Button, Confirm} from 'semantic-ui-react'
+import {Button} from 'semantic-ui-react'
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 

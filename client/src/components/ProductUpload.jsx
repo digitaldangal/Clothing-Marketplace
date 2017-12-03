@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {Form, Button, Select} from 'semantic-ui-react'; 
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -85,7 +84,7 @@ class ProductUpload extends Component {
         let mainImage = document.querySelector("#main_image").files[0];
         let downloadUrl = '';
         let count = 0;
-        let itemCount = eval(Number(this.state.xs) + Number(this.state.s) + Number(this.state.m) + Number(this.state.l) + Number(this.state.xl))
+        let itemCount = (Number(this.state.xs) + Number(this.state.s) + Number(this.state.m) + Number(this.state.l) + Number(this.state.xl))
     
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
@@ -246,7 +245,7 @@ class ProductUpload extends Component {
                             </div>
                         </div>
 
-                        {this.state.category == 'ACCESSORIES' ? (<div className="field">
+                        {this.state.category === 'ACCESSORIES' ? (<div className="field">
                             <div className="ui labeled input">
                                 <div className="ui label">
                                     One-Size
