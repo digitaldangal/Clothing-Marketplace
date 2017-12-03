@@ -19,6 +19,7 @@ class Clothing extends Component {
             active: false
         }
        this.productDetails = {}
+       this.brandDetails = {}
     }
 
 
@@ -42,6 +43,7 @@ class Clothing extends Component {
             }else{
                 res.forEach((res)=>{
                     brandUID = res.id;
+                    this.brandDetails = res.data();
                     return brandData = res.data();
                 })
                 db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
@@ -77,6 +79,7 @@ class Clothing extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let productToAdd = this.productDetails;
+        let brandDetails = this.brandDetails;
         let button = document.querySelector('#cart-button')
         button.setAttribute('disabled', 'true');
         this.setState({active: true})
@@ -87,26 +90,26 @@ class Clothing extends Component {
 
                     let data = {
                         shipping: 6.00,
-                        total: eval(Number(productToAdd.price) + 6),
+                        total: (Number(productToAdd.price) + 6),
                         cost: Number(productToAdd.price),
                         description: productToAdd.descritpion,
                         designer: productToAdd.designer,
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
-                        paypal_email: this.state.brandData.paypal_email,
-                        designer_id: this.state.brandData.id
+                        paypal_email: brandDetails.paypal_email,
+                        designer_id: brandDetails.id
                     }
 
                     db.collection('users').doc(user.uid).collection('transactions').doc(new Date().toString()).set({
                         shipping: 6.00,
-                        total: eval(Number(productToAdd.price) + 6),
+                        total: (Number(productToAdd.price) + 6),
                         cost: Number(productToAdd.price),
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
-                        paypal_email: this.state.brandData.paypal_email,
-                        designer_id: this.state.brandData.id
+                        paypal_email: brandDetails.paypal_email,
+                        designer_id: brandDetails.id
                     },{merge: true}).then(()=>{
                         axios.post('/pay',data,{
                             headers: {
