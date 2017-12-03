@@ -14,50 +14,51 @@ class Profile extends Component{
             currentUser: false,
             brandCreated: null,
             brandStatus: false,
-            profileUpdate: false
+            profileUpdate: false,
+            emailVerified: false
         }
     }
 
-    componentDidMount() {
-        firebase.auth().onAuthStateChanged(user=>{
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged((user)=>{
             if(user){
                 db.collection('users').doc(user.uid).get().then((res)=>{
                     this.setState({
                         currentUser: res.data(),
                         uid: user.uid,
                         redirect: false,
-                        currentPage: ''
+                        currentPage: '',
+                        emailVerified: user.emailVerified
+                    })
+                }).then(()=>{
+                    db.collection('brands').doc(user.uid).get().then((res)=>{
+                        if(res.exists && res.data().approved){
+                            this.setState({
+                                brandStatus: true,
+                                brandCreated: true
+                            })
+                        }else if(res.exists && res.data().approved === false){
+                            this.setState({
+                                brandCreated: true,
+                                brandStatus: false
+                            })
+                        }
                     })
                 })
                 .catch(err=>console.log(err))
-                
-                db.collection('brands').doc(user.uid).get().then((res)=>{
-                    if(res.exists && res.data().approved){
-                        this.setState({
-                            brandStatus: true,
-                            brandCreated: true
-                        })
-                    }else if(res.exists && res.data().approved === false){
-                        this.setState({
-                            brandCreated: true,
-                            brandStatus: false
-                        })
-                    }
-                })
-                
             }else{
                 this.setState({
                     redirect: true,
                     currentPage: '/account/login'
-                }) 
+                })
             }
         })
     }
 
     componentWillUpdate(nextProps, nextState) {
-        // console.log(nextProps, nextState)
-        if(nextProps.authState === true && nextState.uid !== false){
-            console.log("user logged in")
+        console.log(nextProps, nextState)
+        if(nextProps.authState === false && nextState.redirect === true){
+            console.log("redirect")
             return true;
         }else{
             return false;
@@ -103,7 +104,7 @@ class Profile extends Component{
                     <div className="page-contianer ui container">
                         <div className="register-form">
                             <h3 className="ui header ">Account Information</h3>
-                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified} success={this.state.profileUpdate}>
+                            <Form onSubmit={this.handleProfileUpdate} warning={this.state.emailVerified} success={this.state.profileUpdate}>
                                 <Message
                                 warning
                                 header='Could you check something!'
@@ -143,8 +144,8 @@ class Profile extends Component{
         }else{
             return(
                 <div className="profile-page">
+                    <h1 className="ui header title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                     <div className="profile-links">
-                        <h1 className="ui header title">{this.state.currentUser ? `Welcome, ${this.state.currentUser.first_name}` : `Welcome`}</h1>
                         <Menu text>
                             <Menu.Item><Link to="/profile/brand-signup">Register A Brand</Link></Menu.Item>
                         </Menu>
@@ -152,7 +153,7 @@ class Profile extends Component{
                     <div className="page-contianer ui container">
                         <div className="register-form">
                             <h3 className="ui header ">Account Information</h3>
-                            <Form onSubmit={this.handleProfileUpdate} warning={!firebase.auth().currentUser.emailVerified} success={this.state.profileUpdate}>
+                            <Form onSubmit={this.handleProfileUpdate} warning={this.state.emailVerified} success={this.state.profileUpdate}>
                                 <Message
                                 warning
                                 header='Could you check something!'
