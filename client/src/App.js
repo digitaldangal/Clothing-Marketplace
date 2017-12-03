@@ -15,6 +15,7 @@ import Clothing from './components/Clothing';
 import Article from './components/Article';
 import ReadArticle from './components/ReadArticle';
 import ArticleCategory from './components/ArticleCategory';
+import SearchQuery from './components/SearchQuery';
 import About from './components/About';
 import Contact from './components/Contact';
 // import Cart from './components/Cart';
@@ -23,6 +24,8 @@ import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
 
 import './App.css';
+
+var db = firebase.firestore();
 
 class App extends Component {
   constructor(){
@@ -114,6 +117,11 @@ class App extends Component {
 
   handleSearch=(search, kind)=>{
     console.log(search, kind)
+    if(search !== undefined){
+      db.collection('brands').where('approved', "==", true).where('name', "==", search).get().then((res)=>{
+        console.log(res)
+      })
+    }
   }
 
   render() {
@@ -140,7 +148,7 @@ class App extends Component {
                 <Route exact path="/editorial/" render={() => <Article authState={this.state.authState} /> } />
                 <Route exact path="/editorial/archive/:category" component={ArticleCategory} />
                 <Route exact path="/editorial/:id/:article" component={ReadArticle} />
-                {/* <Route exact path="/search/products/:product_type" component={ProductQuery} /> */}
+                <Route exact path="/search/products/:product_type" component={SearchQuery} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact-us" component={Contact} />
                 {/* <Route exact path="customer/terms-conditions" component={Terms} /> */}

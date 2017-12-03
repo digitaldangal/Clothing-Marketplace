@@ -246,3 +246,22 @@ exports.newPayment = functions.https.onRequest((req, res)=>{
     });
   })
 })
+
+/* // Update the search index every time a blog post is written.
+exports.onNoteCreated = admin.firestore().collection('brands').onSnapshot(event => {
+  const ALGOLIA_ID = functions.config().algolia.app_id;
+  const ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
+  
+  const ALGOLIA_INDEX_NAME = "brands";
+  const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);
+
+  // Get the brand document
+  const brand = event.data.data();
+
+  // Add an "objectID" field which Algolia requires
+  brand.objectID = event.params.postId;
+
+  // Write to the algolia index
+  const index = client.initIndex(ALGOLIA_INDEX_NAME);
+  return index.saveObject(brand);
+}); */

@@ -1,5 +1,8 @@
 *{
     font-family: 'Raleway', 'Roboto', sans-serif; 
+    text-rendering: optimizeLegibility; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
 }
 .App {
     text-align: center;
