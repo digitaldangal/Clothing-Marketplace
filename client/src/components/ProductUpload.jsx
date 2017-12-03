@@ -12,7 +12,8 @@ class ProductUpload extends Component {
     constructor(props){
         super(props);
         this.state = {
-            uploadCount: 0
+            uploadCount: 0,
+            category: false,
         }
     }
 
@@ -176,46 +177,96 @@ class ProductUpload extends Component {
         }
     }
 
+    chooseSubCategory=()=>{
+        switch (this.state.category) {
+            case "OUTERWEAR":
+                return(
+                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                        <option defaultValue value="">Select Category</option>
+                        <option value="OUTERWEAR">OUTERWEAR</option>
+                        <option value="TOPS">TOPS</option>
+                        <option value="BOTTOMS">BOTTOMS</option>
+                        <option value="ACCESSORIES">ACCESSORIES</option>
+                    </select>
+                )
+                break;
+            case "TOPS":
+                return(
+                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                        <option defaultValue value="">Select Category</option>
+                        <option value="OUTERWEAR">OUTERWEAR</option>
+                        <option value="TOPS">TOPS</option>
+                        <option value="BOTTOMS">BOTTOMS</option>
+                        <option value="ACCESSORIES">ACCESSORIES</option>
+                    </select>
+                )
+                break;
+            case "BOTTOMS":
+                return(
+                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                        <option defaultValue value="">Select Category</option>
+                        <option value="OUTERWEAR">OUTERWEAR</option>
+                        <option value="TOPS">TOPS</option>
+                        <option value="BOTTOMS">BOTTOMS</option>
+                        <option value="ACCESSORIES">ACCESSORIES</option>
+                    </select>
+                )
+                break;
+            case "ACCESSORIES":
+                return(
+                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                        <option defaultValue value="">Select Category</option>
+                        <option value="OUTERWEAR">OUTERWEAR</option>
+                        <option value="TOPS">TOPS</option>
+                        <option value="BOTTOMS">BOTTOMS</option>
+                        <option value="ACCESSORIES">ACCESSORIES</option>
+                    </select>
+                )
+                break;
+        
+            default:
+                break;
+        }
+    }
     render(){
+        const options = [
+            { key: 'm', text: 'Male', value: 'male' },
+            { key: 'f', text: 'Female', value: 'female' },
+          ];
         const {redirect, currentPage} = this.state;
         return(
             <section id="product-upload">
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="ui header title">Upload A New Product</h1>
-                <Form onSubmit={this.handleSubmit} className="ui form">\
-                <div className="three fields">
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Title
-                                </div>
-                                <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    $
-                                </div>
-                                <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Category
-                                </div>
-                                <select required="true" name="category" type="text" onChange={(e)=>this.handleChange(e)}>
-                                    <option disabled selected value> -- select -- </option>
-                                    <option value="OUTERWEAR">OUTERWEAR</option>
-                                    <option value="TOPS">TOPS</option>
-                                    <option value="BOTTOMS">BOTTOMS</option>
-                                    <option value="ACCESSORIES">ACCESSORIES</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
+                <Form required onSubmit={this.handleSubmit} className="ui form">
+                    <Form.Group widths="equal">
+                        <Form.Field>
+                            <label>Title</label>
+                            <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Listing Price in USD</label>
+                            <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Field>
+                            <label>Category</label>
+                            <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                                <option defaultValue value="">Select Category</option>
+                                <option value="OUTERWEAR">OUTERWEAR</option>
+                                <option value="TOPS">TOPS</option>
+                                <option value="BOTTOMS">BOTTOMS</option>
+                                <option value="ACCESSORIES">ACCESSORIES</option>
+                            </select>
+                        </Form.Field>
+                        <Form.Field required>
+                            <label>Sub Category</label>
+                            {this.state.category ? this.chooseSubCategory() : null}
+                        </Form.Field>
+                    </Form.Group>
+                    <Button primary>Create Product</Button>
+                </Form>
                     <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
                     <div className="five fields">
                         <div className="field">
@@ -270,8 +321,7 @@ class ProductUpload extends Component {
                             </ul>
                         </div>
                     </div>
-                    <Button primary>Create Product</Button>
-                </Form>
+                   
                 <form onSubmit={this.handleSubmit} className="ui form">
                     <div className="three fields">
                         <div className="field">
