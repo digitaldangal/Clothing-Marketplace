@@ -136,6 +136,7 @@ renderPicPreviews = (e) =>{
 </div>
 ```
 ### Future Improvements
+- [x] Report Products
 - [ ] Brand Image, Logo, or profile pic
 - [ ] Uses semantic ui / addons/confirm instead of alerts or prompts
 - [ ] Error Handling and Success handling

@@ -264,11 +264,11 @@ class Clothing extends Component {
                                     </Form>
                                     <Button secondary data-id={clothingData.id} data-title={clothingData.title} onClick={(e)=>this.handleWishlist(e,e.target.dataset)}><i className="like icon"></i> Wishlist</Button>
                                 </div>
+                                <a target="_blank" href={`mailto:kamidou95-sb@gmail.com?body=Reason%3A%0A%0AURL%3A%20${this.props.match.url}&Subject=Reporting An Item`}>Report This Item</a>
                                 <div className="more-images">
                                     <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
                                     {clothingData.hasOwnProperty("additonal_images") ? this.renderAdditonalImagesSmall(clothingData) : null}
                                 </div>
-                                <Button>Report This Item</Button>
                             </div>
                         </div>
                     </div>
