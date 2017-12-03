@@ -56,9 +56,7 @@ class Profile extends Component{
     }
 
     componentWillUpdate(nextProps, nextState) {
-        console.log(nextProps, nextState)
         if(nextProps.authState === false && nextState.redirect === true){
-            console.log("redirect")
             return true;
         }else{
             return false;
@@ -104,7 +102,7 @@ class Profile extends Component{
                     <div className="page-contianer ui container">
                         <div className="register-form">
                             <h3 className="ui header ">Account Information</h3>
-                            <Form onSubmit={this.handleProfileUpdate} warning={this.state.emailVerified} success={this.state.profileUpdate}>
+                            <Form onSubmit={this.handleProfileUpdate} warning={!this.state.emailVerified} success={this.state.profileUpdate}>
                                 <Message
                                 warning
                                 header='Could you check something!'
@@ -153,7 +151,7 @@ class Profile extends Component{
                     <div className="page-contianer ui container">
                         <div className="register-form">
                             <h3 className="ui header ">Account Information</h3>
-                            <Form onSubmit={this.handleProfileUpdate} warning={this.state.emailVerified} success={this.state.profileUpdate}>
+                            <Form onSubmit={this.handleProfileUpdate} warning={!this.state.emailVerified} success={this.state.profileUpdate}>
                                 <Message
                                 warning
                                 header='Could you check something!'

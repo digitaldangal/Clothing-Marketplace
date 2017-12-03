@@ -18,9 +18,12 @@ class Clothing extends Component {
             clothingDataLoaded: false,
             active: false
         }
+       this.productDetails = {}
     }
 
+
     componentWillMount() {
+        console.log(this.props)
         let brandID = Number(this.props.match.params.brand_id);
         let productTitle = this.props.match.params.product_title;
         let productID = Number(this.props.match.params.id);
@@ -50,6 +53,7 @@ class Clothing extends Component {
                         })
                     }else{
                         res.forEach((product)=>{
+                            this.productDetails = product.data();
                             return productData = product.data();
                         })
                         this.setState({clothingData: productData, clothingDataLoaded: true, loadPage: true})
@@ -61,6 +65,7 @@ class Clothing extends Component {
     }
 
     handleChange = (e) => {
+        console.log(this.productDetails)
         let name = e.target.name;
         let value = e.target.value;
 
@@ -71,7 +76,7 @@ class Clothing extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let productToAdd = this.state.clothingData;
+        let productToAdd = this.productDetails;
         let button = document.querySelector('#cart-button')
         button.setAttribute('disabled', 'true');
         this.setState({active: true})
@@ -260,6 +265,7 @@ class Clothing extends Component {
                                     <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
                                     {clothingData.hasOwnProperty("additonal_images") ? this.renderAdditonalImagesSmall(clothingData) : null}
                                 </div>
+                                <Button>Report This Item</Button>
                             </div>
                         </div>
                     </div>
