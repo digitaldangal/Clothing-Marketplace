@@ -185,10 +185,10 @@ class ProductUpload extends Component {
                         <option defaultValue value="">Select Category</option>
                         <option value="BOMBERS">Bombers</option>
                         <option value="DENIM_JACKETS">Denim Jackets</option>
-                        <option value="PARKAS">Parkas</option>
                         <option value="LIGHT_JACKETS">Light Jackets</option>
                         <option value="COATS">Coats</option>
                         <option value="PARKAS">Parkas</option>
+                        <option value="RAINCOATS">Raincoats</option>
                         <option value="LEATHER_JACKETS">Leather Jackets</option>
                     </select>
                 )
@@ -221,10 +221,15 @@ class ProductUpload extends Component {
                 return(
                     <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
                         <option defaultValue value="">Select Category</option>
-                        <option value="OUTERWEAR">OUTERWEAR</option>
-                        <option value="TOPS">TOPS</option>
-                        <option value="BOTTOMS">BOTTOMS</option>
-                        <option value="ACCESSORIES">ACCESSORIES</option>
+                        <option value="BAGS">Bags</option>
+                        <option value="BELTS">Belts</option>
+                        <option value="GLASSES">Sunglasses & Glasses</option>
+                        <option value="HATS">Hats</option>
+                        <option value="JEWELRY">Jewelry</option>
+                        <option value="WATCHES">Watches</option>
+                        <option value="SOCKS">Socks</option>
+                        <option value="UNDERWEAR">Underwear</option>
+                        <option value="MISC">Miscellaneous</option>
                     </select>
                 )
                 break;
