@@ -112,12 +112,16 @@ class App extends Component {
     })
   }
 
+  handleSearch=(search, kind)=>{
+    console.log(search, kind)
+  }
+
   render() {
     const {redirect, currentPage} = this.state
     return (
       <Router>
           <div className="App">
-            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/>
+            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)} handleSearch={(search, kind)=>this.handleSearch(search, kind)}/>
             <div className="app-body">
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}

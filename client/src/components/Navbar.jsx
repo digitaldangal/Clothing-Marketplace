@@ -72,6 +72,11 @@ class Navbar extends Component {
             </Dropdown>
         )
     }
+    handleSubmit=(e)=>{
+        e.preventDefault();
+        console.log("Search")
+        this.props.handleSearch(this.state.searchValue, this.state.searchType)
+    }
 
     handleChange=(e, data)=>{
         let searchValue = data.value;
@@ -137,12 +142,14 @@ class Navbar extends Component {
                     <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
                     <Menu.Menu position="right">
                         <Menu.Item>
+                            <form onSubmit={this.handleSubmit}>
                             <Input onChange={(e, data)=>this.handleChange(e, data)}
                                 action={<Dropdown button basic floating options={options} defaultValue='clothing' onChange={(e, data)=>this.handleSearchType(e, data)}/>}
                                 icon="search"
                                 iconPosition="left"
                                 placeholder="Search..."
                             />
+                            </form>
                         </Menu.Item>
                         <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
