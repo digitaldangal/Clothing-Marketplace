@@ -9,7 +9,8 @@ class Navbar extends Component {
         super(props);
         this.state = {
             signedIn: false,
-            user: undefined
+            user: undefined,
+            searchType: 'clothing'
         }
     }
     
@@ -72,6 +73,19 @@ class Navbar extends Component {
         )
     }
 
+    handleChange=(e, data)=>{
+        let searchValue = data.value;
+        this.setState({
+            searchValue: searchValue
+        })
+    }
+
+    handleSearchType=(e, data)=>{
+        let searchType = data.value;
+        this.setState({
+            searchType: searchType
+        })
+    }
     renderNav(){
         const style = {
             menuWidth: {
@@ -123,8 +137,8 @@ class Navbar extends Component {
                     <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
                     <Menu.Menu position="right">
                         <Menu.Item>
-                            <Input
-                                action={<Dropdown button basic floating options={options} defaultValue='clothing' />}
+                            <Input onChange={(e, data)=>this.handleChange(e, data)}
+                                action={<Dropdown button basic floating options={options} defaultValue='clothing' onChange={(e, data)=>this.handleSearchType(e, data)}/>}
                                 icon="search"
                                 iconPosition="left"
                                 placeholder="Search..."
