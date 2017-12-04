@@ -90,8 +90,8 @@ class Clothing extends Component {
                 if(productToAdd.inventory_total > 0){
 
                     let data = {
-                        shipping: 6.00,
-                        total: (Number(productToAdd.price) + 6),
+                        shipping: productToAdd.shipping_cost,
+                        total: (Number(productToAdd.price) + Number(productToAdd.shipping_cost)),
                         cost: Number(productToAdd.price),
                         description: productToAdd.descritpion,
                         designer: productToAdd.designer,
