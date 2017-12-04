@@ -205,7 +205,7 @@ class ProductUpload extends Component {
             })
         }else if(e.target.name === "category"){
             if((e.target.value !== this.state.category) && (this.state.category !== false)){
-                document.querySelector("select[name='sub_category']").value = "null"
+                document.querySelector("select[name='sub_category']").value = ""
                 this.setState({
                     [name]: value
                 })
