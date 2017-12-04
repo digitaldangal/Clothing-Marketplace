@@ -104,13 +104,41 @@ class ProductUpload extends Component {
             sold_out: false,
             amount_sold: 0,
             clothing_label: this.state.brandData,
-            inventory: {
+            inventory: this.state.category === ("OUTERWEAR" || "TOPS") ? {
+                xxs: this.state.xxs,
                 xs: this.state.xs,
                 s: this.state.s,
                 m: this.state.m,
                 l: this.state.l,
                 xl: this.state.xl,
-                os: this.state.os > 0 ? this.state.os :0,
+                xxl: this.state.xxl,
+            } : this.state.category === "BOTTOMS" ? {
+                us_26: this.state.us_26,
+                us_27: this.state.us_27,
+                us_28: this.state.us_28,
+                us_29: this.state.us_29,
+                us_30: this.state.us_30,
+                us_31: this.state.us_31,
+                us_32: this.state.us_32,
+                us_33: this.state.us_33,
+                us_34: this.state.us_34,
+                us_35: this.state.us_35,
+                us_36: this.state.us_36,
+                us_37: this.state.us_37,
+                us_38: this.state.us_38,
+                us_39: this.state.us_39,
+                us_40: this.state.us_40,
+                us_41: this.state.us_41,
+                us_42: this.state.us_42,
+                us_43: this.state.us_43,
+                us_44: this.state.us_44,
+            } : {
+                xs: this.state.xs,
+                s: this.state.s,
+                m: this.state.m,
+                l: this.state.l,
+                xl: this.state.xl,
+                os: this.state.os
             },
         },{ merge: true })
         .then((res)=>{
@@ -222,7 +250,7 @@ class ProductUpload extends Component {
                     </Form.Group>
                     <Form.Group widths="equal">
                         <Form.Field required>
-                            <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
+                            <label>Enter Amount Available for each size. If none enter Zero. One size is for accessories.</label>
                             <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
                         </Form.Field>
                     </Form.Group>
