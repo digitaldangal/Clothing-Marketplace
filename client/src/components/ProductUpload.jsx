@@ -16,7 +16,7 @@ class ProductUpload extends Component {
         this.state = {
             uploadCount: 0,
             category: false,
-            chooseSize: false,
+            sub_category: false
         }
     }
 
@@ -89,11 +89,10 @@ class ProductUpload extends Component {
         let mainImage = document.querySelector("#main_image").files[0];
         let downloadUrl = '';
         let count = 0;
-        let itemCount = (Number(this.state.xs) + Number(this.state.s) + Number(this.state.m) + Number(this.state.l) + Number(this.state.xl))
     
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
-            inventory_total: itemCount,
+            inventory_total: this.state.inventory_total,
             designer: this.state.brandData.name,
             price: this.state.price, 
             category: this.state.category,
@@ -204,6 +203,14 @@ class ProductUpload extends Component {
             this.setState({
                 title: filteredWord 
             })
+        }else if(e.target.name === "category" || "sub_category"){
+            if((e.target.value !== this.state.category) && (this.state.category !== false)){
+                console.log("change forms")
+            }else{
+                this.setState({
+                    [name]: value
+                })
+            }
         }else{
             this.setState({
                 [name]: value
@@ -212,16 +219,12 @@ class ProductUpload extends Component {
     }
 
     render(){
-        const options = [
-            { key: 'm', text: 'Male', value: 'male' },
-            { key: 'f', text: 'Female', value: 'female' },
-          ];
         const {redirect, currentPage} = this.state;
         return(
             <section id="product-upload">
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="ui header title">Upload A New Product</h1>
-                <Form required onSubmit={this.handleSubmit} className="ui form">
+                <Form required onSubmit={this.handleSubmit}>
                     <Form.Group widths="equal">
                         <Form.Field required>
                             <label>Title</label>
@@ -230,6 +233,10 @@ class ProductUpload extends Component {
                         <Form.Field required>
                             <label>Listing Price in USD</label>
                             <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                        <Form.Field required>
+                            <label>Available for Sale</label>
+                            <input required="true" name="inventory_total" type="number" placeholder="Amount Available for Sale" onChange={(e)=>this.handleChange(e)}/>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group widths="equal">
@@ -250,7 +257,7 @@ class ProductUpload extends Component {
                     </Form.Group>
                     <Form.Group widths="equal">
                         <Form.Field required>
-                            <label>Enter Amount Available for each size. If none enter Zero. One size is for accessories.</label>
+                            <label>Enter Amount Available for each size. If none enter Zero.</label>
                             <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
                         </Form.Field>
                     </Form.Group>
@@ -266,11 +273,7 @@ class ProductUpload extends Component {
                             <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
                             <label>Upload additonal images (recommmended)</label>
                             <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
-                            <div id="pic-preview">
-                                <ul>
-                                    
-                                </ul>
-                            </div>
+                            <div id="pic-preview"><ul></ul></div>
                         </Form.Field>
                     </Form.Group>
                     <Button primary>Create Product</Button>
