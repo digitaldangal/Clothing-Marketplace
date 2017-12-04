@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import {Button, Form} from 'semantic-ui-react';
 import ChooseSize from '../options/Sizes';
+import ChooseSubCategory from '../options/SubCategories';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -182,67 +183,6 @@ class ProductUpload extends Component {
         }
     }
 
-    chooseSubCategory=()=>{
-        switch (this.state.category) {
-            case "OUTERWEAR":
-                return(
-                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
-                        <option defaultValue value="">Select Category</option>
-                        <option value="BOMBERS">Bombers</option>
-                        <option value="DENIM_JACKETS">Denim Jackets</option>
-                        <option value="LIGHT_JACKETS">Light Jackets</option>
-                        <option value="COATS">Coats</option>
-                        <option value="PARKAS">Parkas</option>
-                        <option value="RAINCOATS">Raincoats</option>
-                        <option value="LEATHER_JACKETS">Leather Jackets</option>
-                    </select>
-                )
-                break;
-            case "TOPS":
-                return(
-                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
-                        <option defaultValue value="">Select Category</option>
-                        <option value="POLOS">Polos</option>
-                        <option value="SHORT_SLEEVES">Short Sleeve T-Shirts</option>
-                        <option value="LONG_SLEEVES">Long Sleeve T-Shirts</option>
-                        <option value="HOODIES">Hoodies & Sweatshirts</option>
-                        <option value="SWEATERS">Sweaters</option>
-                    </select>
-                )
-                break;
-            case "BOTTOMS":
-                return(
-                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
-                        <option defaultValue value="">Select Category</option>
-                        <option value="PANTS">Casual Pants</option>
-                        <option value="DENIM_JEANS">Jeans / Denim</option>
-                        <option value="SHORTS">Shorts</option>
-                        <option value="SWEATPANTS">Sweatpants</option>
-                        <option value="SWIMWEAR">Swimwear</option>
-                    </select>
-                )
-                break;
-            case "ACCESSORIES":
-                return(
-                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
-                        <option defaultValue value="">Select Category</option>
-                        <option value="BAGS">Bags</option>
-                        <option value="BELTS">Belts</option>
-                        <option value="GLASSES">Sunglasses & Glasses</option>
-                        <option value="HATS">Hats</option>
-                        <option value="JEWELRY">Jewelry</option>
-                        <option value="WATCHES">Watches</option>
-                        <option value="SOCKS">Socks</option>
-                        <option value="UNDERWEAR">Underwear</option>
-                        <option value="MISC">Miscellaneous</option>
-                    </select>
-                )
-                break;
-        
-            default:
-                break;
-        }
-    }
     render(){
         const options = [
             { key: 'm', text: 'Male', value: 'male' },
@@ -277,16 +217,12 @@ class ProductUpload extends Component {
                         </Form.Field>
                         <Form.Field required>
                             <label>Sub Category</label>
-                            {this.state.category ? this.chooseSubCategory() : (
-                                <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
-                                 <option defaultValue value="">Select Category</option>
-                                </select>
-                            )}
+                            <ChooseSubCategory category={this.state.category}  handleChange={(e)=>this.handleChange(e)}/>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group widths="equal">
                         <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
-                        <ChooseSize category={this.state.category}/>
+                        <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
                     </Form.Group>
                     <Button primary>Create Product</Button>
                 </Form>
