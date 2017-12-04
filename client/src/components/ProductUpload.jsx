@@ -95,6 +95,7 @@ class ProductUpload extends Component {
             inventory_total: this.state.inventory_total,
             designer: this.state.brandData.name,
             price: this.state.price, 
+            shipping_cost: this.state.shipping_cost,
             category: this.state.category,
             sub_category: this.state.sub_category,
             description: this.state.description,
@@ -236,6 +237,10 @@ class ProductUpload extends Component {
                         <Form.Field required>
                             <label>Listing Price in USD</label>
                             <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                        <Form.Field required>
+                            <label>Shipping Cost</label>
+                            <input required="true" name="shipping_cost" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
                         </Form.Field>
                         <Form.Field required>
                             <label>Available for Sale</label>
