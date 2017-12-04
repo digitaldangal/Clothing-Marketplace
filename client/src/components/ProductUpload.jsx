@@ -203,9 +203,12 @@ class ProductUpload extends Component {
             this.setState({
                 title: filteredWord 
             })
-        }else if(e.target.name === "category" || "sub_category"){
+        }else if(e.target.name === "category"){
             if((e.target.value !== this.state.category) && (this.state.category !== false)){
-                console.log("change forms")
+                document.querySelector("select[name='sub_category']").value = "null"
+                this.setState({
+                    [name]: value
+                })
             }else{
                 this.setState({
                     [name]: value
