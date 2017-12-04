@@ -86,6 +86,7 @@ class ProductUpload extends Component {
         e.preventDefault();
         var uploadedFiles = document.querySelector('#products_upload').files;
         let imageRef = storageRef.child(`${this.state.uid}/${this.state.title}`);
+        let productRef = db.collection('products');
         let mainImage = document.querySelector("#main_image").files[0];
         let downloadUrl = '';
         let count = 0;
@@ -104,7 +105,7 @@ class ProductUpload extends Component {
             sold_out: false,
             amount_sold: 0,
             clothing_label: this.state.brandData,
-            inventory: this.state.category === ("OUTERWEAR" || "TOPS") ? {
+            inventory: this.state.category === "OUTERWEAR" || "TOPS" ? {
                 xxs: this.state.xxs,
                 xs: this.state.xs,
                 s: this.state.s,
@@ -143,6 +144,17 @@ class ProductUpload extends Component {
         },{ merge: true })
         .then((res)=>{
             console.log(res)
+            productRef.add({
+                title: this.state.title,
+                designer: this.state.brandData.name,
+                price: this.state.price, 
+                category: this.state.category,
+                sub_category: this.state.sub_category,
+                description: this.state.description,
+                id: new Date().getTime(),
+                created_date: new Date().toString(),
+                clothing_label: this.state.brandData,
+            }).catch(err=>console.log(err))
             imageRef.child(mainImage.name).put(mainImage).then((res)=>{
                 console.log(res)
                 downloadUrl = res.downloadURL;

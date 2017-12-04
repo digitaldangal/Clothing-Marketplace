@@ -45,6 +45,7 @@ class About extends Component {
                                 <p className="text">
                                 <h1 className="ui header title" style={paraTitle}>Your Safety First</h1>
                                 In order to protect our users, and keep our community safe, each brand is approved first before they are allowed to sell clothing. We have a zero-tolerance policy for any fraudulent behavior. We are always monitoring the marketplace, and any fraudulent user will be banned from our services immediately. Please exercise good judgment when using the marketplace.
+                                {/* <Link to={} */}
                                 </p>
                             </div>
 

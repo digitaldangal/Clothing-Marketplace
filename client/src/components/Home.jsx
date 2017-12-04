@@ -80,6 +80,7 @@ class Home extends Component {
                             <h2 className="ui header brand-title">Featured Brand: <br/>{featuredBrand.name}</h2>
                         </div>
                     </Link>
+                    {/* <RecentUploads /> */}
                 </div>
             )
         }else{
