@@ -221,119 +221,32 @@ class ProductUpload extends Component {
                         </Form.Field>
                     </Form.Group>
                     <Form.Group widths="equal">
-                        <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
-                        <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
+                        <Form.Field required>
+                            <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
+                            <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
+                            <label>Product Description</label>
+                            <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
+                            <label>Upload Main Image for Product</label>
+                            <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
+                            <label>Upload additonal images (recommmended)</label>
+                            <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
+                            <div id="pic-preview">
+                                <ul>
+                                    
+                                </ul>
+                            </div>
+                        </Form.Field>
                     </Form.Group>
                     <Button primary>Create Product</Button>
                 </Form>
-
-                    <div className="field">
-                        <label>Product Description</label>
-                        <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
-                    </div>
-
-                    <div className="field">
-                        <label>Upload Main Image for Product</label>
-                        <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
-                        <label>Upload additonal images (recommmended)</label>
-                        <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
-                        <div id="pic-preview">
-                            <ul>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                   
-                <form onSubmit={this.handleSubmit} className="ui form">
-                    <div className="three fields">
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Title
-                                </div>
-                                <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    $
-                                </div>
-                                <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Category
-                                </div>
-                                <select required="true" name="category" type="text" onChange={(e)=>this.handleChange(e)}>
-                                    <option disabled selected value> -- select -- </option>
-                                    <option value="OUTERWEAR">OUTERWEAR</option>
-                                    <option value="TOPS">TOPS</option>
-                                    <option value="BOTTOMS">BOTTOMS</option>
-                                    <option value="ACCESSORIES">ACCESSORIES</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
-                    <div className="five fields">
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="xs" type="number" placeholder="XS" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="s" type="number" placeholder="S" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="m" type="number" placeholder="M" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui  input">
-                                <input required="true" name="l" type="number" placeholder="L" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="xl" type="number" placeholder="XL" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-
-                        {this.state.category === 'ACCESSORIES' ? (<div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    One-Size
-                                </div>
-                                <input required="true" name="os" type="number" placeholder="One Size" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>) : null}
-                    </div>
-
-                    <div className="field">
-                        <label>Product Description</label>
-                        <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
-                    </div>
-
-                    <div className="field">
-                        <label>Upload Main Image for Product</label>
-                        <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
-                        <label>Upload additonal images (recommmended)</label>
-                        <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
-                        <div id="pic-preview">
-                            <ul>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                    <Button primary>Create Product</Button>
-                </form>
             </section>
         )
     }
