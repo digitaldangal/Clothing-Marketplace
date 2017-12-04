@@ -1,0 +1,41 @@
+[debug] [2017-12-04T14:19:56.150Z] ----------------------------------------------------------------------
+[debug] [2017-12-04T14:19:56.155Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\watch\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only hosting,functions
+[debug] [2017-12-04T14:19:56.155Z] CLI Version:   3.15.3
+[debug] [2017-12-04T14:19:56.155Z] Platform:      win32
+[debug] [2017-12-04T14:19:56.155Z] Node Version:  v6.11.3
+[debug] [2017-12-04T14:19:56.156Z] Time:          Mon Dec 04 2017 09:19:56 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-04T14:19:56.156Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-04T14:19:56.177Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-04T14:19:56.178Z] > authorizing via signed-in user
+[debug] [2017-12-04T14:19:56.182Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/copped-9a558  
+ Mon Dec 04 2017 09:19:56 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-04T14:19:56.546Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-04T14:19:56.548Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/copped-9a558/tokens  
+ Mon Dec 04 2017 09:19:56 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-04T14:19:57.022Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\watch\Documents\GitHub\Clothing-Marketplace\client'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-12-04T14:19:57.841Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/copped-9a558  
+ Mon Dec 04 2017 09:19:57 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-04T14:19:57.841Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/copped-9a558/apiKeys  
+ Mon Dec 04 2017 09:19:57 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-04T14:19:57.842Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/copped-9a558  
+ Mon Dec 04 2017 09:19:57 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-04T14:19:58.112Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-04T14:19:58.165Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-04T14:19:58.167Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1094268024837/clients/_:getWebAppConfig  
+ Mon Dec 04 2017 09:19:58 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-04T14:19:58.189Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-04T14:19:58.563Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] +  functions: pay: http://localhost:5001/copped-9a558/us-central1/pay
+[info] +  functions: process: http://localhost:5001/copped-9a558/us-central1/process
+[info] +  functions: contactEmail: http://localhost:5001/copped-9a558/us-central1/contactEmail
+[info] +  functions: brandForm: http://localhost:5001/copped-9a558/us-central1/brandForm
+[info] +  functions: newPayment: http://localhost:5001/copped-9a558/us-central1/newPayment
+[info] Shutting down...

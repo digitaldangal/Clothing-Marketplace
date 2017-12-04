@@ -137,19 +137,21 @@ renderPicPreviews = (e) =>{
 ```
 ### Future Improvements
 - [x] Report Products
+- [ ] Recently Sold Feed
+- [ ] Meet the Team
 - [ ] Brand Image, Logo, or profile pic
-- [ ] Uses semantic ui / addons/confirm instead of alerts or prompts
 - [ ] Error Handling and Success handling
 - [ ] Product Share button
 - [ ] Compress Uploaded Images
-- [ ] Error Handling
 - [x] Sizing
 - [ ] Searching
 - [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Articles
+    - [ ] Instagram Feed for brands
     - [ ] Weekly or bi weekly
     - [x] categories and archives 
     - [ ] recommendations or next article 
+    - [ ] Outfits of the Week
 - [ ] Improve with drag and drop to reorder images
 - [ ] Tracking
     - [ ] Transactions
