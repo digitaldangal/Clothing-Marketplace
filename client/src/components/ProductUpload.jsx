@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {Button, Form, Image, Modal} from 'semantic-ui-react';
+import {Button, Form} from 'semantic-ui-react';
+import ChooseSize from '../options/Sizes';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -14,6 +15,7 @@ class ProductUpload extends Component {
         this.state = {
             uploadCount: 0,
             category: false,
+            chooseSize: false,
         }
     }
 
@@ -94,10 +96,13 @@ class ProductUpload extends Component {
             designer: this.state.brandData.name,
             price: this.state.price, 
             category: this.state.category,
+            sub_category: this.state.sub_category,
             description: this.state.description,
             id: new Date().getTime(),
+            created_date: new Date().toString(),
             sold_out: false,
             amount_sold: 0,
+            clothing_label: this.state.brandData,
             inventory: {
                 xs: this.state.xs,
                 s: this.state.s,
@@ -181,7 +186,7 @@ class ProductUpload extends Component {
         switch (this.state.category) {
             case "OUTERWEAR":
                 return(
-                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
                         <option defaultValue value="">Select Category</option>
                         <option value="BOMBERS">Bombers</option>
                         <option value="DENIM_JACKETS">Denim Jackets</option>
@@ -195,7 +200,7 @@ class ProductUpload extends Component {
                 break;
             case "TOPS":
                 return(
-                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
                         <option defaultValue value="">Select Category</option>
                         <option value="POLOS">Polos</option>
                         <option value="SHORT_SLEEVES">Short Sleeve T-Shirts</option>
@@ -207,7 +212,7 @@ class ProductUpload extends Component {
                 break;
             case "BOTTOMS":
                 return(
-                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
                         <option defaultValue value="">Select Category</option>
                         <option value="PANTS">Casual Pants</option>
                         <option value="DENIM_JEANS">Jeans / Denim</option>
@@ -219,7 +224,7 @@ class ProductUpload extends Component {
                 break;
             case "ACCESSORIES":
                 return(
-                    <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                    <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
                         <option defaultValue value="">Select Category</option>
                         <option value="BAGS">Bags</option>
                         <option value="BELTS">Belts</option>
@@ -250,17 +255,17 @@ class ProductUpload extends Component {
                 <h1 className="ui header title">Upload A New Product</h1>
                 <Form required onSubmit={this.handleSubmit} className="ui form">
                     <Form.Group widths="equal">
-                        <Form.Field>
+                        <Form.Field required>
                             <label>Title</label>
                             <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                             <label>Listing Price in USD</label>
                             <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
                         </Form.Field>
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Field>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
                             <label>Category</label>
                             <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
                                 <option defaultValue value="">Select Category</option>
@@ -272,48 +277,19 @@ class ProductUpload extends Component {
                         </Form.Field>
                         <Form.Field required>
                             <label>Sub Category</label>
-                            {this.state.category ? this.chooseSubCategory() : null}
+                            {this.state.category ? this.chooseSubCategory() : (
+                                <select required name="sub_category" type="text" onChange={(e)=>this.handleChange(e)}>
+                                 <option defaultValue value="">Select Category</option>
+                                </select>
+                            )}
                         </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                        <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
+                        <ChooseSize category={this.state.category}/>
                     </Form.Group>
                     <Button primary>Create Product</Button>
                 </Form>
-                    <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
-                    <div className="five fields">
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="xs" type="number" placeholder="XS" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="s" type="number" placeholder="S" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="m" type="number" placeholder="M" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui  input">
-                                <input required="true" name="l" type="number" placeholder="L" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="xl" type="number" placeholder="XL" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-
-                        {this.state.category === 'ACCESSORIES' ? (<div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    One-Size
-                                </div>
-                                <input required="true" name="os" type="number" placeholder="One Size" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>) : null}
-                    </div>
 
                     <div className="field">
                         <label>Product Description</label>
@@ -428,73 +404,3 @@ class ProductUpload extends Component {
 }
 
 export default ProductUpload;
-
-/* 
-
-{
-"data":{
-"id":3218863,
-"title":"Maison Margiela Printed T-shirt Size: S %100 Authentic",
-"created_at":"2017-09-13T18:12:25.396Z",
-"price":28,
-"fee":"3.21",
-"description":"I AM SELLING CHEAP! %100 AUTHENTIC\nPit to pit: 46 centimeter ( 1,50 feet)\nMaison Margiela Printed Short Sleeve T-shirt Size: Small\nCotton 100%\nNew without Tags!\n%100 Authentic\nDo not include washing label!",
-"size":"s",
-"category":"tops",
-"subcategory":"Short Sleeve T-Shirts",
-"photos":[
-    {
-        "id":22524849,
-        "url":"https://cdn.fs.grailed.com/api/file/AUPtF13YQXi6ZWMsIvzK",
-        "width":495,
-        "height":880,
-        "image_api":"filepicker",
-        "rotate":0
-    },
-    {
-        "id":22524850,
-        "url":"https://cdn.fs.grailed.com/api/file/tfeHBYnRZaMV5k1D2bMQ",
-        "width":1100,
-        "height":1956,
-        "image_api":"filepicker",
-        "rotate":0
-    },
-    {
-        "id":22524851,
-        "url":"https://cdn.fs.grailed.com/api/file/HxiCQrKBSwSPJmL5esFN",
-        "width":1100,
-        "height":1956,
-        "image_api":"filepicker",
-        "rotate":0
-    }
-],
-"designer":{
-    "id":2308,
-    "name":"Maison Margiela",
-    "slug":"maison-margiela"
-},
-"seller":{
-    "id":824674,
-    "username":"regnarlodbrok",
-    "avatar_url":null,
-    "height":null,
-    "weight":null,
-    "location":"Europe",
-    "location_abbreviation":"eu",
-    "aggregate_feedback_count":1,
-    "buyer_score":{
-        "purchase_count":0,
-        "would_sell_to_again_count":0
-    },
-    "seller_score":{
-        "sold_count":1,
-        "would_buy_from_again_count":1,
-        "item_as_described_average":5,
-        "fast_shipping_average":5,
-        "communication_average":5,
-        "seller_feedback_count":1
-    },
-    "listings_for_sale_count":3,
-}
-
-*/
