@@ -18,7 +18,7 @@ import ArticleCategory from './components/ArticleCategory';
 import SearchQuery from './components/SearchQuery';
 import About from './components/About';
 import Contact from './components/Contact';
-// import Cart from './components/Cart';
+import Terms from './components/Terms';
 import ProcessPayment from './components/ProcessPayment';
 import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
@@ -151,7 +151,7 @@ class App extends Component {
                 <Route exact path="/search/products/:product_type" component={SearchQuery} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact-us" component={Contact} />
-                {/* <Route exact path="customer/terms-conditions" component={Terms} /> */}
+                <Route exact path="customer/terms-conditions" component={Terms} />
                 <Route component={NoMatch} />
               </Switch>
             </div>

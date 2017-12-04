@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const About = (props)=> {
+const Terms = (props)=> {
     const paraTitle = {
         marginBottom: '1em',
         textAlign: 'center',
@@ -49,5 +49,4 @@ const About = (props)=> {
     )
 }
 
-
-export default About;
+export default Terms;
