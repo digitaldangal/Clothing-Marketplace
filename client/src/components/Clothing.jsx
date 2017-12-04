@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SizeChoose from '../options/SizeChoose';
 import {Link, Redirect} from 'react-router-dom';
 import {Button, Form, Image, Modal} from 'semantic-ui-react';
 
@@ -142,35 +143,6 @@ class Clothing extends Component {
 
        bigImage.src = (image);
     }
-    renderSizes(){
-        return(
-            <select required name="size" onChange={(e)=>this.handleChange(e)}>
-            <option value="">SELECT</option>
-            {this.state.clothingData.inventory.xs > 0 ? <option value="xs">XS</option> : <option disabled>XS</option>}
-            {this.state.clothingData.inventory.s > 0 ? <option value="s">S</option> : <option disabled>S</option>}
-            {this.state.clothingData.inventory.m > 0 ? <option value="m">M</option> : <option disabled>M</option>}
-            {this.state.clothingData.inventory.l > 0 ? <option value="l">L</option> : <option disabled>L</option>}
-            {this.state.clothingData.inventory.xl > 0 ? <option value="xl">XL</option> : <option disabled>XL</option>}
-        </select>
-        )
-    }
-
-    renderOneSize(){
-        return(
-            <select required name="size"  onChange={(e)=>this.handleChange(e)}>
-            <option value="">SELECT</option>
-            <option value="os">One Size</option>
-        </select>
-        )
-    }
-    renderShoeSize(){
-        return(
-            <select required name="size"  onChange={(e)=>this.handleChange(e)}>
-            <option value="">SELECT</option>
-            <option value="">XS</option>
-        </select>
-        )
-    }
 
     handleWishlist = (e, data) =>{
         let productId = data.id;
@@ -258,7 +230,7 @@ class Clothing extends Component {
                                     <Form required onSubmit={this.handleSubmit}>
                                         <div id="error"></div>
                                         <Form.Group required>
-                                            {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
+                                            <SizeChoose productDetails={this.productDetails} />
                                         </Form.Group>
                                         <Button secondary id="cart-button" disabled={clothingData.inventory_total <= 0 ? true : false}>{clothingData.inventory_total <= 0 ? "Sold out" : "Checkout with Paypal"}</Button>
                                     </Form>
