@@ -226,6 +226,7 @@ class Clothing extends Component {
                                 <h3 className="ui header">{clothingData.title}</h3>
                                 <h3 className="ui header">${clothingData.price}</h3>
                                 <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
+                                <p>{clothingData.category} - {clothingData.sub_category}</p>
                                 <div className="add-to-bag">
                                     <Form required onSubmit={this.handleSubmit}>
                                         <div id="error"></div>
