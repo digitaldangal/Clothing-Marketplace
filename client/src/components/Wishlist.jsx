@@ -48,7 +48,6 @@ class Wishlist extends Component {
     handleAddToWishlist = (e, data) =>{
         let productId = data.id;
         let productTitle = data.title;
-        let productToAdd = this.state.productData[productTitle]
         let likedItem = e.target;
 
         firebase.auth().onAuthStateChanged((user)=>{

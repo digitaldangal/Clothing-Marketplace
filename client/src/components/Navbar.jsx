@@ -9,7 +9,8 @@ class Navbar extends Component {
         super(props);
         this.state = {
             signedIn: false,
-            user: undefined
+            user: undefined,
+            searchType: 'clothing'
         }
     }
     
@@ -17,7 +18,6 @@ class Navbar extends Component {
         firebase.auth().onAuthStateChanged(user=>{
             let userInfo = {};
             if(user){
-                let userCartRef = db.collection('users').doc(user.uid).collection('cart');
                 this.setState({signedIn: true})
                 db.collection('brands').doc(user.uid).get().then((res)=>{
                     if(res.exists && res.data().approved){
@@ -72,7 +72,24 @@ class Navbar extends Component {
             </Dropdown>
         )
     }
+    handleSubmit=(e)=>{
+        e.preventDefault();
+        this.props.handleSearch(this.state.searchValue, this.state.searchType)
+    }
 
+    handleChange=(e, data)=>{
+        let searchValue = data.value;
+        this.setState({
+            searchValue: searchValue
+        })
+    }
+
+    handleSearchType=(e, data)=>{
+        let searchType = data.value;
+        this.setState({
+            searchType: searchType
+        })
+    }
     renderNav(){
         const style = {
             menuWidth: {
@@ -84,6 +101,12 @@ class Navbar extends Component {
                 fontWeight: '300'
             }
         }
+
+        const options = [
+            { key: 'clothing', text: 'Clothing', value: 'clothing' },
+            { key: 'brands', text: 'Brands', value: 'brands' },
+        ]
+
         return(
             <Menu secondary stackable>
                 <Grid className="tablet mobile only container">
@@ -107,7 +130,7 @@ class Navbar extends Component {
                             </Dropdown.Menu>
                         </Dropdown>
 
-                        <Menu.Item className="link"><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
+                        {/* <Menu.Item className="link"><Input icon='search' placeholder='Search...' type="text"/></Menu.Item> */}
                     </Menu>
                 </Grid>
                 
@@ -117,7 +140,16 @@ class Navbar extends Component {
                     <Menu.Item className="link"><Link to="/editorial">Articles</Link></Menu.Item>
                     <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
                     <Menu.Menu position="right">
-                        <Menu.Item><Input icon='search' placeholder='Search...' type="text"/></Menu.Item>
+                        {/* <Menu.Item>
+                            <form onSubmit={this.handleSubmit}>
+                            <Input onChange={(e, data)=>this.handleChange(e, data)}
+                                action={<Dropdown button basic floating options={options} defaultValue='clothing' onChange={(e, data)=>this.handleSearchType(e, data)}/>}
+                                icon="search"
+                                iconPosition="left"
+                                placeholder="Search..."
+                            />
+                            </form>
+                        </Menu.Item> */}
                         <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>

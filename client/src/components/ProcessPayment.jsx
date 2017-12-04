@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link, Redirect} from 'react-router-dom';
-import {Button} from 'semantic-ui-react';
+import {Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 

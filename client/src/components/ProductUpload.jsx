@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {Form, Button, Select} from 'semantic-ui-react'; 
+import {Button, Form} from 'semantic-ui-react';
+import ChooseSize from '../options/Sizes';
+import ChooseSubCategory from '../options/SubCategories';
 import firebase from '../config/firebase';
 
 // Initialize Cloud Firestore through firebase
@@ -12,7 +14,9 @@ class ProductUpload extends Component {
     constructor(props){
         super(props);
         this.state = {
-            uploadCount: 0
+            uploadCount: 0,
+            category: false,
+            sub_category: false
         }
     }
 
@@ -85,25 +89,55 @@ class ProductUpload extends Component {
         let mainImage = document.querySelector("#main_image").files[0];
         let downloadUrl = '';
         let count = 0;
-        let itemCount = eval(Number(this.state.xs) + Number(this.state.s) + Number(this.state.m) + Number(this.state.l) + Number(this.state.xl))
     
         db.collection("brands").doc(this.state.uid).collection("products").doc(this.state.title).set({
             title: this.state.title,
-            inventory_total: itemCount,
+            inventory_total: this.state.inventory_total,
             designer: this.state.brandData.name,
             price: this.state.price, 
             category: this.state.category,
+            sub_category: this.state.sub_category,
             description: this.state.description,
             id: new Date().getTime(),
+            created_date: new Date().toString(),
             sold_out: false,
             amount_sold: 0,
-            inventory: {
+            clothing_label: this.state.brandData,
+            inventory: this.state.category === ("OUTERWEAR" || "TOPS") ? {
+                xxs: this.state.xxs,
                 xs: this.state.xs,
                 s: this.state.s,
                 m: this.state.m,
                 l: this.state.l,
                 xl: this.state.xl,
-                os: this.state.os > 0 ? this.state.os :0,
+                xxl: this.state.xxl,
+            } : this.state.category === "BOTTOMS" ? {
+                us_26: this.state.us_26,
+                us_27: this.state.us_27,
+                us_28: this.state.us_28,
+                us_29: this.state.us_29,
+                us_30: this.state.us_30,
+                us_31: this.state.us_31,
+                us_32: this.state.us_32,
+                us_33: this.state.us_33,
+                us_34: this.state.us_34,
+                us_35: this.state.us_35,
+                us_36: this.state.us_36,
+                us_37: this.state.us_37,
+                us_38: this.state.us_38,
+                us_39: this.state.us_39,
+                us_40: this.state.us_40,
+                us_41: this.state.us_41,
+                us_42: this.state.us_42,
+                us_43: this.state.us_43,
+                us_44: this.state.us_44,
+            } : {
+                xs: this.state.xs,
+                s: this.state.s,
+                m: this.state.m,
+                l: this.state.l,
+                xl: this.state.xl,
+                os: this.state.os
             },
         },{ merge: true })
         .then((res)=>{
@@ -134,8 +168,7 @@ class ProductUpload extends Component {
                         }
                     },{ merge: true })
                     .catch(err=>console.log(err))
-                })
-                .then(()=>{
+                }).then(()=>{
                     count++;
                     this.setState({
                         uploadCount: count
@@ -147,8 +180,7 @@ class ProductUpload extends Component {
                     }else{
                         console.log("all files not uploaded")
                     }
-                })
-                .catch(err=>console.log(err))
+                }).catch(err=>console.log(err))
             }
         }
     }
@@ -171,6 +203,17 @@ class ProductUpload extends Component {
             this.setState({
                 title: filteredWord 
             })
+        }else if(e.target.name === "category"){
+            if((e.target.value !== this.state.category) && (this.state.category !== false)){
+                document.querySelector("select[name='sub_category']").value = ""
+                this.setState({
+                    [name]: value
+                })
+            }else{
+                this.setState({
+                    [name]: value
+                })
+            }
         }else{
             this.setState({
                 [name]: value
@@ -184,169 +227,63 @@ class ProductUpload extends Component {
             <section id="product-upload">
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="ui header title">Upload A New Product</h1>
-                <form onSubmit={this.handleSubmit} className="ui form">
-                    <div className="three fields">
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Title
-                                </div>
-                                <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    $
-                                </div>
-                                <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    Category
-                                </div>
-                                <select required="true" name="category" type="text" onChange={(e)=>this.handleChange(e)}>
-                                    <option disabled selected value> -- select -- </option>
-                                    <option value="OUTERWEAR">OUTERWEAR</option>
-                                    <option value="TOPS">TOPS</option>
-                                    <option value="BOTTOMS">BOTTOMS</option>
-                                    <option value="ACCESSORIES">ACCESSORIES</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <label>Enter Amount Available for each size. If none enter 0. One size is for accessories.</label>
-                    <div className="five fields">
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="xs" type="number" placeholder="XS" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="s" type="number" placeholder="S" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="m" type="number" placeholder="M" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui  input">
-                                <input required="true" name="l" type="number" placeholder="L" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <div className="ui input">
-                                <input required="true" name="xl" type="number" placeholder="XL" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>
-
-                        {this.state.category == 'ACCESSORIES' ? (<div className="field">
-                            <div className="ui labeled input">
-                                <div className="ui label">
-                                    One-Size
-                                </div>
-                                <input required="true" name="os" type="number" placeholder="One Size" onChange={(e)=>this.handleChange(e)}/>
-                            </div>
-                        </div>) : null}
-                    </div>
-
-                    <div className="field">
-                        <label>Product Description</label>
-                        <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
-                    </div>
-
-                    <div className="field">
-                        <label>Upload Main Image for Product</label>
-                        <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
-                        <label>Upload additonal images (recommmended)</label>
-                        <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
-                        <div id="pic-preview">
-                            <ul>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                    <button className="ui primary button" type="submit">Create Product</button>
-                </form>
+                <Form required onSubmit={this.handleSubmit}>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
+                            <label>Title</label>
+                            <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                        <Form.Field required>
+                            <label>Listing Price in USD</label>
+                            <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                        <Form.Field required>
+                            <label>Available for Sale</label>
+                            <input required="true" name="inventory_total" type="number" placeholder="Amount Available for Sale" onChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
+                            <label>Category</label>
+                            <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                                <option defaultValue value="">Select Category</option>
+                                <option value="OUTERWEAR">OUTERWEAR</option>
+                                <option value="TOPS">TOPS</option>
+                                <option value="BOTTOMS">BOTTOMS</option>
+                                <option value="ACCESSORIES">ACCESSORIES</option>
+                            </select>
+                        </Form.Field>
+                        <Form.Field required>
+                            <label>Sub Category</label>
+                            <ChooseSubCategory category={this.state.category}  handleChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
+                            <label>Enter Amount Available for each size. If none enter Zero.</label>
+                            <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
+                            <label>Product Description</label>
+                            <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Group widths="equal">
+                        <Form.Field required>
+                            <label>Upload Main Image for Product</label>
+                            <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
+                            <label>Upload additonal images (recommmended)</label>
+                            <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
+                            <div id="pic-preview"><ul></ul></div>
+                        </Form.Field>
+                    </Form.Group>
+                    <Button primary>Create Product</Button>
+                </Form>
             </section>
         )
     }
 }
 
 export default ProductUpload;
-
-/* 
-
-{
-"data":{
-"id":3218863,
-"title":"Maison Margiela Printed T-shirt Size: S %100 Authentic",
-"created_at":"2017-09-13T18:12:25.396Z",
-"price":28,
-"fee":"3.21",
-"description":"I AM SELLING CHEAP! %100 AUTHENTIC\nPit to pit: 46 centimeter ( 1,50 feet)\nMaison Margiela Printed Short Sleeve T-shirt Size: Small\nCotton 100%\nNew without Tags!\n%100 Authentic\nDo not include washing label!",
-"size":"s",
-"category":"tops",
-"subcategory":"Short Sleeve T-Shirts",
-"photos":[
-    {
-        "id":22524849,
-        "url":"https://cdn.fs.grailed.com/api/file/AUPtF13YQXi6ZWMsIvzK",
-        "width":495,
-        "height":880,
-        "image_api":"filepicker",
-        "rotate":0
-    },
-    {
-        "id":22524850,
-        "url":"https://cdn.fs.grailed.com/api/file/tfeHBYnRZaMV5k1D2bMQ",
-        "width":1100,
-        "height":1956,
-        "image_api":"filepicker",
-        "rotate":0
-    },
-    {
-        "id":22524851,
-        "url":"https://cdn.fs.grailed.com/api/file/HxiCQrKBSwSPJmL5esFN",
-        "width":1100,
-        "height":1956,
-        "image_api":"filepicker",
-        "rotate":0
-    }
-],
-"designer":{
-    "id":2308,
-    "name":"Maison Margiela",
-    "slug":"maison-margiela"
-},
-"seller":{
-    "id":824674,
-    "username":"regnarlodbrok",
-    "avatar_url":null,
-    "height":null,
-    "weight":null,
-    "location":"Europe",
-    "location_abbreviation":"eu",
-    "aggregate_feedback_count":1,
-    "buyer_score":{
-        "purchase_count":0,
-        "would_sell_to_again_count":0
-    },
-    "seller_score":{
-        "sold_count":1,
-        "would_buy_from_again_count":1,
-        "item_as_described_average":5,
-        "fast_shipping_average":5,
-        "communication_average":5,
-        "seller_feedback_count":1
-    },
-    "listings_for_sale_count":3,
-}
-
-*/

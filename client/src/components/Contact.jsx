@@ -20,7 +20,7 @@ class Contact extends Component {
                 uid = user.uid;
                 this.setState({uid: uid})
             }else{
-                null;
+                return null;
             }
         })
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SizeChoose from '../options/SizeChoose';
 import {Link, Redirect} from 'react-router-dom';
 import {Button, Form, Image, Modal} from 'semantic-ui-react';
 
@@ -18,9 +19,13 @@ class Clothing extends Component {
             clothingDataLoaded: false,
             active: false
         }
+       this.productDetails = {}
+       this.brandDetails = {}
     }
 
+
     componentWillMount() {
+        console.log(this.props)
         let brandID = Number(this.props.match.params.brand_id);
         let productTitle = this.props.match.params.product_title;
         let productID = Number(this.props.match.params.id);
@@ -39,6 +44,7 @@ class Clothing extends Component {
             }else{
                 res.forEach((res)=>{
                     brandUID = res.id;
+                    this.brandDetails = res.data();
                     return brandData = res.data();
                 })
                 db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
@@ -50,6 +56,7 @@ class Clothing extends Component {
                         })
                     }else{
                         res.forEach((product)=>{
+                            this.productDetails = product.data();
                             return productData = product.data();
                         })
                         this.setState({clothingData: productData, clothingDataLoaded: true, loadPage: true})
@@ -61,6 +68,7 @@ class Clothing extends Component {
     }
 
     handleChange = (e) => {
+        console.log(this.productDetails)
         let name = e.target.name;
         let value = e.target.value;
 
@@ -71,7 +79,8 @@ class Clothing extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let productToAdd = this.state.clothingData;
+        let productToAdd = this.productDetails;
+        let brandDetails = this.brandDetails;
         let button = document.querySelector('#cart-button')
         button.setAttribute('disabled', 'true');
         this.setState({active: true})
@@ -82,26 +91,26 @@ class Clothing extends Component {
 
                     let data = {
                         shipping: 6.00,
-                        total: eval(Number(productToAdd.price) + 6),
+                        total: (Number(productToAdd.price) + 6),
                         cost: Number(productToAdd.price),
                         description: productToAdd.descritpion,
                         designer: productToAdd.designer,
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
-                        paypal_email: this.state.brandData.paypal_email,
-                        designer_id: this.state.brandData.id
+                        paypal_email: brandDetails.paypal_email,
+                        designer_id: brandDetails.id
                     }
 
                     db.collection('users').doc(user.uid).collection('transactions').doc(new Date().toString()).set({
                         shipping: 6.00,
-                        total: eval(Number(productToAdd.price) + 6),
+                        total: (Number(productToAdd.price) + 6),
                         cost: Number(productToAdd.price),
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
-                        paypal_email: this.state.brandData.paypal_email,
-                        designer_id: this.state.brandData.id
+                        paypal_email: brandDetails.paypal_email,
+                        designer_id: brandDetails.id
                     },{merge: true}).then(()=>{
                         axios.post('/pay',data,{
                             headers: {
@@ -133,35 +142,6 @@ class Clothing extends Component {
        let bigImage = document.querySelector('div.imgHolder img');
 
        bigImage.src = (image);
-    }
-    renderSizes(){
-        return(
-            <select required name="size" onChange={(e)=>this.handleChange(e)}>
-            <option value="">SELECT</option>
-            {this.state.clothingData.inventory.xs > 0 ? <option value="xs">XS</option> : <option disabled>XS</option>}
-            {this.state.clothingData.inventory.s > 0 ? <option value="s">S</option> : <option disabled>S</option>}
-            {this.state.clothingData.inventory.m > 0 ? <option value="m">M</option> : <option disabled>M</option>}
-            {this.state.clothingData.inventory.l > 0 ? <option value="l">L</option> : <option disabled>L</option>}
-            {this.state.clothingData.inventory.xl > 0 ? <option value="xl">XL</option> : <option disabled>XL</option>}
-        </select>
-        )
-    }
-
-    renderOneSize(){
-        return(
-            <select required name="size"  onChange={(e)=>this.handleChange(e)}>
-            <option value="">SELECT</option>
-            <option value="os">One Size</option>
-        </select>
-        )
-    }
-    renderShoeSize(){
-        return(
-            <select required name="size"  onChange={(e)=>this.handleChange(e)}>
-            <option value="">SELECT</option>
-            <option value="">XS</option>
-        </select>
-        )
     }
 
     handleWishlist = (e, data) =>{
@@ -246,16 +226,18 @@ class Clothing extends Component {
                                 <h3 className="ui header">{clothingData.title}</h3>
                                 <h3 className="ui header">${clothingData.price}</h3>
                                 <p className="text"><span id="details">Details: </span>{clothingData.description}</p>
+                                <p>{clothingData.category} - {clothingData.sub_category}</p>
                                 <div className="add-to-bag">
                                     <Form required onSubmit={this.handleSubmit}>
                                         <div id="error"></div>
                                         <Form.Group required>
-                                            {clothingData.category === 'FOOTWEAR' ? this.renderShoeSize() : clothingData.category === 'ACCESSORIES' ? this.renderOneSize() : this.renderSizes()}
+                                            {this.state.loadPage ? <SizeChoose productDetails={this.state.clothingData} handleChange={(e)=>this.handleChange(e)}/> : null}
                                         </Form.Group>
                                         <Button secondary id="cart-button" disabled={clothingData.inventory_total <= 0 ? true : false}>{clothingData.inventory_total <= 0 ? "Sold out" : "Checkout with Paypal"}</Button>
                                     </Form>
                                     <Button secondary data-id={clothingData.id} data-title={clothingData.title} onClick={(e)=>this.handleWishlist(e,e.target.dataset)}><i className="like icon"></i> Wishlist</Button>
                                 </div>
+                                <a target="_blank" href={`mailto:kamidou95-sb@gmail.com?body=Reason%3A%0A%0AURL%3A%20${this.props.match.url}&Subject=Reporting An Item`}>Report This Item</a>
                                 <div className="more-images">
                                     <div className="img" key={clothingData.id} style={{backgroundImage: `url('${clothingData.main_image}')`}} data-img={clothingData.main_image} onClick={(e)=>this.handleImageChange(e.target.dataset.img)}></div> 
                                     {clothingData.hasOwnProperty("additonal_images") ? this.renderAdditonalImagesSmall(clothingData) : null}

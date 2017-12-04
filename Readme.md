@@ -136,6 +136,7 @@ renderPicPreviews = (e) =>{
 </div>
 ```
 ### Future Improvements
+- [x] Report Products
 - [ ] Brand Image, Logo, or profile pic
 - [ ] Uses semantic ui / addons/confirm instead of alerts or prompts
 - [ ] Error Handling and Success handling
@@ -149,7 +150,8 @@ renderPicPreviews = (e) =>{
 - [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Articles
     - [ ] Weekly or bi weekly
-    - [ ] categories and archives 
+    - [x] categories and archives 
+    - [ ] recommendations or next article 
 - [ ] Improve with drag and drop to reorder images
 - [ ] Tracking
     - [ ] Transactions
