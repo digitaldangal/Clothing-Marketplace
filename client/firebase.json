@@ -31,7 +31,7 @@
         "function": "newPayment"
       },
       {
-        "source": "/*/*",
+        "source": "**",
         "destination": "/index.html"
       }
     ]
