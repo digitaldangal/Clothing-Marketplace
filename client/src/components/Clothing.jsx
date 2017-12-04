@@ -230,7 +230,7 @@ class Clothing extends Component {
                                     <Form required onSubmit={this.handleSubmit}>
                                         <div id="error"></div>
                                         <Form.Group required>
-                                            <SizeChoose productDetails={this.productDetails} />
+                                            {this.state.loadPage ? <SizeChoose productDetails={this.state.clothingData} handleChange={(e)=>this.handleChange(e)}/> : null}
                                         </Form.Group>
                                         <Button secondary id="cart-button" disabled={clothingData.inventory_total <= 0 ? true : false}>{clothingData.inventory_total <= 0 ? "Sold out" : "Checkout with Paypal"}</Button>
                                     </Form>

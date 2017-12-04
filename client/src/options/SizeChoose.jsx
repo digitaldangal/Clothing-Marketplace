@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
 
 const SizeChoose=(props)=>{
-    switch (props.productDetails.category) {
-        case value:
-        return(
-            <select required name="size" onChange={(e)=>this.handleChange(e)}>
-            <option value="">SELECT</option>
-            {this.state.clothingData.inventory.xs > 0 ? <option value="xs">XS</option> : <option disabled>XS</option>}
-            {this.state.clothingData.inventory.s > 0 ? <option value="s">S</option> : <option disabled>S</option>}
-            {this.state.clothingData.inventory.m > 0 ? <option value="m">M</option> : <option disabled>M</option>}
-            {this.state.clothingData.inventory.l > 0 ? <option value="l">L</option> : <option disabled>L</option>}
-            {this.state.clothingData.inventory.xl > 0 ? <option value="xl">XL</option> : <option disabled>XL</option>}
-        </select>
-        )
+    const {productDetails} = props;
+    switch (productDetails.category) {
+        case "OUTERWEAR":
+        case "TOPS":
+            return(
+                <select required name="size" onChange={(e)=>props.handleChange(e)}>
+                    <option value="">SELECT</option>
+                    {Object.values(productDetails.inventory).map((size, i)=>{
+                    return(
+                        size > 0 ? <option key={i} value={size}>{size}</option> : <option disabled>{size}</option>
+                    )
+                    })}
+                </select>
+            )
+
+        case "BOTTOMS":
+            return(
+                <select required name="size" onChange={(e)=>props.handleChange(e)}>
+                    <option value="">SELECT</option>
+                    {Object.values(productDetails.inventory).map((size, i)=>{
+                    return(
+                        size > 0 ? <option key={i} value={size}>{Object.keys(productDetails.inventory)[i]}</option> : <option disabled>{Object.keys(productDetails.inventory)[i]}</option>
+                    )
+                    })}
+                </select>
+            )
+
+        case "ACCESSORIES":
+            return(
+                <select required name="size" onChange={(e)=>props.handleChange(e)}>
+                    <option value="">SELECT</option>
+                    {Object.values(productDetails.inventory).map((size, i)=>{
+                    return(
+                        size > 0 ? <option key={i} value={size}>{size}</option> : <option disabled>{size}</option>
+                    )
+                    })}
+                </select>
+            )
     
         default:
-            break;
+            return(
+                <div></div>
+            )
     }
 }
 
