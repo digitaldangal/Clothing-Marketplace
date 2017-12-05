@@ -151,6 +151,7 @@ class Navbar extends Component {
                             </form>
                         </Menu.Item> */}
                         <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
+                        <Menu.Item className="link"><Link to="/profile/wishlist">Wishlist</Link></Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>
                 </Grid>
