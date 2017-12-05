@@ -136,22 +136,21 @@ class Navbar extends Component {
                 
                 <Grid className="computer only">
                     <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
+                    <Menu.Menu position="right">
+                    <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
                     <Menu.Item className="link"><Link to="/designers">Designers</Link></Menu.Item>
                     <Menu.Item className="link"><Link to="/editorial">Articles</Link></Menu.Item>
-                    <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
-                    <Menu.Menu position="right">
                         {/* <Menu.Item>
                             <form onSubmit={this.handleSubmit}>
                             <Input onChange={(e, data)=>this.handleChange(e, data)}
-                                action={<Dropdown button basic floating options={options} defaultValue='clothing' onChange={(e, data)=>this.handleSearchType(e, data)}/>}
-                                icon="search"
-                                iconPosition="left"
-                                placeholder="Search..."
+                            action={<Dropdown button basic floating options={options} defaultValue='clothing' onChange={(e, data)=>this.handleSearchType(e, data)}/>}
+                            icon="search"
+                            iconPosition="left"
+                            placeholder="Search..."
                             />
                             </form>
                         </Menu.Item> */}
-                        <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
-                        <Menu.Item className="link"><Link to="/profile/wishlist">Wishlist</Link></Menu.Item>
+                        <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
                         <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
                     </Menu.Menu>
                 </Grid>
@@ -161,7 +160,7 @@ class Navbar extends Component {
 
     render(){
     return (
-        <header>
+        <header className="ui container">
             <nav>
                 {this.renderNav()}
             </nav>

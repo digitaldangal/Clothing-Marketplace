@@ -129,8 +129,8 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)} handleSearch={(search, kind)=>this.handleSearch(search, kind)}/>
             <div className="app-body">
+            <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)} handleSearch={(search, kind)=>this.handleSearch(search, kind)}/>
               <Switch>
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} image={this.state.image} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} storeBrandImage={(image)=> this.storeBrandImage(image)}/> } />
