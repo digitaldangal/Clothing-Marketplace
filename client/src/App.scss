@@ -368,6 +368,11 @@ section#single-article{
 div.about-page {
     .page-container.ui.container {
         margin-bottom: 10em;
+        .ui.divided.items.container.terms{
+            p.text{
+                width: auto !important;
+            }
+        }
         .ui.divided.items.container {
             .paragraph {
                 display: flex;

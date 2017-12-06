@@ -284,6 +284,8 @@ section#single-article {
 
 div.about-page .page-container.ui.container {
   margin-bottom: 10em; }
+  div.about-page .page-container.ui.container .ui.divided.items.container.terms p.text {
+    width: auto !important; }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph {
     display: flex;
     justify-content: center;

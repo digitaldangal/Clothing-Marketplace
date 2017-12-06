@@ -13,8 +13,8 @@ const Terms = (props)=> {
             <div className="about-page ui container">
                 <h1 className="ui header">Discover Streetwear Boutiques</h1>
                 <h3 className="ui header">Expand Your Wardrobe</h3>
-                <div className="page-container ui container terms">
-                    <div className="ui divided items container">
+                <div className="page-container ui container">
+                    <div className="ui divided items container terms">
                         <div className="item paragraph">
                             <p className="text">
                             Streetwear Boutiques was founded to bridge the gap between new & emerging clothing brands, and fashion lovers alike. Streetwear Boutiques provides a centralized, exclusive, and curated selection of various labels, with the goal of building a diverse community that connects directly to the user. As more clothing brands sign up, the community and user base increases. Streetwear Boutiques is the first platform to provide a home for new, innovative, unique, and emerging brands. Streetwear Boutiques has a fair and transparent business model that maximizes revenue Designers can earn from their clothing labels. Streetwear Boutiques has no monthly fees and only takes a commission on each transaction. 
