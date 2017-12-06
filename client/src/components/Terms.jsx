@@ -92,6 +92,24 @@ const Terms = (props)=> {
                             Users can send us an email.
                             </p>
                         </div>
+                        <div className="item paragraph">
+                            <p className="text">
+                            <h1 className="ui header title" style={paraTitle}>Frequently Asked Questions</h1>
+                            How much does the Streetwear Boutiques cost?
+                            $0.00USD.   
+                            <br /><br />
+                            How is this different from SSENSE/GRAILED/Shopify?
+                            SSENSE is only limited to high end and already establish clothing brands like Gucci and Versace. We provide a home for new brands to be able to establish themselves. 
+                            Grailed is limited to reselling article of clothing from brands that are commonly listed on websites like SSENSE and Barneys. Grailed wasn't really made for people to sell clothing that they created. 
+                            Shopify charges users monthly fees on top of fees for transactions, while Streetwear Boutiques doesn't charge for anything. 
+                            <br /><br />
+                            How can I contact Streetwear Boutiques?
+                            You can send an email to streetwearboutiques@gmail.com
+                            <br /><br />
+                            Who is behind Streetwear Boutiques?
+                            Streetwear Boutiques is built and ran by Amidou Kante. Amidou has been writing software since he was 12-years old and is passionate about building creative, engaging and minimalist products that have a meaningful impact.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
