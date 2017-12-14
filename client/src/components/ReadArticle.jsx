@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MetaTags from 'react-meta-tags';
 import {Redirect} from 'react-router-dom';
 import {fb_key} from '../config/api-keys';
 import firebase from '../config/firebase';
@@ -66,23 +67,31 @@ class ReadArticle extends Component {
         if(this.state.articleData.hasOwnProperty("id")){
             const {articleData} = this.state;
             return(
-                <div className="page-container single-article ui container">
-                    <img src={articleData.screen_image} alt={articleData.title} title={articleData.title} className="article-image"/>
-                    <h1 className="ui header title">{articleData.title}</h1>
-                    <h3 className="ui header title">{articleData.subtitle}</h3>
-                    
-                    <div className="article-info">
-                        <p className="author">Written by: {articleData.author}</p>
-                        <p className="photographer">Photos by: {articleData.photographer}</p>
-                        <p className="data">Date: {articleData.created}</p>
-                        <div className="share">
-                            <a title="facebook" target="_blank" href={`https://www.facebook.com/dialog/share?app_id=${fb_key}&display=popup&href=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}&redirect_uri=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="facebook" className="facebook square icon"></i></a>
-                            <a title="twitter" target="_blank" href={`https://twitter.com/home/?status=${this.props.match.params.article} - https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}  @streetwearboutiques`}><i title="twitter" className="twitter icon"></i></a>
-                            <a title="email" target="_blank" href={`mailto:?Subject=Check out this Article: ${this.props.match.params.article}&body=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="email" className="mail icon"></i></a>
+                <div className="wrapper">
+                    <MetaTags>
+                    <title>{articleData.title}</title>
+                    <meta name="og:description" content={articleData.subtitle} />
+                    <meta property="og:title" content={articleData.title} />
+                    <meta property="og:image" content={articleData.screen_image} />
+                    </MetaTags>
+                    <div className="page-container single-article ui container">
+                        <img src={articleData.screen_image} alt={articleData.title} title={articleData.title} className="article-image"/>
+                        <h1 className="ui header title">{articleData.title}</h1>
+                        <h3 className="ui header title">{articleData.subtitle}</h3>
+                        
+                        <div className="article-info">
+                            <p className="author">Written by: {articleData.author}</p>
+                            <p className="photographer">Photos by: {articleData.photographer}</p>
+                            <p className="data">Date: {articleData.created}</p>
+                            <div className="share">
+                                <a title="facebook" target="_blank" href={`https://www.facebook.com/dialog/share?app_id=${fb_key}&display=popup&href=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}&redirect_uri=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="facebook" className="facebook square icon"></i></a>
+                                <a title="twitter" target="_blank" href={`https://twitter.com/home/?status=${this.props.match.params.article} - https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}  @streetwearboutiques`}><i title="twitter" className="twitter icon"></i></a>
+                                <a title="email" target="_blank" href={`mailto:?Subject=Check out this Article: ${this.props.match.params.article}&body=https://streetwearboutiques.com/editorial/${this.props.match.params.id}/${this.props.match.params.article}`}><i title="email" className="mail icon"></i></a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="article-text" dangerouslySetInnerHTML={{__html: articleData.text}}></div>
+                        <div className="article-text" dangerouslySetInnerHTML={{__html: articleData.text}}></div>
+                    </div>
                 </div>
             )
         }else{

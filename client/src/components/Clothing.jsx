@@ -82,11 +82,11 @@ class Clothing extends Component {
         let productToAdd = this.productDetails;
         let brandDetails = this.brandDetails;
         let button = document.querySelector('#cart-button')
-        button.setAttribute('disabled', 'true');
-        this.setState({active: true})
-
+        
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
+                this.setState({active: true})
+                button.setAttribute('disabled', 'true');
                 if(productToAdd.inventory_total > 0){
 
                     let data = {
