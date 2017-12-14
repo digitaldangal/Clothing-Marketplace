@@ -1,0 +1,33 @@
+[debug] [2017-12-12T17:26:13.663Z] ----------------------------------------------------------------------
+[debug] [2017-12-12T17:26:13.665Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\watch\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only hosting,functions
+[debug] [2017-12-12T17:26:13.665Z] CLI Version:   3.16.0
+[debug] [2017-12-12T17:26:13.665Z] Platform:      win32
+[debug] [2017-12-12T17:26:13.665Z] Node Version:  v9.2.1
+[debug] [2017-12-12T17:26:13.666Z] Time:          Tue Dec 12 2017 12:26:13 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-12T17:26:13.666Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-12T17:26:13.679Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-12T17:26:13.679Z] > authorizing via signed-in user
+[debug] [2017-12-12T17:26:13.682Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/copped-9a558  
+  
+ Tue Dec 12 2017 12:26:13 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-12T17:26:14.136Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-12T17:26:14.137Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/copped-9a558/tokens  
+  
+ Tue Dec 12 2017 12:26:14 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-12T17:26:14.504Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\watch\Documents\GitHub\Clothing-Marketplace\client'...
+[info] 
+[warn] !  functions: Cannot start emulator. Error: Cannot find module 'C:\Users\watch\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\grpc\src\node\extension_binary\node-v59-win32-x64-unknown\grpc_node.node'
+[debug] [2017-12-12T17:26:14.888Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/copped-9a558  
+  
+ Tue Dec 12 2017 12:26:14 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-12T17:26:15.165Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-12T17:26:15.166Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1094268024837/clients/_:getWebAppConfig  
+  
+ Tue Dec 12 2017 12:26:15 GMT-0500 (Eastern Standard Time)
+[debug] [2017-12-12T17:26:15.472Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
