@@ -115,8 +115,6 @@ exports.pay = functions.https.onRequest((req, res) => {
 
 // 3.Complete the payment. Use the payer and payment IDs provided in the query string following the redirect.
 exports.process = functions.https.onRequest((req, res) => {
-  
-  res.redirect(getFormattedUrl(req));
   const paymentId = req.query.paymentId;
   const payerId = {
     payer_id: req.query.PayerID
