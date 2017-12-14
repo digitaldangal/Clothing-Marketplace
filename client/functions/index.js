@@ -43,8 +43,8 @@ exports.pay = functions.https.onRequest((req, res) => {
       payment_method: 'paypal'
     },
     redirect_urls: {
-      return_url: `https://streetwearboutiques.com/profile/process`,
-      cancel_url: `https://streetwearboutiques.com/profile`
+      return_url: `http://localhost:5000/profile/process`,
+      cancel_url: `http://localhost:5000/profile`
     },
     transactions: [{
       "amount": {
@@ -115,6 +115,8 @@ exports.pay = functions.https.onRequest((req, res) => {
 
 // 3.Complete the payment. Use the payer and payment IDs provided in the query string following the redirect.
 exports.process = functions.https.onRequest((req, res) => {
+  
+  res.redirect(getFormattedUrl(req));
   const paymentId = req.query.paymentId;
   const payerId = {
     payer_id: req.query.PayerID
@@ -122,7 +124,7 @@ exports.process = functions.https.onRequest((req, res) => {
   paypal.payment.execute(paymentId, payerId, (error, payment) => {
     if (error) {
       console.error(error);
-      res.redirect(`https://streetwearboutiques.com/profile/error`); // replace with your url page error
+      res.redirect(`http://localhost:5000/profile/error`); // replace with your url page error
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
@@ -144,7 +146,7 @@ exports.process = functions.https.onRequest((req, res) => {
             'payer': payment.payer
           }
         }).then(r => console.info('promise: ', r)).catch(err=>console.log(err));
-        res.redirect(`https://streetwearboutiques.com/profile/process`); // replace with your url, page success
+        res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url

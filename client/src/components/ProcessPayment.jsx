@@ -18,6 +18,7 @@ class ProcessPayment extends Component {
 
     componentDidMount() {
        console.log(this.props)
+       let user = firebase.auth().currentUser;
        axios.post(`/process${this.props.location.search}`)
        .then((res)=>{
            if(res.status === 200 || res.status === 400){
@@ -30,18 +31,19 @@ class ProcessPayment extends Component {
                    }
                })
            }
-       }).then(()=>{
+       }).catch((err)=>(console.log(err)))
+       .then(()=>{
             axios.post('/newPayment',{
                 payment_info: this.props.location.search,
-                user: firebase.auth().currentUser.uid,
-                email: firebase.auth().currentUser.email
+                user: user.uid,
+                email: user.email
             }).catch(err=>{
                 console.log(err)
             })
             this.setState({
                 redirect: true,
                 currentPage: '/profile'
-            })
+            });
        }).catch(err=>{console.log(err)})
     }
 
