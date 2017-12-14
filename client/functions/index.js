@@ -43,8 +43,8 @@ exports.pay = functions.https.onRequest((req, res) => {
       payment_method: 'paypal'
     },
     redirect_urls: {
-      return_url: `http://localhost:5000/profile/process`,
-      cancel_url: `http://localhost:5000/profile`
+      return_url: `https://streetwearboutiques.com/profile/process`,
+      cancel_url: `https://streetwearboutiques.com/profile`
     },
     transactions: [{
       "amount": {
@@ -122,7 +122,7 @@ exports.process = functions.https.onRequest((req, res) => {
   paypal.payment.execute(paymentId, payerId, (error, payment) => {
     if (error) {
       console.error(error);
-      res.redirect(`http://localhost:5000/profile/error`); // replace with your url page error
+      res.redirect(`https://streetwearboutiques.com/profile/error`); // replace with your url page error
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
@@ -144,7 +144,7 @@ exports.process = functions.https.onRequest((req, res) => {
             'payer': payment.payer
           }
         }).then(r => console.info('promise: ', r)).catch(err=>console.log(err));
-        res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
+        res.redirect(`https://streetwearboutiques.com/profile/process`); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url
@@ -246,22 +246,3 @@ exports.newPayment = functions.https.onRequest((req, res)=>{
     });
   })
 })
-
-/* // Update the search index every time a blog post is written.
-exports.onNoteCreated = admin.firestore().collection('brands').onSnapshot(event => {
-  const ALGOLIA_ID = functions.config().algolia.app_id;
-  const ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
-  
-  const ALGOLIA_INDEX_NAME = "brands";
-  const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);
-
-  // Get the brand document
-  const brand = event.data.data();
-
-  // Add an "objectID" field which Algolia requires
-  brand.objectID = event.params.postId;
-
-  // Write to the algolia index
-  const index = client.initIndex(ALGOLIA_INDEX_NAME);
-  return index.saveObject(brand);
-}); */
