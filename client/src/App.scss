@@ -368,6 +368,11 @@ section#single-article{
 div.about-page {
     .page-container.ui.container {
         margin-bottom: 10em;
+        .ui.divided.items.container.terms{
+            p.text{
+                width: auto !important;
+            }
+        }
         .ui.divided.items.container {
             .paragraph {
                 display: flex;
@@ -383,6 +388,9 @@ div.about-page {
                     }
                     p.text{
                         width: 100% !important;
+                        a {
+                            font-size: initial;
+                        }
                     }
                 }
                 div{
@@ -403,6 +411,9 @@ div.about-page {
                     line-height: 170%;
                     text-align: justify;
                     text-indent: 1em;
+                    a {
+                        font-size: initial;
+                    }
                 }
             }
             .paragraph.two{
@@ -416,6 +427,9 @@ div.about-page {
                     padding: 1em;
                     @media (max-width: 768px) {
                         padding: 0em;
+                    }
+                    a {
+                        font-size: initial;
                     }
                 }
             }

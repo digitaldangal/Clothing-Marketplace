@@ -30,11 +30,11 @@ var
   del            = require('del'),
   jsonEditor     = require('gulp-json-editor'),
   plumber        = require('gulp-plumber'),
-  prompt         = require('prompt-sui'),
+  prompt         = require('gulp-prompt'),
   rename         = require('gulp-rename'),
   replace        = require('gulp-replace'),
   requireDotFile = require('require-dot-file'),
-  wrench         = require('wrench-sui'),
+  wrench         = require('wrench'),
 
   // install config
   install        = require('./config/project/install'),
@@ -170,7 +170,7 @@ if(currentConfig && manager.name === 'NPM') {
 // PM that supports Build Tools (NPM Only Now)
 if(manager.name == 'NPM') {
   rootQuestions[0].message = rootQuestions[0].message
-    .replace('{packageMessage}', 'We detected you are using ' + manager.name + ' Nice!')
+    .replace('{packageMessage}', 'We detected you are using \x1b[92m' + manager.name + '\x1b[0m. Nice! ')
     .replace('{root}', manager.root)
   ;
   // set default path to detected PM root
@@ -194,10 +194,8 @@ gulp.task('run setup', function() {
   // If auto-install is switched on, we skip the configuration section and simply reuse the configuration from semantic.json
   if(install.shouldAutoInstall()) {
     answers = {
-      overwrite    : 'yes',
-      install      : 'auto',
-      useRoot      : true,
-      semanticRoot : currentConfig.base
+      overwrite : 'yes',
+      install   : 'auto',
     };
   }
   else {
@@ -250,7 +248,7 @@ gulp.task('create install files', function(callback) {
   ---------------*/
 
   // Check if PM install
-  if(manager && (answers.useRoot || answers.customRoot)) {
+  if(answers.useRoot || answers.customRoot) {
 
     // Set root to custom root path if set
     if(answers.customRoot) {
@@ -387,7 +385,7 @@ gulp.task('create install files', function(callback) {
     ;
 
     // adjust variables in theme.less
-    if( fs.existsSync(installPaths.config) ) {
+    if( fs.existsSync(files.config) ) {
       console.info('Extending config file (semantic.json)', installPaths.config);
       return gulp.src(installPaths.config)
         .pipe(plumber())
@@ -419,7 +417,7 @@ gulp.task('create install files', function(callback) {
 gulp.task('clean up install', function() {
 
   // Completion Message
-  if(installFolder && !install.shouldAutoInstall()) {
+  if(installFolder) {
     console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
     process.exit(0);
   }

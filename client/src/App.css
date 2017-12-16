@@ -284,6 +284,8 @@ section#single-article {
 
 div.about-page .page-container.ui.container {
   margin-bottom: 10em; }
+  div.about-page .page-container.ui.container .ui.divided.items.container.terms p.text {
+    width: auto !important; }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph {
     display: flex;
     justify-content: center;
@@ -296,7 +298,9 @@ div.about-page .page-container.ui.container {
           div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div.img img {
             width: 100%; }
         div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
-          width: 100% !important; } }
+          width: 100% !important; }
+          div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text a {
+            font-size: initial; } }
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div {
       width: 40vw; }
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
@@ -312,6 +316,8 @@ div.about-page .page-container.ui.container {
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text span.bold {
         font-weight: bold;
         font-weight: 2rem; }
+      div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text a {
+        font-size: initial; }
   div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two div {
     width: 35vw; }
     @media (max-width: 768px) {
@@ -322,6 +328,8 @@ div.about-page .page-container.ui.container {
     @media (max-width: 768px) {
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two p.text {
         padding: 0em; } }
+    div.about-page .page-container.ui.container .ui.divided.items.container .paragraph.two p.text a {
+      font-size: initial; }
   div.about-page .page-container.ui.container .ui.divided.items.container a {
     font-size: 1.5rem; }
 
