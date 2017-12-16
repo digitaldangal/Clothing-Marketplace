@@ -22,6 +22,7 @@ import Terms from './components/Terms';
 import ProcessPayment from './components/ProcessPayment';
 import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
+import Transactions from './components/Transactions';
 
 import './App.css';
 
@@ -140,6 +141,7 @@ class App extends Component {
                 <Route exact path="/profile/product-create" component={ProductUpload}/>
                 <Route exact path="/profile/brand" render={()=> <ApprovedBrand authState={this.state.authState} userUid={this.state.uid} /> } />
                 {/* <Route exact path="/profile/cart" render={()=> <Cart authState={this.state.authState} userUid={this.state.uid} shopping_cart={this.state.shopping_cart} /> }/> */}
+                <Route exact path="/profile/transactions" component={Transactions} />
                 <Route exact path="/profile/process" component={ProcessPayment} />
                 <Route exact path="/profile/wishlist" component={Wishlist} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} brandData={this.state.brandData} brandDataLoaded={this.state.brandDataLoaded} storeFeed={(brandData)=> this.storeFeed(brandData)} />} />

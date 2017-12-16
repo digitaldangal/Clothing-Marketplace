@@ -65,8 +65,8 @@ class Navbar extends Component {
                     <Dropdown.Divider />
                     <Link to="/profile/wishlist"><Dropdown.Item>Wishlist</Dropdown.Item></Link>
                     <Dropdown.Divider />
-                    {/* <Link to="/profile/transactions"><Dropdown.Item>Transactions</Dropdown.Item></Link>
-                    <Dropdown.Divider /> */}
+                    <Link to="/profile/transactions"><Dropdown.Item>Transactions</Dropdown.Item></Link>
+                    <Dropdown.Divider />
                     <Link to="#" onClick={()=>this.logout(false)}><Dropdown.Item>Logout</Dropdown.Item></Link>
                 </Dropdown.Menu>
             </Dropdown>
