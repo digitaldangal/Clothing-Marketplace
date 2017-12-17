@@ -3,6 +3,7 @@ import firebase from './config/firebase';
 import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom';
 
 import Home from './components/Home';
+import Home2 from './components/Home2';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Profile from './components/Profile';
@@ -43,8 +44,7 @@ class App extends Component {
       productDataLoaded: false,
       articleData: false,
       articleDataLoaded: false,
-      image: false,
-      shopping_cart: 0
+      image: false
     }
   }
 
@@ -133,8 +133,8 @@ class App extends Component {
             <div className="app-body">
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)} handleSearch={(search, kind)=>this.handleSearch(search, kind)}/>
               <Switch>
-                {redirect ? <Redirect to={currentPage} /> : null}
-                <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} image={this.state.image} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} storeBrandImage={(image)=> this.storeBrandImage(image)}/> } />
+                {/* <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} image={this.state.image} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} storeBrandImage={(image)=> this.storeBrandImage(image)}/> } /> */}
+                <Route exact path="/" render={() => <Home2 authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} image={this.state.image} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} storeBrandImage={(image)=> this.storeBrandImage(image)}/> } />
                 <Route exact path="/account/login" render={() => <Login authState={(authChange)=>this.handleAuthState(authChange)} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
@@ -154,6 +154,7 @@ class App extends Component {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact-us" component={Contact} />
                 <Route exact path="/customer/terms-conditions" component={Terms} />
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <Route component={NoMatch} />
               </Switch>
             </div>

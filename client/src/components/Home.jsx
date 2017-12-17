@@ -9,13 +9,20 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
+            dataLoaded: true,
             articleData: false,
             featuredBrand: false,
             brandImage: false,
+            date: new Date()
         }
     }
+    
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+          );
 
-    componentWillMount() {
         let articleRef = db.collection("articles").doc("article_0");
         let featBrandRef = articleRef.collection("brand").doc("brand_1");
         let articleData = {};
@@ -50,52 +57,49 @@ class Home extends Component {
                 featuredBrand: featBrandDataInfo,
                 brandImage: featImage,
                 articleData: articleDataInfo,
+                dataLoaded: true
             })
         }
     }
-
+tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
     shouldComponentUpdate(prev, next){
-        if(next.articleData && next.featuredBrand){
+        if(prev.articleDataLoaded && next.dataLoaded){
             return true;
         }else{
             return false;
         }
     }
 
-    renderPage(){
-        if(this.state.articleData !== false && this.state.featuredBrand !== false){
-            const {articleData, featuredBrand} = this.state;
-            return(
-                <div className="home">
-                    <Link to={`/editorial/${articleData.id}/${articleData.title}`}>
-                        <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image + ')'}} >
-                            <div className="overlay"></div>
-                            <h2 className="ui header article-title">{articleData.title}</h2>
-                            <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
-                        </div>
-                    </Link>
-                    <Link to={`/designers/${featuredBrand.name}/${featuredBrand.id}`}>
-                        <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + this.state.brandImage + ')'}}>
+    renderPage=()=>{
+        const {articleData, featuredBrand} = this.state;
+        return(
+            <div className="home">
+                <Link to={`/editorial/${articleData.id}/${articleData.title}`}>
+                    <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image + ')'}} >
                         <div className="overlay"></div>
-                            <h2 className="ui header brand-title">Featured Brand: <br/>{featuredBrand.name}</h2>
-                        </div>
-                    </Link>
-                </div>
-            )
-        }else{
-            return(
-                <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
-                </div>
-            )
-        }
+                        <h2 className="ui header article-title">{articleData.title}</h2>
+                        <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
+                    </div>
+                </Link>
+                <Link to={`/designers/${featuredBrand.name}/${featuredBrand.id}`}>
+                    <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + this.state.brandImage + ')'}}>
+                    <div className="overlay"></div>
+                        <h2 className="ui header brand-title">Featured Brand: <br/>{featuredBrand.name}</h2>
+                    </div>
+                </Link>
+            </div>
+        )
     }
 
     render(){
         return(
             <section id="home">
                 <main role="main">
-                    {this.renderPage()}
+                   {this.state.date.toLocaleTimeString()}
                 </main>
             </section>
         )
