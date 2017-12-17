@@ -43,7 +43,8 @@ class Home extends Component {
 
             this.setState({
                 featuredBrand: featBrandDataInfo,
-                articleData: articleDataInfo
+                articleData: articleDataInfo,
+                dataLoaded: true
             })
         }
     }
