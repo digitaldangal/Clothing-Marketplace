@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-// import firebase from '../config/firebase';
+import Spinner from './Spinner';
 
 
 class Home extends Component {
@@ -16,39 +16,33 @@ class Home extends Component {
     }
     
     componentDidMount() {
-          let articleRef = "https://firestore.googleapis.com/v1beta1/projects/copped-9a558/databases/(default)/documents/articles/article_0/";
-          let featBrandRef = "https://firestore.googleapis.com/v1beta1/projects/copped-9a558/databases/(default)/documents/articles/article_0/brand/brand_1";
-          let articleData = {};
-          let brandData = {};
+        let articleRef = "https://firestore.googleapis.com/v1beta1/projects/copped-9a558/databases/(default)/documents/articles/article_0/";
+        let featBrandRef = "https://firestore.googleapis.com/v1beta1/projects/copped-9a558/databases/(default)/documents/articles/article_0/brand/brand_1";
+        let articleData = {};
+        let brandData = {};
           
-          if(this.props.articleDataLoaded === false){
-            axios.get(articleRef)
-            .then((res) => {
-                console.log(res.data.fields)
+        if(this.props.articleDataLoaded === false){
+            axios.get(articleRef).then((res) => {
                 articleData = res.data.fields;
-                this.setState({
-                    articleData: articleData
-                })
-                return res.data.fields;
+                return articleData;
             }).then(()=>{
                 axios.get(featBrandRef).then((res)=>{
-                    console.log(res.data.fields)
                     brandData = res.data.fields;
                     this.setState({
                         featuredBrand: brandData,
+                        articleData: articleData,
                         dataLoaded: true
                     })
+                    this.props.storeArticleData(articleData, brandData);
                 }).catch(err=>console.log(err))
             })
             .catch(err=>console.log(err))
         }else{
             let articleDataInfo = this.props.articleData;
             let featBrandDataInfo = this.props.featBrandData;
-            let featImage = this.props.image;
 
             this.setState({
                 featuredBrand: featBrandDataInfo,
-                brandImage: featImage,
                 articleData: articleDataInfo
             })
         }
@@ -83,19 +77,11 @@ class Home extends Component {
         )
     }
 
-    spinner(){
-        return(
-            <div className="ui active inverted dimmer">
-                <div className="ui indeterminate text loader">Preparing Files</div>
-            </div>
-        )
-    }
-
     render(){
         return(
             <section id="home">
                 <main role="main">
-                   {this.state.featuredBrand !== false ? this.renderPage() : this.spinner()}
+                   {this.state.featuredBrand !== false ? this.renderPage() : <Spinner />}
                 </main>
             </section>
         )
