@@ -24,7 +24,7 @@ class Transactions extends Component{
             }else{
                 this.setState({
                     redirect: true,
-                    currentPage: '/account/login'
+                    currentPage: '/account/login' 
                 }) 
             }
         })
@@ -37,7 +37,7 @@ class Transactions extends Component{
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <div className="single-clothing">
                     <div className="page-container ui container">
-                        <h1 className="ui header">Currently Working on this feature</h1>
+                        <h1 className="ui header">Previous Transactiosn</h1>
                     </div>
                 </div>
             </section>
