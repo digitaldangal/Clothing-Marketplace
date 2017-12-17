@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
 import firebase from '../config/firebase';
 
@@ -9,45 +10,39 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
-            dataLoaded: true,
+            dataLoaded: false,
             articleData: false,
             featuredBrand: false,
             brandImage: false,
-            date: new Date()
         }
     }
     
     componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-          );
-
-        let articleRef = db.collection("articles").doc("article_0");
-        let featBrandRef = articleRef.collection("brand").doc("brand_1");
-        let articleData = {};
-        let brandData = {};
-
-        if(this.props.articleDataLoaded === false){
-            articleRef.get().then((res)=>{
-                return articleData = res.data();
-            }).then(()=>{
-                featBrandRef.get().then((res)=>{
-                    this.setState({brandImage: res.data().image})
-                    this.props.storeBrandImage(res.data().image)
-                    return res;
-                }).then((res)=>{
-                    db.collection("brands").where("id", "==", res.data().id).get().then((res)=>{
-                        res.forEach((brand)=>{
-                            return brandData = brand.data();
-                        })
-                        this.setState({featuredBrand: brandData})
-                        this.props.storeArticleData(articleData, brandData);
-                    }).catch(err=>console.log(err))
+          let articleRef = "https://firestore.googleapis.com/v1beta1/projects/copped-9a558/databases/(default)/documents/articles/article_0/";
+          let featBrandRef = "https://firestore.googleapis.com/v1beta1/projects/copped-9a558/databases/(default)/documents/articles/article_0/brand/brand_1";
+          let articleData = {};
+          let brandData = {};
+          
+          if(this.props.articleDataLoaded === false){
+            axios.get(articleRef)
+            .then((res) => {
+                console.log(res.data.fields)
+                articleData = res.data.fields;
+                this.setState({
+                    articleData: articleData
                 })
-                .catch(err=>console.log(err))
-                this.setState({articleData: articleData})
+                return res.data.fields;
+            }).then(()=>{
+                axios.get(featBrandRef).then((res)=>{
+                    console.log(res.data.fields)
+                    brandData = res.data.fields;
+                    this.setState({
+                        featuredBrand: brandData,
+                        dataLoaded: true
+                    })
+                }).catch(err=>console.log(err))
             })
+            .catch(err=>console.log(err))
         }else{
             let articleDataInfo = this.props.articleData;
             let featBrandDataInfo = this.props.featBrandData;
@@ -56,21 +51,16 @@ class Home extends Component {
             this.setState({
                 featuredBrand: featBrandDataInfo,
                 brandImage: featImage,
-                articleData: articleDataInfo,
-                dataLoaded: true
+                articleData: articleDataInfo
             })
         }
     }
-tick() {
-    this.setState({
-      date: new Date()
-    });
-  }
+}
     shouldComponentUpdate(prev, next){
         if(prev.articleDataLoaded && next.dataLoaded){
             return true;
         }else{
-            return false;
+            return true;
         }
     }
 
@@ -78,19 +68,28 @@ tick() {
         const {articleData, featuredBrand} = this.state;
         return(
             <div className="home">
-                <Link to={`/editorial/${articleData.id}/${articleData.title}`}>
-                    <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image + ')'}} >
+            {this.state.date.toLocaleTimeString()}
+                <Link to={`/editorial/${articleData.id.integerValue}/${articleData.title.stringValue}`}>
+                    <div className="article imgHolder" style={{backgroundImage: 'url(' + articleData.screen_image.stringValue + ')'}} >
                         <div className="overlay"></div>
-                        <h2 className="ui header article-title">{articleData.title}</h2>
-                        <h3 className="ui header article-subtitle">{articleData.subtitle}</h3>
+                        <h2 className="ui header article-title">{articleData.title.stringValue}</h2>
+                        <h3 className="ui header article-subtitle">{articleData.subtitle.stringValue}</h3>
                     </div>
                 </Link>
-                <Link to={`/designers/${featuredBrand.name}/${featuredBrand.id}`}>
+                <Link to={`/designers/${featuredBrand.name.stringValue}/${featuredBrand.id.integerValue}`}>
                     <div className="featured-brand imgHolder" style={{backgroundImage: 'url(' + this.state.brandImage + ')'}}>
                     <div className="overlay"></div>
-                        <h2 className="ui header brand-title">Featured Brand: <br/>{featuredBrand.name}</h2>
+                        <h2 className="ui header brand-title">Featured Brand: <br/>{featuredBrand.name.stringValue}</h2>
                     </div>
                 </Link>
+            </div>
+        )
+    }
+
+    spinner(){
+        return(
+            <div className="ui active inverted dimmer">
+                <div className="ui indeterminate text loader">Preparing Files</div>
             </div>
         )
     }
@@ -99,7 +98,7 @@ tick() {
         return(
             <section id="home">
                 <main role="main">
-                   {this.state.date.toLocaleTimeString()}
+                   {this.state.featuredBrand !== false ? this.renderPage() : this.spinner()}
                 </main>
             </section>
         )
