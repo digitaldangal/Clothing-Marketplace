@@ -37,7 +37,7 @@ class Transactions extends Component{
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <div className="single-clothing">
                     <div className="page-container ui container">
-                        <h1 className="ui header">Previous Transactiosn</h1>
+                        <h1 className="ui header">Previous Transactions</h1>
                     </div>
                 </div>
             </section>
