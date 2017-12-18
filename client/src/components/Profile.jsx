@@ -96,6 +96,7 @@ class Profile extends Component{
                     <div className="profile-links">
                         <Menu text>
                             <Menu.Item><Link to="/profile/brand">Brand Page</Link></Menu.Item>
+                            <Menu.Item><Link to="/profile/transactions">Transactions</Link></Menu.Item>
                             <Menu.Item><Link to="/profile/product-create">List A Item</Link></Menu.Item>
                         </Menu>
                     </div>

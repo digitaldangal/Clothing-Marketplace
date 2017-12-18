@@ -22,6 +22,7 @@ import Terms from './components/Terms';
 import ProcessPayment from './components/ProcessPayment';
 import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
+import Transactions from './components/Transactions';
 
 import './App.css';
 
@@ -42,8 +43,7 @@ class App extends Component {
       productDataLoaded: false,
       articleData: false,
       articleDataLoaded: false,
-      image: false,
-      shopping_cart: 0
+      image: false
     }
   }
 
@@ -108,12 +108,6 @@ class App extends Component {
       featBrandDataLoaded: true
     })
   }
-  storeBrandImage = (image) => {
-    this.setState({
-      image: image,
-      imageLoaded: true
-    })
-  }
 
   handleSearch=(search, kind)=>{
     console.log(search, kind)
@@ -132,14 +126,14 @@ class App extends Component {
             <div className="app-body">
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)} handleSearch={(search, kind)=>this.handleSearch(search, kind)}/>
               <Switch>
-                {redirect ? <Redirect to={currentPage} /> : null}
-                <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} image={this.state.image} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} storeBrandImage={(image)=> this.storeBrandImage(image)}/> } />
+                <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} /> } />
                 <Route exact path="/account/login" render={() => <Login authState={(authChange)=>this.handleAuthState(authChange)} /> } />
                 <Route exact path="/profile" render={() => <Profile authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)}/> } />
                 <Route exact path="/profile/brand-signup" component={BrandForm} />
                 <Route exact path="/profile/product-create" component={ProductUpload}/>
                 <Route exact path="/profile/brand" render={()=> <ApprovedBrand authState={this.state.authState} userUid={this.state.uid} /> } />
                 {/* <Route exact path="/profile/cart" render={()=> <Cart authState={this.state.authState} userUid={this.state.uid} shopping_cart={this.state.shopping_cart} /> }/> */}
+                <Route exact path="/profile/transactions" component={Transactions} />
                 <Route exact path="/profile/process" component={ProcessPayment} />
                 <Route exact path="/profile/wishlist" component={Wishlist} />
                 <Route exact path="/designers" render={() => <Designers authState={this.state.authState} brandData={this.state.brandData} brandDataLoaded={this.state.brandDataLoaded} storeFeed={(brandData)=> this.storeFeed(brandData)} />} />
@@ -152,6 +146,7 @@ class App extends Component {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact-us" component={Contact} />
                 <Route exact path="/customer/terms-conditions" component={Terms} />
+                {redirect ? <Redirect to={currentPage} /> : null}
                 <Route component={NoMatch} />
               </Switch>
             </div>
