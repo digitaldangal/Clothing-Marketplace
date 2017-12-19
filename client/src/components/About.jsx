@@ -16,7 +16,7 @@ const About = (props)=> {
                     <div className="ui divided items container">
                         <div className="item paragraph">
                             <div className="img">
-                                <img src="https://firebasestorage.googleapis.com/v0/b/copped-9a558.appspot.com/o/images%2Ftiger_back.png?alt=media&token=4d1dc6f7-3cc3-4d80-83a4-20cabc4466ee" alt=""/>
+                                <img src="https://firebasestorage.googleapis.com/v0/b/copped-9a558.appspot.com/o/images%2F21980265_475538702817261_6388695073193721856_n.jpg?alt=media&token=3b16d2b9-79cf-4a12-9c15-999c4090cbe0" alt=""/>
                             </div>
                             <p className="text">
                                 <span className="bold">Streetwear Boutiques</span> was founded and created by, me Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. I have always been interested in fashion, streetwear, and supporting smaller brands. However, there isn't a convenient way to explore all those brands, so I've decided to build a place where that is possible. I was inspired by various fashion communities and I'm on a mission to create a place for different labels to grow and flourish. 

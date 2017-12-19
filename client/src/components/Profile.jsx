@@ -98,6 +98,14 @@ class Profile extends Component{
                             <Menu.Item><Link to="/profile/brand">Brand Page</Link></Menu.Item>
                             <Menu.Item><Link to="/profile/transactions">Transactions</Link></Menu.Item>
                             <Menu.Item><Link to="/profile/product-create">List A Item</Link></Menu.Item>
+                            {!this.state.emailVerified ? (
+                                <Menu.Item>
+                                    <a href="#" onClick={()=>firebase.auth().currentUser.sendEmailVerification().catch(err=>console.log(err))}>
+                                        Resend Email Verification
+                                    </a>
+                                </Menu.Item> ) : (
+                                    null
+                            )}
                         </Menu>
                     </div>
                     <div className="page-contianer ui container">
@@ -108,8 +116,8 @@ class Profile extends Component{
                                 warning
                                 header='Could you check something!'
                                 list={[
-                                    ' You have not yet clicked the verification link to verify your account!',
-                                ]}
+                                "You have not yet clicked the verification link to verify your account!", 
+                                "Check your spam/junk folder for an email from 'noreply@copped-9a558.firebaseapp.com"]}
                                 />
                                  <Message
                                 success
@@ -147,6 +155,14 @@ class Profile extends Component{
                     <div className="profile-links">
                         <Menu text>
                             <Menu.Item><Link to="/profile/brand-signup">Register A Brand</Link></Menu.Item>
+                            {!this.state.emailVerified ? (
+                                <Menu.Item>
+                                    <a href="#" onClick={()=>firebase.auth().currentUser.sendEmailVerification().catch(err=>console.log(err))}>
+                                        Resend Email Verification
+                                    </a>
+                                </Menu.Item> ) : (
+                                    null
+                            )}
                         </Menu>
                     </div>
                     <div className="page-contianer ui container">
@@ -157,8 +173,8 @@ class Profile extends Component{
                                 warning
                                 header='Could you check something!'
                                 list={[
-                                    ' You have not yet clicked the verification link to verify your account!',
-                                ]}
+                                "You have not yet clicked the verification link to verify your account!", 
+                                "Check your spam/junk folder for an email from 'noreply@copped-9a558.firebaseapp.com"]}
                                 />
                                 <Message
                                 success
