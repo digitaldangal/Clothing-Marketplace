@@ -163,7 +163,8 @@ class ProductUpload extends Component {
                         created_date: this.state.created_date,
                         main_image: downloadUrl,
                         clothing_label: this.state.brandData,
-                        uid: this.state.uid
+                        uid: this.state.uid,
+                        deleted: false
                     }).then(()=>{
                         uploadedFiles.length > 0 ? null : this.redirectPage()
                     })

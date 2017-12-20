@@ -49,9 +49,11 @@ class Clothing extends Component {
                 })
                 db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
                 .then((res)=>{
+                    console.log(res)
                     if(res.empty){
                         this.setState({
                             clothingData: false,
+                            dontLoad: true,
                             clothingDataLoaded: false
                         })
                     }else{
@@ -258,7 +260,7 @@ class Clothing extends Component {
         }else if(this.state.dontLoad === true && this.state.clothingDataLoaded === false){
             return(
                 <div className="single-brand">
-                    <h1 className="ui header title"> 404 - Page not found</h1>
+                    <h1 className="ui header title"> 404 - This item was recently deleted or not found!</h1>
                     <Link to='/designers'><Button secondary>Check Out Some Designers</Button></Link>
                     <div className="page-container">
                         <img src="" alt=""/>
