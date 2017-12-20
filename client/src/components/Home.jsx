@@ -3,7 +3,6 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Spinner from './Spinner';
 
-
 class Home extends Component {
     constructor(props){
         super(props);
