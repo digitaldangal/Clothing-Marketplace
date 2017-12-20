@@ -29,14 +29,20 @@ class RecentUploads extends Component {
     renderPage=()=>{
         const {productData} = this.state;
         return(
-            <div className="product-container">
+            <div className="ui link cards recent-upload-container">
                 {Object.values(productData).map((product, i)=>{
+                    const style = {
+                        "backgroundImage": `url(${product.main_image}`,
+                        "background-size": "cover",
+                        "width": "300px",
+                        "height": "300px",
+                        "background-position": "center",
+                        "background-repeat": "no-repeat"
+                    }
                     return(
                         <div className="card" key={i}>
                             <Link to={`/designers/${product.designer}/${product.clothing_label.id}/${product.title}/${product.id}`}>
-                                <div className="image">
-                                    <img src={product.main_image} alt=""/>
-                                </div>
+                                <div className="imageHolder" style={style}></div>
                             </Link>    
                                 <div className="content">
                                     <div className="header">{product.title}</div>
