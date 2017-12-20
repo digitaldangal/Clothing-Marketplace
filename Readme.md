@@ -137,7 +137,7 @@ renderPicPreviews = (e) =>{
 ```
 ### Future Improvements
 - [x] Report Products
-- [ ] Recently Sold Feed
+- [x] Recently Sold Feed
 - [ ] Meet the Team
 - [ ] Brand Image, Logo, or profile pic
 - [ ] Product Share button
