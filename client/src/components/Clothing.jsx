@@ -101,19 +101,20 @@ class Clothing extends Component {
                         id: productToAdd.id,
                         size: this.state.size,
                         paypal_email: brandDetails.paypal_email,
-                        designer_id: brandDetails.id
+                        user_id: user.uid
                     }
 
                     db.collection('users').doc(user.uid).collection('transactions').doc(new Date().toString()).set({
-                        shipping: 6.00,
-                        total: (Number(productToAdd.price) + 6),
+                        shipping: productToAdd.shipping_cost,
+                        total: (Number(productToAdd.price) + Number(productToAdd.shipping_cost)),
                         cost: Number(productToAdd.price),
                         title: productToAdd.title,
                         id: productToAdd.id,
                         size: this.state.size,
                         paypal_email: brandDetails.paypal_email,
                         designer_id: brandDetails.id,
-                        product: productToAdd
+                        product: productToAdd,
+                        date_placed: Date().toString()
                     },{merge: true}).then(()=>{
                         axios.post('/pay',data,{
                             headers: {

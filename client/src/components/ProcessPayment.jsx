@@ -37,7 +37,7 @@ class ProcessPayment extends Component {
                         })
                         this.setState({
                             redirect: true,
-                            currentPage: '/profile'
+                            currentPage: '/profile/transactions'
                         });
                 }).catch(err=>{console.log(err)})
             }else{

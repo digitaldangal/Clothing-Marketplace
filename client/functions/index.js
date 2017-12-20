@@ -70,7 +70,7 @@ exports.pay = functions.https.onRequest((req, res) => {
           },
           // reference_id string .Optional. The merchant-provided ID for the purchase unit. Maximum length: 256.
           // reference_id: req.body.uid,
-          custom: req.body.designer_id,
+          custom: req.body.user_id,
           soft_descriptor: req.body.designer
         }]
       });
@@ -139,9 +139,11 @@ exports.process = functions.https.onRequest((req, res) => {
           'designer': uid,
           'product': payment.transactions[0].item_list.items[0],
           'date': date,
+          'user_uid': uid,
           'payment_info': {
             'payer_id': payerId.payer_id,
-            'payer': payment.payer
+            'payer': payment.payer,
+            'payment': payment
           }
         }).then(r => console.info('promise: ', r)).catch(err=>console.log(err));
         res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
