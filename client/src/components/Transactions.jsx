@@ -18,7 +18,9 @@ class Transactions extends Component{
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
                 db.collection('users').doc(user.uid).collection('transactions').get().then((res)=>{
-                    console.log(res)
+                    res.forEach((transaction)=>{
+                        console.log(transaction.data())
+                    })
                 })
                 .catch(err=>console.log(err))
             }else{

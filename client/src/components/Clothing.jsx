@@ -110,7 +110,8 @@ class Clothing extends Component {
                         id: productToAdd.id,
                         size: this.state.size,
                         paypal_email: brandDetails.paypal_email,
-                        designer_id: brandDetails.id
+                        designer_id: brandDetails.id,
+                        product: productToAdd
                     },{merge: true}).then(()=>{
                         axios.post('/pay',data,{
                             headers: {

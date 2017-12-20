@@ -12,8 +12,8 @@
     "@sendgrid/mail": "^6.1.4",
     "algoliasearch": "^3.24.7",
     "cors": "^2.8.3",
-    "firebase-admin": "^5.5.1",
-    "firebase-functions": "^0.7.3",
+    "firebase-admin": "^5.4.2",
+    "firebase-functions": "^0.7.1",
     "paypal-rest-sdk": "^1.7.1"
   },
   "private": true,
