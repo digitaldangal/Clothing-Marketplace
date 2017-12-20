@@ -153,7 +153,7 @@ class ProductUpload extends Component {
                     main_image: downloadUrl
                 },{ merge: true })
                 .then((res)=>{
-                    db.collection('products').doc(Date().toString().split(" ").slice(0,4).join(" ")).collection(this.state.uid).add({
+                    db.collection('products').doc(Date().toString()).set({
                         title: this.state.title,
                         designer: this.state.brandData.name,
                         price: this.state.price, 
@@ -163,6 +163,7 @@ class ProductUpload extends Component {
                         created_date: this.state.created_date,
                         main_image: downloadUrl,
                         clothing_label: this.state.brandData,
+                        uid: this.state.uid
                     }).then(()=>{
                         uploadedFiles.length > 0 ? null : this.redirectPage()
                     })
