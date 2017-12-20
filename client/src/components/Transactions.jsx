@@ -11,15 +11,23 @@ class Transactions extends Component{
             redirect: false,
             currentPage: null,
             currentUser: false,
+            transactionsLoaded: false
         }
     }
 
     componentDidMount() {
+        let allTransactions = {}
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
                 db.collection('users').doc(user.uid).collection('transactions').get().then((res)=>{
                     res.forEach((transaction)=>{
-                        console.log(transaction.data())
+                        db.collection('payments').doc(user.uid).get().then((res)=>{
+                            console.log(res.data())
+                        })
+                    })
+                    this.setState({
+                        allTransactions: allTransactions,
+                        transactionsLoaded: true
                     })
                 })
                 .catch(err=>console.log(err))
@@ -40,6 +48,7 @@ class Transactions extends Component{
                 <div className="single-clothing">
                     <div className="page-container ui container">
                         <h1 className="ui header">Previous Transactions</h1>
+
                     </div>
                 </div>
             </section>

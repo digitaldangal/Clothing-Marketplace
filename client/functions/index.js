@@ -131,7 +131,7 @@ exports.process = functions.https.onRequest((req, res) => {
         // set paid status to True in RealTime Database
         const date =Date().toString();
         const uid = payment.transactions[0].custom;
-        const ref = admin.firestore().collection('payments').doc(Date().toString()).collection(uid);
+        const ref = admin.firestore().collection('payments').doc(uid).collection(date);
 
         ref.add({
           'paid': true,
