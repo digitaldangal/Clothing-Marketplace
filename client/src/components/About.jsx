@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom';
 
 const About = (props)=> {
     const paraTitle = {
-        marginBottom: '1em',
         textAlign: 'center',
-        marginTop: '1em',
     }
     return(
         <section id="about">
@@ -32,7 +30,7 @@ const About = (props)=> {
                         </div>
                         <div className="item paragraph three">
                             <div className="img">
-                                <img src="https://firebasestorage.googleapis.com/v0/b/copped-9a558.appspot.com/o/images%2FONI_FRONT.png?alt=media&token=22b7d355-c402-4766-84cf-0a473fb9455d" alt=""/>
+                                <img src="https://firebasestorage.googleapis.com/v0/b/copped-9a558.appspot.com/o/images%2F17075973_184579865370664_7659213748732690432_n.jpg?alt=media&token=a29439d8-df29-4f20-9ef5-e184ab232d9c" alt=""/>
                             </div>
                             <p className="text">
                             <h1 className="ui header title" style={paraTitle}>Your Safety First</h1>

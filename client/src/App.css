@@ -304,13 +304,14 @@ div.about-page .page-container.ui.container {
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div {
       width: 40vw; }
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
-        width: 100%; }
+        width: 80%;
+        padding: 1em; }
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
       margin-top: 1em;
       font-weight: 300;
-      width: 30vw;
+      width: 50vw;
       font-size: 1.3rem;
-      line-height: 170%;
+      line-height: 200%;
       text-align: justify;
       text-indent: 1em; }
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text span.bold {
