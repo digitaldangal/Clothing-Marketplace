@@ -16,7 +16,10 @@ class ProductUpload extends Component {
         this.state = {
             uploadCount: 0,
             category: false,
-            sub_category: false
+            sub_category: false,
+            id: new Date().getTime(),
+            created_date: new Date().toString(),
+            os: 0
         }
     }
 
@@ -99,8 +102,8 @@ class ProductUpload extends Component {
             category: this.state.category,
             sub_category: this.state.sub_category,
             description: this.state.description,
-            id: new Date().getTime(),
-            created_date: new Date().toString(),
+            id: this.state.id,
+            created_date: this.state.created_date,
             sold_out: false,
             amount_sold: 0,
             clothing_label: this.state.brandData,
@@ -150,7 +153,19 @@ class ProductUpload extends Component {
                     main_image: downloadUrl
                 },{ merge: true })
                 .then((res)=>{
-                    this.redirectPage()
+                    db.collection('products').doc(Date().toString().split(" ").slice(0,4).join(" ")).collection(this.state.uid).add({
+                        title: this.state.title,
+                        designer: this.state.brandData.name,
+                        price: this.state.price, 
+                        category: this.state.category,
+                        sub_category: this.state.sub_category,
+                        id: this.state.id,
+                        created_date: this.state.created_date,
+                        main_image: downloadUrl,
+                        clothing_label: this.state.brandData,
+                    }).then(()=>{
+                        uploadedFiles.length > 0 ? null : this.redirectPage()
+                    })
                 })
                 .catch(err=>console.log(err))
             })

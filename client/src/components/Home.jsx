@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Spinner from './Spinner';
+import RecentUploads from './RecentUploads';
 
 class Home extends Component {
     constructor(props){
@@ -82,6 +83,7 @@ class Home extends Component {
             <section id="home">
                 <main role="main">
                    {this.state.featuredBrand !== false ? this.renderPage() : <Spinner />}
+                   <RecentUploads />
                 </main>
             </section>
         )
