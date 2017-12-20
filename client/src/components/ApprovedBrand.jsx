@@ -73,8 +73,16 @@ class ApprovedBrand extends Component {
         if(window.confirm(`Are you sure you want to delete ${title}? This action can't be reversed.`)){
             db.collection("brands").doc(this.props.userUid).collection("products").doc(title).delete().then((res)=>{
                 console.log(`${title} was deleted`)
-                alert(`${title} was deleted`)
-                window.location.reload();
+                db.collection('products').where("id", "==", id).get().then((res)=>{
+                    res.forEach((item)=>{
+                        item.ref.update({
+                            "deleted": true
+                        })
+                    })
+                }).then(()=>{
+                    alert(`${title} was deleted`)
+                    window.location.reload();
+                })
             }).catch(err=>(console.log(err)))
         }else{
             return null;
