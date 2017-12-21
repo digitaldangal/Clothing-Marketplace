@@ -49,7 +49,6 @@ class Clothing extends Component {
                 })
                 db.collection('brands').doc(brandUID).collection('products').where("id", "==", productID).where("title", "==", productTitle).get()
                 .then((res)=>{
-                    console.log(res)
                     if(res.empty){
                         this.setState({
                             clothingData: false,

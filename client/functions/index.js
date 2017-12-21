@@ -131,19 +131,21 @@ exports.process = functions.https.onRequest((req, res) => {
         // set paid status to True in RealTime Database
         const date =Date().toString();
         const uid = payment.transactions[0].custom;
-        const ref = admin.firestore().collection('payments').doc(uid).collection(date);
+        const ref = admin.firestore().collection('payments').doc(uid);
 
-        ref.add({
-          'paid': true,
-          'amount': payment.transactions[0].amount,
-          'designer': uid,
-          'product': payment.transactions[0].item_list.items[0],
-          'date': date,
-          'user_uid': uid,
-          'payment_info': {
-            'payer_id': payerId.payer_id,
-            'payer': payment.payer,
-            'payment': payment
+        ref.set({
+          [date]: {
+            'paid': true,
+            'amount': payment.transactions[0].amount,
+            'designer': uid,
+            'product': payment.transactions[0].item_list.items[0],
+            'date': date,
+            'user_uid': uid,
+            'payment_info': {
+              'payer_id': payerId.payer_id,
+              'payer': payment.payer,
+              'payment': payment
+            }
           }
         }).then(r => console.info('promise: ', r)).catch(err=>console.log(err));
         res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
@@ -231,7 +233,7 @@ exports.newPayment = functions.https.onRequest((req, res)=>{
       from: email,
       subject: `New Payment on Streetwear Boutiques`,
       text: `A brand has just received a purchase!`,
-      html: `user: ${req.body.user} \n eamil: ${req.body.email} <br/> paypal info: ${req.body.payment_info}`,
+      html: `user: ${req.body.user} \n email: ${req.body.email} <br/> paypal info: ${req.body.payment_info}`,
     };
 
     sgMail.send(msg,false,function (error, message) {
