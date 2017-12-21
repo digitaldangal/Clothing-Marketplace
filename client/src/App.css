@@ -108,7 +108,8 @@ a.brand:hover {
       display: flex;
       justify-content: center;
       margin: 0 auto;
-      position: relative; }
+      position: relative;
+      border-right: 4px solid white; }
       .home .article .overlay {
         width: 100%;
         height: 100%;
@@ -167,7 +168,8 @@ a.brand:hover {
     .home .article {
       width: 60vw;
       height: 400px;
-      position: relative; }
+      position: relative;
+      border-right: 4px solid white; }
       .home .article .overlay {
         width: 100%;
         height: 100%;
@@ -226,7 +228,8 @@ a.brand:hover {
     .home .article {
       width: 55vw;
       height: 450px;
-      position: relative; }
+      position: relative;
+      border-right: 4px solid white; }
       .home .article .overlay {
         width: 100%;
         height: 100%;
@@ -262,7 +265,7 @@ a.brand:hover {
       position: relative; } }
   @media (min-width: 1440px) {
     .home .article {
-      width: 45vw;
+      width: 55vw;
       height: 550px;
       position: relative; }
     .home .featured-brand {
