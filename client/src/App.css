@@ -28,6 +28,9 @@ a {
 section#single-article {
   height: 100vh; }
 
+a.brand:hover {
+  color: black; }
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
     display: flex;
@@ -48,7 +51,8 @@ section#single-article {
       width: 90vw; } }
 .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
   position: absolute;
-  top: 1.5em; }
+  top: 1.5em;
+  left: 4vw; }
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger .sidebar.icon {
     font-size: 1.5rem; }
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger div.menu div.item a {

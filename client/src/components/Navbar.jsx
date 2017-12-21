@@ -166,7 +166,7 @@ class Navbar extends Component {
             "top": "50%",
             "left": "50%",
             "transform": "translate(-50%,-50%)",
-            "textAlign": "center"
+            "textAlign": "center",
         }
         const header = {
             "height": "58px",

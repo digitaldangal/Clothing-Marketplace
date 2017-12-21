@@ -33,6 +33,9 @@ section#single-article{
 }
 
 //   NavBar
+a.brand:hover{
+    color: black;
+}
 .ui.stackable.menu{
     .ui.grid.tablet.mobile.only.container{
         .ui.secondary.stackable.menu{
@@ -62,6 +65,7 @@ section#single-article{
             .ui.dropdown.hamburger{
                 position: absolute;
                 top: 1.5em;
+                left: 4vw;
                 .sidebar.icon{
                     font-size: 1.5rem;
                 }
