@@ -43,7 +43,7 @@ a.brand:hover {
     left: 52% !important; } }
 header h1.app-title {
   top: 50%;
-  left: 51%; }
+  left: 52%; }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
