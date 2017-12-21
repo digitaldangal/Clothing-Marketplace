@@ -16,11 +16,6 @@ a {
   color: black;
   font-family: 'Raleway', 'Roboto', sans-serif !important; }
 
-header {
-  width: 90vw;
-  margin: 0 auto;
-  margin-bottom: 3em; }
-
 .ui.header, .ui.header.title {
   font-weight: 300;
   text-transform: uppercase;
@@ -33,54 +28,50 @@ header {
 section#single-article {
   height: 100vh; }
 
-.ui.stackable.menu {
-  margin-top: 0.5em; }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
-      display: flex;
-      flex-flow: column wrap;
-      justify-content: space-between;
-      width: 100%; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .sidebar.icon {
-        font-size: 1.5rem;
-        position: absolute;
-        left: 0em; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu div.item.logo {
-        display: flex;
-        justify-content: center;
-        width: 100%; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.icon.input {
-        display: flex;
-        justify-content: center;
-        width: 90vw; } }
+@media (min-width: 768px) and (max-width: 1024px) {
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
-    position: relative; }
-    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
-      position: absolute;
-      top: 1.5em; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger .sidebar.icon {
-        font-size: 1.5rem; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger div.menu div.item a {
-        font-family: 'Raleway', 'Roboto', sans-serif !important;
-        text-transform: uppercase;
-        font-weight: 300; }
-  .ui.stackable.menu .ui.grid.computer.only {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column wrap;
+    justify-content: space-between;
     width: 100%; }
-  .ui.stackable.menu .item {
-    justify-content: center;
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .sidebar.icon {
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0em; }
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu div.item.logo {
+      display: flex;
+      justify-content: center;
+      width: 100%; }
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.icon.input {
+      display: flex;
+      justify-content: center;
+      width: 90vw; } }
+.ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
+  position: absolute;
+  top: 1.5em; }
+  .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger .sidebar.icon {
+    font-size: 1.5rem; }
+  .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger div.menu div.item a {
+    font-family: 'Raleway', 'Roboto', sans-serif !important;
     text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 1px; }
-    .ui.stackable.menu .item a.brand {
-      width: 10em; }
-      .ui.stackable.menu .item a.brand img.logo {
-        width: 100%; }
-  .ui.stackable.menu .link.item .ui.dropdown .menu .item a {
-    text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 1px; }
+    font-weight: 300; }
+.ui.stackable.menu .ui.grid.computer.only {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%; }
+.ui.stackable.menu .item {
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px; }
+  .ui.stackable.menu .item a.brand {
+    width: 10em; }
+    .ui.stackable.menu .item a.brand img.logo {
+      width: 100%; }
+.ui.stackable.menu .link.item .ui.dropdown .menu .item a {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px; }
 
 .home {
   font-family: 'Raleway', 'Roboto', sans-serif !important;

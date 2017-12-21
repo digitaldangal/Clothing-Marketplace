@@ -17,11 +17,6 @@ a {
     color: black;
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
-header {
-    width: 90vw;
-    margin: 0 auto;
-    margin-bottom: 3em;
-}
 .ui.header, .ui.header.title{
     font-weight: 300;
     text-transform: uppercase;
@@ -39,7 +34,6 @@ section#single-article{
 
 //   NavBar
 .ui.stackable.menu{
-    margin-top: 0.5em;
     .ui.grid.tablet.mobile.only.container{
         .ui.secondary.stackable.menu{
             @media (min-width: 768px) and(max-width: 1024px){
@@ -65,7 +59,6 @@ section#single-article{
             }
         }
         .ui.secondary.stackable.menu{
-            position: relative;
             .ui.dropdown.hamburger{
                 position: absolute;
                 top: 1.5em;
