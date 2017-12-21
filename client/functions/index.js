@@ -133,11 +133,10 @@ exports.process = functions.https.onRequest((req, res) => {
         const uid = payment.transactions[0].custom;
         const ref = admin.firestore().collection('payments').doc(uid);
 
-        ref.set({
+        ref.update({
           [date]: {
             'paid': true,
             'amount': payment.transactions[0].amount,
-            'designer': uid,
             'product': payment.transactions[0].item_list.items[0],
             'date': date,
             'user_uid': uid,

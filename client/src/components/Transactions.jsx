@@ -23,6 +23,7 @@ class Transactions extends Component{
                     res.forEach((transaction)=>{
                         db.collection('payments').doc(user.uid).get().then((res)=>{
                             console.log(res.data())
+                            alert(res.data().paid)
                         })
                     })
                     this.setState({
