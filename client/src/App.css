@@ -37,7 +37,7 @@ a.brand:hover {
     margin: 0 auto;
     border-bottom: none !important;
     margin-bottom: 1em; } }
-@media (min-width: 1024px) and (max-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1050px) {
   header h1.app-title {
     font-size: 22px !important;
     left: 52% !important; } }
