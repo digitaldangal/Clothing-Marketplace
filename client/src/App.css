@@ -37,6 +37,10 @@ a.brand:hover {
     margin: 0 auto;
     border-bottom: none !important;
     margin-bottom: 1em; } }
+@media (min-width: 1024px) and (max-width: 1024px) {
+  header h1.app-title {
+    font-size: 22px !important;
+    left: 52% !important; } }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
@@ -44,6 +48,8 @@ a.brand:hover {
     flex-flow: column wrap;
     justify-content: space-between;
     width: 100%; }
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
+      left: -4em !important; }
     .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .sidebar.icon {
       font-size: 1.5rem;
       position: absolute;
@@ -159,7 +165,7 @@ a.brand:hover {
       background-repeat: no-repeat; } }
   @media (min-width: 768px) {
     .home .article {
-      width: 50vw;
+      width: 60vw;
       height: 400px;
       position: relative; }
       .home .article .overlay {
@@ -174,7 +180,7 @@ a.brand:hover {
         bottom: 3em;
         left: 1em;
         letter-spacing: 2px;
-        font-size: 2rem;
+        font-size: 1.72rem;
         color: white; }
         .home .article .ui.header.article-title:hover {
           text-decoration: underline;
@@ -184,7 +190,7 @@ a.brand:hover {
         bottom: 1em;
         left: 2em;
         letter-spacing: 2px;
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: white;
         text-align: left; }
     .home .article.imgHolder {

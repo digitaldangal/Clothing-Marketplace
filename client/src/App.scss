@@ -43,6 +43,12 @@ header{
         border-bottom: none !important;
         margin-bottom: 1em;
     }
+    @media (min-width: 1024px) and (max-width: 1024px) {
+        h1.app-title{
+            font-size: 22px !important;
+            left: 52% !important;
+        }
+    }
 }
 .ui.stackable.menu{
     .ui.grid.tablet.mobile.only.container{
@@ -52,6 +58,9 @@ header{
                 flex-flow: column wrap;
                 justify-content: space-between;
                 width: 100%;
+                .ui.dropdown.hamburger{
+                    left: -4em !important;
+                }
                 .sidebar.icon{
                     font-size: 1.5rem;
                     position: absolute;
@@ -206,7 +215,7 @@ header{
 
     @media (min-width: 768px) {
         .article {
-            width: 50vw;
+            width: 60vw;
             height: 400px;
             position: relative;
             .overlay{
@@ -226,7 +235,7 @@ header{
                 bottom: 3em;
                 left: 1em;
                 letter-spacing: 2px;
-                font-size: 2rem;
+                font-size:1.72rem;
                 color: white;
             }
             .ui.header.article-subtitle{
@@ -234,7 +243,7 @@ header{
                 bottom: 1em;
                 left: 2em;
                 letter-spacing: 2px;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 color: white;
                 text-align: left;
             }
