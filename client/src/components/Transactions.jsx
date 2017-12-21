@@ -19,18 +19,14 @@ class Transactions extends Component{
         let allTransactions = {}
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
-                db.collection('users').doc(user.uid).collection('transactions').get().then((res)=>{
-                    res.forEach((transaction)=>{
-                        db.collection('payments').doc(user.uid).get().then((res)=>{
-                            console.log(res.data())
-                        })
-                    })
+                db.collection('payments').doc(user.uid).get().then((res)=>{
+                    console.log(res.data())
+                    allTransactions = res.data()
                     this.setState({
                         allTransactions: allTransactions,
                         transactionsLoaded: true
                     })
-                })
-                .catch(err=>console.log(err))
+                }).catch(err=>console.log(err))
             }else{
                 this.setState({
                     redirect: true,
