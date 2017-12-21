@@ -29,7 +29,14 @@ section#single-article {
   height: 100vh; }
 
 a.brand:hover {
-  color: black; }
+  color: black !important; }
+
+@media (min-width: 768px) {
+  header {
+    width: 80vw;
+    margin: 0 auto;
+    border-bottom: none !important;
+    margin-bottom: 1em; } }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {

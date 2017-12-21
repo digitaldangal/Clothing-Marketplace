@@ -34,7 +34,15 @@ section#single-article{
 
 //   NavBar
 a.brand:hover{
-    color: black;
+    color: black !important;
+}
+header{
+    @media (min-width:768px) {
+        width: 80vw;
+        margin: 0 auto;
+        border-bottom: none !important;
+        margin-bottom: 1em;
+    }
 }
 .ui.stackable.menu{
     .ui.grid.tablet.mobile.only.container{
