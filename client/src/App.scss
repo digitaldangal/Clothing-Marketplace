@@ -635,6 +635,8 @@ p#soldout{
                 justify-content: center;
                 flex-flow: column wrap;
                 .imgHolder{
+                    max-height: 70vh;
+                    overflow: hidden;
                     img{
                         width: 100%;
                     }
@@ -686,6 +688,9 @@ p#soldout{
             }
         }
         @media (min-width: 768px) and (max-width: 768px){
+            .product-info .imgHolder{
+                max-height: 400px !important;
+            }
             .more-images{
                 position: absolute;
                 width: 100%;
@@ -701,8 +706,10 @@ p#soldout{
                 .imgHolder{
                     width: 35vw;
                     cursor: zoom-in;
+                    overflow: hidden;
+                    max-height: 500px;
                     img{
-                        width: 100%;
+                        height: 100%;
                     }
                 }
                 .product-text{

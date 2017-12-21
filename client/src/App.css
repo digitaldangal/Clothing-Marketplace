@@ -462,8 +462,11 @@ p#soldout {
     display: flex;
     justify-content: center;
     flex-flow: column wrap; }
-    .single-clothing .page-container .product-info .imgHolder img {
-      width: 100%; }
+    .single-clothing .page-container .product-info .imgHolder {
+      max-height: 70vh;
+      overflow: hidden; }
+      .single-clothing .page-container .product-info .imgHolder img {
+        width: 100%; }
     .single-clothing .page-container .product-info .product-text {
       padding: 1em;
       margin-top: 2em; }
@@ -499,6 +502,8 @@ p#soldout {
           height: 100px;
           margin: 0em 1em 1em 0em; } }
 @media (min-width: 768px) and (max-width: 768px) {
+  .single-clothing .page-container .product-info .imgHolder {
+    max-height: 400px !important; }
   .single-clothing .page-container .more-images {
     position: absolute;
     width: 100%;
@@ -511,9 +516,11 @@ p#soldout {
     margin-top: 5em; }
     .single-clothing .page-container .product-info .imgHolder {
       width: 35vw;
-      cursor: zoom-in; }
+      cursor: zoom-in;
+      overflow: hidden;
+      max-height: 500px; }
       .single-clothing .page-container .product-info .imgHolder img {
-        width: 100%; }
+        height: 100%; }
     .single-clothing .page-container .product-info .product-text {
       width: 30vw;
       padding: 1em; }
