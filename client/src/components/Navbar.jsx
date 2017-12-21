@@ -111,8 +111,6 @@ class Navbar extends Component {
             <Menu secondary stackable>
                 <Grid className="tablet mobile only container">
                     <Menu secondary stackable>
-                        <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
-
                         <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
                             <Dropdown.Menu style={style.menuWidth}>
                                 <Link to="/"><Dropdown.Item>Home</Dropdown.Item></Link>
@@ -135,7 +133,6 @@ class Navbar extends Component {
                 </Grid>
                 
                 <Grid className="computer only">
-                    <Menu.Item className="logo"><Link className="brand" to="/"><img className="logo" src="/main/images/sb-logo.svg" alt="StreetwearBoutiques Logo"/></Link></Menu.Item>
                     <Menu.Item className="link"><Link to="/designers">Designers</Link></Menu.Item>
                     <Menu.Item className="link"><Link to="/editorial">Articles</Link></Menu.Item>
                     <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
@@ -159,12 +156,32 @@ class Navbar extends Component {
     }
 
     render(){
-    return (
-        <header>
-            <nav>
-                {this.renderNav()}
-            </nav>
-        </header>
+        const appTitle = {
+            "fontSize": "18px",
+            "color": "black",
+            "textTransform": "uppercase",
+            "lineHeight": "1",
+            "letterSpacing": ".275em",
+            "position": "absolute",
+            "top": "50%",
+            "left": "50%",
+            "transform": "translate(-50%,-50%)",
+            "textAlign": "center",
+        }
+        const header = {
+            "height": "58px",
+            "position": "relative",
+            "background": "white",
+            "top": "0em",
+            "borderBottom": "1px solid #bbb"
+        }
+        return (
+            <header style={header}>
+                <h1 className="app-title" style={appTitle}><Link className="brand" to="/">streetwear boutiques</Link></h1>
+                <nav>
+                    {this.renderNav()}
+                </nav>
+            </header>
         )
     }
 }

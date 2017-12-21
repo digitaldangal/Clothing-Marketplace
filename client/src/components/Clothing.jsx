@@ -52,6 +52,7 @@ class Clothing extends Component {
                     if(res.empty){
                         this.setState({
                             clothingData: false,
+                            dontLoad: true,
                             clothingDataLoaded: false
                         })
                     }else{
@@ -88,7 +89,6 @@ class Clothing extends Component {
                 this.setState({active: true})
                 button.setAttribute('disabled', 'true');
                 if(productToAdd.inventory_total > 0){
-
                     let data = {
                         shipping: productToAdd.shipping_cost,
                         total: (Number(productToAdd.price) + Number(productToAdd.shipping_cost)),
@@ -99,31 +99,33 @@ class Clothing extends Component {
                         id: productToAdd.id,
                         size: this.state.size,
                         paypal_email: brandDetails.paypal_email,
-                        designer_id: brandDetails.id
+                        user_id: user.uid
                     }
-
-                    db.collection('users').doc(user.uid).collection('transactions').doc(new Date().toString()).set({
-                        shipping: 6.00,
-                        total: (Number(productToAdd.price) + 6),
-                        cost: Number(productToAdd.price),
-                        title: productToAdd.title,
-                        id: productToAdd.id,
-                        size: this.state.size,
-                        paypal_email: brandDetails.paypal_email,
-                        designer_id: brandDetails.id
-                    },{merge: true}).then(()=>{
-                        axios.post('/pay',data,{
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                                'Access-Control-Allow-Origin': 'https://streetwearboutiques.com/',
-                                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
-                            },
-                            mode: 'cors',
+                    axios.post('/pay',data,{
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': 'https://streetwearboutiques.com/',
+                            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+                        }, mode: 'cors',
                         }).then((res)=>{
-                            console.log(res)
-                            window.location.href = res.data;
-                        }).catch(err=>console.log(err))
+                        console.log(res)
+                        if(res.status === 200){
+                            db.collection('users').doc(user.uid).collection('transactions').doc(new Date().toString()).set({
+                                shipping: productToAdd.shipping_cost,
+                                total: (Number(productToAdd.price) + Number(productToAdd.shipping_cost)),
+                                cost: Number(productToAdd.price),
+                                title: productToAdd.title,
+                                id: productToAdd.id,
+                                size: this.state.size,
+                                paypal_email: brandDetails.paypal_email,
+                                designer_id: brandDetails.id,
+                                product: productToAdd,
+                                date_placed: Date().toString()
+                            },{merge: true}).then(()=>{
+                                window.location.href = res.data;
+                            })
+                        }
                     }).catch(err=>console.log(err))
                 }else{
                     let errorFrom = document.querySelector('#error');
@@ -257,7 +259,7 @@ class Clothing extends Component {
         }else if(this.state.dontLoad === true && this.state.clothingDataLoaded === false){
             return(
                 <div className="single-brand">
-                    <h1 className="ui header title"> 404 - Page not found</h1>
+                    <h1 className="ui header title"> 404 - This item was recently deleted or not found!</h1>
                     <Link to='/designers'><Button secondary>Check Out Some Designers</Button></Link>
                     <div className="page-container">
                         <img src="" alt=""/>

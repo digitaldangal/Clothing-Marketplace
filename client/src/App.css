@@ -16,11 +16,6 @@ a {
   color: black;
   font-family: 'Raleway', 'Roboto', sans-serif !important; }
 
-header {
-  width: 90vw;
-  margin: 0 auto;
-  margin-bottom: 3em; }
-
 .ui.header, .ui.header.title {
   font-weight: 300;
   text-transform: uppercase;
@@ -33,54 +28,67 @@ header {
 section#single-article {
   height: 100vh; }
 
-.ui.stackable.menu {
-  margin-top: 0.5em; }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
-      display: flex;
-      flex-flow: column wrap;
-      justify-content: space-between;
-      width: 100%; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .sidebar.icon {
-        font-size: 1.5rem;
-        position: absolute;
-        left: 0em; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu div.item.logo {
-        display: flex;
-        justify-content: center;
-        width: 100%; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.icon.input {
-        display: flex;
-        justify-content: center;
-        width: 90vw; } }
+a.brand:hover {
+  color: black !important; }
+
+@media (min-width: 768px) {
+  header {
+    width: 80vw;
+    margin: 0 auto;
+    border-bottom: none !important;
+    margin-bottom: 1em; } }
+@media (min-width: 1024px) and (max-width: 1024px) {
+  header h1.app-title {
+    font-size: 22px !important;
+    left: 52% !important; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
   .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu {
-    position: relative; }
-    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
-      position: absolute;
-      top: 1.5em; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger .sidebar.icon {
-        font-size: 1.5rem; }
-      .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger div.menu div.item a {
-        font-family: 'Raleway', 'Roboto', sans-serif !important;
-        text-transform: uppercase;
-        font-weight: 300; }
-  .ui.stackable.menu .ui.grid.computer.only {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column wrap;
+    justify-content: space-between;
     width: 100%; }
-  .ui.stackable.menu .item {
-    justify-content: center;
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
+      left: -4em !important; }
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .sidebar.icon {
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0em; }
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu div.item.logo {
+      display: flex;
+      justify-content: center;
+      width: 100%; }
+    .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.icon.input {
+      display: flex;
+      justify-content: center;
+      width: 90vw; } }
+.ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger {
+  position: absolute;
+  top: 1.5em;
+  left: 4vw; }
+  .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger .sidebar.icon {
+    font-size: 1.5rem; }
+  .ui.stackable.menu .ui.grid.tablet.mobile.only.container .ui.secondary.stackable.menu .ui.dropdown.hamburger div.menu div.item a {
+    font-family: 'Raleway', 'Roboto', sans-serif !important;
     text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 1px; }
-    .ui.stackable.menu .item a.brand {
-      width: 10em; }
-      .ui.stackable.menu .item a.brand img.logo {
-        width: 100%; }
-  .ui.stackable.menu .link.item .ui.dropdown .menu .item a {
-    text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 1px; }
+    font-weight: 300; }
+.ui.stackable.menu .ui.grid.computer.only {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%; }
+.ui.stackable.menu .item {
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px; }
+  .ui.stackable.menu .item a.brand {
+    width: 10em; }
+    .ui.stackable.menu .item a.brand img.logo {
+      width: 100%; }
+.ui.stackable.menu .link.item .ui.dropdown .menu .item a {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px; }
 
 .home {
   font-family: 'Raleway', 'Roboto', sans-serif !important;
@@ -100,7 +108,8 @@ section#single-article {
       display: flex;
       justify-content: center;
       margin: 0 auto;
-      position: relative; }
+      position: relative;
+      border-right: 4px solid white; }
       .home .article .overlay {
         width: 100%;
         height: 100%;
@@ -157,9 +166,10 @@ section#single-article {
       background-repeat: no-repeat; } }
   @media (min-width: 768px) {
     .home .article {
-      width: 50vw;
+      width: 60vw;
       height: 400px;
-      position: relative; }
+      position: relative;
+      border-right: 4px solid white; }
       .home .article .overlay {
         width: 100%;
         height: 100%;
@@ -172,7 +182,7 @@ section#single-article {
         bottom: 3em;
         left: 1em;
         letter-spacing: 2px;
-        font-size: 2rem;
+        font-size: 1.72rem;
         color: white; }
         .home .article .ui.header.article-title:hover {
           text-decoration: underline;
@@ -182,7 +192,7 @@ section#single-article {
         bottom: 1em;
         left: 2em;
         letter-spacing: 2px;
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: white;
         text-align: left; }
     .home .article.imgHolder {
@@ -218,7 +228,8 @@ section#single-article {
     .home .article {
       width: 55vw;
       height: 450px;
-      position: relative; }
+      position: relative;
+      border-right: 4px solid white; }
       .home .article .overlay {
         width: 100%;
         height: 100%;
@@ -254,7 +265,7 @@ section#single-article {
       position: relative; } }
   @media (min-width: 1440px) {
     .home .article {
-      width: 45vw;
+      width: 55vw;
       height: 550px;
       position: relative; }
     .home .featured-brand {
@@ -304,13 +315,14 @@ div.about-page .page-container.ui.container {
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div {
       width: 40vw; }
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph div img {
-        width: 100%; }
+        width: 80%;
+        padding: 1em; }
     div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text {
       margin-top: 1em;
       font-weight: 300;
-      width: 30vw;
+      width: 50vw;
       font-size: 1.3rem;
-      line-height: 170%;
+      line-height: 200%;
       text-align: justify;
       text-indent: 1em; }
       div.about-page .page-container.ui.container .ui.divided.items.container .paragraph p.text span.bold {
@@ -450,8 +462,11 @@ p#soldout {
     display: flex;
     justify-content: center;
     flex-flow: column wrap; }
-    .single-clothing .page-container .product-info .imgHolder img {
-      width: 100%; }
+    .single-clothing .page-container .product-info .imgHolder {
+      max-height: 70vh;
+      overflow: hidden; }
+      .single-clothing .page-container .product-info .imgHolder img {
+        width: 100%; }
     .single-clothing .page-container .product-info .product-text {
       padding: 1em;
       margin-top: 2em; }
@@ -487,6 +502,8 @@ p#soldout {
           height: 100px;
           margin: 0em 1em 1em 0em; } }
 @media (min-width: 768px) and (max-width: 768px) {
+  .single-clothing .page-container .product-info .imgHolder {
+    max-height: 400px !important; }
   .single-clothing .page-container .more-images {
     position: absolute;
     width: 100%;
@@ -499,9 +516,11 @@ p#soldout {
     margin-top: 5em; }
     .single-clothing .page-container .product-info .imgHolder {
       width: 35vw;
-      cursor: zoom-in; }
+      cursor: zoom-in;
+      overflow: hidden;
+      max-height: 500px; }
       .single-clothing .page-container .product-info .imgHolder img {
-        width: 100%; }
+        height: 100%; }
     .single-clothing .page-container .product-info .product-text {
       width: 30vw;
       padding: 1em; }

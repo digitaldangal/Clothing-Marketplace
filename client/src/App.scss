@@ -17,11 +17,6 @@ a {
     color: black;
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
-header {
-    width: 90vw;
-    margin: 0 auto;
-    margin-bottom: 3em;
-}
 .ui.header, .ui.header.title{
     font-weight: 300;
     text-transform: uppercase;
@@ -38,8 +33,24 @@ section#single-article{
 }
 
 //   NavBar
+a.brand:hover{
+    color: black !important;
+}
+header{
+    @media (min-width:768px) {
+        width: 80vw;
+        margin: 0 auto;
+        border-bottom: none !important;
+        margin-bottom: 1em;
+    }
+    @media (min-width: 1024px) and (max-width: 1024px) {
+        h1.app-title{
+            font-size: 22px !important;
+            left: 52% !important;
+        }
+    }
+}
 .ui.stackable.menu{
-    margin-top: 0.5em;
     .ui.grid.tablet.mobile.only.container{
         .ui.secondary.stackable.menu{
             @media (min-width: 768px) and(max-width: 1024px){
@@ -47,6 +58,9 @@ section#single-article{
                 flex-flow: column wrap;
                 justify-content: space-between;
                 width: 100%;
+                .ui.dropdown.hamburger{
+                    left: -4em !important;
+                }
                 .sidebar.icon{
                     font-size: 1.5rem;
                     position: absolute;
@@ -65,10 +79,10 @@ section#single-article{
             }
         }
         .ui.secondary.stackable.menu{
-            position: relative;
             .ui.dropdown.hamburger{
                 position: absolute;
                 top: 1.5em;
+                left: 4vw;
                 .sidebar.icon{
                     font-size: 1.5rem;
                 }
@@ -132,6 +146,7 @@ section#single-article{
             justify-content: center;
             margin: 0 auto;
             position: relative;
+            border-right: 4px solid white;
             .overlay{
                 width: 100%;
                 height: 100%;
@@ -201,9 +216,10 @@ section#single-article{
 
     @media (min-width: 768px) {
         .article {
-            width: 50vw;
+            width: 60vw;
             height: 400px;
             position: relative;
+            border-right: 4px solid white;
             .overlay{
                 width: 100%;
                 height: 100%;
@@ -221,7 +237,7 @@ section#single-article{
                 bottom: 3em;
                 left: 1em;
                 letter-spacing: 2px;
-                font-size: 2rem;
+                font-size:1.72rem;
                 color: white;
             }
             .ui.header.article-subtitle{
@@ -229,7 +245,7 @@ section#single-article{
                 bottom: 1em;
                 left: 2em;
                 letter-spacing: 2px;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 color: white;
                 text-align: left;
             }
@@ -278,6 +294,7 @@ section#single-article{
             width: 55vw;
             height: 450px;
             position: relative;
+            border-right: 4px solid white;
             .overlay{
                 width: 100%;
                 height: 100%;
@@ -324,7 +341,7 @@ section#single-article{
 
     @media (min-width: 1440px) {
         .article {
-            width: 45vw;
+            width: 55vw;
             height: 550px;
             position: relative;
         }
@@ -396,7 +413,8 @@ div.about-page {
                 div{
                 width: 40vw;
                     img{
-                    width: 100%;
+                    width: 80%;
+                    padding: 1em;
                     }
                 }
                 p.text{
@@ -406,9 +424,9 @@ div.about-page {
                         font-weight: 2rem;
                     }
                     font-weight: 300;
-                    width: 30vw;
+                    width: 50vw;
                     font-size: 1.3rem;
-                    line-height: 170%;
+                    line-height: 200%;
                     text-align: justify;
                     text-indent: 1em;
                     a {
@@ -617,6 +635,8 @@ p#soldout{
                 justify-content: center;
                 flex-flow: column wrap;
                 .imgHolder{
+                    max-height: 70vh;
+                    overflow: hidden;
                     img{
                         width: 100%;
                     }
@@ -668,6 +688,9 @@ p#soldout{
             }
         }
         @media (min-width: 768px) and (max-width: 768px){
+            .product-info .imgHolder{
+                max-height: 400px !important;
+            }
             .more-images{
                 position: absolute;
                 width: 100%;
@@ -683,8 +706,10 @@ p#soldout{
                 .imgHolder{
                     width: 35vw;
                     cursor: zoom-in;
+                    overflow: hidden;
+                    max-height: 500px;
                     img{
-                        width: 100%;
+                        height: 100%;
                     }
                 }
                 .product-text{

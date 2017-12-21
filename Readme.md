@@ -137,15 +137,12 @@ renderPicPreviews = (e) =>{
 ```
 ### Future Improvements
 - [x] Report Products
-- [ ] Recently Sold Feed
+- [x] Recently Sold Feed
 - [ ] Meet the Team
 - [ ] Brand Image, Logo, or profile pic
-- [ ] Error Handling and Success handling
 - [ ] Product Share button
-- [ ] Compress Uploaded Images
 - [x] Sizing
 - [ ] Searching
-- [ ] 10-20 Starting Brands, go up by 5-10 every month
 - [ ] Articles
     - [ ] Instagram Feed for brands
     - [ ] Weekly or bi weekly

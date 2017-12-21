@@ -43,8 +43,8 @@ exports.pay = functions.https.onRequest((req, res) => {
       payment_method: 'paypal'
     },
     redirect_urls: {
-      return_url: `https://streetwearboutiques.com/profile/process`,
-      cancel_url: `https://streetwearboutiques.com/profile`
+      return_url: `http://localhost:5000/profile/process`,
+      cancel_url: `http://localhost:5000/profile`
     },
     transactions: [{
       "amount": {
@@ -70,7 +70,7 @@ exports.pay = functions.https.onRequest((req, res) => {
           },
           // reference_id string .Optional. The merchant-provided ID for the purchase unit. Maximum length: 256.
           // reference_id: req.body.uid,
-          custom: req.body.designer_id,
+          custom: req.body.user_id,
           soft_descriptor: req.body.designer
         }]
       });
@@ -122,7 +122,7 @@ exports.process = functions.https.onRequest((req, res) => {
   paypal.payment.execute(paymentId, payerId, (error, payment) => {
     if (error) {
       console.error(error);
-      res.redirect(`https://streetwearboutiques.com/profile/error`); // replace with your url page error
+      res.redirect(`http://localhost:5000/profile/error`); // replace with your url page error
     } else {
       if (payment.state === 'approved') {
         console.info('payment completed successfully, description: ', payment.transactions[0].description);
@@ -131,20 +131,23 @@ exports.process = functions.https.onRequest((req, res) => {
         // set paid status to True in RealTime Database
         const date =Date().toString();
         const uid = payment.transactions[0].custom;
-        const ref = admin.firestore().collection('payments').doc(Date().toString()).collection(uid);
+        const ref = admin.firestore().collection('payments').doc(uid);
 
-        ref.add({
-          'paid': true,
-          'amount': payment.transactions[0].amount,
-          'designer': uid,
-          'product': payment.transactions[0].item_list.items[0],
-          'date': date,
-          'payment_info': {
-            'payer_id': payerId.payer_id,
-            'payer': payment.payer
+        ref.update({
+          [date]: {
+            'paid': true,
+            'amount': payment.transactions[0].amount,
+            'product': payment.transactions[0].item_list.items[0],
+            'date': date,
+            'user_uid': uid,
+            'payment_info': {
+              'payer_id': payerId.payer_id,
+              'payer': payment.payer,
+              'payment': payment
+            }
           }
         }).then(r => console.info('promise: ', r)).catch(err=>console.log(err));
-        res.redirect(`https://streetwearboutiques.com/profile/process`); // replace with your url, page success
+        res.redirect(`http://localhost:5000/profile/process`); // replace with your url, page success
       } else {
         console.warn('payment.state: not approved ?');
         // replace debug url
@@ -229,7 +232,7 @@ exports.newPayment = functions.https.onRequest((req, res)=>{
       from: email,
       subject: `New Payment on Streetwear Boutiques`,
       text: `A brand has just received a purchase!`,
-      html: `user: ${req.body.user} \n eamil: ${req.body.email} <br/> paypal info: ${req.body.payment_info}`,
+      html: `user: ${req.body.user} \n email: ${req.body.email} <br/> paypal info: ${req.body.payment_info}`,
     };
 
     sgMail.send(msg,false,function (error, message) {
