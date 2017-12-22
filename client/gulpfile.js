@@ -6,9 +6,9 @@ gulp.task('sass', ()=>{
 	return gulp.src('src/sass/main.scss')
 	.pipe(sass())
 	.pipe(minify())
-	.pipe(gulp.dest('src/css'))
+	.pipe(gulp.dest('src/App.css'))
 })
 
 gulp.task('watch', ()=>{
-	gulp.watch('src/sass/*.scss', ['sass'])
+	gulp.watch('src/App.scss', ['sass'])
 })
