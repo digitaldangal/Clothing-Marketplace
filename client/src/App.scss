@@ -108,6 +108,16 @@ header{
         text-transform: uppercase;
         font-weight: 300;
         letter-spacing: 1px;
+        .text{
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+        }
+        a{
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+        }
         a.brand{
             width: 10em;
             img.logo{
@@ -116,6 +126,10 @@ header{
         }
     }
     .link.item{
+        &:hover{
+            background: none;
+            color: none;
+        }
         .ui.dropdown{
             .menu .item a{
             text-transform: uppercase;
