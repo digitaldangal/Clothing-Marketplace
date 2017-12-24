@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Grid } from 'semantic-ui-react';
+import { Table, Grid, Modal, Button, Image, Header} from 'semantic-ui-react';
 
 const Transaction = (props) => {
     const {transactionData} = props;
@@ -24,7 +24,7 @@ const Transaction = (props) => {
                                     <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
                                     <Table.Cell>$ {transaction.amount.total}</Table.Cell>
                                     <Table.Cell>{transaction.payment_info.payment.state}</Table.Cell>
-                                    <Table.Cell>Contact US <br/> View Order</Table.Cell>
+                                    <Table.Cell><a href={`mailto:streetwearboutiques@gmail.com?subject=Order Inquiry: ${transaction.payment_info.payment.id}"&body=User Id: ${transaction.user_uid} \n Order Date: ${transaction.date}`} target="_blank">Contact Us</a><br/> View Order</Table.Cell>
                                 </Table.Row>
                             )
                         })}
@@ -44,7 +44,19 @@ const Transaction = (props) => {
                             return(
                                 <Table.Row key={i}>
                                     <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
-                                    <Table.Cell>Contact US <br/> View Order</Table.Cell>
+                                    <Table.Cell><a href={`mailto:streetwearboutiques@gmail.com?subject=Order Inquiry: ${transaction.payment_info.payment.id}"&body=User Id: ${transaction.user_uid} \n Order Date: ${transaction.date} \n Message: `} target="_blank">Contact Us</a><br/>
+                                        <Modal closeOnDimmerClick={true} closeOnDocumentClick={true} closeIcon trigger={<a>Show Modal</a>}>
+                                            <Modal.Header>Select a Photo</Modal.Header>
+                                            <Modal.Content image>
+                                            <Image wrapped size='medium' src='/assets/images/avatar/large/rachel.png' />
+                                            <Modal.Description>
+                                                <Header>Default Profile Image</Header>
+                                                <p>We've found the following gravatar image associated with your e-mail address.</p>
+                                                <p>Is it okay to use this photo?</p>
+                                            </Modal.Description>
+                                            </Modal.Content>
+                                        </Modal>
+                                    </Table.Cell>
                                 </Table.Row>
                             )
                         })}

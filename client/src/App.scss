@@ -1083,6 +1083,9 @@ section#cart{
 section#transaction-page{
     .ui.grid{
         margin: 0em;
+        a{
+            text-decoration: underline;
+        }
     }
 }
 
