@@ -171,7 +171,6 @@ class Navbar extends Component {
             "position": "relative",
             "background": "white",
             "top": "0em",
-            "borderBottom": "1px solid #bbb"
         }
         return (
             <header style={header}>

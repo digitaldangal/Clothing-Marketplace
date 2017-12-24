@@ -28,8 +28,10 @@ a {
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 section{
-    width: 80vw;
-    margin: 0 auto;
+    @media(min-width: 1024px){
+        width: 80vw;
+        margin: 0 auto;
+    }
 }
 section#single-article{
     height: 100vh;
@@ -43,7 +45,6 @@ header{
     @media (min-width:768px) {
         width: 80vw;
         margin: 0 auto;
-        border-bottom: none !important;
         margin-bottom: 1em;
     }
     @media (min-width: 1024px) and (max-width: 1050px) {
@@ -1075,6 +1076,13 @@ section#cart{
                 }
             }
         }
+    }
+}
+
+// Transaction Page
+section#transaction-page{
+    .ui.grid{
+        margin: 0em;
     }
 }
 

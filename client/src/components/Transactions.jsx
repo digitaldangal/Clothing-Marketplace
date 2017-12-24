@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import Spinner from './Spinner';
 import Transaction from './Transaction';
 import firebase from '../config/firebase';
@@ -76,14 +76,10 @@ class Transactions extends Component{
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <section id="profile-page">
+            <section id="transaction-page">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <div className="single-clothing">
-                    <div className="page-container ui container">
-                        <h1 className="ui header">Order History</h1>
-                        {this.state.transactionsLoaded ? <Transaction transactionData={this.state.newTransactionObject}/> : <Spinner />}
-                    </div>
-                </div>
+                <h1 className="ui header">Order History</h1>
+                {this.state.transactionsLoaded ? <Transaction transactionData={this.state.newTransactionObject}/> : <Spinner />}
             </section>
         )
     }
