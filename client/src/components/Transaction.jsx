@@ -19,7 +19,11 @@ const Transaction = (props) => {
                     {Object.values(transactionData).map((transaction, i)=>{
                         return(
                             <Table.Row key={i}>
+                                <Table.Cell>{transaction.payment_info.payment.id}</Table.Cell>
                                 <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
+                                <Table.Cell>$ {transaction.amount.total}</Table.Cell>
+                                <Table.Cell>{transaction.payment_info.payment.state}</Table.Cell>
+                                <Table.Cell>Contact US <br/> View Order</Table.Cell>
                             </Table.Row>
                         )
                     })}
