@@ -161,7 +161,7 @@ class Navbar extends Component {
             "color": "black",
             "textTransform": "uppercase",
             "lineHeight": "1",
-            "letterSpacing": ".275em",
+            "letterSpacing": ".175em",
             "position": "absolute",
             "transform": "translate(-50%,-50%)",
             "textAlign": "center",

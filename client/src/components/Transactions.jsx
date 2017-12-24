@@ -26,7 +26,10 @@ class Transactions extends Component{
                         allTransactions: allTransactions,
                         transactionsLoaded: true
                     })
-                }).catch(err=>console.log(err))
+                }).then(()=>{
+                    this.sortTransactions();
+                })
+                .catch(err=>console.log(err))
             }else{
                 this.setState({
                     redirect: true,
@@ -34,6 +37,32 @@ class Transactions extends Component{
                 }) 
             }
         })
+    }
+
+    sortTransactions = () => {
+        var t0 = performance.now();
+        let transactions = this.state.allTransactions;
+        let dateHolder = [];
+        let sortedArray = [];
+
+        /* Grabs the date of each transaction, to be sorted into an array. From there a new object refrence is created with
+        the transactions sorted by most recent
+        */
+        Object.values(transactions).map((transaction, i)=>{
+            dateHolder.push([new Date(transaction.date), i])
+        })
+
+        this.sortDateArray(dateHolder, sortedArray);
+
+        var t1 = performance.now();
+        console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
+    }
+
+    sortDateArray = (dateHolder, sortedArray) => {
+        sortedArray = dateHolder.sort(function(min, max){
+            return max[0] - min[0];
+        })
+        console.log(sortedArray)
     }
 
     render(){

@@ -27,7 +27,10 @@ a {
     text-transform: capitalize;
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
-
+section{
+    width: 80vw;
+    margin: 0 auto;
+}
 section#single-article{
     height: 100vh;
 }
@@ -51,7 +54,7 @@ header{
     }
     h1.app-title{
         top: 50%;
-        left: 52%;
+        left: 50%;
     }
 }
 .ui.stackable.menu{
