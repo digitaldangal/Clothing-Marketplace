@@ -1,8 +1,8 @@
 import React from 'react';
-import { Table, Grid, Modal, Button, Image, Header} from 'semantic-ui-react';
+import { Table, Grid, Modal, Image, Header} from 'semantic-ui-react';
 
 const Transaction = (props) => {
-    const {transactionData} = props;
+    const {transactionData, orderData} = props;
     return(
         <div className="page-container ui container">
             <Grid className="computer tablet only">
@@ -20,11 +20,25 @@ const Transaction = (props) => {
                         {Object.values(transactionData).map((transaction, i)=>{
                             return(
                                 <Table.Row key={i}>
-                                    <Table.Cell>{transaction.payment_info.payment.id}</Table.Cell>
-                                    <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
-                                    <Table.Cell>$ {transaction.amount.total}</Table.Cell>
-                                    <Table.Cell>{transaction.payment_info.payment.state}</Table.Cell>
-                                    <Table.Cell><a href={`mailto:streetwearboutiques@gmail.com?subject=Order Inquiry: ${transaction.payment_info.payment.id}"&body=User Id: ${transaction.user_uid} \n Order Date: ${transaction.date}`} target="_blank">Contact Us</a><br/> View Order</Table.Cell>
+                                    <Table.Cell>{transaction[0].payment_info.payment.id}</Table.Cell>
+                                    <Table.Cell>{new Date(transaction[0].date).toLocaleDateString()}</Table.Cell>
+                                    <Table.Cell>$ {transaction[0].amount.total}</Table.Cell>
+                                    <Table.Cell>{transaction[0].payment_info.payment.state}</Table.Cell>
+                                    <Table.Cell><a href={`mailto:streetwearboutiques@gmail.com?subject=Order Inquiry: ${transaction[0].payment_info.payment.id}"&body=User Id: ${transaction[0].user_uid} \n Order Date: ${transaction[0].date} \n Message: `} target="_blank">Contact Us</a><br/>
+                                        <Modal closeOnDimmerClick={true} closeOnDocumentClick={true} closeIcon trigger={<a>View Order</a>}>
+                                            <Modal.Header>{orderData[transaction[1]].product.title}</Modal.Header>
+                                            <Modal.Content image>
+                                                <Image wrapped size='small' src={orderData[transaction[1]].product.main_image} />
+                                                <Modal.Description>
+                                                    <Header>Order: {transaction[0].payment_info.payment.id}</Header>
+                                                    <p>{orderData[transaction[1]].product.description}</p>
+                                                    <p>Subtotal: ${transaction[0].amount.details.subtotal}</p>
+                                                    <p>Shipping: ${transaction[0].amount.details.shipping}</p>
+                                                    <p>Total: $${transaction[0].amount.details.total}</p>
+                                                </Modal.Description>
+                                            </Modal.Content>
+                                        </Modal>
+                                    </Table.Cell>
                                 </Table.Row>
                             )
                         })}
@@ -43,17 +57,19 @@ const Transaction = (props) => {
                         {Object.values(transactionData).map((transaction, i)=>{
                             return(
                                 <Table.Row key={i}>
-                                    <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
-                                    <Table.Cell><a href={`mailto:streetwearboutiques@gmail.com?subject=Order Inquiry: ${transaction.payment_info.payment.id}"&body=User Id: ${transaction.user_uid} \n Order Date: ${transaction.date} \n Message: `} target="_blank">Contact Us</a><br/>
-                                        <Modal closeOnDimmerClick={true} closeOnDocumentClick={true} closeIcon trigger={<a>Show Modal</a>}>
-                                            <Modal.Header>Select a Photo</Modal.Header>
+                                    <Table.Cell>{new Date(transaction[0].date).toLocaleDateString()}</Table.Cell>
+                                    <Table.Cell><a href={`mailto:streetwearboutiques@gmail.com?subject=Order Inquiry: ${transaction[0].payment_info.payment.id}"&body=User Id: ${transaction[0].user_uid} \n Order Date: ${transaction[0].date} \n Message: `} target="_blank">Contact Us</a><br/>
+                                        <Modal closeOnDimmerClick={true} closeOnDocumentClick={true} closeIcon trigger={<a>View Order</a>}>
+                                            <Modal.Header>{orderData[transaction[1]].product.title}</Modal.Header>
                                             <Modal.Content image>
-                                            <Image wrapped size='medium' src='/assets/images/avatar/large/rachel.png' />
-                                            <Modal.Description>
-                                                <Header>Default Profile Image</Header>
-                                                <p>We've found the following gravatar image associated with your e-mail address.</p>
-                                                <p>Is it okay to use this photo?</p>
-                                            </Modal.Description>
+                                                <Image wrapped size='small' src={orderData[transaction[1]].product.main_image} />
+                                                <Modal.Description>
+                                                    <Header>Order: {transaction[0].payment_info.payment.id}</Header>
+                                                    <p>{orderData[transaction[1]].product.description}</p>
+                                                    <p>Subtotal: ${transaction[0].amount.details.subtotal}</p>
+                                                    <p>Shipping: ${transaction[0].amount.details.shipping}</p>
+                                                    <p>Total: $${transaction[0].amount.details.total}</p>
+                                                </Modal.Description>
                                             </Modal.Content>
                                         </Modal>
                                     </Table.Cell>

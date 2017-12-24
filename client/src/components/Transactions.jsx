@@ -30,7 +30,7 @@ class Transactions extends Component{
                     allTransactions = res.data()
                     this.setState({
                         allTransactions: allTransactions,
-                        currentPage: user
+                        currentUser: user
                     })
                 }).then(()=>{
                     this.sortTransactions();
@@ -38,7 +38,7 @@ class Transactions extends Component{
                     db.collection('users').doc(user.uid).collection('transactions').get().then((res)=>{
                         res.forEach((order)=>{
                             if(order.exists){
-                                return orderInfromation[order.id] = order.data();
+                                return orderInfromation[order.data().id] = order.data();
                             }
                         })
                         this.setState({
@@ -77,7 +77,7 @@ class Transactions extends Component{
             return max[0] - min[0];
         })
         sortedArray.map((item, x)=>{
-            return newTransactionObject[`Transaction ${x}`] = Object.values(this.state.allTransactions)[item[1]]
+            return newTransactionObject[`Transaction ${x}`] = [Object.values(this.state.allTransactions)[item[1]], [Object.values(this.state.allTransactions)[item[1]].product.sku]]
         })
         this.setState({
             newTransactionObject: newTransactionObject,
