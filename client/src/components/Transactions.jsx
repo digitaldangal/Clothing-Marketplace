@@ -14,12 +14,15 @@ class Transactions extends Component{
             currentPage: null,
             currentUser: false,
             transactionsLoaded: false,
-            allTransactions: false
+            allTransactions: false,
+            orderInfromation: false
         }
     }
 
     componentDidMount() {
-        let allTransactions = {}
+        let allTransactions = {};
+        let orderInfromation = {};
+
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
                 db.collection('payments').doc(user.uid).get().then((res)=>{
@@ -30,10 +33,19 @@ class Transactions extends Component{
                         currentPage: user
                     })
                 }).then(()=>{
-                    var t0 = performance.now();
                     this.sortTransactions();
-                    var t1 = performance.now();
-                    console.log("Sorting transactions took " + (t1 - t0) + " milliseconds.")
+                }).then(()=>{
+                    db.collection('users').doc(user.uid).collection('transactions').get().then((res)=>{
+                        res.forEach((order)=>{
+                            if(order.exists){
+                                return orderInfromation[order.id] = order.data();
+                            }
+                        })
+                        this.setState({
+                            orderInfromation: orderInfromation,
+                            transactionsLoaded: true
+                        })
+                    })
                 })
                 .catch(err=>console.log(err))
             }else{
@@ -69,7 +81,6 @@ class Transactions extends Component{
         })
         this.setState({
             newTransactionObject: newTransactionObject,
-            transactionsLoaded: true,
         })
     }
 
@@ -79,7 +90,7 @@ class Transactions extends Component{
             <section id="transaction-page">
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <h1 className="ui header">Order History</h1>
-                {this.state.transactionsLoaded ? <Transaction transactionData={this.state.newTransactionObject}/> : <Spinner />}
+                {this.state.transactionsLoaded ? <Transaction transactionData={this.state.newTransactionObject} orderData={this.state.orderInfromation}/> : <Spinner />}
             </section>
         )
     }
