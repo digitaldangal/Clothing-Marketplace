@@ -11,7 +11,8 @@ class Transactions extends Component{
             redirect: false,
             currentPage: null,
             currentUser: false,
-            transactionsLoaded: false
+            transactionsLoaded: false,
+            allTransactions: false
         }
     }
 
@@ -24,10 +25,14 @@ class Transactions extends Component{
                     allTransactions = res.data()
                     this.setState({
                         allTransactions: allTransactions,
-                        transactionsLoaded: true
+                        transactionsLoaded: true,
+                        currentPage: user
                     })
                 }).then(()=>{
+                    var t0 = performance.now();
                     this.sortTransactions();
+                    var t1 = performance.now();
+                    console.log("Sorting transactions took " + (t1 - t0) + " milliseconds.")
                 })
                 .catch(err=>console.log(err))
             }else{
@@ -39,30 +44,31 @@ class Transactions extends Component{
         })
     }
 
+    /* Grabs the date of each transaction, to be sorted into an array. From there a new object refrence is created with
+    the transactions sorted by most recent
+    */
     sortTransactions = () => {
-        var t0 = performance.now();
         let transactions = this.state.allTransactions;
         let dateHolder = [];
         let sortedArray = [];
-
-        /* Grabs the date of each transaction, to be sorted into an array. From there a new object refrence is created with
-        the transactions sorted by most recent
-        */
+        
         Object.values(transactions).map((transaction, i)=>{
-            dateHolder.push([new Date(transaction.date), i])
+            return dateHolder.push([new Date(transaction.date), i]);
         })
-
         this.sortDateArray(dateHolder, sortedArray);
-
-        var t1 = performance.now();
-        console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
     }
-
+    
     sortDateArray = (dateHolder, sortedArray) => {
+        let newTransactionObject = {};
         sortedArray = dateHolder.sort(function(min, max){
             return max[0] - min[0];
         })
-        console.log(sortedArray)
+        sortedArray.map((item, x)=>{
+            return newTransactionObject[`Transaction ${x}`] = Object.values(this.state.allTransactions)[item[1]]
+        })
+        this.setState({
+            newTransactionObject: newTransactionObject
+        })
     }
 
     render(){
