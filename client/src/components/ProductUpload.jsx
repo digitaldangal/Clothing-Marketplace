@@ -107,6 +107,7 @@ class ProductUpload extends Component {
             sold_out: false,
             amount_sold: 0,
             clothing_label: this.state.brandData,
+            url: `/designers/${this.state.brandData.name}/${this.state.brandData.id}/${this.state.title}/${this.state.id}`,
             inventory: this.state.category === ("OUTERWEAR" || "TOPS") ? {
                 xxs: this.state.xxs,
                 xs: this.state.xs,
@@ -164,6 +165,7 @@ class ProductUpload extends Component {
                         main_image: downloadUrl,
                         clothing_label: this.state.brandData,
                         uid: this.state.uid,
+                        url: `/designers/${this.state.brandData.name}/${this.state.brandData.id}/${this.state.title}/${this.state.id}`,
                         deleted: false
                     }).then(()=>{
                         uploadedFiles.length > 0 ? null : this.redirectPage()

@@ -3,6 +3,15 @@ import { Table, Grid, Modal, Image, Header} from 'semantic-ui-react';
 
 const Transaction = (props) => {
     const {transactionData, orderData} = props;
+    const style = {
+        mainStyle: {
+            "text-align": "center"
+        },
+        image: {
+            width: "20vw",
+            margin: "0 auto"
+        }
+    }
     return(
         <div className="page-container ui container">
             <Grid className="computer tablet only">
@@ -28,7 +37,7 @@ const Transaction = (props) => {
                                         <Modal closeOnDimmerClick={true} closeOnDocumentClick={true} closeIcon trigger={<a>View Order</a>}>
                                             <Modal.Header>{orderData[transaction[1]].product.title}</Modal.Header>
                                             <Modal.Content image>
-                                                <Image wrapped size='small' src={orderData[transaction[1]].product.main_image} />
+                                                <Image wrapped size='medium' src={orderData[transaction[1]].product.main_image} style={style.image}/>
                                                 <Modal.Description>
                                                     <Header>Order: {transaction[0].payment_info.payment.id}</Header>
                                                     <p>{orderData[transaction[1]].product.description}</p>
