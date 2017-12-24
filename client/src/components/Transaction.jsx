@@ -5,7 +5,7 @@ const Transaction = (props) => {
     const {transactionData} = props;
     return(
         <div className="page-container">
-            <Table singleLine>
+            <Table celled fixed singleLine>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Order Number</Table.HeaderCell>
