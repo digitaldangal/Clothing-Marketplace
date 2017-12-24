@@ -80,7 +80,7 @@ class Transactions extends Component{
                 {redirect ? <Redirect to={currentPage} /> : null}
                 <div className="single-clothing">
                     <div className="page-container ui container">
-                        <h1 className="ui header">Previous Transactions</h1>
+                        <h1 className="ui header">Order History</h1>
                         {this.state.transactionsLoaded ? <Transaction transactionData={this.state.newTransactionObject}/> : <Spinner />}
                     </div>
                 </div>
