@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import Spinner from './Spinner';
+import Transaction from './Transaction';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -25,7 +27,6 @@ class Transactions extends Component{
                     allTransactions = res.data()
                     this.setState({
                         allTransactions: allTransactions,
-                        transactionsLoaded: true,
                         currentPage: user
                     })
                 }).then(()=>{
@@ -67,7 +68,8 @@ class Transactions extends Component{
             return newTransactionObject[`Transaction ${x}`] = Object.values(this.state.allTransactions)[item[1]]
         })
         this.setState({
-            newTransactionObject: newTransactionObject
+            newTransactionObject: newTransactionObject,
+            transactionsLoaded: true,
         })
     }
 
@@ -79,7 +81,7 @@ class Transactions extends Component{
                 <div className="single-clothing">
                     <div className="page-container ui container">
                         <h1 className="ui header">Previous Transactions</h1>
-
+                        {this.state.transactionsLoaded ? <Transaction transactionData={this.state.newTransactionObject}/> : <Spinner />}
                     </div>
                 </div>
             </section>
