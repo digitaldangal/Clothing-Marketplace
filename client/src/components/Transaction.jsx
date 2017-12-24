@@ -1,18 +1,8 @@
 import React from 'react';
-import { Table, Grid, Modal, Image, Header} from 'semantic-ui-react';
+import { Table, Grid} from 'semantic-ui-react';
 
 const Transaction = (props) => {
-    const {transactionData, orderData} = props;
-    const style = {
-        mainStyle: {
-            "textAlign": "center",
-            "textTransform": "capitalize"
-        },
-        image: {
-            width: "20vw",
-            margin: "0 auto"
-        }
-    }
+    const {transactionData} = props;
     return(
         <div className="page-container ui container">
             <Grid className="computer tablet only">
