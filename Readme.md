@@ -1,4 +1,4 @@
-#  StreetwearBoutiques.com 1.9.2 Beta Mode
+#  StreetwearBoutiques.com - 1.9.3 Beta Mode
 
 Streetwear Boutiques was founded and created by, me Amidou Kante, in 2017 to bridge the gap between new clothing brands, and fashion lovers alike. I have always been interested in fashion, streetwear, and supporting smaller brands. However, there isn't a convenient way to explore all those brands, so I've decided to build a place where that is possible. I was inspired by various fashion communities and I'm on a mission to create a place for different labels to grow and flourish. 
 
@@ -37,6 +37,7 @@ These are some of the features that I plan on tackling as I build this project
 - [x] Purchasing
     - [x] Wishlist
     - [x] Paypal
+    - [x] Transactions
 - [x] Home Section
     - [x] Articles View
     - [x] Featured Brands or Random Brands
@@ -150,9 +151,6 @@ renderPicPreviews = (e) =>{
     - [ ] recommendations or next article 
     - [ ] Outfits of the Week
 - [ ] Improve with drag and drop to reorder images
-- [ ] Tracking
-    - [ ] Transactions
-    - [ ] Rating
 - [ ] Create Brand Dashboard
     - [ ] activate sales
     - [x] mark items soldout

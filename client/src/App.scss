@@ -27,7 +27,12 @@ a {
     text-transform: capitalize;
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
-
+section{
+    @media(min-width: 1024px){
+        width: 80vw;
+        margin: 0 auto;
+    }
+}
 section#single-article{
     height: 100vh;
 }
@@ -40,7 +45,6 @@ header{
     @media (min-width:768px) {
         width: 80vw;
         margin: 0 auto;
-        border-bottom: none !important;
         margin-bottom: 1em;
     }
     @media (min-width: 1024px) and (max-width: 1050px) {
@@ -51,7 +55,7 @@ header{
     }
     h1.app-title{
         top: 50%;
-        left: 52%;
+        left: 50%;
     }
 }
 .ui.stackable.menu{
@@ -108,6 +112,16 @@ header{
         text-transform: uppercase;
         font-weight: 300;
         letter-spacing: 1px;
+        .text{
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+        }
+        a{
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+        }
         a.brand{
             width: 10em;
             img.logo{
@@ -116,6 +130,10 @@ header{
         }
     }
     .link.item{
+        &:hover{
+            background: none;
+            color: none;
+        }
         .ui.dropdown{
             .menu .item a{
             text-transform: uppercase;
@@ -163,7 +181,7 @@ header{
                 position: absolute;
                 bottom: 2em;
                 left: 0.5em;
-                font-size: 1.6rem;
+                font-size: 1.6rem; 
                 color: white;
                 text-shadow: 4px 4px 4px black;
             }
@@ -1057,6 +1075,16 @@ section#cart{
                     }
                 }
             }
+        }
+    }
+}
+
+// Transaction Page
+section#transaction-page{
+    .ui.grid{
+        margin: 0em;
+        a{
+            text-decoration: underline;
         }
     }
 }
