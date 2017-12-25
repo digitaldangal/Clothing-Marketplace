@@ -23,6 +23,7 @@ import ProcessPayment from './components/ProcessPayment';
 import Wishlist from './components/Wishlist';
 import NoMatch from './components/NoMatch';
 import Transactions from './components/Transactions';
+import AllClothing from './components/AllClothing';
 
 import './App.css';
 
@@ -143,6 +144,7 @@ class App extends Component {
                 <Route exact path="/editorial/archive/:category" component={ArticleCategory} />
                 <Route exact path="/editorial/:id/:article" component={ReadArticle} />
                 <Route exact path="/search/products/:product_type" component={SearchQuery} />
+                <Route exact path="/clothing" component={AllClothing} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact-us" component={Contact} />
                 <Route exact path="/customer/terms-conditions" component={Terms} />
