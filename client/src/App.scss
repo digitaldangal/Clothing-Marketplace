@@ -199,7 +199,7 @@ header{
         .ui.header.article-title{
             position: absolute;
             bottom: 3em;
-            left: 1em;
+            left: 2em;
             letter-spacing: 1px;
             font-size: 2rem;
             color: white;
@@ -208,7 +208,7 @@ header{
         .ui.header.article-subtitle{
             position: absolute;
             bottom: 2em;
-            left: 2em;
+            left: 3em;
             letter-spacing: 1px;
             font-size: 1.2rem;
             color: white;
@@ -246,6 +246,7 @@ header{
             font-size: 1.8rem;
             color: white;
             font-weight: bold;
+            bottom: 2em;
         }
     }
     @media (max-width: 767px) {
@@ -317,7 +318,6 @@ header{
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            // position: absolute;
         }
     }
 
@@ -359,7 +359,6 @@ header{
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            // position: absolute;
         }
     
         .featured-brand {
@@ -384,6 +383,7 @@ header{
                 font-size: 1.8rem;
                 color: white;
                 font-weight: bold;
+                bottom: 1em;
             }
         }
     }
