@@ -68,6 +68,19 @@ header{
 }
 .ui.stackable.menu{
     .ui.grid.tablet.mobile.only.container{
+        width: 90vw;
+        margin: 0 auto;
+        div.app-title{
+            font-size: 18px;
+            color: black;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            top: 1.8em;
+            width: 100%;
+            left: 0.5em;
+        }
         .ui.secondary.stackable.menu{
             @media (min-width: 768px) and(max-width: 1024px){
                 display: flex;
@@ -75,7 +88,7 @@ header{
                 justify-content: space-between;
                 width: 100%;
                 .ui.dropdown.hamburger{
-                    left: -4em !important;
+                    left: -3.5em !important;
                 }
                 .sidebar.icon{
                     font-size: 1.5rem;
@@ -96,9 +109,9 @@ header{
         }
         .ui.secondary.stackable.menu{
             .ui.dropdown.hamburger{
-                position: absolute;
-                top: 1.5em;
-                left: 4vw;
+                position: relative;
+                top: 1em;
+                left: 0.5em;
                 .sidebar.icon{
                     font-size: 1.5rem;
                 }
@@ -171,11 +184,68 @@ header{
     overflow: hidden;
     text-shadow: 1px 1px 1px black;
     .article {
+        width: 799px;
+        height: 450px;
+        position: relative;
+        margin-right: 1px;
+        .overlay{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
         .ui.header.article-title{
+            position: absolute;
+            bottom: 3em;
+            left: 1em;
+            letter-spacing: 1px;
+            font-size: 2rem;
+            color: white;
             font-weight: bold;
         }
         .ui.header.article-subtitle{
+            position: absolute;
+            bottom: 2em;
+            left: 2em;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            color: white;
+            text-align: left;
+            font-weight: bold;
             font-weight: 300;
+        }
+    }
+    .article.imgHolder{
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        // position: absolute;
+    }
+
+    .featured-brand {
+        width: 400px;
+        height: 450px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        .overlay{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .ui.header.brand-title{
+            position: absolute;
+            left: 1em;
+            letter-spacing: 1px;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: bold;
         }
     }
     @media (max-width: 767px) {
@@ -251,76 +321,10 @@ header{
         }
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1024px){
+        width: 100%;
         .article {
-            width: 60vw;
-            height: 400px;
-            position: relative;
-            border-right: 4px solid white;
-            .overlay{
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: rgba(0,0,0,.2);
-            }
-            .ui.header.article-title{
-                position: absolute;
-                bottom: 3em;
-                left: 1em;
-                letter-spacing: 2px;
-                font-size:1.72rem;
-                color: white;
-            }
-            .ui.header.article-subtitle{
-                position: absolute;
-                bottom: 1em;
-                left: 2em;
-                letter-spacing: 2px;
-                font-size: 1rem;
-                color: white;
-                text-align: left;
-            }
-        }
-        .article.imgHolder{
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .featured-brand {
-            width: 35vw;
-            height: 400px;
-            position: relative;
-            .overlay{
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: rgba(0,0,0,.2);
-            }
-            .ui.header.brand-title{
-                position: absolute;
-                bottom: 1em;
-                left: 1em;
-                letter-spacing: 2px;
-                font-size: 2rem;
-                color: white;
-            }
-        }
-        .featured-brand.imgHolder{
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            // position: absolute;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .article {
-            width: 799px;
+            width: 550px;
             height: 450px;
             position: relative;
             margin-right: 1px;
@@ -357,36 +361,31 @@ header{
             background-repeat: no-repeat;
             // position: absolute;
         }
-
+    
         .featured-brand {
-            width: 400px;
+            width: 210px;
             height: 450px;
             position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            .overlay{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,0.3);
+            }
+            .ui.header.brand-title{
+                position: absolute;
+                left: 1em;
+                letter-spacing: 1px;
+                font-size: 1.8rem;
+                color: white;
+                font-weight: bold;
+            }
         }
-    }
-
-    .featured-brand {
-        .overlay{
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: rgba(0,0,0,.2);
-        }
-        .ui.header.brand-title{
-            position: absolute;
-            left: 1em;
-            letter-spacing: 1px;
-            font-size: 2rem;
-            color: white;
-        }
-    }
-    .featured-brand.imgHolder{
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        // position: absolute;
     }
 }
 

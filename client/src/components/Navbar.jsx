@@ -107,6 +107,7 @@ class Navbar extends Component {
             <Menu secondary stackable>
                 <Grid className="tablet mobile only container">
                     <Menu secondary stackable>
+                        <div className="logo" className="app-title"><Link className="brand" to="/">streetwear boutiques</Link></div>
                         <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
                             <Dropdown.Menu style={style.menuWidth}>
                                 <Link to="/"><Dropdown.Item>Home</Dropdown.Item></Link>
@@ -123,8 +124,6 @@ class Navbar extends Component {
                                 <Dropdown.Divider />
                             </Dropdown.Menu>
                         </Dropdown>
-
-                        {/* <Menu.Item className="link"><Input icon='search' placeholder='Search...' type="text"/></Menu.Item> */}
                     </Menu>
                 </Grid>
                 
