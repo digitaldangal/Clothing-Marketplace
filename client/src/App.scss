@@ -55,6 +55,9 @@ a.brand:hover{
     color: black !important;
 }
 header{
+    @media(min-width: 320px){
+        margin-top: -1em;
+    }
     @media (min-width:768px) {
         width: 80vw;
         margin: 0 auto;
@@ -80,6 +83,16 @@ header{
             top: 1.8em;
             width: 100%;
             left: 0.5em;
+        }
+        div.item{
+            text-align: center;
+            font-weight: 300;
+        }
+        div.submenu{
+            div.text{
+                padding-left: 1em;
+                font-weight: 300;
+            }
         }
         .ui.secondary.stackable.menu{
             @media (min-width: 768px) and(max-width: 1024px){
@@ -158,19 +171,6 @@ header{
             text-align: center;
             position: relative;
             top: -4px;
-        }
-    }
-    .link.item{
-        &:hover{
-            background: none;
-            color: none;
-        }
-        .ui.dropdown{
-            .menu .item a{
-            text-transform: uppercase;
-            font-weight: 300;
-            letter-spacing: 1px;
-            }
         }
     }
 }

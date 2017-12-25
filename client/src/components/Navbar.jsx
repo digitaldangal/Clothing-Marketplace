@@ -94,9 +94,6 @@ class Navbar extends Component {
     }
     renderNav(){
         const style = {
-            menuWidth: {
-                width: '50vw',
-            },
             fontStyle: {
                 fontFamily: 'Raleway, Roboto, sans-serif',
                 textTransform: 'uppercase',
