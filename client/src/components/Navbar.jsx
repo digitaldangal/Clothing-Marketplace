@@ -54,7 +54,9 @@ class Navbar extends Component {
     authUser=()=>{
         const style = {
             width: '100%',
-            textAlign: 'center'
+            textAlign: 'center',
+            position: 'relative',
+            top: '-1px'
         }
         return(
             <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`} style={style}>
