@@ -60,15 +60,10 @@ header{
         margin: 0 auto;
         margin-bottom: 1em;
     }
-    @media (min-width: 1024px) and (max-width: 1050px) {
-        h1.app-title{
-            font-size: 22px !important;
-            left: 52% !important;
-        }
-    }
-    h1.app-title{
-        top: 50%;
-        left: 50%;
+    @media (min-width: 1024px){
+        width: auto;
+        margin: 0 auto;
+        margin-top: 1em;
     }
 }
 .ui.stackable.menu{
@@ -121,6 +116,7 @@ header{
         width: 100%;
         align-items: center;
         justify-content: space-between;
+        font-size: 12px;
         a:not(.brand){
             justify-content: center;
             text-transform: uppercase;
@@ -141,12 +137,14 @@ header{
         }
         div.app-title{
             width: 100%;
-            font-size: 18px;
+            font-size: 22px;
             color: black;
             text-transform: uppercase;
             line-height: 1;
             letter-spacing: 0.175em;
             text-align: center;
+            position: relative;
+            top: -4px;
         }
     }
     .link.item{
@@ -169,7 +167,7 @@ header{
     font-family: 'Raleway', 'Roboto', sans-serif !important;
     display: flex;
     justify-content: center;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     overflow: hidden;
     text-shadow: 4px 4px 4px black;
     .article {
@@ -181,6 +179,7 @@ header{
         }
     }
     @media (max-width: 767px) {
+        flex-flow: row wrap;
         .article {
             width: 90vw;
             height: 330px;
@@ -375,7 +374,7 @@ header{
         }
 
         .featured-brand {
-            width: 25vw;
+            width: 400px;
             height: 450px;
             position: relative;
         }
