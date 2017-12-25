@@ -28,9 +28,22 @@ a {
     font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 section{
-    @media(min-width: 1024px){
-        width: 80vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    .main{
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
         margin: 0 auto;
+        box-sizing: border-box;
+        div.home{
+            min-width: 1200px;
+            height: auto;
+            min-height: 533px;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            overflow-y: hidden;
+        }
     }
 }
 section#single-article{
@@ -42,24 +55,45 @@ a.brand:hover{
     color: black !important;
 }
 header{
+    @media(min-width: 320px){
+        margin-top: -1em;
+    }
     @media (min-width:768px) {
         width: 80vw;
         margin: 0 auto;
         margin-bottom: 1em;
     }
-    @media (min-width: 1024px) and (max-width: 1050px) {
-        h1.app-title{
-            font-size: 22px !important;
-            left: 52% !important;
-        }
-    }
-    h1.app-title{
-        top: 50%;
-        left: 50%;
+    @media (min-width: 1024px){
+        width: auto;
+        margin: 0 auto;
+        margin-top: 1em;
     }
 }
 .ui.stackable.menu{
     .ui.grid.tablet.mobile.only.container{
+        width: 90vw;
+        margin: 0 auto;
+        div.app-title{
+            font-size: 18px;
+            color: black;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            top: 1.8em;
+            width: 100%;
+            left: 0.5em;
+        }
+        div.item{
+            text-align: center;
+            font-weight: 300;
+        }
+        div.submenu{
+            div.text{
+                padding-left: 1em;
+                font-weight: 300;
+            }
+        }
         .ui.secondary.stackable.menu{
             @media (min-width: 768px) and(max-width: 1024px){
                 display: flex;
@@ -67,7 +101,7 @@ header{
                 justify-content: space-between;
                 width: 100%;
                 .ui.dropdown.hamburger{
-                    left: -4em !important;
+                    left: -3.5em !important;
                 }
                 .sidebar.icon{
                     font-size: 1.5rem;
@@ -88,9 +122,10 @@ header{
         }
         .ui.secondary.stackable.menu{
             .ui.dropdown.hamburger{
-                position: absolute;
-                top: 1.5em;
-                left: 4vw;
+                position: relative;
+                top: 1em;
+                left: 0.5em;
+                width: 30px;
                 .sidebar.icon{
                     font-size: 1.5rem;
                 }
@@ -106,40 +141,37 @@ header{
         display: flex;
         flex-flow: row nowrap;
         width: 100%;
-    }
-    .item{
-        justify-content: center;
-        text-transform: uppercase;
-        font-weight: 300;
-        letter-spacing: 1px;
-        .text{
-            &:hover{
-                border-bottom: 1px solid black;
-            }
-        }
-        a{
-            &:hover{
-                border-bottom: 1px solid black;
-            }
-        }
-        a.brand{
-            width: 10em;
-            img.logo{
-                width: 100%
-            }
-        }
-    }
-    .link.item{
-        &:hover{
-            background: none;
-            color: none;
-        }
-        .ui.dropdown{
-            .menu .item a{
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        a:not(.brand){
+            justify-content: center;
             text-transform: uppercase;
             font-weight: 300;
             letter-spacing: 1px;
+            &:hover{
+                color: black;
+                text-decoration: underline;
             }
+        }
+        .text{
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+        }
+        div.app-title{
+            width: 100%;
+            font-size: 22px;
+            color: black;
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: 0.175em;
+            text-align: center;
+            position: relative;
+            top: -4px;
         }
     }
 }
@@ -149,18 +181,77 @@ header{
     font-family: 'Raleway', 'Roboto', sans-serif !important;
     display: flex;
     justify-content: center;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     overflow: hidden;
-    text-shadow: 4px 4px 4px black;
+    text-shadow: 1px 1px 1px black;
     .article {
+        width: 799px;
+        height: 450px;
+        position: relative;
+        margin-right: 1px;
+        .overlay{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
         .ui.header.article-title{
+            position: absolute;
+            bottom: 3em;
+            left: 2em;
+            letter-spacing: 1px;
+            font-size: 2rem;
+            color: white;
             font-weight: bold;
         }
         .ui.header.article-subtitle{
+            position: absolute;
+            bottom: 2em;
+            left: 3em;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            color: white;
+            text-align: left;
+            font-weight: bold;
             font-weight: 300;
         }
     }
+    .article.imgHolder{
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        // position: absolute;
+    }
+
+    .featured-brand {
+        width: 400px;
+        height: 450px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        .overlay{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .ui.header.brand-title{
+            position: absolute;
+            left: 1em;
+            letter-spacing: 1px;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: bold;
+            bottom: 2em;
+        }
+    }
     @media (max-width: 767px) {
+        flex-flow: row wrap;
         .article {
             width: 90vw;
             height: 330px;
@@ -216,10 +307,6 @@ header{
                 background-color: rgba(0,0,0,.2);
             }
             .ui.header.brand-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
                 position: absolute;
                 bottom: 1em;
                 left: 1em;
@@ -232,108 +319,29 @@ header{
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            // position: absolute;
         }
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1024px){
+        width: 100%;
         .article {
-            width: 60vw;
-            height: 400px;
-            position: relative;
-            border-right: 4px solid white;
-            .overlay{
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: rgba(0,0,0,.2);
-            }
-            .ui.header.article-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
-                position: absolute;
-                bottom: 3em;
-                left: 1em;
-                letter-spacing: 2px;
-                font-size:1.72rem;
-                color: white;
-            }
-            .ui.header.article-subtitle{
-                position: absolute;
-                bottom: 1em;
-                left: 2em;
-                letter-spacing: 2px;
-                font-size: 1rem;
-                color: white;
-                text-align: left;
-            }
-        }
-        .article.imgHolder{
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .featured-brand {
-            width: 35vw;
-            height: 400px;
-            position: relative;
-            .overlay{
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: rgba(0,0,0,.2);
-            }
-            .ui.header.brand-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
-                position: absolute;
-                bottom: 1em;
-                left: 1em;
-                letter-spacing: 2px;
-                font-size: 2rem;
-                color: white;
-            }
-        }
-        .featured-brand.imgHolder{
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            // position: absolute;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .article {
-            width: 55vw;
+            width: 550px;
             height: 450px;
             position: relative;
-            border-right: 4px solid white;
+            margin-right: 1px;
             .overlay{
                 width: 100%;
                 height: 100%;
                 position: absolute;
                 top: 0;
                 left: 0;
-                background-color: rgba(0,0,0,.2);
+                background-color: rgba(0, 0, 0, 0.3);
             }
             .ui.header.article-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
                 position: absolute;
                 bottom: 3em;
                 left: 1em;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
                 font-size: 2rem;
                 color: white;
             }
@@ -341,65 +349,44 @@ header{
                 position: absolute;
                 bottom: 2em;
                 left: 2em;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
                 font-size: 1.2rem;
                 color: white;
                 text-align: left;
+                font-weight: bold;
             }
         }
         .article.imgHolder{
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            // position: absolute;
         }
-
+    
         .featured-brand {
-            width: 25vw;
+            width: 210px;
             height: 450px;
             position: relative;
-        }
-    }
-
-    @media (min-width: 1440px) {
-        .article {
-            width: 55vw;
-            height: 550px;
-            position: relative;
-        }
-        .featured-brand {
-            width: 25vw;
-            height: 550px;
-            position: relative;
-        }
-    }
-
-    .featured-brand {
-        .overlay{
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: rgba(0,0,0,.2);
-        }
-        .ui.header.brand-title{
-            &:hover{
-               text-decoration: underline; 
-               color: white;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            .overlay{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,0.3);
             }
-            position: absolute;
-            left: 1em;
-            letter-spacing: 2px;
-            font-size: 2rem;
-            color: white;
+            .ui.header.brand-title{
+                position: absolute;
+                left: 1em;
+                letter-spacing: 1px;
+                font-size: 1.8rem;
+                color: white;
+                font-weight: bold;
+                bottom: 1em;
+            }
         }
-    }
-    .featured-brand.imgHolder{
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        // position: absolute;
     }
 }
 

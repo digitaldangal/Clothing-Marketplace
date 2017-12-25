@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Dropdown, Input, Menu, Grid} from 'semantic-ui-react';
+import {Dropdown, Menu, Grid} from 'semantic-ui-react';
 import * as firebase from 'firebase';
 var db = firebase.firestore();
 
@@ -53,10 +53,10 @@ class Navbar extends Component {
 
     authUser=()=>{
         const style = {
-            width: '100%',
             textAlign: 'center',
             position: 'relative',
-            top: '-1px'
+            display: "flex",
+            alignItems: "center"
         }
         return(
             <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`} style={style}>
@@ -94,25 +94,17 @@ class Navbar extends Component {
     }
     renderNav(){
         const style = {
-            menuWidth: {
-                width: '50vw',
-            },
             fontStyle: {
                 fontFamily: 'Raleway, Roboto, sans-serif',
                 textTransform: 'uppercase',
                 fontWeight: '300'
             }
         }
-
-        const options = [
-            { key: 'clothing', text: 'Clothing', value: 'clothing' },
-            { key: 'brands', text: 'Brands', value: 'brands' },
-        ]
-
         return(
             <Menu secondary stackable>
                 <Grid className="tablet mobile only container">
                     <Menu secondary stackable>
+                        <div className="logo" className="app-title"><Link className="brand" to="/">streetwear boutiques</Link></div>
                         <Dropdown icon='sidebar' closeOnBlur className='hamburger'>
                             <Dropdown.Menu style={style.menuWidth}>
                                 <Link to="/"><Dropdown.Item>Home</Dropdown.Item></Link>
@@ -129,54 +121,34 @@ class Navbar extends Component {
                                 <Dropdown.Divider />
                             </Dropdown.Menu>
                         </Dropdown>
-
-                        {/* <Menu.Item className="link"><Input icon='search' placeholder='Search...' type="text"/></Menu.Item> */}
                     </Menu>
                 </Grid>
                 
                 <Grid className="computer only">
-                    <Menu.Item className="link"><Link to="/designers">Designers</Link></Menu.Item>
-                    <Menu.Item className="link"><Link to="/editorial">Articles</Link></Menu.Item>
-                    <Menu.Item className="link"><Link to="/about">About</Link></Menu.Item>
-                    <Menu.Menu position="right">
-                        {/* <Menu.Item>
-                            <form onSubmit={this.handleSubmit}>
-                            <Input onChange={(e, data)=>this.handleChange(e, data)}
-                                action={<Dropdown button basic floating options={options} defaultValue='clothing' onChange={(e, data)=>this.handleSearchType(e, data)}/>}
-                                icon="search"
-                                iconPosition="left"
-                                placeholder="Search..."
-                            />
-                            </form>
-                        </Menu.Item> */}
-                        <Menu.Item className="link">{this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}</Menu.Item>
-                        <Menu.Item className="link"><Link to="/contact-us">Contact</Link></Menu.Item>
-                    </Menu.Menu>
+                    <Link to="/designers">Designers</Link>
+                    <Link to="/editorial">Articles</Link>
+                    <Link to="/clothing">Clothing</Link>
+
+                    <div className="logo" className="app-title"><Link className="brand" to="/">streetwear boutiques</Link></div>
+
+                    {this.props.authState? this.authUser() : <Link to="/account/login">Login</Link>}
+                    <Link to="/about">About</Link>
+                    <Link to="/contact-us">Contact</Link>
                 </Grid>
             </Menu>
         )
     }
 
     render(){
-        const appTitle = {
-            "fontSize": "18px",
-            "color": "black",
-            "textTransform": "uppercase",
-            "lineHeight": "1",
-            "letterSpacing": ".175em",
-            "position": "absolute",
-            "transform": "translate(-50%,-50%)",
-            "textAlign": "center",
-        }
         const header = {
             "height": "58px",
             "position": "relative",
             "background": "white",
             "top": "0em",
+            "maxWidth": "1200px"
         }
         return (
             <header style={header}>
-                <h1 className="app-title" style={appTitle}><Link className="brand" to="/">streetwear boutiques</Link></h1>
                 <nav>
                     {this.renderNav()}
                 </nav>
