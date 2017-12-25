@@ -121,6 +121,24 @@ header{
         width: 100%;
         align-items: center;
         justify-content: space-between;
+        a:not(.brand){
+            justify-content: center;
+            text-transform: uppercase;
+            font-weight: 300;
+            letter-spacing: 1px;
+            &:hover{
+                color: black;
+                text-decoration: underline;
+            }
+        }
+        .text{
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+        }
         div.app-title{
             width: 100%;
             font-size: 18px;
@@ -129,28 +147,6 @@ header{
             line-height: 1;
             letter-spacing: 0.175em;
             text-align: center;
-        }
-    }
-    .item{
-        justify-content: center;
-        text-transform: uppercase;
-        font-weight: 300;
-        letter-spacing: 1px;
-        .text{
-            &:hover{
-                border-bottom: 1px solid black;
-            }
-        }
-        a{
-            &:hover{
-                border-bottom: 1px solid black;
-            }
-        }
-        a.brand{
-            width: 10em;
-            img.logo{
-                width: 100%
-            }
         }
     }
     .link.item{

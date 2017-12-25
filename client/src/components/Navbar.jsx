@@ -55,7 +55,8 @@ class Navbar extends Component {
         const style = {
             textAlign: 'center',
             position: 'relative',
-            top: '-1px'
+            display: "flex",
+            alignItems: "center"
         }
         return(
             <Dropdown className="submenu" text={this.state.user !== undefined ? this.state.user.display_name : `Account`} style={style}>
