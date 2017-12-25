@@ -169,7 +169,7 @@ header{
     justify-content: center;
     flex-flow: row nowrap;
     overflow: hidden;
-    text-shadow: 4px 4px 4px black;
+    text-shadow: 1px 1px 1px black;
     .article {
         .ui.header.article-title{
             font-weight: bold;
@@ -235,10 +235,6 @@ header{
                 background-color: rgba(0,0,0,.2);
             }
             .ui.header.brand-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
                 position: absolute;
                 bottom: 1em;
                 left: 1em;
@@ -270,10 +266,6 @@ header{
                 background-color: rgba(0,0,0,.2);
             }
             .ui.header.article-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
                 position: absolute;
                 bottom: 3em;
                 left: 1em;
@@ -310,10 +302,6 @@ header{
                 background-color: rgba(0,0,0,.2);
             }
             .ui.header.brand-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
                 position: absolute;
                 bottom: 1em;
                 left: 1em;
@@ -342,17 +330,13 @@ header{
                 position: absolute;
                 top: 0;
                 left: 0;
-                background-color: rgba(0,0,0,.2);
+                background-color: rgba(0, 0, 0, 0.3);
             }
             .ui.header.article-title{
-                &:hover{
-                   text-decoration: underline; 
-                   color: white;
-                }
                 position: absolute;
                 bottom: 3em;
                 left: 1em;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
                 font-size: 2rem;
                 color: white;
             }
@@ -360,10 +344,11 @@ header{
                 position: absolute;
                 bottom: 2em;
                 left: 2em;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
                 font-size: 1.2rem;
                 color: white;
                 text-align: left;
+                font-weight: bold;
             }
         }
         .article.imgHolder{
@@ -390,13 +375,9 @@ header{
             background-color: rgba(0,0,0,.2);
         }
         .ui.header.brand-title{
-            &:hover{
-               text-decoration: underline; 
-               color: white;
-            }
             position: absolute;
             left: 1em;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             font-size: 2rem;
             color: white;
         }
