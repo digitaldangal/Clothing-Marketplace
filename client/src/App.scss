@@ -551,16 +551,20 @@ div#pic-preview{
 }
 
 // Designers Page
-.card.brandCard{
-    .header.title{
+.designer-table{
+   .table-contents{
         text-transform: capitalize;
-    }
-    
-    p.brandText{
-        overflow: hidden;
-        white-space: pre-line;
-        height: 55px;
-    }
+        .table-title{
+            font-family: 'Montserrat', sans-serif;
+            a:hover{
+                color: black;
+                text-decoration: underline;
+            }
+        }
+        .table-description{
+            font-family: 'Open Sans', sans-serif;
+        }
+   }
 }
 .description.links, .meta.links {
     text-align: center;

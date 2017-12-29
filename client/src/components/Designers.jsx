@@ -44,28 +44,14 @@ class Designers extends Component {
         }
         if(this.state.brandData){
             return(
-                <div className="ui link cards">
+                <div className="designer-table">
                     {Object.values(this.state.brandData).map((brand, i)=>{
                         return(
-                            // <div className="card brandCard" key={i}>
-                            //     <div className="content">
-                            //         <div className="header title">{brand.name}</div>
-                            //             <div className="meta">
-                            //                 {brand.website != null ? <a href={`${brand.website}`} target="_blank">Website</a> : <p>No Website</p>}
-                            //             </div>
-                            //         <div className="description">
-                            //             <p className="brandText">{brand.description}</p>
-                            //         </div>
-                            //     </div>
-                            //     <div className="ui bottom attached button">
-                            //         <Link to={`/designers/${brand.name}/${brand.id}`}>View Brand</Link>
-                            //     </div>
-                            // </div> 
-                            <Table fixed singleLine style={tableStyle} className="designer-table">
+                            <Table fixed singleLine style={tableStyle} key={i}>
                                 <Table.Body>
-                                    <Table.Row>
-                                        <Table.Cell width={3}><Link to={`/designers/${brand.name}/${brand.id}`}>{brand.name}</Link></Table.Cell>
-                                        <Table.Cell>{brand.description}</Table.Cell>
+                                    <Table.Row className="table-contents">
+                                        <Table.Cell width={3} className="table-title"><Link to={`/designers/${brand.name}/${brand.id}`}>{brand.name}</Link></Table.Cell>
+                                        <Table.Cell className="table-description">{brand.description}</Table.Cell>
                                     </Table.Row>
                                 </Table.Body>
                             </Table>
