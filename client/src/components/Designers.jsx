@@ -39,9 +39,6 @@ class Designers extends Component {
             "border": "none",
             "outline": "none"
         }
-        const linkStyle = {
-            
-        }
         if(this.state.brandData){
             return(
                 <div className="designer-table">
