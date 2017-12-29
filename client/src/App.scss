@@ -401,6 +401,7 @@ div.about-page {
         .ui.divided.items.container.terms{
             p.text{
                 width: auto !important;
+                font-family: 'Open Sans', sans-serif;
             }
         }
         .ui.divided.items.container {
@@ -408,6 +409,7 @@ div.about-page {
                 display: flex;
                 justify-content: center;
                 flex-flow: row nowrap;
+                font-family: 'Open Sans', sans-serif;
                 @media(max-width: 768px){
                     flex-flow: column wrap;
                     div.img{
