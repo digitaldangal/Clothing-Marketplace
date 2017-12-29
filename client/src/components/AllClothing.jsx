@@ -106,7 +106,7 @@ class AllClothing extends Component {
         return(
             <section id="all-clothing">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <h3 className="ui header">{this.state.currentQuery || 'Clothing'}</h3>
+                <h1 className="ui header">{this.state.currentQuery || 'Clothing'}</h1>
                 <div className="ui text menu">
                     <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">all</a>
                     <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">outerwear</a>
