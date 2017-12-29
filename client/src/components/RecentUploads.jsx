@@ -44,8 +44,8 @@ class RecentUploads extends Component {
                     const style = {
                         "backgroundImage": `url(${product.main_image}`,
                         "backgroundSize": "cover",
-                        "width": "300px",
-                        "height": "300px",
+                        "width": "250px",
+                        "height": "250px",
                         "backgroundPosition": "center",
                         "backgroundRepeat": "no-repeat"
                     }
@@ -75,7 +75,7 @@ class RecentUploads extends Component {
     render(){
         return(
             <div id="recent-uploads">
-                <h2 className="ui header" style={{marginTop: "1em"}}>Recently Uploaded</h2>
+                <h2 className="ui header" style={{marginTop: "1em"}}>New Arrivals</h2>
                 {this.state.productDataLoaded ? this.renderPage() : null}
             </div>
         )
