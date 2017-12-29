@@ -35,8 +35,14 @@ class AllClothing extends Component {
         return(
             <section id="all-clothing">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <div className="ui grid computer only">
+                {/* <div className="ui grid computer only">
                     <ListOfBrands />
+                </div> */}
+                <div className="ui text menu">
+                    <a href='/editorial/archive/outerwear' className="item">outerwear</a>
+                    <a href='/editorial/archive/tops' className="item">tops</a>
+                    <a href='/editorial/archive/bottoms' className="item">bottoms</a>
+                    <a href='/editorial/archive/accessories' className="item">accessories</a>
                 </div>
                 <div className="page-container ui container">
                     {this.state.clothingDataLoaded ? <Clothes clothingData={this.state.clothingData}/> : null}
