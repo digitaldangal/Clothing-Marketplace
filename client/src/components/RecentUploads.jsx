@@ -16,7 +16,6 @@ class RecentUploads extends Component {
         let recentUploads = {}
         db.collection("products").where("deleted", "==", false).orderBy("created_date",'desc').limit(10).onSnapshot((res)=>{
             res.forEach((upload)=>{
-                console.log(upload.data());
                 return recentUploads[upload.data().title] = upload.data();
             })
             this.setState({
@@ -44,8 +43,8 @@ class RecentUploads extends Component {
                     const style = {
                         "backgroundImage": `url(${product.main_image}`,
                         "backgroundSize": "cover",
-                        "width": "300px",
-                        "height": "300px",
+                        "width": "250px",
+                        "height": "250px",
                         "backgroundPosition": "center",
                         "backgroundRepeat": "no-repeat"
                     }
@@ -75,7 +74,7 @@ class RecentUploads extends Component {
     render(){
         return(
             <div id="recent-uploads">
-                <h2 className="ui header" style={{marginTop: "1em"}}>Recently Uploaded</h2>
+                <h2 className="ui header" style={{marginTop: "1em"}}>New Arrivals</h2>
                 {this.state.productDataLoaded ? this.renderPage() : null}
             </div>
         )

@@ -1,32 +1,31 @@
 *{
-    font-family: 'Raleway', 'Roboto', sans-serif; 
     text-rendering: optimizeLegibility; 
     -webkit-font-smoothing: antialiased; 
     -moz-osx-font-smoothing: grayscale;
 }
 .App {
     text-align: center;
-    font-family: 'Raleway', 'Roboto', sans-serif !important;
     padding-bottom: 1em;
-}
-  
-body{
-    font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
 a {
     color: black;
-    font-family: 'Raleway', 'Roboto', sans-serif !important;
 }
-.ui.header, .ui.header.title{
-    font-weight: 300;
+
+.ui.header, .ui.header.title, .ui.header.brand-title, div.header, a.header{
+    font-weight: 500 !important;
     text-transform: uppercase;
-    font-family: 'Raleway', 'Roboto', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 .ui.header.subtitle{
     text-transform: capitalize;
-    font-family: 'Raleway', 'Roboto', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
 }
+
+div.content, .article-text p{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
 section{
     max-width: 1200px;
     margin: 0 auto;
@@ -57,6 +56,7 @@ a.brand:hover{
 header{
     @media(min-width: 320px){
         margin-top: -1em;
+        margin-bottom: 1em;
     }
     @media (min-width:768px) {
         width: 80vw;
@@ -83,10 +83,13 @@ header{
             top: 1.8em;
             width: 100%;
             left: 0.5em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
         div.item{
             text-align: center;
             font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
         }
         div.submenu{
             div.text{
@@ -130,7 +133,6 @@ header{
                     font-size: 1.5rem;
                 }
                 div.menu div.item a{
-                    font-family: 'Raleway', 'Roboto', sans-serif !important;
                     text-transform: uppercase;
                     font-weight: 300;
                 }
@@ -149,6 +151,7 @@ header{
             text-transform: uppercase;
             font-weight: 300;
             letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
             &:hover{
                 color: black;
                 text-decoration: underline;
@@ -172,13 +175,14 @@ header{
             text-align: center;
             position: relative;
             top: -4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
     }
 }
 
 // Home 
 .home {
-    font-family: 'Raleway', 'Roboto', sans-serif !important;
     display: flex;
     justify-content: center;
     flex-flow: row nowrap;
@@ -215,7 +219,7 @@ header{
             color: white;
             text-align: left;
             font-weight: bold;
-            font-weight: 300;
+            font-weight: 300 !important;
         }
     }
     .article.imgHolder{
@@ -397,6 +401,7 @@ div.about-page {
         .ui.divided.items.container.terms{
             p.text{
                 width: auto !important;
+                font-family: 'Open Sans', sans-serif;
             }
         }
         .ui.divided.items.container {
@@ -404,6 +409,7 @@ div.about-page {
                 display: flex;
                 justify-content: center;
                 flex-flow: row nowrap;
+                font-family: 'Open Sans', sans-serif;
                 @media(max-width: 768px){
                     flex-flow: column wrap;
                     div.img{
@@ -548,24 +554,30 @@ div#pic-preview{
 }
 
 // Designers Page
-.card.brandCard{
-    .header.title{
+.designer-table{
+    @media (max-width: 1024px){
+        padding: 0em 1em;
+    }
+   .table-contents{
         text-transform: capitalize;
-    }
-    
-    p.brandText{
-        overflow: hidden;
-        white-space: pre-line;
-        height: 55px;
-    }
-}
-.description.links, .meta.links {
-    text-align: center;
+        .table-title{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            a:hover{
+                color: black;
+                text-decoration: underline;
+            }
+        }
+        .table-description{
+            font-family: 'Open Sans', sans-serif;
+        }
+   }
 }
 
 .single-brand{
     h3.ui.header{
         text-transform: inherit;
+        font-weight: 300!important;
     }
     div.image{
         overflow: hidden;
@@ -579,13 +591,14 @@ div#pic-preview{
     }
     .description{
         margin-bottom: 0.3em;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif !important;
+        text-transform: capitalize;
     }
     .meta.links{
         display: flex;
         justify-content: space-between;
-        a {
-            font-family: 'Roboto' !important;
-        }
+        font-family: 'Open Sans', sans-serif !important;
     }
 }
 
@@ -594,6 +607,32 @@ p#soldout{
     color: red;
     font-weight: bold;
     text-decoration-line: line-through;
+}
+// All Clothing
+section#all-clothing{
+    .ui.text.menu{
+        display: flex;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        flex-flow: row wrap;
+        a.item{
+            text-transform: uppercase !important;
+        }
+    }
+}
+.ui.link.cards.clothes{
+    .content{
+        text-align: center;
+    }
+    .description{
+        font-family: 'Open Sans', sans-serif !important;
+        margin-bottom: 0.5em;
+    }
+    .meta.links{
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Open Sans', sans-serif !important;
+    }
 }
 .brand-page{
     .card{
@@ -638,6 +677,9 @@ p#soldout{
 
 .single-clothing{
     .page-container{
+        h3.ui.header{
+            font-weight: 400 !important;
+        }
         @media (max-width: 768px) {
             .product-info{
                 display: flex;
@@ -653,6 +695,7 @@ p#soldout{
                 .product-text{
                     padding: 1em;
                     margin-top: 2em;
+                    font-family: 'Open Sans', sans-serif;
                     h1, h3 {
                         margin: 0em;
                     }
@@ -724,6 +767,7 @@ p#soldout{
                 .product-text{
                     width: 30vw;
                     padding: 1em;
+                    font-family: 'Open Sans', sans-serif;
                     h1, h3 {
                         margin: 0em;
                     }
@@ -840,6 +884,7 @@ p#soldout{
                     p{
                         line-height: 170%;
                         text-indent: 1.75rem;
+                        letter-spacing: 1px;
                     }
                 }
             }
@@ -899,6 +944,7 @@ p#soldout{
                     p{
                         line-height: 170%;
                         text-indent: 1.75rem;
+                        letter-spacing: 1px;
                     }
                 }
             }
@@ -957,6 +1003,7 @@ p#soldout{
         text-indent: 1.75rem;
         text-align: justify;
         padding: 0em 1em;
+        letter-spacing: 1px;
         }
     }
 

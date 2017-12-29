@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
-var db = firebase.firestore();
 
 class ProcessPayment extends Component {
     constructor(props){

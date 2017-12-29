@@ -111,11 +111,13 @@ class Navbar extends Component {
                                 <Dropdown.Divider />
                                 <Link to="/designers"><Dropdown.Item>Designers</Dropdown.Item></Link>
                                 <Dropdown.Divider />
+                                <Link to="/clothing"><Dropdown.Item>Clothing</Dropdown.Item></Link>
+                                <Dropdown.Divider />
                                 <Link to="/editorial"><Dropdown.Item>Articles</Dropdown.Item></Link>
                                 <Dropdown.Divider />
-                                <Link to="/about"><Dropdown.Item>About</Dropdown.Item></Link>
-                                <Dropdown.Divider />
                                {this.props.authState? this.authUser() : <Link to="/account/login"> <Dropdown.Item>Login</Dropdown.Item></Link>}
+                                <Dropdown.Divider />
+                                <Link to="/about"><Dropdown.Item>About</Dropdown.Item></Link>
                                 <Dropdown.Divider />
                                 <Link to="/contact-us"><Dropdown.Item>Contact</Dropdown.Item></Link>
                                 <Dropdown.Divider />
@@ -126,8 +128,8 @@ class Navbar extends Component {
                 
                 <Grid className="computer only">
                     <Link to="/designers">Designers</Link>
-                    <Link to="/editorial">Articles</Link>
                     <Link to="/clothing">Clothing</Link>
+                    <Link to="/editorial">Articles</Link>
 
                     <div className="logo" className="app-title"><Link className="brand" to="/">streetwear boutiques</Link></div>
 
