@@ -608,6 +608,20 @@ p#soldout{
     font-weight: bold;
     text-decoration-line: line-through;
 }
+.ui.link.cards.clothes{
+    .content{
+        text-align: center;
+    }
+    .description{
+        font-family: 'Open Sans', sans-serif !important;
+        margin-bottom: 0.5em;
+    }
+    .meta.links{
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Open Sans', sans-serif !important;
+    }
+}
 .brand-page{
     .card{
         .header{

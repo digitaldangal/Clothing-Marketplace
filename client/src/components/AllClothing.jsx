@@ -39,7 +39,7 @@ class AllClothing extends Component {
                     <ListOfBrands />
                 </div> */}
                 <div className="ui text menu">
-                    <a href='/editorial/archive/outerwear' className="item">outerwear</a>
+                    <a href='search/products/outerwear' className="item">outerwear</a>
                     <a href='/editorial/archive/tops' className="item">tops</a>
                     <a href='/editorial/archive/bottoms' className="item">bottoms</a>
                     <a href='/editorial/archive/accessories' className="item">accessories</a>

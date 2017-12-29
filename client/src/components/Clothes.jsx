@@ -3,13 +3,31 @@ import {Link} from 'react-router-dom';
 
 const Clothes = (props) => {
     const {clothingData} = props;
+    const cardLayout = {
+        "display": "flex",
+        "flexFlow": "row wrap",
+        "justifyContent": "center",
+        "marginTop": "1em"
+    }
+    const singleCard = {
+        "margin": "0em 1em 1em",
+        "width": "auto"
+    }
     return(
-        <div className="ui link cards">
+        <div className="ui link cards clothes" style={cardLayout}>
             {Object.values(clothingData).map((product, i)=>{
+                const style = {
+                    "backgroundImage": `url(${product.main_image}`,
+                    "backgroundSize": "cover",
+                    "width": "250px",
+                    "height": "250px",
+                    "backgroundPosition": "center",
+                    "backgroundRepeat": "no-repeat"
+                }
                 return(
-                    <div className="card" key={i} >
+                    <div className="card" key={i} style={singleCard}>
                         <Link to={`/designers/${product.designer}/${product.clothing_label.id}/${product.title}/${product.id}`}>
-                            <div className="imageHolder"></div>
+                            <div className="imageHolder" style={style}></div>
                         </Link>    
                             <div className="content">
                             <div className="header">{product.title}</div>
