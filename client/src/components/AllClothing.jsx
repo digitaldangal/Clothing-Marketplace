@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import Clothes from './Clothes';
-import ListOfBrands from './ListOfBrands';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
@@ -75,7 +74,8 @@ class AllClothing extends Component {
             })
             this.setState({
                 clothingData: clothing,
-                clothingDataLoaded: true
+                clothingDataLoaded: true,
+                currentQuery: category
             })
         })
     }
@@ -85,9 +85,7 @@ class AllClothing extends Component {
         return(
             <section id="all-clothing">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                {/* <div className="ui grid computer only">
-                    <ListOfBrands />
-                </div> */}
+                <h3 className="ui header">{this.state.currentQuery}</h3>
                 <div className="ui text menu">
                     <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">outerwear</a>
                     <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">tops</a>
