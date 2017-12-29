@@ -575,7 +575,7 @@ div#pic-preview{
 .single-brand{
     h3.ui.header{
         text-transform: inherit;
-        font-weight: 400!important;
+        font-weight: 300!important;
     }
     div.image{
         overflow: hidden;
@@ -649,6 +649,9 @@ p#soldout{
 
 .single-clothing{
     .page-container{
+        h3.ui.header{
+            font-weight: 400 !important;
+        }
         @media (max-width: 768px) {
             .product-info{
                 display: flex;
@@ -664,6 +667,7 @@ p#soldout{
                 .product-text{
                     padding: 1em;
                     margin-top: 2em;
+                    font-family: 'Open Sans', sans-serif;
                     h1, h3 {
                         margin: 0em;
                     }
@@ -735,6 +739,7 @@ p#soldout{
                 .product-text{
                     width: 30vw;
                     padding: 1em;
+                    font-family: 'Open Sans', sans-serif;
                     h1, h3 {
                         margin: 0em;
                     }
