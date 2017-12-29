@@ -38,7 +38,9 @@ class AllClothing extends Component {
                 <div className="ui grid computer only">
                     <ListOfBrands />
                 </div>
-                {this.state.clothingDataLoaded ? <Clothes /> : null}
+                <div className="page-container ui container">
+                    {this.state.clothingDataLoaded ? <Clothes clothingData={this.state.clothingData}/> : null}
+                </div>
             </section>
         )
     }
