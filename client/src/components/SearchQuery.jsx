@@ -1,98 +1,83 @@
-import React, { Component } from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
+import Clothes from './Clothes';
 import firebase from '../config/firebase';
 var db = firebase.firestore();
 
-class SearchQuery extends Component {
+class AllClothing extends Component {
     constructor(props){
         super(props);
         this.state = {
             redirect: false,
-            currentPage: null,
-            currentUser: false,
-            brandData: false,
+            currentPage: '',
+            clothingData: false,
+            clothingDataLoaded: false
         }
     }
 
-    componentWillMount() {
-        let brandData = {};
-        if(this.props.brandDataLoaded === false){
-            db.collection("brands").where("approved", "==", true).orderBy("name").get().then(res=>{
-                res.forEach((brand)=>{
-                    return brandData[brand.id] = brand.data()
-                })
-            }).then(()=>{
-                this.setState({brandData: brandData})
-                this.props.storeFeed(brandData);
-            }).catch(err=>{console.log(err)})
-        }else{
-            let brandDataFeed = this.props.brandData;
-            this.setState({
-                brandData: brandDataFeed
+    componentDidMount() {
+        let clothing = {}
+        let category = this.props.match.params.product_type.toUpperCase()        ;
+        db.collection("products").where("deleted", "==", false).where("category", "==", category).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
+            res.forEach((clothes)=>{
+                return clothing[clothes.data().title] = clothes.data();
             })
-        }
+            this.setState({
+                clothingData: clothing,
+                clothingDataLoaded: true,
+                currentQuery: category
+            })
+        })
+    }
+    
+    handleAddToWishlist=(e, data)=>{
+        let productId = data.id;
+        let productTitle = data.title;
+        let productToAdd = this.state.clothingData[productTitle]
+        let likedItem = e.target;
+        
+        
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                if(localStorage.getItem(productId) === "red"){
+                    localStorage.removeItem(productId);
+                    likedItem.style.color = "gray";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).delete()
+                    .then(res=>console.log(res)).catch(err=>(console.log(err)))
+                }else{
+                    likedItem.style.color = "red";
+                    db.collection('users').doc(user.uid).collection('wishlist').doc(productTitle).set({
+                        main_image: productToAdd.main_image,
+                        title: productTitle,
+                        designer: productToAdd.designer,
+                        price: productToAdd.price,
+                        category: productToAdd.category,
+                        id: productId,
+                        designerId: productToAdd.clothing_label.id
+                    },{merge: true})
+                    .then(()=>{
+                        localStorage.setItem(productId, "red")
+                    })
+                    .catch(err=>(console.log(err)))
+                }
+            }else{
+                alert("You must be signed in first to do that!")
+            }
+        })
     }
 
-    renderBrands(){
-        if(this.state.brandData){
-            return(
-                <div className="ui link cards">
-                    {Object.values(this.state.brandData).map((brand, i)=>{
-                        return(
-                            <div className="card brandCard" key={i}>
-                                <div className="content">
-                                    <div className="header title">{brand.name}</div>
-                                        <div className="meta">
-                                            {brand.website != null ? <a href={`${brand.website}`} target="_blank">Website</a> : <p>No Website</p>}
-                                        </div>
-                                    <div className="description">
-                                        <p className="brandText">{brand.description}</p>
-                                    </div>
-                                </div>
-                                <div className="ui bottom attached button">
-                                    <Link to={`/designers/${brand.name}/${brand.id}`}>View Brand</Link>
-                                </div>
-                            </div> 
-                        )
-                    })}
-                </div>
-            )
-        }else{
-            return(
-                <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
-                </div>
-            )
-        }
-    }
-
-    renderPage(){
-        if(this.state.brandData){
-            return(
-                <div className="brand-list">
-                    <h1 className="ui header">Designers</h1>
-                    <div className="page-container">
-                        {this.renderBrands()}
-                    </div>
-                </div>
-            )
-        }else{
-            return(
-                <div className="ui active inverted dimmer">
-                    <div className="ui indeterminate text loader">Preparing Files</div>
-                </div>
-            )
-        }
-    }
     render(){
         const {redirect, currentPage} = this.state;
         return(
-            <section id="brand-list">
+            <section id="all-clothing">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                {this.renderPage()}
+                <h1 className="ui header">{this.state.currentQuery || 'Clothing'}</h1>
+                <div className="page-container ui container">
+                    {this.state.clothingDataLoaded ? <Clothes clothingData={this.state.clothingData} handleAddToWishlist={(e, data)=>this.handleAddToWishlist(e, data)}/> : null}
+                </div>
             </section>
         )
     }
 }
 
-export default SearchQuery;
+export default AllClothing;
