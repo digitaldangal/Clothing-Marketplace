@@ -26,6 +26,12 @@ class AllClothing extends Component {
                 clothingDataLoaded: true
             })
         })
+
+        if(window.sessionStorage.getItem("currentQuery")){
+            this.setState({
+                currentQuery: window.sessionStorage.getItem("currentQuery")
+            })
+        }
     }
     
     
@@ -68,16 +74,31 @@ class AllClothing extends Component {
     queryClothing = (category) =>{
         console.log(category);
         let clothing = {}
-        db.collection("products").where("deleted", "==", false).where("category", "==", category).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
-            res.forEach((clothes)=>{
-                return clothing[clothes.data().title] = clothes.data();
+        if(category === "ALL"){
+            db.collection("products").where("deleted", "==", false).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
+                res.forEach((clothes)=>{
+                    return clothing[clothes.data().title] = clothes.data();
+                })
+                this.setState({
+                    clothingData: clothing,
+                    clothingDataLoaded: true,
+                    currentQuery: null
+                })
             })
-            this.setState({
-                clothingData: clothing,
-                clothingDataLoaded: true,
-                currentQuery: category
+            window.sessionStorage.removeItem("currentQuery");
+        }else{
+            db.collection("products").where("deleted", "==", false).where("category", "==", category).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
+                res.forEach((clothes)=>{
+                    return clothing[clothes.data().title] = clothes.data();
+                })
+                this.setState({
+                    clothingData: clothing,
+                    clothingDataLoaded: true,
+                    currentQuery: category
+                })
+                window.sessionStorage.setItem("currentQuery", category);
             })
-        })
+        }
     }
 
     render(){
@@ -85,8 +106,9 @@ class AllClothing extends Component {
         return(
             <section id="all-clothing">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <h3 className="ui header">{this.state.currentQuery}</h3>
+                <h3 className="ui header">{this.state.currentQuery || 'Clothing'}</h3>
                 <div className="ui text menu">
+                    <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">all</a>
                     <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">outerwear</a>
                     <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">tops</a>
                     <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">bottoms</a>
