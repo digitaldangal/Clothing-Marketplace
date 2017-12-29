@@ -13,6 +13,7 @@ const Clothes = (props) => {
         "margin": "0em 1em 1em",
         "width": "auto"
     }
+
     return(
         <div className="ui link cards clothes" style={cardLayout}>
             {Object.values(clothingData).map((product, i)=>{
@@ -38,6 +39,7 @@ const Clothes = (props) => {
                                 <div className="meta links">
                                     <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
                                     <a>${product.price}</a>
+                                    <i style={{color: localStorage.getItem(product.id)}} className="like icon" title="add to wishlist" data-id={product.id} data-title={product.title} onClick={(e)=>props.handleAddToWishlist(e,e.target.dataset)}></i>
                                 </div>
                             </div>
                     </div> 
