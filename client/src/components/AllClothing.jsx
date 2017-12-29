@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import Clothes from './Clothes';
 import ListOfBrands from './ListOfBrands';
+import firebase from '../config/firebase';
+var db = firebase.firestore();
 
 class AllClothing extends Component {
     constructor(props){
@@ -14,6 +16,20 @@ class AllClothing extends Component {
         }
     }
 
+    componentDidMount() {
+        let clothing = {}
+        db.collection("products").where("deleted", "==", false).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
+            res.forEach((clothes)=>{
+                console.log(clothes.data());
+                return clothing[clothes.data().title] = clothes.data();
+            })
+            this.setState({
+                clothingData: clothing,
+                clothingDataLoaded: true
+            })
+        })
+    }
+
     render(){
         const {redirect, currentPage} = this.state;
         return(
@@ -22,7 +38,7 @@ class AllClothing extends Component {
                 <div className="ui grid computer only">
                     <ListOfBrands />
                 </div>
-                <Clothes />
+                {this.state.clothingDataLoaded ? <Clothes /> : null}
             </section>
         )
     }
