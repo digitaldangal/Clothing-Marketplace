@@ -68,6 +68,16 @@ class AllClothing extends Component {
 
     queryClothing = (category) =>{
         console.log(category);
+        let clothing = {}
+        db.collection("products").where("deleted", "==", false).where("category", "==", category).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
+            res.forEach((clothes)=>{
+                return clothing[clothes.data().title] = clothes.data();
+            })
+            this.setState({
+                clothingData: clothing,
+                clothingDataLoaded: true
+            })
+        })
     }
 
     render(){
