@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+import Clothes from './Clothes';
+import ListOfBrands from './ListOfBrands';
 
 class AllClothing extends Component {
     constructor(props){
@@ -17,7 +19,9 @@ class AllClothing extends Component {
         return(
             <section id="all-clothing">
                 {redirect ? <Redirect to={currentPage} /> : null}
-                <ListOFBrands />
+                <div className="ui grid computer only">
+                    <ListOfBrands />
+                </div>
                 <Clothes />
             </section>
         )

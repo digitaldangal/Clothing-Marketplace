@@ -2,7 +2,7 @@ import React from 'react';
 
 const Clothes = (props) => {
     return(
-        <h1>Clothing Item</h1>
+        <h1>List of Brands</h1>
     )
 }
 
