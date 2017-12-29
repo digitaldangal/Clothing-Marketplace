@@ -608,6 +608,18 @@ p#soldout{
     font-weight: bold;
     text-decoration-line: line-through;
 }
+// All Clothing
+section#all-clothing{
+    .ui.text.menu{
+        display: flex;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        flex-flow: row wrap;
+        a.item{
+            text-transform: uppercase !important;
+        }
+    }
+}
 .ui.link.cards.clothes{
     .content{
         text-align: center;

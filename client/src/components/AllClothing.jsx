@@ -20,7 +20,6 @@ class AllClothing extends Component {
         let clothing = {}
         db.collection("products").where("deleted", "==", false).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
             res.forEach((clothes)=>{
-                console.log(clothes.data());
                 return clothing[clothes.data().title] = clothes.data();
             })
             this.setState({
@@ -67,6 +66,10 @@ class AllClothing extends Component {
         })
     }
 
+    queryClothing = (category) =>{
+        console.log(category);
+    }
+
     render(){
         const {redirect, currentPage} = this.state;
         return(
@@ -76,10 +79,10 @@ class AllClothing extends Component {
                     <ListOfBrands />
                 </div> */}
                 <div className="ui text menu">
-                    <a href='search/products/outerwear' className="item">outerwear</a>
-                    <a href='/editorial/archive/tops' className="item">tops</a>
-                    <a href='/editorial/archive/bottoms' className="item">bottoms</a>
-                    <a href='/editorial/archive/accessories' className="item">accessories</a>
+                    <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">outerwear</a>
+                    <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">tops</a>
+                    <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">bottoms</a>
+                    <a onClick={(e)=>this.queryClothing(e.target.innerText)} className="item">accessories</a>
                 </div>
                 <div className="page-container ui container">
                     {this.state.clothingDataLoaded ? <Clothes clothingData={this.state.clothingData} handleAddToWishlist={(e, data)=>this.handleAddToWishlist(e, data)}/> : null}
