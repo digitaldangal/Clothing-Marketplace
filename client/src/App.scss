@@ -10,6 +10,18 @@
 a {
     color: black;
 }
+.card{
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    &:hover{
+        transform: none !important;
+    }
+    .content{
+        border: none !important;
+        text-align: left;
+    }
+}
 
 .ui.header, .ui.header.title, .ui.header.brand-title, div.header, a.header{
     font-weight: 500 !important;
