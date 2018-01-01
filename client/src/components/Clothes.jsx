@@ -31,8 +31,12 @@ const Clothes = (props) => {
                             <div className="imageHolder" style={style}></div>
                         </Link>    
                             <div className="content">
-                            <div className="header">{product.title}</div>
-                                    {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : null}
+                                <div className="header">
+                                    <Link to={`/designers/${product.designer}/${product.clothing_label.id}/${product.title}/${product.id}`}>
+                                        {product.title}
+                                    </Link>
+                                </div>
+                                {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : null}
                                 <div className="description links">
                                     <Link to={`/designers/${product.designer}/${product.clothing_label.id}`}>{product.designer}</Link>
                                 </div>
