@@ -11,15 +11,21 @@ a {
     color: black;
 }
 .card{
-    outline: none !important;
-    border: none !important;
-    box-shadow: none !important;
+    // outline: none !important;
+    // border: none !important;
+    // box-shadow: none !important;
     &:hover{
         transform: none !important;
+    }
+    .imageHolder{
+        margin: 0 auto;
     }
     .content{
         border: none !important;
         text-align: left;
+        div.header{
+            width: 250px;
+        }
     }
 }
 
@@ -761,7 +767,69 @@ section#all-clothing{
                 left: 0;
             }
         }
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and(max-width: 1024px){
+            .product-info{
+                display: flex;
+                justify-content: center;
+                flex-flow: row nowrap;
+                margin-top: 5em;
+                .imgHolder{
+                    width: 35vw;
+                    cursor: zoom-in;
+                    overflow: hidden;
+                    max-height: 500px;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .product-text{
+                    width: 30vw;
+                    padding: 1em;
+                    font-family: 'Open Sans', sans-serif;
+                    h1, h3 {
+                        margin: 0em;
+                    }
+                    p.text{
+                        line-height: 170%;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        text-align: justify;
+                        margin-top: 3em;
+                        span#details{
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                    }
+                    .add-to-bag{
+                        div.fields{
+                            display: flex;
+                            justify-content:center; 
+                            flex-flow: row wrap;
+                            width: 100%;
+                            margin-bottom: 2em;
+                        }
+                        button{
+                            margin-top: 1em;
+                        }
+                    }
+                    .more-images{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        margin-top: 1em;
+                        flex-flow: row wrap;
+                        .img {
+                            background-size: cover;
+                            background-position: center;
+                            width: 100px;
+                            height: 100px;
+                            margin: 0em 1em 1em 0em;
+                        }
+                    }
+                }
+            }
+        }
+        @media (min-width: 1024px){
             .product-info{
                 display: flex;
                 justify-content: center;
