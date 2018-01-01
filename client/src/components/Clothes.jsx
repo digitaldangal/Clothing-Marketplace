@@ -34,7 +34,7 @@ const Clothes = (props) => {
                             <div className="header">{product.title}</div>
                                     {product.inventory_total === 0 ? (<p id="soldout">SOLD OUT</p>) : null}
                                 <div className="description links">
-                                    {product.designer}
+                                    <Link to={`/designers/${product.designer}/${product.clothing_label.id}`}>{product.designer}</Link>
                                 </div>
                                 <div className="meta links">
                                     <Link to={`/search/products/${product.category.toLowerCase()}`}>{product.category}</Link>
