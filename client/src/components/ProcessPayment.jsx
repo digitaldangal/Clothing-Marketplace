@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import firebase from '../config/firebase';
+var db = firebase.firestore();
 
 class ProcessPayment extends Component {
     constructor(props){
@@ -17,6 +18,8 @@ class ProcessPayment extends Component {
 
     componentDidMount() {
        console.log(this.props);
+       let recentTransactionInfo = JSON.parse(localStorage.getItem('currentTransactionId'));
+       
        firebase.auth().onAuthStateChanged((user)=>{
            if(user){
                axios.post(`/process${this.props.location.search}`)
