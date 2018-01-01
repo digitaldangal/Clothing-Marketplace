@@ -25,7 +25,7 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 // Configure your environment
 paypal.configure({
-  mode: 'sandbox', // sandbox or live
+  mode: 'live', // sandbox or live
   client_id: functions.config().paypal.client_id, // run: firebase functions:config:set paypal.client_id="yourPaypalClientID" 
   client_secret: functions.config().paypal.client_secret // run: firebase functions:config:set paypal.client_secret="yourPaypalClientSecret"
 });
