@@ -84,7 +84,7 @@ class Clothing extends Component {
         let brandDetails = this.brandDetails;
         let button = document.querySelector('#cart-button')
         
-        localStorage.setItem('currentTransactionId', JSON.stringify([productToAdd.id, productToAdd.title]));
+        localStorage.setItem('currentTransactionId', JSON.stringify([productToAdd]));
 
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
