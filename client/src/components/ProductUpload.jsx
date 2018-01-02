@@ -19,7 +19,8 @@ class ProductUpload extends Component {
             sub_category: false,
             id: new Date().getTime(),
             created_date: new Date().toString(),
-            os: 0
+            os: 0,
+            brandStatus: false
         }
     }
 
@@ -47,7 +48,8 @@ class ProductUpload extends Component {
                         })
                     }else if(res.exists){
                         this.setState({
-                            brandCreated: true
+                            brandCreated: true,
+                            brandStatus: false
                         })
                     }
                 })
@@ -241,71 +243,87 @@ class ProductUpload extends Component {
         }
     }
 
-    render(){
+    renderPage(){
         const {redirect, currentPage} = this.state;
+        if(this.state.brandStatus){
+
+            return(
+                <section id="product-upload">
+                    {redirect ? <Redirect to={currentPage} /> : null}
+                    <h1 className="ui header title">Upload A New Product</h1>
+                    <Form required onSubmit={this.handleSubmit}>
+                        <Form.Group widths="equal">
+                            <Form.Field required>
+                                <label>Title</label>
+                                <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                            <Form.Field required>
+                                <label>Listing Price in USD</label>
+                                <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                            <Form.Field required>
+                                <label>Shipping Cost</label>
+                                <input required="true" name="shipping_cost" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                            <Form.Field required>
+                                <label>Available for Sale</label>
+                                <input required="true" name="inventory_total" type="number" placeholder="Amount Available for Sale" onChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                        </Form.Group>
+                        <Form.Group widths="equal">
+                            <Form.Field required>
+                                <label>Category</label>
+                                <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
+                                    <option defaultValue value="">Select Category</option>
+                                    <option value="OUTERWEAR">OUTERWEAR</option>
+                                    <option value="TOPS">TOPS</option>
+                                    <option value="BOTTOMS">BOTTOMS</option>
+                                    <option value="ACCESSORIES">ACCESSORIES</option>
+                                </select>
+                            </Form.Field>
+                            <Form.Field required>
+                                <label>Sub Category</label>
+                                <ChooseSubCategory category={this.state.category}  handleChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                        </Form.Group>
+                        <Form.Group widths="equal">
+                            <Form.Field required>
+                                <label>Enter Amount Available for each size. If none enter Zero.</label>
+                                <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
+                            </Form.Field>
+                        </Form.Group>
+                        <Form.Group widths="equal">
+                            <Form.Field required>
+                                <label>Product Description</label>
+                                <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
+                            </Form.Field>
+                        </Form.Group>
+                        <Form.Group widths="equal">
+                            <Form.Field required>
+                                <label>Upload Main Image for Product</label>
+                                <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
+                                <label>Upload additonal images (recommmended)</label>
+                                <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
+                                <div id="pic-preview"><ul></ul></div>
+                            </Form.Field>
+                        </Form.Group>
+                        <Button primary>Create Product</Button>
+                    </Form>
+                </section>
+            )
+        }else if(!this.state.brandStatus){
+            return(
+                <section id="product-upload">
+                    <h1 className="ui header title">Sorry Your Brand Hasn't Been Approved Yet</h1>
+                </section>
+            )
+
+        }
+    }
+
+    render(){
         return(
-            <section id="product-upload">
-                {redirect ? <Redirect to={currentPage} /> : null}
-                <h1 className="ui header title">Upload A New Product</h1>
-                <Form required onSubmit={this.handleSubmit}>
-                    <Form.Group widths="equal">
-                        <Form.Field required>
-                            <label>Title</label>
-                            <input required="true" name="title" type="text" placeholder="Product Name" onChange={(e)=>this.handleChange(e)}/>
-                        </Form.Field>
-                        <Form.Field required>
-                            <label>Listing Price in USD</label>
-                            <input required="true" name="price" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                        </Form.Field>
-                        <Form.Field required>
-                            <label>Shipping Cost</label>
-                            <input required="true" name="shipping_cost" type="number" placeholder="USD Price" onChange={(e)=>this.handleChange(e)}/>
-                        </Form.Field>
-                        <Form.Field required>
-                            <label>Available for Sale</label>
-                            <input required="true" name="inventory_total" type="number" placeholder="Amount Available for Sale" onChange={(e)=>this.handleChange(e)}/>
-                        </Form.Field>
-                    </Form.Group>
-                    <Form.Group widths="equal">
-                        <Form.Field required>
-                            <label>Category</label>
-                            <select required name="category" type="text" onChange={(e)=>this.handleChange(e)}>
-                                <option defaultValue value="">Select Category</option>
-                                <option value="OUTERWEAR">OUTERWEAR</option>
-                                <option value="TOPS">TOPS</option>
-                                <option value="BOTTOMS">BOTTOMS</option>
-                                <option value="ACCESSORIES">ACCESSORIES</option>
-                            </select>
-                        </Form.Field>
-                        <Form.Field required>
-                            <label>Sub Category</label>
-                            <ChooseSubCategory category={this.state.category}  handleChange={(e)=>this.handleChange(e)}/>
-                        </Form.Field>
-                    </Form.Group>
-                    <Form.Group widths="equal">
-                        <Form.Field required>
-                            <label>Enter Amount Available for each size. If none enter Zero.</label>
-                            <ChooseSize category={this.state.category} handleChange={(e)=>this.handleChange(e)}/>
-                        </Form.Field>
-                    </Form.Group>
-                    <Form.Group widths="equal">
-                        <Form.Field required>
-                            <label>Product Description</label>
-                            <textarea required="true" name="description" rows="2" placeholder="Product Description" onChange={(e)=>this.handleChange(e)}></textarea>
-                        </Form.Field>
-                    </Form.Group>
-                    <Form.Group widths="equal">
-                        <Form.Field required>
-                            <label>Upload Main Image for Product</label>
-                            <input type="file" name="main_image" id="main_image" required onChange={(e)=>this.uploadMainPhoto(e)} />
-                            <label>Upload additonal images (recommmended)</label>
-                            <input type="file" name="photos" id="products_upload" multiple onChange={(e)=>this.renderPicPreviews(e)} />
-                            <div id="pic-preview"><ul></ul></div>
-                        </Form.Field>
-                    </Form.Group>
-                    <Button primary>Create Product</Button>
-                </Form>
-            </section>
+            this.state.brandCreated ? this.renderPage() : null
         )
     }
 }
