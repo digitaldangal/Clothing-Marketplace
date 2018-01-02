@@ -846,16 +846,16 @@ section#all-clothing{
                 flex-flow: row nowrap;
                 margin-top: 5em;
                 .imgHolder{
-                    width: 35vw;
+                    max-width: 600px;
                     cursor: zoom-in;
                     overflow: hidden;
                     max-height: 500px;
                     img{
-                        height: 100%;
+                        width: 100%;
                     }
                 }
                 .product-text{
-                    width: 30vw;
+                    max-width: 600px;
                     padding: 1em;
                     font-family: 'Open Sans', sans-serif;
                     h1, h3 {
