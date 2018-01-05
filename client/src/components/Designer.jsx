@@ -21,20 +21,20 @@ class Designer extends Component {
     componentWillMount() {
         let brandId = Number(this.props.match.params.brand_id);
         let brandInfo = {};
-        db.collection("brands").where("id", "==", brandId).get().then(res=>{
+        db.collection("brands").where("id", "==", brandId).get().then(function(res){
             if(res.empty === false){
                 this.setState({
                     redirect: false,
                     currentPage: '',
                 })
-                res.forEach((brand)=>{
+                res.forEach(function(brand){
                     this.setState({brandUid: brand.id})
                     return brandInfo = brand.data();
                 })
                 
                 let productRef = db.collection("brands").doc(this.state.brandUid).collection("products");
                 let productData = {}
-                productRef.orderBy("title").get().then((res)=>{
+                productRef.orderBy("title").get().then(function(res){
                     if(res.empty === false){
                         res.forEach((product)=>{
                             return productData[product.id] = product.data()
