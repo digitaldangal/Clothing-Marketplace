@@ -143,9 +143,11 @@ class Clothing extends Component {
     }
 
     handleImageChange=(image)=>{
-       let bigImage = document.querySelector('div.imgHolder img');
+       let bigImage = document.querySelector('div.imgHolder');
 
-       bigImage.src = (image);
+       console.log(image)
+
+       bigImage.style = `background: url('${image}')`
     }
 
     handleWishlist = (e, data) =>{
@@ -214,13 +216,13 @@ class Clothing extends Component {
                 <div className="single-clothing">
                     <div className="page-container ui container">
                         <div className="product-info">
-                            <div className="imgHolder">
-                                <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeOnDocumentClick={true} closeIcon>
+                            <div className="imgHolder" style={{backgroundImage: `url('${clothingData.main_image}')`}} >
+                                {/* <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeOnDocumentClick={true} closeIcon>
                                     <Modal.Content image>
                                             <Image src={clothingData.main_image} />
                                             {clothingData.hasOwnProperty("additonal_images") ? this.renderAdditonalImages(clothingData) : null}
                                     </Modal.Content>
-                                </Modal>
+                                </Modal> */}
                             </div>
                             <div className="product-text">
                             <div className={this.state.active ? "ui active inverted dimmer" : "ui disabled inverted dimmer"}>
