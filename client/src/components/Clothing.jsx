@@ -216,14 +216,13 @@ class Clothing extends Component {
                 <div className="single-clothing">
                     <div className="page-container ui container">
                         <div className="product-info">
-                            <div className="imgHolder" style={{backgroundImage: `url('${clothingData.main_image}')`}} >
-                                {/* <Modal trigger={<img src={clothingData.main_image} alt={clothingData.description} title={clothingData.title}/>} closeOnDocumentClick={true} closeIcon>
+                            
+                                <Modal trigger={<div className="imgHolder" style={{backgroundImage: `url('${clothingData.main_image}')`}} ></div>} closeOnDocumentClick={true} closeIcon>
                                     <Modal.Content image>
                                             <Image src={clothingData.main_image} />
                                             {clothingData.hasOwnProperty("additonal_images") ? this.renderAdditonalImages(clothingData) : null}
                                     </Modal.Content>
-                                </Modal> */}
-                            </div>
+                                </Modal>
                             <div className="product-text">
                             <div className={this.state.active ? "ui active inverted dimmer" : "ui disabled inverted dimmer"}>
                                 <div className="ui indeterminate text loader">Contacting PayPal. If this last longer than a minute refresh the page</div>
