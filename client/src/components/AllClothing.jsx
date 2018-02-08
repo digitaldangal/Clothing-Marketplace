@@ -17,7 +17,7 @@ class AllClothing extends Component {
 
     componentDidMount() {
         let clothing = {}
-        db.collection("products").where("deleted", "==", false).orderBy("created_date",'desc').limit(50).onSnapshot((res)=>{
+        db.collection("products").where("deleted", "==", false).orderBy("id",'desc').limit(50).onSnapshot((res)=>{
             res.forEach((clothes)=>{
                 return clothing[clothes.data().title] = clothes.data();
             })
