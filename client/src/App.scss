@@ -11,9 +11,9 @@ a {
     color: black;
 }
 .card{
-    // outline: none !important;
-    // border: none !important;
-    // box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
     &:hover{
         transform: none !important;
     }
@@ -606,6 +606,8 @@ div#pic-preview{
     h3.ui.header{
         text-transform: inherit;
         font-weight: 300!important;
+        font-size: 1rem;
+        margin-bottom: 2em;
     }
     div.image{
         overflow: hidden;
