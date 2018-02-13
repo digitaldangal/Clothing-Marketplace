@@ -1110,13 +1110,27 @@ section#all-clothing{
             span.question{
                 font-weight: bold;
                 display: block;
-                font-size: 1.2rem;
+                font-size: 19px;
                 letter-spacing: -.01562rem;  
                 }
         }
         .article-image-interlude{
+            width: inherit;
             img{
-
+                width: 100%;
+            }
+            span.image-interlude-caption{
+                font-size: 14px;
+            }
+            margin-bottom: 0.5em;
+        }
+        .article-image-interlude.reduce-size{
+            @media (max-width: 1024px) {     
+                width: 100%;
+            }
+            @media (min-width: 1024px) {     
+                width: 500px;
+                margin: 0 auto;
             }
         }
     }
