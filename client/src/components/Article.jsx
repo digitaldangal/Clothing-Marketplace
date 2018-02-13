@@ -54,6 +54,7 @@ class Article extends Component {
                                 <a href='/editorial/archive/Art' className="item">Art</a>
                                 <a href='/editorial/archive/Culture' className="item">Culture</a>
                                 <a href='/editorial/archive/Fashion' className="item">Fashion</a>
+                                <a href='/editorial/archive/Interviews' className="item">Interviews</a>
                                 <a href='/editorial/archive/Life' className="item">Life</a>
                             </div>
                         {Object.values(articleData).map((article, i)=>{
@@ -62,7 +63,7 @@ class Article extends Component {
                                     <div className="image">
                                         <Link to={`/editorial/${article.id}/${article.title}`}
                                         >
-                                            <img src={article[Object.keys(article)[5]]} alt="" />
+                                            <img src={article.screen_image} alt="" />
                                         </Link>
                                     </div>
                                     <div className="content">
