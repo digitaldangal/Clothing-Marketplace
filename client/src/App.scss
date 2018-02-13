@@ -1112,7 +1112,17 @@ section#all-clothing{
                 display: block;
                 font-size: 19px;
                 letter-spacing: -.01562rem;  
+            }
+        }
+        p.article-links{
+            text-indent: 0 !important;
+            font-style: italic;
+            a {
+                text-decoration: underline;
+                &:hover {
+                    color: rgb(70, 70, 255);
                 }
+            }
         }
         .article-image-interlude{
             width: inherit;
