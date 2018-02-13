@@ -985,7 +985,7 @@ section#all-clothing{
                     p{
                         line-height: 170%;
                         text-indent: 1.75rem;
-                        letter-spacing: 1px;
+                        letter-spacing: -.00313rem;
                     }
                 }
             }
@@ -1045,7 +1045,7 @@ section#all-clothing{
                     p{
                         line-height: 170%;
                         text-indent: 1.75rem;
-                        letter-spacing: 1px;
+                        letter-spacing: -.00313rem;
                     }
                 }
             }
@@ -1080,7 +1080,7 @@ section#all-clothing{
         p {
             line-height: 40%;
             text-align: left;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.104rem;
         }
         div.share {
@@ -1099,13 +1099,25 @@ section#all-clothing{
         border-top: 1px solid #bbb;
         padding-top: 1em;
         p {
-        line-height: 170%;
-        font-weight: 300;
-        text-indent: 1.75rem;
-        text-align: justify;
-        padding: 0em 1em;
-        letter-spacing: 1px;
-        font-size: 1.1rem;
+            -webkit-font-smoothing: antialiased;
+            line-height: 170%;
+            font-weight: 400;
+            text-align: justify;
+            padding: 0em 1em;
+            font-size: 18px;
+            letter-spacing: -.00313rem;
+            text-indent: 1.75rem;
+            span.question{
+                font-weight: bold;
+                display: block;
+                font-size: 1.2rem;
+                letter-spacing: -.01562rem;  
+                }
+        }
+        .article-image-interlude{
+            img{
+
+            }
         }
     }
 
