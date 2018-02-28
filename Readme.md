@@ -139,17 +139,11 @@ renderPicPreviews = (e) =>{
 ### Future Improvements
 - [x] Report Products
 - [x] Recently Sold Feed
-- [ ] Meet the Team
 - [ ] Brand Image, Logo, or profile pic
 - [ ] Product Share button
 - [x] Sizing
 - [ ] Searching
-- [ ] Articles
-    - [ ] Instagram Feed for brands
-    - [ ] Weekly or bi weekly
-    - [x] categories and archives 
-    - [ ] recommendations or next article 
-    - [ ] Outfits of the Week
+- [x] categories and archives 
 - [ ] Improve with drag and drop to reorder images
 - [ ] Create Brand Dashboard
     - [ ] activate sales
@@ -162,3 +156,6 @@ renderPicPreviews = (e) =>{
     - [ ] Approve Brands
     - [ ] Upload and change articles
     - [ ] Change featured brands
+
+- https://fb.me/streetwearboutiques
+- https://www.instagram.com/streetwearboutiques/
