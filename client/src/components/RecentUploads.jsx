@@ -14,7 +14,7 @@ class RecentUploads extends Component {
 
     componentDidMount() {
         let recentUploads = {}
-        db.collection("products").where("deleted", "==", false).orderBy("id",'desc').limit(8).onSnapshot((res)=>{
+        db.collection("products").where("deleted", "==", false).orderBy("id",'desc').limit(9).onSnapshot((res)=>{
             res.forEach((upload)=>{
                 return recentUploads[upload.data().title] = upload.data();
             })
