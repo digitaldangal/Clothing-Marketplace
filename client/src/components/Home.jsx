@@ -82,7 +82,7 @@ class Home extends Component {
     renderBanner = () => {
         return(
             <div className="page-banner">
-                <h1 className="ui header"><a href="/account/login">Join our community of brands today!</a></h1>
+                <h1 className="ui header"><a href="/account/login">Join our community of brands!</a></h1>
             </div>
             )
     }
