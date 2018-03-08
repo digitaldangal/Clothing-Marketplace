@@ -111,6 +111,9 @@ class Profile extends Component{
                     <div className="page-contianer ui container">
                         <div className="register-form">
                             <h3 className="ui header ">Account Information</h3>
+                            <div className="profile-picture" >
+                                <img src="http://via.placeholder.com/350x350" alt=""/>
+                            </div>
                             <Form onSubmit={this.handleProfileUpdate} warning={!this.state.emailVerified} success={this.state.profileUpdate}>
                                 <Message
                                 warning
