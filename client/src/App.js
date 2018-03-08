@@ -118,13 +118,21 @@ class App extends Component {
       })
     }
   }
-
+  
+  renderBanner = () => {
+    return(
+      <div className="page-banner">
+        <h1 className="ui header"><a href="/account/login">Join our community of brands today!</a></h1>
+      </div>
+    )
+  }
   render() {
     const {redirect, currentPage} = this.state
     return (
       <Router>
           <div className="App">
             <div className="app-body">
+            { !this.state.authState ? this.renderBanner() : null }
             <Navbar authState={this.state.authState} userInfo={this.state.userInfo} authStateChange={(authChange)=>this.handleAuthState(authChange)} handleSearch={(search, kind)=>this.handleSearch(search, kind)}/>
               <Switch>
                 <Route exact path="/" render={() => <Home authState={this.state.authState} articleData={this.state.articleData} articleDataLoaded={this.state.articleDataLoaded} featBrandData={this.state.featBrandData} storeArticleData={(articleData, brandData)=> this.storeArticleData(articleData, brandData)} /> } />
