@@ -78,11 +78,21 @@ class Home extends Component {
         )
     }
 
+    
+    renderBanner = () => {
+        return(
+            <div className="page-banner">
+                <h1 className="ui header"><a href="/account/login">Join our community of brands today!</a></h1>
+            </div>
+            )
+    }
+
     render(){
         return(
             <section id="home">
                 <main role="main">
                    {this.state.featuredBrand !== false ? this.renderPage() : <Spinner />}
+                    { !this.props.authState ? this.renderBanner() : null }
                    <RecentUploads />
                 </main>
             </section>

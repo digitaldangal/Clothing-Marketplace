@@ -55,9 +55,15 @@ a {
     padding: 1em;
     max-width: 1200px;
     margin: 0 auto;
+    letter-spacing: 1px;
+    margin-top: 0.2vh;
+    @media (min-width: 768px) and (max-width: 1024px){
+        width: 761px;
+    }
     h1.ui.header{
         a{
             color: white;
+            font-size: 1.6rem;
         }
     }
 }
