@@ -57,6 +57,9 @@ a {
     margin: 0 auto;
     letter-spacing: 1px;
     margin-top: 0.2vh;
+    @media (max-width: 767px){
+        width: 90vw;
+    }
     @media (min-width: 768px) and (max-width: 1024px){
         width: 761px;
     }
