@@ -10,7 +10,7 @@ const SizeChoose=(props)=>{
                 <option value="">SELECT</option>
                 {Object.values(productDetails.inventory).map((size, i)=>{
                 return(
-                    size > 0 ? <option key={i} value={size}>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option> : <option key={i} disabled>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option>
+                    size > 0 ? <option key={i} value={Object.keys(productDetails.inventory)[i].toUpperCase()}>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option> : <option key={i} disabled>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option>
                 )
                 })}
             </select>
@@ -22,7 +22,7 @@ const SizeChoose=(props)=>{
                 <option value="">SELECT</option>
                 {Object.values(productDetails.inventory).map((size, i)=>{
                 return(
-                    size > 0 ? <option key={i} value={size}>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option> : <option key={i} disabled>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option>
+                    size > 0 ? <option key={i} value={Object.keys(productDetails.inventory)[i].toUpperCase()}>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option> : <option key={i} disabled>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option>
                 )
                 })}
             </select>
@@ -34,7 +34,7 @@ const SizeChoose=(props)=>{
                 <option value="">SELECT</option>
                 {Object.values(productDetails.inventory).map((size, i)=>{
                 return(
-                    size > 0 ? <option key={i} value={size}>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option> : <option key={i} disabled>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option>
+                    size > 0 ? <option key={i} value={Object.keys(productDetails.inventory)[i].toUpperCase()}>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option> : <option key={i} disabled>{Object.keys(productDetails.inventory)[i].toUpperCase()}</option>
                 )
                 })}
             </select>
