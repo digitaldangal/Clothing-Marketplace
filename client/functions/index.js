@@ -70,7 +70,7 @@ exports.pay = functions.https.onRequest((req, res) => {
           },
           // reference_id string .Optional. The merchant-provided ID for the purchase unit. Maximum length: 256.
           // reference_id: req.body.uid,
-          custom: req.body.user_id,
+          custom: `id: ${req.body.user_id}, size: ${req.body.size}`,
           soft_descriptor: req.body.designer
         }]
       });
